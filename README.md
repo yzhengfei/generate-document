@@ -1,4 +1,6 @@
 ![gd](logo.png)
+# Generate Document plugin for IntelliJ platform IDEs
+
 ## What is generate-document?
 Java code comments automatically converts user-defined template documents
 
