@@ -1,4 +1,4 @@
-![gd](logo.png)
+![logo](img/logo.png)
 # Generate Document plugin for IntelliJ platform IDEs
 
 ## What is generate-document?
@@ -14,9 +14,9 @@ Java code comments automatically converts user-defined template documents
 
 ## Use
 
-![](gd-1.gif?raw=true)
-![](gd-2.gif?raw=true)
-![](gd-3.gif?raw=true)
+![gd-1](img/gd-1.gif)
+![gd-2](img/gd-2.gif)
+![gd-3](img/gd-3.gif)
 
 ## What’s New
 
