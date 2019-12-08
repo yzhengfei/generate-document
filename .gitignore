@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -30,30 +29,3 @@ build/
 
 ### VS Code ###
 .vscode/
-=======
-# Created by .gitignore support plugin (hsz.mobi)
-#*.iml
-*.ipr
-*.iws
-*idea*
-*target*
-.DS_Store
-*.class
-*.classpath
-*.project
-*.idea
-.idea/
-nohup.log
-*.versionsBackup
-*.tar.gz
-.class
-.exe
-.log
-*.jar
-.settings
-build/
-.gradle/
-gradle/
-out/
-.idea/workspace.xml
->>>>>>> cc24bce38f62bf597f3b28a894da92c85eee3270
