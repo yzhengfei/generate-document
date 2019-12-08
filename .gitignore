@@ -1,0 +1,59 @@
+<<<<<<< HEAD
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+=======
+# Created by .gitignore support plugin (hsz.mobi)
+#*.iml
+*.ipr
+*.iws
+*idea*
+*target*
+.DS_Store
+*.class
+*.classpath
+*.project
+*.idea
+.idea/
+nohup.log
+*.versionsBackup
+*.tar.gz
+.class
+.exe
+.log
+*.jar
+.settings
+build/
+.gradle/
+gradle/
+out/
+.idea/workspace.xml
+>>>>>>> cc24bce38f62bf597f3b28a894da92c85eee3270
