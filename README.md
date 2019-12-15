@@ -14,6 +14,10 @@ Java code comments automatically converts user-defined template documents
 * Single method to generate a document
 * Single class generation document
 
+## Install
+
+[Download](https://plugins.jetbrains.com/plugin/13086-generate-document/versions)
+
 ## Demo
 
 [Spring REST supports annotation demo](demo/spring-rest.md)
