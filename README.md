@@ -20,12 +20,6 @@ Java code comments automatically converts user-defined template documents
 
 [Spring REST demo](demo/spring-rest-employee.md)
 
-## Use
-
-![gd-1](img/gd-1.gif)
-![gd-2](img/gd-2.gif)
-![gd-3](img/gd-3.gif)
-
 ## What’s New
 
 * 2.3
@@ -50,6 +44,12 @@ Java code comments automatically converts user-defined template documents
     *  Fix circular dependency class memory overflow
     *  User experience optimization
     *  bugfix
+
+## Use
+
+![gd-1](img/gd-1.gif)
+![gd-2](img/gd-2.gif)
+![gd-3](img/gd-3.gif)
 
 ## Feedback
 If you have any questions during use, please feel free to contact me. You can use the following contact information to communicate with me.
