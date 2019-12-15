@@ -26,6 +26,8 @@ Java code comments automatically converts user-defined template documents
 
 [Interface demo](demo/interface.md)
 
+[Table ER](img/2.3/sql-er.png)
+
 ## What’s New
 
 * 2.3
@@ -53,9 +55,9 @@ Java code comments automatically converts user-defined template documents
 
 ## Use
 
-![gd-1](img/gd-1.gif)
-![gd-2](img/gd-2.gif)
-![gd-3](img/gd-3.gif)
+![gd-1](img/2.2/gd-1.gif)
+![gd-2](img/2.2/gd-2.gif)
+![gd-3](img/2.2/gd-3.gif)
 
 ## Feedback
 If you have any questions during use, please feel free to contact me. You can use the following contact information to communicate with me.
