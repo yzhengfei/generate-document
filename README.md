@@ -20,6 +20,8 @@ Java code comments automatically converts user-defined template documents
 
 [Spring REST demo](demo/spring-rest-employee.md)
 
+[Interface demo](demo/interface.md)
+
 ## What’s New
 
 * 2.3

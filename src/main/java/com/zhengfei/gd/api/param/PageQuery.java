@@ -1,4 +1,4 @@
-package com.zhengfei.gd.controller.param;
+package com.zhengfei.gd.api.param;
 
 import lombok.Data;
 

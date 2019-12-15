@@ -1,4 +1,4 @@
-package com.zhengfei.gd.controller.model;
+package com.zhengfei.gd.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

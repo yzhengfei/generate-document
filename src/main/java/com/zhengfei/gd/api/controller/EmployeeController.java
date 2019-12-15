@@ -1,8 +1,8 @@
-package com.zhengfei.gd.controller;
+package com.zhengfei.gd.api.controller;
 
-import com.zhengfei.gd.controller.model.EmployeeDTO;
-import com.zhengfei.gd.controller.result.PageResult;
-import com.zhengfei.gd.controller.result.Result;
+import com.zhengfei.gd.api.model.EmployeeDTO;
+import com.zhengfei.gd.api.result.PageResult;
+import com.zhengfei.gd.api.result.Result;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

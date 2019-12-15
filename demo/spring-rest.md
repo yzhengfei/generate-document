@@ -1,8 +1,9 @@
+### Java Code
 ``` java
-package com.zhengfei.gd.controller;
+package com.zhengfei.gd.api.controller;
 
-import com.zhengfei.gd.controller.model.EmployeeDTO;
-import com.zhengfei.gd.controller.result.Result;
+import com.zhengfei.gd.api.model.EmployeeDTO;
+import com.zhengfei.gd.api.result.Result;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class DemoController {
 
 ```
 
-### Class Name：com.zhengfei.gd.controller.DemoController
+### Class Name：com.zhengfei.gd.api.controller.DemoController
 #### 1.已支持注解Demo
 **URL:** http://localhost/rest/demo/{pathVariable}
 
@@ -57,7 +58,7 @@ Parameter | Type|Required|DefaultValue|Description
 ---|---|---|---|---
 ├─pathVariable|java.lang.String|false|&nbsp;|Path变量 
 ├─requestParam|java.lang.String|false|请求参数默认值|请求参数 
-└─body|com.zhengfei.gd.controller.model.EmployeeDTO|true|&nbsp;|请求Body 
+└─body|com.zhengfei.gd.api.model.EmployeeDTO|true|&nbsp;|请求Body 
 &nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
 &nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
 &nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
@@ -80,7 +81,7 @@ http://localhost/rest/demo/DzTLHvLX?requestParam=%E8%AF%B7%E6%B1%82%E5%8F%82%E6%
 
 Field | Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.controller.result.Result|返回结果
+┌─|com.zhengfei.gd.api.result.Result|返回结果
 ├─code|java.lang.Integer|错误码
 └─data|java.lang.Void|数据集
 

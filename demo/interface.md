@@ -1,28 +1,21 @@
 ### Java Code
-```java
-package com.zhengfei.gd.api.controller;
+``` java
+package com.zhengfei.gd.api.dubbo;
 
 import com.zhengfei.gd.api.model.EmployeeDTO;
+import com.zhengfei.gd.api.param.PageQuery;
 import com.zhengfei.gd.api.result.PageResult;
 import com.zhengfei.gd.api.result.Result;
-import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/rest/employees")
-class EmployeeController {
+public interface InterfaceService {
 
     /**
      * 分页查询员工信息
      *
-     * @param pageNo   页码
-     * @param pageSize 页大小
+     * @param pageQuery 分页参数
      * @return 返回结果
      */
-    @GetMapping("/page")
-    Result<PageResult<EmployeeDTO>> pageQuery(@RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo
-            , @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
-        return null;
-    }
+    Result<PageResult<EmployeeDTO>> pageQuery(PageQuery pageQuery);
 
     /**
      * 保存员工信息
@@ -30,10 +23,7 @@ class EmployeeController {
      * @param newEmployee 员工信息
      * @return 返回结果
      */
-    @PostMapping
-    Result<Long> save(@RequestBody EmployeeDTO newEmployee) {
-        return null;
-    }
+    Result<Long> save(EmployeeDTO newEmployee);
 
     /**
      * 根据员工ID查询员工信息
@@ -41,22 +31,15 @@ class EmployeeController {
      * @param id 员工ID
      * @return 返回结果
      */
-    @GetMapping("/{id}")
-    Result<EmployeeDTO> getById(@PathVariable("id") Long id) {
-        return null;
-    }
+    Result<EmployeeDTO> getById(Long id);
 
     /**
      * 根据员工ID修改员工信息
      *
      * @param newEmployee 员工信息
-     * @param id          员工ID
      * @return 返回结果
      */
-    @PutMapping("/{id}")
-    Result<Long> update(@RequestBody EmployeeDTO newEmployee, @PathVariable Long id) {
-        return null;
-    }
+    Result<Long> update(EmployeeDTO newEmployee);
 
     /**
      * 根据员工ID删除员工信息
@@ -64,36 +47,33 @@ class EmployeeController {
      * @param id 员工ID
      * @return 返回结果
      */
-    @DeleteMapping("/{id}")
-    Result<Void> deleteEmployee(@PathVariable Long id) {
-        return null;
-    }
-
+    Result<Void> delete(Long id);
 }
 ```
 
-### Class Name：com.zhengfei.gd.api.controller.EmployeeController
+### Class Name：com.zhengfei.gd.api.dubbo.InterfaceService
 #### 1.分页查询员工信息
-**URL:** http://localhost/rest/employees/page
+**Method Name:** pageQuery
 
-**Type:** GET
-
-
-
-**Request-parameters:**
+**Parameters:**
 
 Parameter | Type|Required|DefaultValue|Description
 ---|---|---|---|---
-├─pageNo|java.lang.Integer|true|1|页码 
-└─pageSize|java.lang.Integer|true|10|页大小 
+└─pageQuery|com.zhengfei.gd.api.param.PageQuery|&nbsp;|&nbsp;|分页参数 
+&nbsp;&nbsp;├─pageNo|java.lang.Integer|&nbsp;|&nbsp;|页码
+&nbsp;&nbsp;└─pageSize|java.lang.Integer|&nbsp;|&nbsp;|页大小
 
-**Request-example:**
+**Parameter-example:**
 ```
-http://localhost/rest/employees/page?pageNo=1&pageSize=10
+{
+  "pageQuery": {
+    "pageNo": 4697,
+    "pageSize": 1861
+  }
+}
 ```
 
-
-**Response-fields:**
+**Result-fields:**
 
 Field | Type|Description
 ---|---|---
@@ -106,17 +86,17 @@ Field | Type|Description
 &nbsp;&nbsp;&nbsp;&nbsp;├─name|java.lang.String|员工姓名
 &nbsp;&nbsp;&nbsp;&nbsp;└─role|java.lang.String|员工角色
 
-**Response-example:**
+**Result-example:**
 ```
 {
-  "code": 5033,
+  "code": 9600,
   "data": {
-    "totalCount": 4240,
+    "totalCount": 504,
     "rows": [
       {
-        "role": "qp",
-        "name": "CZrs",
-        "id": 1823
+        "role": "gMVnJ78UY",
+        "name": "6hJx",
+        "id": 6074
       }
     ]
   }
@@ -124,36 +104,29 @@ Field | Type|Description
 ```
 
 #### 2.保存员工信息
-**URL:** http://localhost/rest/employees/
+**Method Name:** save
 
-**Type:** POST
-
-
-
-**Request-parameters:**
+**Parameters:**
 
 Parameter | Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|true|&nbsp;|员工信息 
+└─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|&nbsp;|&nbsp;|员工信息 
 &nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
 &nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
 &nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
 
-**Request-example:**
-```
-http://localhost/rest/employees/
-```
-
-**Request-body-example:**
+**Parameter-example:**
 ```
 {
-  "role": "x",
-  "name": "lWOQA",
-  "id": 8847
+  "newEmployee": {
+    "role": "84",
+    "name": "1GY",
+    "id": 906
+  }
 }
 ```
 
-**Response-fields:**
+**Result-fields:**
 
 Field | Type|Description
 ---|---|---
@@ -161,34 +134,31 @@ Field | Type|Description
 ├─code|java.lang.Integer|错误码
 └─data|java.lang.Long|数据集
 
-**Response-example:**
+**Result-example:**
 ```
 {
-  "code": 4111,
-  "data": 983
+  "code": 5583,
+  "data": 4837
 }
 ```
 
 #### 3.根据员工ID查询员工信息
-**URL:** http://localhost/rest/employees/{id}
+**Method Name:** getById
 
-**Type:** GET
-
-
-
-**Request-parameters:**
+**Parameters:**
 
 Parameter | Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─id|java.lang.Long|true|&nbsp;|员工ID 
+└─id|java.lang.Long|&nbsp;|&nbsp;|员工ID 
 
-**Request-example:**
+**Parameter-example:**
 ```
-http://localhost/rest/employees/4204
+{
+  "id": 4648
+}
 ```
 
-
-**Response-fields:**
+**Result-fields:**
 
 Field | Type|Description
 ---|---|---
@@ -199,50 +169,42 @@ Field | Type|Description
 &nbsp;&nbsp;├─name|java.lang.String|员工姓名
 &nbsp;&nbsp;└─role|java.lang.String|员工角色
 
-**Response-example:**
+**Result-example:**
 ```
 {
-  "code": 2200,
+  "code": 3034,
   "data": {
-    "role": "vca1",
-    "name": "1AF4xnj",
-    "id": 1023
+    "role": "vE",
+    "name": "pKB2g2QIi",
+    "id": 3766
   }
 }
 ```
 
 #### 4.根据员工ID修改员工信息
-**URL:** http://localhost/rest/employees/{id}
+**Method Name:** update
 
-**Type:** PUT
-
-
-
-**Request-parameters:**
+**Parameters:**
 
 Parameter | Type|Required|DefaultValue|Description
 ---|---|---|---|---
-├─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|true|&nbsp;|员工信息 
+└─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|&nbsp;|&nbsp;|员工信息 
 &nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
 &nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
 &nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
-└─id|java.lang.Long|true|&nbsp;|员工ID 
 
-**Request-example:**
-```
-http://localhost/rest/employees/6363
-```
-
-**Request-body-example:**
+**Parameter-example:**
 ```
 {
-  "role": "aI5uYS",
-  "name": "ms8eWu",
-  "id": 4022
+  "newEmployee": {
+    "role": "Z5",
+    "name": "s5dlKL",
+    "id": 4056
+  }
 }
 ```
 
-**Response-fields:**
+**Result-fields:**
 
 Field | Type|Description
 ---|---|---
@@ -250,34 +212,31 @@ Field | Type|Description
 ├─code|java.lang.Integer|错误码
 └─data|java.lang.Long|数据集
 
-**Response-example:**
+**Result-example:**
 ```
 {
-  "code": 5085,
-  "data": 3488
+  "code": 9833,
+  "data": 4595
 }
 ```
 
 #### 5.根据员工ID删除员工信息
-**URL:** http://localhost/rest/employees/{id}
+**Method Name:** delete
 
-**Type:** DELETE
-
-
-
-**Request-parameters:**
+**Parameters:**
 
 Parameter | Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─id|java.lang.Long|true|&nbsp;|员工ID 
+└─id|java.lang.Long|&nbsp;|&nbsp;|员工ID 
 
-**Request-example:**
+**Parameter-example:**
 ```
-http://localhost/rest/employees/6137
+{
+  "id": 3541
+}
 ```
 
-
-**Response-fields:**
+**Result-fields:**
 
 Field | Type|Description
 ---|---|---
@@ -285,9 +244,9 @@ Field | Type|Description
 ├─code|java.lang.Integer|错误码
 └─data|java.lang.Void|数据集
 
-**Response-example:**
+**Result-example:**
 ```
 {
-  "code": 318
+  "code": 7256
 }
 ```
