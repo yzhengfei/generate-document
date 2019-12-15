@@ -26,7 +26,7 @@ Java code comments automatically converts user-defined template documents
 
 [Interface demo](demo/interface.md)
 
-[Table ER](img/2.3/sql-er.png)
+[Table ER](demo/sql-er.md)
 
 ## What’s New
 
