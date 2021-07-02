@@ -13,9 +13,18 @@ Java code comments automatically converts user-defined template documents
 * Single method to generate a document
 * Single class generation document
 
-## Install
+## Installation
 
-[Download](https://plugins.jetbrains.com/plugin/13086-generate-document/versions)
+- Using IDE built-in plugin system:
+
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Generate document"</kbd> >
+  <kbd>Install Plugin</kbd>
+
+- Manually:
+
+  Download the [latest release](https://plugins.jetbrains.com/plugin/13086-generate-document/versions) and install it manually using
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+
 
 ## Demo
 
