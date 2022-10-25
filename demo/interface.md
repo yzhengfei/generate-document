@@ -51,202 +51,227 @@ public interface InterfaceService {
 }
 ```
 
-### Class Name：com.zhengfei.gd.api.dubbo.InterfaceService
-#### 1.分页查询员工信息
+**Generated:** [Generate Document plugin for IntelliJ platform IDEs](https://plugins.jetbrains.com/plugin/13086-generate-document)
+
+**Author:** yinzhengfei
+
+**Dependency:**
+``` xml
+<dependency>
+	<groupId>com.zhengfei</groupId>
+	<artifactId>generate-document</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+# Class Name：com.zhengfei.gd.api.dubbo.InterfaceService
+
+
+## 1.分页查询员工信息&nbsp;
 **Method Name:** pageQuery
 
-**Parameters:**
+**Author:** 
 
-Parameter | Type|Required|DefaultValue|Description
+**Request-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─pageQuery|com.zhengfei.gd.api.param.PageQuery|&nbsp;|&nbsp;|分页参数 
-&nbsp;&nbsp;├─pageNo|java.lang.Integer|&nbsp;|&nbsp;|页码
-&nbsp;&nbsp;└─pageSize|java.lang.Integer|&nbsp;|&nbsp;|页大小
+└── pageQuery|com.zhengfei.gd.api.param.PageQuery|&nbsp;|&nbsp;|分页参数<br/>&nbsp;
+&nbsp;&nbsp; ├── pageNo|java.lang.Integer|&nbsp;|1|页码&nbsp;
+&nbsp;&nbsp; └── pageSize|java.lang.Integer|&nbsp;|10|页大小&nbsp;
 
-**Parameter-example:**
-```
+**Request-example:**
+``` json
 {
   "pageQuery": {
-    "pageNo": 4697,
-    "pageSize": 1861
+    "pageNo": "1",
+    "pageSize": "10"
   }
 }
 ```
 
-**Result-fields:**
+**Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|com.zhengfei.gd.api.result.PageResult|数据集
-&nbsp;&nbsp;├─totalCount|java.lang.Integer|结果集总数
-&nbsp;&nbsp;└─rows|java.util.List<com.zhengfei.gd.api.model.EmployeeDTO>|当前页码的结果集
-&nbsp;&nbsp;&nbsp;&nbsp;├─id|java.lang.Long|员工ID
-&nbsp;&nbsp;&nbsp;&nbsp;├─name|java.lang.String|员工姓名
-&nbsp;&nbsp;&nbsp;&nbsp;└─role|java.lang.String|员工角色
+┌─&nbsp; |com.zhengfei.gd.api.result.Result|返回结果&nbsp;
+├── code|java.lang.Integer|错误码&nbsp;
+└── data|com.zhengfei.gd.api.result.PageResult|数据集&nbsp;
+&nbsp;&nbsp; ├── totalCount|java.lang.Integer|结果集总数&nbsp;
+&nbsp;&nbsp; └── rows|java.util.List&lt;com.zhengfei.gd.api.model.EmployeeDTO&gt;|当前页码的结果集&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── id|java.lang.Long|员工ID&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── name|java.lang.String|员工姓名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── role|java.lang.String|员工角色&nbsp;
 
-**Result-example:**
-```
+**Response-example:**
+``` json
 {
-  "code": 9600,
+  "code": 9411,
   "data": {
-    "totalCount": 504,
+    "totalCount": 68,
     "rows": [
       {
-        "role": "gMVnJ78UY",
-        "name": "6hJx",
-        "id": 6074
+        "role": "EjyU0Vcv",
+        "name": "VXx",
+        "id": 1723
       }
     ]
   }
 }
 ```
 
-#### 2.保存员工信息
+## 2.保存员工信息&nbsp;
 **Method Name:** save
 
-**Parameters:**
+**Author:** 
 
-Parameter | Type|Required|DefaultValue|Description
+**Request-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|&nbsp;|&nbsp;|员工信息 
-&nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
-&nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
-&nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
+└── newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|&nbsp;|&nbsp;|员工信息<br/>&nbsp;
+&nbsp;&nbsp; ├── id|java.lang.Long|&nbsp;|&nbsp;|员工ID&nbsp;
+&nbsp;&nbsp; ├── name|java.lang.String|&nbsp;|&nbsp;|员工姓名&nbsp;
+&nbsp;&nbsp; └── role|java.lang.String|&nbsp;|&nbsp;|员工角色&nbsp;
 
-**Parameter-example:**
-```
+**Request-example:**
+``` json
 {
   "newEmployee": {
-    "role": "84",
-    "name": "1GY",
-    "id": 906
+    "role": "b2oPE9d",
+    "name": "4zRS",
+    "id": 1598
   }
 }
 ```
 
-**Result-fields:**
+**Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|java.lang.Long|数据集
+┌─&nbsp; |com.zhengfei.gd.api.result.Result|返回结果&nbsp;
+├── code|java.lang.Integer|错误码&nbsp;
+└── data|java.lang.Long|数据集&nbsp;
 
-**Result-example:**
-```
+**Response-example:**
+``` json
 {
-  "code": 5583,
-  "data": 4837
+  "code": 3343,
+  "data": 878
 }
 ```
 
-#### 3.根据员工ID查询员工信息
+## 3.根据员工ID查询员工信息&nbsp;
 **Method Name:** getById
 
-**Parameters:**
+**Author:** 
 
-Parameter | Type|Required|DefaultValue|Description
+**Request-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─id|java.lang.Long|&nbsp;|&nbsp;|员工ID 
+└── id|java.lang.Long|&nbsp;|&nbsp;|员工ID<br/>&nbsp;
 
-**Parameter-example:**
-```
+**Request-example:**
+``` json
 {
-  "id": 4648
+  "id": 2623
 }
 ```
 
-**Result-fields:**
+**Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|com.zhengfei.gd.api.model.EmployeeDTO|数据集
-&nbsp;&nbsp;├─id|java.lang.Long|员工ID
-&nbsp;&nbsp;├─name|java.lang.String|员工姓名
-&nbsp;&nbsp;└─role|java.lang.String|员工角色
+┌─&nbsp; |com.zhengfei.gd.api.result.Result|返回结果&nbsp;
+├── code|java.lang.Integer|错误码&nbsp;
+└── data|com.zhengfei.gd.api.model.EmployeeDTO|数据集&nbsp;
+&nbsp;&nbsp; ├── id|java.lang.Long|员工ID&nbsp;
+&nbsp;&nbsp; ├── name|java.lang.String|员工姓名&nbsp;
+&nbsp;&nbsp; └── role|java.lang.String|员工角色&nbsp;
 
-**Result-example:**
-```
+**Response-example:**
+``` json
 {
-  "code": 3034,
+  "code": 4772,
   "data": {
-    "role": "vE",
-    "name": "pKB2g2QIi",
-    "id": 3766
+    "role": "x0oaux1aX",
+    "name": "E6yHwzghUn",
+    "id": 6223
   }
 }
 ```
 
-#### 4.根据员工ID修改员工信息
+## 4.根据员工ID修改员工信息&nbsp;
 **Method Name:** update
 
-**Parameters:**
+**Author:** 
 
-Parameter | Type|Required|DefaultValue|Description
+**Request-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|&nbsp;|&nbsp;|员工信息 
-&nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
-&nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
-&nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
+└── newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|&nbsp;|&nbsp;|员工信息<br/>&nbsp;
+&nbsp;&nbsp; ├── id|java.lang.Long|&nbsp;|&nbsp;|员工ID&nbsp;
+&nbsp;&nbsp; ├── name|java.lang.String|&nbsp;|&nbsp;|员工姓名&nbsp;
+&nbsp;&nbsp; └── role|java.lang.String|&nbsp;|&nbsp;|员工角色&nbsp;
 
-**Parameter-example:**
-```
+**Request-example:**
+``` json
 {
   "newEmployee": {
-    "role": "Z5",
-    "name": "s5dlKL",
-    "id": 4056
+    "role": "0SjZw",
+    "name": "zZGm",
+    "id": 9684
   }
 }
 ```
 
-**Result-fields:**
+**Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|java.lang.Long|数据集
+┌─&nbsp; |com.zhengfei.gd.api.result.Result|返回结果&nbsp;
+├── code|java.lang.Integer|错误码&nbsp;
+└── data|java.lang.Long|数据集&nbsp;
 
-**Result-example:**
-```
+**Response-example:**
+``` json
 {
-  "code": 9833,
-  "data": 4595
+  "code": 2352,
+  "data": 5310
 }
 ```
 
-#### 5.根据员工ID删除员工信息
+## 5.根据员工ID删除员工信息&nbsp;
 **Method Name:** delete
 
-**Parameters:**
+**Author:** 
 
-Parameter | Type|Required|DefaultValue|Description
+**Request-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─id|java.lang.Long|&nbsp;|&nbsp;|员工ID 
+└── id|java.lang.Long|&nbsp;|&nbsp;|员工ID<br/>&nbsp;
 
-**Parameter-example:**
-```
+**Request-example:**
+``` json
 {
-  "id": 3541
+  "id": 6926
 }
 ```
 
-**Result-fields:**
+**Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|java.lang.Void|数据集
+┌─&nbsp; |com.zhengfei.gd.api.result.Result|返回结果&nbsp;
+├── code|java.lang.Integer|错误码&nbsp;
+└── data|java.lang.Void|数据集&nbsp;
 
-**Result-example:**
-```
+**Response-example:**
+``` json
 {
-  "code": 7256
+  "code": 193
 }
 ```
