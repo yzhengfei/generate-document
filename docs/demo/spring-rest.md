@@ -4,40 +4,1250 @@
 
 **Version:** 0.0.1-SNAPSHOT
 
-# 循环引用依赖测试
+# 注释tag<br/>用例&nbsp;
 
-## 1.循环依赖参数推导
-**URL:** http://localhost/circularReference
+## 1.~~测试apiNote tag~~&nbsp;
 
-**Type:** GET
+**URL:** http://localhost/tags/apiNote
 
+**Type:** POST
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└── user|object|true|&nbsp;|&nbsp;
-&nbsp;&nbsp; ├── a|string|&nbsp;|&nbsp;|属性a
-&nbsp;&nbsp; └── b|object|&nbsp;|&nbsp;|对象b
-&nbsp;&nbsp; &nbsp;&nbsp; ├── b|string|&nbsp;|&nbsp;|属性b
-&nbsp;&nbsp; &nbsp;&nbsp; └── c|object|&nbsp;|&nbsp;|对象c
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── c|string|&nbsp;|&nbsp;|属性c
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── a|object|&nbsp;|&nbsp;|对象A
+└── user|array&lt;string&gt;|&nbsp;|&nbsp;|&nbsp;
 
-**Request-example:**
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
 ``` json
-http://localhost/circularReference
+"xR"
 ```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/tags/apiNote --data 'user=S5'
+```
+
+## 2.自定义mock tag获取mock值&nbsp;
+
+**URL:** http://localhost/tags/mock
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|
+&nbsp;&nbsp; ├── subUserName|string|true|&nbsp;|用户名称<br/>水水水水<br/>ddddd
+&nbsp;&nbsp; └── numbers|number|&nbsp;|&nbsp;|bigInteger&nbsp;
 
 **Request-body-example:**
 ``` json
 {
-  "a": "EC",
-  "b": {
-    "b": "P0k",
-    "c": {
-      "c": "1sqe1rBv"
+  "subUserName": "AMLy8nopKQ",
+  "numbers": 390
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+│&nbsp;&nbsp; ├── AGE|int32|&nbsp;
+│&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;
+│&nbsp;&nbsp; ├── gender|enum|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+│&nbsp;&nbsp; ├── simpleEnum|enum|简单枚举<br/>RED<br/>BLUE&nbsp;
+│&nbsp;&nbsp; ├── username|string|用户名<br/>测试分隔注释&nbsp;
+│&nbsp;&nbsp; ├── password|string|密码&nbsp;
+│&nbsp;&nbsp; ├── passwordssss|array|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── mobile|string|电话&nbsp;
+│&nbsp;&nbsp; ├── role|object|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户角色信息&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|用户扩展项&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|ListMap效果展示&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "5Cn2vHo",
+  "code": "aZeQOk",
+  "data": {
+    "passwordssss": [
+      "1bCkTRn"
+    ],
+    "role": {
+      "createBy": "Nqh5",
+      "createTime": "Dec 7, 2056, 7:55:00 AM",
+      "updateBy": "fIVb",
+      "roleId": "kjpzg",
+      "roleName": "C2mEfIUrLI",
+      "updateTime": "2095-03-16 00:28:06",
+      "id": "xeNaqPx",
+      "delFlag": 222,
+      "userId": "CD3"
+    },
+    "gender": "WOMAN",
+    "nickName": "R53Au5HN",
+    "listMap": [
+      {
+        "null": "RiQy"
+      }
+    ],
+    "roles": [
+      {
+        "createBy": "8wyJ",
+        "createTime": "Apr 3, 2077, 1:37:22 PM",
+        "updateBy": "lT1Eeon1",
+        "roleId": "eb",
+        "roleName": "TBCa",
+        "updateTime": "2095-05-10 11:37:55",
+        "id": "cEaUHzp",
+        "delFlag": 4587,
+        "userId": "HW"
+      }
+    ],
+    "mobile": "TKd1Vhj",
+    "extend": {
+      "null": "vaS"
+    },
+    "password": "50",
+    "MAX_SPEED": "120",
+    "simpleEnum": "RED",
+    "AGE": "100",
+    "username": "7Ax9o0q"
+  },
+  "success": false,
+  "message": "fhku",
+  "timestamp": "m5s4WIRU"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/tags/mock --data '{
+  "subUserName": "AMLy8nopKQ",
+  "numbers": 390
+}'
+```
+
+## 3.测试@ignore tag&nbsp;
+
+**URL:** http://localhost/tags/ignore
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── pager|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── total|int32|&nbsp;|0|记录总数&nbsp;
+&nbsp;&nbsp; ├── concurrentPage|int32|&nbsp;|0|当前页&nbsp;
+&nbsp;&nbsp; └── pageSize|int32|&nbsp;|0|当前page&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"RiaBdOV"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/tags/ignore --data 'concurrentPage=0&pageSize=0&total=0'
+```
+
+# 用户信息操作接口&nbsp;
+
+## 1.添加用户&nbsp;
+
+**URL:** http://localhost/user/add
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|
+&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
+&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
+&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>测试分隔注释&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── passwordssss|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── role|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户角色信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|&nbsp;|&nbsp;|用户扩展项&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|&nbsp;|&nbsp;|ListMap效果展示&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "passwordssss": [
+    "GZ3iz"
+  ],
+  "role": {
+    "createBy": "t5",
+    "createTime": "Feb 4, 2094, 6:27:11 AM",
+    "updateBy": "20N1y3dAf8",
+    "roleId": "wZyhR",
+    "roleName": "0mZM6g",
+    "updateTime": "2093-06-30 06:30:14",
+    "id": "ZqXPTO1",
+    "delFlag": 5789,
+    "userId": "xW2jnuo"
+  },
+  "gender": "WOMAN",
+  "nickName": "ZFZsr",
+  "listMap": [
+    {
+      "null": "glAtC"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "RKfCrw",
+      "createTime": "Jul 1, 2042, 2:20:58 AM",
+      "updateBy": "v0xhc47kB",
+      "roleId": "k3rilQRZ8K",
+      "roleName": "kxVEf",
+      "updateTime": "2033-10-27 18:33:52",
+      "id": "eADAcC",
+      "delFlag": 5465,
+      "userId": "nWY8"
+    }
+  ],
+  "mobile": "7bw",
+  "extend": {
+    "null": "5O87mWz"
+  },
+  "password": "7uk",
+  "MAX_SPEED": "120",
+  "simpleEnum": "RED",
+  "AGE": "100",
+  "username": "KtS4Om3"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|Author: hcy<br/>Version: 1.0.0V<br/>Date:  2019/12/5 10:32<br/>Description: 正常返回工具类&nbsp;
+├── timestamp|string|时间戳&nbsp;
+├── traceId|string|链路id&nbsp;
+├── data|object|返回数据&nbsp;
+│&nbsp;&nbsp; ├── testObject|object|测试object&nbsp;
+│&nbsp;&nbsp; ├── username|string|用户名&nbsp;
+│&nbsp;&nbsp; ├── password|string|密码&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── mobile|string|电话&nbsp;
+│&nbsp;&nbsp; ├── email|string|邮箱&nbsp;
+│&nbsp;&nbsp; ├── address|string|地址&nbsp;
+│&nbsp;&nbsp; ├── sex|int32|性别(男1 女 2)&nbsp;
+│&nbsp;&nbsp; ├── avatar|string|&nbsp;
+│&nbsp;&nbsp; ├── type|int32|类型&nbsp;
+│&nbsp;&nbsp; ├── status|int32|状态&nbsp;
+│&nbsp;&nbsp; ├── description|string|描述&nbsp;
+│&nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户拥有角色&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|用户拥有的权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+├── message|string|ok: 接口业务成功返回<br/>其他返回表示相应的错误提示&nbsp;
+└── code|string|0: 表示业务正常返回<br/>非0: 则表示业务异常, msg会有相应的异常信息&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "oc",
+  "code": "3o",
+  "data": {
+    "address": "77aiG",
+    "nickName": "tldQ",
+    "sex": 2468,
+    "roles": [
+      {
+        "createBy": "rOD7ceoE",
+        "defaultRole": true,
+        "createTime": "Mar 11, 2048, 2:35:43 AM",
+        "updateBy": "Soaal",
+        "permissions": [
+          {
+            "level": 90,
+            "icon": "MWqC8wzAF",
+            "description": "33XXn1",
+            "updateTime": "2063-06-22 00:26:08",
+            "type": 5994,
+            "title": "L3BVZINdD",
+            "delFlag": 731,
+            "parentId": "WWrz25",
+            "permTypes": [
+              "B"
+            ],
+            "path": "5",
+            "component": "E5rCh7",
+            "expand": "true",
+            "createBy": "B9DW",
+            "buttonType": "AVt1hmy",
+            "children": [
+              {
+                "level": 1696,
+                "icon": "Dcur",
+                "description": "oxEsLEKr39",
+                "updateTime": "1979-12-07 17:54:21",
+                "type": 1524,
+                "title": "uO",
+                "delFlag": 4068,
+                "parentId": "7hZQto",
+                "permTypes": [
+                  "m8JKk2"
+                ],
+                "path": "KjC3gkMYQ",
+                "component": "s7X",
+                "expand": "true",
+                "createBy": "W",
+                "buttonType": "WMrDSpjgF",
+                "children": [],
+                "createTime": "Nov 10, 2042, 6:38:28 AM",
+                "updateBy": "sTRoin6oHD",
+                "sortOrder": 9446.8,
+                "name": "o5I",
+                "checked": "false",
+                "id": "XI4T9",
+                "selected": "false",
+                "status": 8176
+              }
+            ],
+            "createTime": "Oct 4, 2088, 3:41:16 PM",
+            "updateBy": "V7HT8wxUul",
+            "sortOrder": 9760.98,
+            "name": "KlUpb",
+            "checked": "false",
+            "id": "n6m",
+            "selected": "false",
+            "status": 7868
+          }
+        ],
+        "name": "MFRg4na",
+        "updateTime": "2081-03-21 17:52:19",
+        "id": "tIBFGGC",
+        "delFlag": 5723
+      }
+    ],
+    "mobile": "xgIuI",
+    "description": "1S",
+    "updateTime": "1990-10-17 08:57:14",
+    "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
+    "type": 3550,
+    "delFlag": 3110,
+    "password": "IBQxWF2O",
+    "createBy": "O",
+    "createTime": "Feb 4, 2022, 12:06:25 PM",
+    "updateBy": "iDhIp38Yv1",
+    "permissions": [
+      {
+        "level": 9862,
+        "icon": "h3d7S8ntvB",
+        "description": "zBP7U2lZ6I",
+        "updateTime": "2086-10-25 06:51:49",
+        "type": 988,
+        "title": "sXSwwhBT",
+        "delFlag": 7331,
+        "parentId": "JiaSezdFZ",
+        "permTypes": [
+          "BLsFejgI"
+        ],
+        "path": "qYkwW7",
+        "component": "y8FfDs",
+        "expand": "true",
+        "createBy": "XZpigydH",
+        "buttonType": "okSHpK",
+        "children": [
+          {
+            "level": 9486,
+            "icon": "WbnwlLzc",
+            "description": "XJ5sL",
+            "updateTime": "2019-02-27 01:54:21",
+            "type": 1622,
+            "title": "U1kee",
+            "delFlag": 6966,
+            "parentId": "qZOXp9",
+            "permTypes": [
+              "DLwNe4"
+            ],
+            "path": "eSTp",
+            "component": "upd",
+            "expand": "true",
+            "createBy": "ZnIitfX",
+            "buttonType": "ZXrrDx",
+            "children": [
+              {
+                "level": 4296,
+                "icon": "Fkfz",
+                "description": "jLgJpdrVA5",
+                "updateTime": "1980-10-20 02:49:40",
+                "type": 8819,
+                "title": "D",
+                "delFlag": 7327,
+                "parentId": "qbHna2C",
+                "permTypes": [
+                  "C"
+                ],
+                "path": "i",
+                "component": "WLLGYzvt",
+                "expand": "true",
+                "createBy": "ULEo",
+                "buttonType": "Ueiyq",
+                "children": [],
+                "createTime": "Dec 29, 2006, 8:11:04 PM",
+                "updateBy": "m",
+                "sortOrder": 6232.08,
+                "name": "GJGpF9Kn",
+                "checked": "false",
+                "id": "sT",
+                "selected": "false",
+                "status": 8835
+              }
+            ],
+            "createTime": "Oct 13, 2016, 12:07:11 PM",
+            "updateBy": "67W5",
+            "sortOrder": 5224.58,
+            "name": "lKN",
+            "checked": "false",
+            "id": "JBVOimECU",
+            "selected": "false",
+            "status": 842
+          }
+        ],
+        "createTime": "Nov 12, 2049, 9:47:37 PM",
+        "updateBy": "sSJbZ",
+        "sortOrder": 4824.29,
+        "name": "MOyHNtUEF",
+        "checked": "false",
+        "id": "RhM6vtmuhG",
+        "selected": "false",
+        "status": 3395
+      }
+    ],
+    "testObject": {},
+    "id": "fqq",
+    "email": "nEC5Fr",
+    "username": "3IgC",
+    "status": 6057
+  },
+  "message": "0DxtG",
+  "timestamp": "mTxNs"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/user/add --data '{
+  "passwordssss": [
+    "GZ3iz"
+  ],
+  "role": {
+    "createBy": "t5",
+    "createTime": "Feb 4, 2094, 6:27:11 AM",
+    "updateBy": "20N1y3dAf8",
+    "roleId": "wZyhR",
+    "roleName": "0mZM6g",
+    "updateTime": "2093-06-30 06:30:14",
+    "id": "ZqXPTO1",
+    "delFlag": 5789,
+    "userId": "xW2jnuo"
+  },
+  "gender": "WOMAN",
+  "nickName": "ZFZsr",
+  "listMap": [
+    {
+      "null": "glAtC"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "RKfCrw",
+      "createTime": "Jul 1, 2042, 2:20:58 AM",
+      "updateBy": "v0xhc47kB",
+      "roleId": "k3rilQRZ8K",
+      "roleName": "kxVEf",
+      "updateTime": "2033-10-27 18:33:52",
+      "id": "eADAcC",
+      "delFlag": 5465,
+      "userId": "nWY8"
+    }
+  ],
+  "mobile": "7bw",
+  "extend": {
+    "null": "5O87mWz"
+  },
+  "password": "7uk",
+  "MAX_SPEED": "120",
+  "simpleEnum": "RED",
+  "AGE": "100",
+  "username": "KtS4Om3"
+}'
+```
+
+## 2.更新用户&nbsp;
+
+**URL:** http://localhost/user/update
+
+**Type:** PUT
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|@mock<br/>{<br/>"address":"成都市","sex":1,"age":16,"name":"smart-doc","extand""<br/>{<br/>"version":1.0,"versionList":["1.2.0","1.5.6"]<br/>}<br/>}<br/>
+&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
+&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
+&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>测试分隔注释&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── passwordssss|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── role|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户角色信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|&nbsp;|&nbsp;|用户扩展项&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|&nbsp;|&nbsp;|ListMap效果展示&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "passwordssss": [
+    "bN"
+  ],
+  "role": {
+    "createBy": "gbpTtY1S4V",
+    "createTime": "Oct 21, 1987, 2:30:17 PM",
+    "updateBy": "ho",
+    "roleId": "r",
+    "roleName": "llTTFa",
+    "updateTime": "1979-01-24 19:41:57",
+    "id": "YxLKUNG7",
+    "delFlag": 4880,
+    "userId": "cskQN"
+  },
+  "gender": "WOMAN",
+  "nickName": "Pj2",
+  "listMap": [
+    {
+      "null": "kPOENMN"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "6MV",
+      "createTime": "Jan 20, 1978, 6:13:31 AM",
+      "updateBy": "HCM8gEQd5",
+      "roleId": "Esz",
+      "roleName": "gUjpfSiDV5",
+      "updateTime": "2002-10-16 20:46:44",
+      "id": "bSoR",
+      "delFlag": 3371,
+      "userId": "OVPyD"
+    }
+  ],
+  "mobile": "U9IqULsjLE",
+  "extend": {
+    "null": "N0eTRc"
+  },
+  "password": "NQJ",
+  "MAX_SPEED": "120",
+  "simpleEnum": "RED",
+  "AGE": "100",
+  "username": "yoO8"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── testObject|object|测试object&nbsp;
+├── username|string|用户名&nbsp;
+├── password|string|密码&nbsp;
+├── nickName|string|昵称&nbsp;
+├── mobile|string|电话&nbsp;
+├── email|string|邮箱&nbsp;
+├── address|string|地址&nbsp;
+├── sex|int32|性别(男1 女 2)&nbsp;
+├── avatar|string|&nbsp;
+├── type|int32|类型&nbsp;
+├── status|int32|状态&nbsp;
+├── description|string|描述&nbsp;
+├── roles|array&lt;object&gt;|用户拥有角色&nbsp;
+│&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头&nbsp;
+│&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色&nbsp;
+│&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+├── permissions|array&lt;object&gt;|用户拥有的权限&nbsp;
+│&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+├── id|string|自增编号&nbsp;
+├── createBy|string|创建人&nbsp;
+├── createTime|string|创建时间&nbsp;
+├── updateBy|string|修改人&nbsp;
+├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+└── test|object|测试数据&nbsp;
+
+**Response-example:**
+``` json
+{
+  "address": "47j",
+  "nickName": "ZSmZLCjjN",
+  "sex": 3410,
+  "roles": [
+    {
+      "createBy": "K9peBgoWCt",
+      "defaultRole": false,
+      "createTime": "Feb 8, 2076, 9:40:01 AM",
+      "updateBy": "1Y1ZsYQ",
+      "permissions": [
+        {
+          "level": 2274,
+          "icon": "cryGpbH6He",
+          "description": "7OFd",
+          "updateTime": "2088-08-23 00:27:54",
+          "type": 6768,
+          "title": "gqC7OBGbyI",
+          "delFlag": 743,
+          "parentId": "w0j",
+          "permTypes": [
+            "ZIG"
+          ],
+          "path": "nsauqrmPa",
+          "component": "W3XQws",
+          "expand": "true",
+          "createBy": "spzt6CwtX",
+          "buttonType": "75U8Fcjrw",
+          "children": [
+            {
+              "level": 116,
+              "icon": "ztbURkRi2",
+              "description": "ft",
+              "updateTime": "2031-06-21 14:46:41",
+              "type": 396,
+              "title": "lj",
+              "delFlag": 8650,
+              "parentId": "XcpUZVk",
+              "permTypes": [
+                "ss6U"
+              ],
+              "path": "rP18iJ",
+              "component": "YVQg8KL",
+              "expand": "true",
+              "createBy": "QzbbQKdAvj",
+              "buttonType": "Y",
+              "children": [],
+              "createTime": "Sep 28, 2095, 10:50:36 AM",
+              "updateBy": "xjmXGn",
+              "sortOrder": 892.15,
+              "name": "LG2P8jKKZ",
+              "checked": "false",
+              "id": "Mg8hfl0Kf",
+              "selected": "false",
+              "status": 8269
+            }
+          ],
+          "createTime": "Jun 26, 2014, 5:51:19 PM",
+          "updateBy": "Y3F9fysHd",
+          "sortOrder": 4712.72,
+          "name": "5GipLudJbl",
+          "checked": "false",
+          "id": "8G54vQzq",
+          "selected": "false",
+          "status": 3496
+        }
+      ],
+      "name": "GtrsroB",
+      "updateTime": "2011-03-09 23:15:44",
+      "id": "yPOGPKYwI",
+      "delFlag": 4
+    }
+  ],
+  "mobile": "Yo",
+  "description": "6t",
+  "updateTime": "2041-08-12 14:46:11",
+  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
+  "type": 2154,
+  "delFlag": 2589,
+  "password": "o8oscw",
+  "createBy": "7BNTknYOi",
+  "createTime": "Dec 29, 2100, 1:39:11 PM",
+  "updateBy": "s",
+  "permissions": [
+    {
+      "level": 3864,
+      "icon": "ORp7e6zJZr",
+      "description": "Ha0T1QPJ",
+      "updateTime": "2080-05-02 20:04:16",
+      "type": 4618,
+      "title": "8kIAs",
+      "delFlag": 9550,
+      "parentId": "hcYpGoDpy",
+      "permTypes": [
+        "CEuVf"
+      ],
+      "path": "PF4q",
+      "component": "LFQZ",
+      "expand": "true",
+      "createBy": "ZhOix5t7c0",
+      "buttonType": "q4QeIX",
+      "children": [
+        {
+          "level": 8712,
+          "icon": "c4XvhDQ7",
+          "description": "hU",
+          "updateTime": "2100-05-18 16:57:21",
+          "type": 1579,
+          "title": "My3cL",
+          "delFlag": 6416,
+          "parentId": "XmYZ",
+          "permTypes": [
+            "v8U"
+          ],
+          "path": "WUU",
+          "component": "Zzt",
+          "expand": "true",
+          "createBy": "oxT5g4Z3",
+          "buttonType": "OMfpZl",
+          "children": [
+            {
+              "level": 3085,
+              "icon": "qxYi75k",
+              "description": "WjBAa5",
+              "updateTime": "2041-05-15 22:12:37",
+              "type": 5560,
+              "title": "HYbQaU1Lw",
+              "delFlag": 443,
+              "parentId": "9OJg",
+              "permTypes": [
+                "6yF5RPJC6N"
+              ],
+              "path": "vC",
+              "component": "l4hrBy8u",
+              "expand": "true",
+              "createBy": "dcaiInyU",
+              "buttonType": "F5",
+              "children": [],
+              "createTime": "May 17, 2067, 2:40:41 AM",
+              "updateBy": "qnrvonj",
+              "sortOrder": 6428.92,
+              "name": "J",
+              "checked": "false",
+              "id": "KK9vD",
+              "selected": "false",
+              "status": 724
+            }
+          ],
+          "createTime": "May 12, 2004, 7:33:45 AM",
+          "updateBy": "vsO5Pfr9mn",
+          "sortOrder": 392.16,
+          "name": "h",
+          "checked": "false",
+          "id": "W1",
+          "selected": "false",
+          "status": 548
+        }
+      ],
+      "createTime": "Dec 23, 2054, 1:20:27 AM",
+      "updateBy": "PgvQKZfjx",
+      "sortOrder": 3300.34,
+      "name": "JJ",
+      "checked": "false",
+      "id": "E",
+      "selected": "false",
+      "status": 8023
+    }
+  ],
+  "testObject": {},
+  "id": "UaAhm",
+  "email": "vyzG",
+  "username": "Ar",
+  "status": 5063
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X PUT -H 'Content-Type: application/json' -i http://localhost/user/update --data '{
+  "passwordssss": [
+    "bN"
+  ],
+  "role": {
+    "createBy": "gbpTtY1S4V",
+    "createTime": "Oct 21, 1987, 2:30:17 PM",
+    "updateBy": "ho",
+    "roleId": "r",
+    "roleName": "llTTFa",
+    "updateTime": "1979-01-24 19:41:57",
+    "id": "YxLKUNG7",
+    "delFlag": 4880,
+    "userId": "cskQN"
+  },
+  "gender": "WOMAN",
+  "nickName": "Pj2",
+  "listMap": [
+    {
+      "null": "kPOENMN"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "6MV",
+      "createTime": "Jan 20, 1978, 6:13:31 AM",
+      "updateBy": "HCM8gEQd5",
+      "roleId": "Esz",
+      "roleName": "gUjpfSiDV5",
+      "updateTime": "2002-10-16 20:46:44",
+      "id": "bSoR",
+      "delFlag": 3371,
+      "userId": "OVPyD"
+    }
+  ],
+  "mobile": "U9IqULsjLE",
+  "extend": {
+    "null": "N0eTRc"
+  },
+  "password": "NQJ",
+  "MAX_SPEED": "120",
+  "simpleEnum": "RED",
+  "AGE": "100",
+  "username": "yoO8"
+}'
+```
+
+# JDK8的时间测试&nbsp;
+
+## 1.LocalDate和LocalDateTime测试&nbsp;
+
+**URL:** http://localhost/dateEntity
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── dateEntity|object|true|&nbsp;|
+&nbsp;&nbsp; ├── localDate|string|&nbsp;|&nbsp;|创建日期&nbsp;
+&nbsp;&nbsp; ├── localDateTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; ├── localTime|string|&nbsp;|&nbsp;|jdk8 LocalTime&nbsp;
+&nbsp;&nbsp; └── createDate|string|&nbsp;|&nbsp;|创建时间&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "localDateTime": {
+    "date": {
+      "year": 1996,
+      "month": 7,
+      "day": 26
+    },
+    "time": {
+      "hour": 12,
+      "minute": 47,
+      "second": 4,
+      "nano": 299000000
+    }
+  },
+  "localTime": {
+    "hour": 11,
+    "minute": 59,
+    "second": 14,
+    "nano": 0
+  },
+  "localDate": {
+    "year": 2097,
+    "month": 8,
+    "day": 15
+  },
+  "createDate": {
+    "date": {
+      "year": 2008,
+      "month": 2,
+      "day": 26
+    },
+    "time": {
+      "hour": 22,
+      "minute": 27,
+      "second": 44,
+      "nano": 446000000
     }
   }
 }
@@ -48,143 +1258,607 @@ http://localhost/circularReference
 Field|Type|Description
 ---|---|---
 ┌─&nbsp; |object|&nbsp;
-├── a|string|属性a
-└── b|object|对象b
-&nbsp;&nbsp; ├── b|string|属性b
-&nbsp;&nbsp; └── c|object|对象c
-&nbsp;&nbsp; &nbsp;&nbsp; ├── c|string|属性c
-&nbsp;&nbsp; &nbsp;&nbsp; └── a|object|对象A
+├── localDate|string|创建日期&nbsp;
+├── localDateTime|string|创建时间&nbsp;
+├── localTime|string|jdk8 LocalTime&nbsp;
+└── createDate|string|创建时间&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "a": "2",
-  "b": {
-    "b": "f",
-    "c": {
-      "c": "PiIHozAi52"
+  "localDateTime": {
+    "date": {
+      "year": 1971,
+      "month": 2,
+      "day": 5
+    },
+    "time": {
+      "hour": 6,
+      "minute": 9,
+      "second": 48,
+      "nano": 875000000
+    }
+  },
+  "localTime": {
+    "hour": 9,
+    "minute": 49,
+    "second": 17,
+    "nano": 0
+  },
+  "localDate": {
+    "year": 2036,
+    "month": 1,
+    "day": 11
+  },
+  "createDate": {
+    "date": {
+      "year": 2078,
+      "month": 12,
+      "day": 17
+    },
+    "time": {
+      "hour": 9,
+      "minute": 8,
+      "second": 32,
+      "nano": 156000000
     }
   }
 }
 ```
 
-# 枚举参数测试
-
-## 1.获取枚举参数1
-**URL:** http://localhost/enum
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── simpleEnum|enum|&nbsp;|&nbsp;|RED<br/>BLUE
-
-**Request-example:**
-``` json
-http://localhost/enum
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/dateEntity --data '{
+  "localDateTime": {
+    "date": {
+      "year": 1996,
+      "month": 7,
+      "day": 26
+    },
+    "time": {
+      "hour": 12,
+      "minute": 47,
+      "second": 4,
+      "nano": 299000000
+    }
+  },
+  "localTime": {
+    "hour": 11,
+    "minute": 59,
+    "second": 14,
+    "nano": 0
+  },
+  "localDate": {
+    "year": 2097,
+    "month": 8,
+    "day": 15
+  },
+  "createDate": {
+    "date": {
+      "year": 2008,
+      "month": 2,
+      "day": 26
+    },
+    "time": {
+      "hour": 22,
+      "minute": 27,
+      "second": 44,
+      "nano": 446000000
+    }
+  }
+}'
 ```
 
+# 接收表单参数&nbsp;
 
-**Response-fields:**
+## 1.测试formData&nbsp;
 
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"QjIPY"
-```
-
-## 2.获取枚举参数2
-**URL:** http://localhost/enum/{orderEnum}
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── orderEnum|enum|true|&nbsp;|WAIT_PAY("0", "已支付")<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")
-
-**Request-example:**
-``` json
-http://localhost/enum/EXPIRED
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"YpaQra"
-```
-
-## 3.获取枚举参数3
-**URL:** http://localhost/enum/{simpleEnum}
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── simpleEnum|enum|true|&nbsp;|RED<br/>BLUE
-
-**Request-example:**
-``` json
-http://localhost/enum/BLUE
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"YNTjEYg"
-```
-
-## 4.获取枚举参数4
-**URL:** http://localhost/enum/test1
+**URL:** http://localhost/formData1
 
 **Type:** POST
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└── order|object|true|&nbsp;|简单枚举<br/>
-&nbsp;&nbsp; ├── orderId|int32|&nbsp;|0|订单id
-&nbsp;&nbsp; └── orderType|enum|&nbsp;|&nbsp;|订单类型<br/>WAIT_PAY("0", "已支付")<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")
+└── car|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|车名称&nbsp;
+&nbsp;&nbsp; ├── length|double|&nbsp;|&nbsp;|长度&nbsp;
+&nbsp;&nbsp; └── pager|object|&nbsp;|&nbsp;|分页&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── total|int32|&nbsp;|0|记录总数&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── concurrentPage|int32|&nbsp;|0|当前页&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── pageSize|int32|&nbsp;|0|当前page&nbsp;
 
-**Request-example:**
-``` json
-http://localhost/enum/test1
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/formData1 --data 'pager.pageSize=0&name=X&length=7935.94&pager.concurrentPage=0&pager.total=0'
 ```
+
+## 2.Post请求发表单文件&nbsp;
+
+**URL:** http://localhost/formData2
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── userId|string|&nbsp;|&nbsp;|&nbsp;
+├── userData|string|&nbsp;|&nbsp;|&nbsp;
+└── file|file|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+## 3.Get请求发表单文件 暂不支持完全解析&nbsp;
+
+**URL:** http://localhost/formData2
+
+**Type:** GET
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── userId|string|&nbsp;|&nbsp;|&nbsp;
+├── userData|string|&nbsp;|&nbsp;|&nbsp;
+└── file|file|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+## 4.表单 包含复杂对象的Get 暂不支持完全解析&nbsp;
+
+**URL:** http://localhost/formData4
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── userId|string|&nbsp;|&nbsp;|&nbsp;
+├── userData|string|&nbsp;|&nbsp;|&nbsp;
+└── simpleUser|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
+&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
+&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>测试分隔注释&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── passwordssss|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── role|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户角色信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|&nbsp;|&nbsp;|用户扩展项&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|&nbsp;|&nbsp;|ListMap效果展示&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/formData4 --data 'passwordssss=ZKEtXQ&roles[0].createTime=Sun+Nov+26+23%3A17%3A15+CST+2056&roles[0].createBy=fQ&userData=SEzXBoPLlZ&role.id=yOC&gender=WOMAN&roles[0].updateBy=TH5&role.createBy=EGS9&role.updateBy=G6je53fni&role.delFlag=7935&role.createTime=Tue+May+29+15%3A59%3A33+CST+2035&role.userId=4JGy&password=U&roles[0].updateTime=1990-09-11+11%3A41%3A35&roles[0].id=1yi5jagrg&MAX_SPEED=120&extend[pu9ae8sZNR]=llsVS2IrmW&AGE=100&role.updateTime=2080-07-18+21%3A10%3A42&role.roleName=AZyhU&nickName=a4xMq&mobile=eTd6DMDv&roles[0].userId=WC4&userId=ZAMH60aulG&roles[0].roleName=Lf&role.roleId=tr6S23&roles[0].delFlag=4417&simpleEnum=RED&roles[0].roleId=48&username=GcLV&listMap[0][EK4wd2EZ]=ljDg6U5f'
+```
+
+## 5.测试formData带路径参数&nbsp;
+
+**URL:** http://localhost/formData7/{id}
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── id|string|true|&nbsp;|
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── simpleUser|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
+&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
+&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>测试分隔注释&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── passwordssss|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── role|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户角色信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|&nbsp;|&nbsp;|用户扩展项&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|&nbsp;|&nbsp;|ListMap效果展示&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/formData7/k --data 'passwordssss=dfuZ5d&roles[0].createTime=Sat+Aug+11+15%3A51%3A35+CST+2096&roles[0].createBy=u&role.id=iHTLgl&gender=WOMAN&roles[0].updateBy=vsVke&role.createBy=edK9zSv&role.updateBy=X&role.delFlag=5073&role.createTime=Tue+Sep+29+11%3A11%3A03+CST+2020&role.userId=aa3JcQM&password=CntAVY&roles[0].updateTime=2036-03-09+11%3A49%3A16&roles[0].id=uc4ScttyW&MAX_SPEED=120&AGE=100&role.updateTime=2033-01-08+20%3A24%3A23&role.roleName=MKT&nickName=6bDmHYVBSI&mobile=rKd5uQlsn&roles[0].userId=NIyP&roles[0].roleName=o&extend[68]=fOCKgN&role.roleId=JjwEJjl&roles[0].delFlag=2715&simpleEnum=RED&listMap[0][lXWu]=LURScs2RjQ&roles[0].roleId=chpVytbG0w&username=fwy9kfOBvn'
+```
+
+## 6.&nbsp;
+
+**URL:** http://localhost/formData9/{id}
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── id|string|true|&nbsp;|
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── strings|array|true|<br/>		<br/>		<br/><br/>				<br/>|
+&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/formData9/Z --data 'strings=Mnp'
+```
+
+## 7.&nbsp;
+
+**URL:** http://localhost/formData10/{id}
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── id|string|true|&nbsp;|
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── map|map&lt;string, int32&gt;|true|<br/>		<br/>		<br/><br/>				<br/>|
+&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/formData10/5SGrn7BzgT --data 'x=6349'
+```
+
+## 8.测试formData带路多个路径参数&nbsp;
+
+**URL:** http://localhost/formData8/{id}/{age}
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── id|string|true|&nbsp;|
+└── age|int32|true|&nbsp;|
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── simpleUser|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
+&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
+&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>测试分隔注释&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── passwordssss|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── role|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户角色信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|&nbsp;|&nbsp;|用户扩展项&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|&nbsp;|&nbsp;|ListMap效果展示&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/formData8/yGOPFzmSHk/8194 --data 'passwordssss=TM3&roles[0].createTime=Thu+Apr+25+13%3A20%3A47+CST+2019&roles[0].createBy=0WNjPD&role.id=Pctesf&gender=WOMAN&roles[0].updateBy=ODJDKzG&listMap[0][nK5DMIUg]=x06ic&role.createBy=j00zqF&role.updateBy=KLir9vX&role.delFlag=3843&role.createTime=Sat+Dec+01+07%3A51%3A45+CST+2074&role.userId=QxHCiN&password=CAKmJ4&roles[0].updateTime=2086-11-04+22%3A58%3A30&roles[0].id=s&MAX_SPEED=120&AGE=100&role.updateTime=2037-02-28+01%3A17%3A56&role.roleName=jT&extend[2CXCgRIWpK]=fa&nickName=ARS8&mobile=JKjVmaRl29&roles[0].userId=FQjNIud&roles[0].roleName=MkTK76&role.roleId=e&roles[0].delFlag=7569&simpleEnum=RED&roles[0].roleId=1Q&username=QfG9feyVJ'
+```
+
+# https测试&nbsp;
+
+## 1.测试https&nbsp;
+
+**URL:** http://localhost/testHttps
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "Fza7",
+  "code": "xmIESD",
+  "data": "Jgq",
+  "success": false,
+  "message": "zheD69L",
+  "timestamp": "UpKwjRPqIy"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testHttps
+```
+
+## 2.测试http&nbsp;
+
+**URL:** http://localhost/testHttp
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "Vj2bCqU",
+  "code": "f8p24Tx",
+  "data": "vWBd",
+  "success": false,
+  "message": "cSEZkI3E9u",
+  "timestamp": "7VEuvkxJ"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testHttp
+```
+
+# Class Name：com.power.doc.controller.torna.TestTreeTornaController
+
+## 1.test torna tree&nbsp;
+
+**URL:** http://localhost/test1
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── vo|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|the nickname&nbsp;
+&nbsp;&nbsp; ├── sex|string|&nbsp;|&nbsp;|sex&nbsp;
+&nbsp;&nbsp; └── list|array&lt;object&gt;|&nbsp;|&nbsp;|test two tree vo&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── id|int64|&nbsp;|&nbsp;|主键&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|address&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── threeList|array&lt;object&gt;|&nbsp;|&nbsp;|test three list&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── abc|string|&nbsp;|&nbsp;|abc&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "Iv",
+  "code": "ON",
+  "success": false,
+  "message": "KJPufheebT",
+  "timestamp": "gkER0fI"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/test1 --data 'list[0].id=4878&name=dEqdxHM&list[0].threeList[0].abc=ImKGTu&list[0].address=9sZl&sex=wda'
+```
+
+## 2.test torna tree json&nbsp;
+
+**URL:** http://localhost/test2
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── vo|object|true|&nbsp;|
+&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|the nickname&nbsp;
+&nbsp;&nbsp; ├── sex|string|&nbsp;|&nbsp;|sex&nbsp;
+&nbsp;&nbsp; └── list|array&lt;object&gt;|&nbsp;|&nbsp;|test two tree vo&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── id|int64|&nbsp;|&nbsp;|主键&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|address&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── threeList|array&lt;object&gt;|&nbsp;|&nbsp;|test three list&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── abc|string|&nbsp;|&nbsp;|abc&nbsp;
 
 **Request-body-example:**
 ``` json
 {
-  "orderType": "EXPIRED",
-  "orderId": 0
+  "sex": "q7",
+  "name": "I",
+  "list": [
+    {
+      "address": "qeImBTCq",
+      "threeList": [
+        {
+          "abc": "f"
+        }
+      ],
+      "id": 9096
+    }
+  ]
 }
 ```
 
@@ -192,61 +1866,406 @@ http://localhost/enum/test1
 
 Field|Type|Description
 ---|---|---
-&nbsp;|string|&nbsp;
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
-"o"
+{
+  "traceId": "jqpgwoLf",
+  "code": "I",
+  "success": false,
+  "message": "fl",
+  "timestamp": "avX3W4mAj1"
+}
 ```
 
-## 5.枚举响应
-**URL:** http://localhost/enum/resp
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/test2 --data '{
+  "sex": "q7",
+  "name": "I",
+  "list": [
+    {
+      "address": "qeImBTCq",
+      "threeList": [
+        {
+          "abc": "f"
+        }
+      ],
+      "id": 9096
+    }
+  ]
+}'
+```
 
-**Type:** GET
+# 测试json&nbsp;
 
+## 1.RequestParam+json&nbsp;
 
+**URL:** http://localhost/getUserJson
 
-**Request-parameters:**
+**Type:** POST
 
-None
+**Content-Type:** application/json
 
-**Request-example:**
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── name|string|true|<br/>		<br/>		<br/><br/>				<br/>|
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── pramInfo|object|true|&nbsp;|
+&nbsp;&nbsp; ├── dataExpressionEnum|enum|&nbsp;|&nbsp;|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature&nbsp;
+&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|&nbsp;|&nbsp;|菜单/权限编码&nbsp;
+&nbsp;&nbsp; ├── date|string|&nbsp;|&nbsp;|学好&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>Pattern: 
+&nbsp;&nbsp; ├── idCard|string|&nbsp;|&nbsp;|身份证号<br/>Pattern: 
+&nbsp;&nbsp; ├── age|int32|&nbsp;|0|&nbsp;
+&nbsp;&nbsp; └── age2|int32|&nbsp;|&nbsp;|Pattern: 
+
+**Request-body-example:**
 ``` json
-http://localhost/enum/resp
+{
+  "date": "Jan 16, 1976, 10:26:18 AM",
+  "idCard": "uOICwt5Om",
+  "menuPermissionCodes": [
+    "PAID"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 7183,
+  "username": "ud"
+}
 ```
-
 
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-&nbsp;|enum|RED<br/>BLUE
+┌─&nbsp; |object|&nbsp;
+├── dataExpressionEnum|enum|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature&nbsp;
+├── menuPermissionCodes|array&lt;enum&gt;|菜单/权限编码&nbsp;
+├── date|string|学好&nbsp;
+├── username|string|用户名<br/>Pattern: 
+├── idCard|string|身份证号<br/>Pattern: 
+├── age|int32|&nbsp;
+└── age2|int32|Pattern: 
 
 **Response-example:**
 ``` json
-"BLUE"
+{
+  "date": "Mar 15, 1976, 8:41:07 AM",
+  "idCard": "S",
+  "menuPermissionCodes": [
+    "EXPIRED"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 1848,
+  "username": "Z3N"
+}
 ```
 
-# 文件下载
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/getUserJson --data '{
+  "date": "Jan 16, 1976, 10:26:18 AM",
+  "idCard": "uOICwt5Om",
+  "menuPermissionCodes": [
+    "PAID"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 7183,
+  "username": "ud"
+}'
+```
 
-## 1.下载文件
+## 2.测试&nbsp;
+
+**URL:** http://localhost/getUserJson1/{id}
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── id|int32|true|0|编号<br/>
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── name|string|true|<br/>		<br/>		<br/><br/>				<br/>|名称<br/>
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"4d6gc9cuI"
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/getUserJson1/0 --data 'name=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A'
+```
+
+## 3.测试2&nbsp;
+
+**URL:** http://localhost/getUserJson1/
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── name|string|&nbsp;|&nbsp;|姓名<br/>&nbsp;
+└── age|int32|&nbsp;|0|年龄<br/>&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"fQPPR"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/getUserJson1/ --data 'name=Jbqbc&age=0'
+```
+
+# Class Name：com.power.doc.controller.JsrController
+
+## 1.测试忽略注解效果&nbsp;
+
+**URL:** http://localhost/jsr/ignore
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── fastJson|object|true|&nbsp;|
+&nbsp;&nbsp; ├── dataExpressionEnum|enum|&nbsp;|&nbsp;|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature&nbsp;
+&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|&nbsp;|&nbsp;|菜单/权限编码&nbsp;
+&nbsp;&nbsp; ├── date|string|&nbsp;|&nbsp;|学好&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>Pattern: 
+&nbsp;&nbsp; ├── idCard|string|&nbsp;|&nbsp;|身份证号<br/>Pattern: 
+&nbsp;&nbsp; ├── age|int32|&nbsp;|0|&nbsp;
+&nbsp;&nbsp; └── age2|int32|&nbsp;|&nbsp;|Pattern: 
+
+**Request-body-example:**
+``` json
+{
+  "date": "Nov 17, 1998, 7:50:38 AM",
+  "idCard": "WxX6xpcm",
+  "menuPermissionCodes": [
+    "PAID"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 2417,
+  "username": "qcrnDh"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+│&nbsp;&nbsp; ├── dataExpressionEnum|enum|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature&nbsp;
+│&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|菜单/权限编码&nbsp;
+│&nbsp;&nbsp; ├── date|string|学好&nbsp;
+│&nbsp;&nbsp; ├── username|string|用户名<br/>Pattern: 
+│&nbsp;&nbsp; ├── idCard|string|身份证号<br/>Pattern: 
+│&nbsp;&nbsp; ├── age|int32|&nbsp;
+│&nbsp;&nbsp; └── age2|int32|Pattern: 
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "f",
+  "code": "DvRWJe",
+  "data": {
+    "date": "Sep 10, 1971, 4:52:12 AM",
+    "idCard": "rZ0Seh",
+    "menuPermissionCodes": [
+      "WAIT_PAY"
+    ],
+    "dataExpressionEnum": "SENSIRION",
+    "age": 0,
+    "age2": 8422,
+    "username": "4UO3k1"
+  },
+  "success": false,
+  "message": "StQtxdvY",
+  "timestamp": "sH8j"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/jsr/ignore --data '{
+  "date": "Nov 17, 1998, 7:50:38 AM",
+  "idCard": "WxX6xpcm",
+  "menuPermissionCodes": [
+    "PAID"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 2417,
+  "username": "qcrnDh"
+}'
+```
+
+# smart-doc调试入口&nbsp;
+
+## 1.Test Constants&nbsp;
+
+**URL:** http://localhost/testConstants/1.0
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── page|int32|false|0|页码
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testConstants/1.0 --data 'page=0'
+```
+
+# 循环引用依赖测试&nbsp;
+
+## 1.循环依赖参数推导&nbsp;
+
+**URL:** http://localhost/circularReference
+
+**Type:** GET
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|
+&nbsp;&nbsp; ├── a|string|&nbsp;|&nbsp;|属性a&nbsp;
+&nbsp;&nbsp; └── b|object|&nbsp;|&nbsp;|对象b&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── b|string|&nbsp;|&nbsp;|属性b&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── c|object|&nbsp;|&nbsp;|对象c&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── c|string|&nbsp;|&nbsp;|属性c&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── a|object|&nbsp;|&nbsp;|对象A&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "a": "Rj",
+  "b": {
+    "b": "ynjc",
+    "c": {
+      "c": "7"
+    }
+  }
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── a|string|属性a&nbsp;
+└── b|object|对象b&nbsp;
+&nbsp;&nbsp; ├── b|string|属性b&nbsp;
+&nbsp;&nbsp; └── c|object|对象c&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── c|string|属性c&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── a|object|对象A&nbsp;
+
+**Response-example:**
+``` json
+{
+  "a": "5QrZl",
+  "b": {
+    "b": "CXMi3KaW",
+    "c": {
+      "c": "LmLEQy"
+    }
+  }
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'Content-Type: application/json' -i http://localhost/circularReference --data '{
+  "a": "Rj",
+  "b": {
+    "b": "ynjc",
+    "c": {
+      "c": "7"
+    }
+  }
+}'
+```
+
+# 文件下载&nbsp;
+
+## 1.下载文件&nbsp;
+
 **URL:** http://localhost/download1/{filename}
 
 **Type:** POST
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Path-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── filename|string|true|&nbsp;|文件名│me<br/>
-
-**Request-example:**
-``` json
-http://localhost/download1/fdKoIrRvJ
-```
-
 
 **Response-fields:**
 
@@ -255,48 +2274,48 @@ Field|Type|Description
 &nbsp;|file|&nbsp;
 
 
-## 2.下载普通文件文件
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/download1/CerZ4
+```
+
+## 2.下载普通文件文件&nbsp;
+
 **URL:** http://localhost/text/
 
 **Type:** POST
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└── response|object|&nbsp;|&nbsp;|
-
-**Request-example:**
-``` json
-http://localhost/text/
-```
-
+└── response|object|&nbsp;|&nbsp;|&nbsp;
 
 **Response-fields:**
 
 None
 
 
-## 3.分页查询
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/text/
+```
+
+## 3.分页查询&nbsp;
+
 **URL:** http://localhost/list
 
 **Type:** POST
 
+**Content-Type:** application/json
 
-
-**Request-parameters:**
+**Body-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└── t|object|true|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/list
-```
-
+└── t|object|true|&nbsp;|
 
 **Response-fields:**
 
@@ -305,886 +2324,24 @@ Field|Type|Description
 &nbsp;|object|&nbsp;
 
 
-# 文件上传测试
-
-## 1.上传单个文件
-**URL:** http://localhost/upload
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── userId|string|&nbsp;|&nbsp;|用户id<br/>
-└── file|file|true|<br/>		<br/>		<br/><br/>				<br/>|文件<br/>
-
-**Request-example:**
-``` json
-http://localhost/upload?file=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/list
 ```
 
+# 普通java对象api文档测试&nbsp;
 
-**Response-fields:**
+## 1.返回普通String测试&nbsp;
 
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "zuYDU",
-  "success": false,
-  "message": "Rc5amotY",
-  "timestamp": "p"
-}
-```
-
-## 2.批量上传文件
-**URL:** http://localhost/batchUpload
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── file|array|&nbsp;|&nbsp;|文件<br/>
-&nbsp;&nbsp; └── &nbsp;|file|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/batchUpload
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "wnUpp",
-  "success": false,
-  "message": "W",
-  "timestamp": "nD68"
-}
-```
-
-## 3.批量上传文件1
-**URL:** http://localhost/batchUpload1
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── file|array&lt;file&gt;|&nbsp;|&nbsp;|文件<br/>
-
-**Request-example:**
-``` json
-http://localhost/batchUpload1
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "P",
-  "success": false,
-  "message": "DnhaPr",
-  "timestamp": "WEVbihO8z8"
-}
-```
-
-## 4.批量上传文件2
-**URL:** http://localhost/batchUpload2
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── files|array|&nbsp;|&nbsp;|批量文件<br/>
-&nbsp;&nbsp; └── &nbsp;|file|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/batchUpload2
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "2z3ySu",
-  "success": false,
-  "message": "owd4lzPJ7",
-  "timestamp": "ogZ00az"
-}
-```
-
-## 5.批量上传文件3
-**URL:** http://localhost/batchUpload3
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── files|array&lt;file&gt;|&nbsp;|&nbsp;|批量文件<br/>
-
-**Request-example:**
-``` json
-http://localhost/batchUpload3
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "KLI0c66fS",
-  "success": false,
-  "message": "R1ukA",
-  "timestamp": "mBZ8EqN5"
-}
-```
-
-# 接收表单参数
-
-## 1.Post请求发表单文件
-**URL:** http://localhost/formData2
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── userId|string|&nbsp;|&nbsp;|
-├── userData|string|&nbsp;|&nbsp;|&nbsp;
-└── file|file|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/formData2
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 2.Get请求发表单文件 暂不支持完全解析
-**URL:** http://localhost/formData2
+**URL:** http://localhost/simple/str
 
 **Type:** GET
 
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── userId|string|&nbsp;|&nbsp;|
-├── userData|string|&nbsp;|&nbsp;|
-└── file|file|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/formData2
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 3.表单 包含复杂对象的Get 暂不支持完全解析
-**URL:** http://localhost/formData4
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── userId|string|&nbsp;|&nbsp;|
-├── userData|string|&nbsp;|&nbsp;|
-└── simpleUser|object|&nbsp;|&nbsp;|&nbsp;
-&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
-&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
-&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; └── mobile|string|&nbsp;|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/formData4
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 4.测试formData带路径参数
-**URL:** http://localhost/formData7/{id}
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── id|string|true|&nbsp;|
-└── simpleUser|object|&nbsp;|&nbsp;|&nbsp;
-&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
-&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
-&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; └── mobile|string|&nbsp;|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/formData7/OBtAthXP
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 5.测试formData带路多个路径参数
-**URL:** http://localhost/formData8/{id}/{age}
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── id|string|true|&nbsp;|
-├── age|int32|true|&nbsp;|
-└── simpleUser|object|&nbsp;|&nbsp;|&nbsp;
-&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
-&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
-&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; └── mobile|string|&nbsp;|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/formData8/xHfijudj/5587
-```
-
-
-**Response-fields:**
-
-None
-
-
-# java泛型解析测试
-
-## 1.测试多泛型1
-**URL:** http://localhost/generics/test1
-
-**Type:** GET
-
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
-
-**Request-example:**
-``` json
-http://localhost/generics/test1
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── test|string|托尔斯泰
-├── value|object|value
-│&nbsp;&nbsp; ├── AGE|int32|&nbsp;
-│&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;
-│&nbsp;&nbsp; ├── gender|enum|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-│&nbsp;&nbsp; ├── simpleEnum|enum|简单枚举<br/>RED<br/>BLUE
-│&nbsp;&nbsp; ├── username|string|用户名
-│&nbsp;&nbsp; ├── password|string|密码
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; └── mobile|string|电话
-└── key|object|key
-&nbsp;&nbsp; ├── roleId|int32|角色id
-&nbsp;&nbsp; └── roleName|string|角色名称
-
-**Response-example:**
-``` json
-{
-  "test": "77zDXj",
-  "value": {
-    "password": "q5B",
-    "gender": "MAN",
-    "MAX_SPEED": "120",
-    "simpleEnum": "BLUE",
-    "nickName": "txSAiDu5K",
-    "mobile": "8PCY",
-    "AGE": "100",
-    "username": "rsMh"
-  },
-  "key": {
-    "roleId": 2120,
-    "roleName": "2xT6tF"
-  }
-}
-```
-
-## 2.测试多泛型2
-**URL:** http://localhost/generics/test2
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/generics/test2
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|author: hcy<br/>version: 1.0.0V<br/>date:  2019/12/5 14:36<br/>description: 分页返回工具类
-├── total|int32|总条数
-├── other|object|其他信息
-│&nbsp;&nbsp; ├── AGE|int32|&nbsp;
-│&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;
-│&nbsp;&nbsp; ├── gender|enum|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-│&nbsp;&nbsp; ├── simpleEnum|enum|简单枚举<br/>RED<br/>BLUE
-│&nbsp;&nbsp; ├── username|string|用户名
-│&nbsp;&nbsp; ├── password|string|密码
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; └── mobile|string|电话
-└── rows|array&lt;object&gt;|数据列表
-&nbsp;&nbsp; ├── roleId|int32|角色id
-&nbsp;&nbsp; └── roleName|string|角色名称
-
-**Response-example:**
-``` json
-{
-  "total": 0,
-  "other": {
-    "password": "5W6Omrc3",
-    "gender": "MAN",
-    "MAX_SPEED": "120",
-    "simpleEnum": "BLUE",
-    "nickName": "72C3I3r",
-    "mobile": "1Z5hWyVc",
-    "AGE": "100",
-    "username": "GM3MyQeqm"
-  },
-  "rows": [
-    {
-      "roleId": 7808,
-      "roleName": "QWgy"
-    }
-  ]
-}
-```
-
-## 3.测试单泛型嵌套
-**URL:** http://localhost/generics/test3
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/generics/test3
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|角色
-│&nbsp;&nbsp; ├── roleId|int32|角色id
-│&nbsp;&nbsp; └── roleName|string|角色名称
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "oIzv",
-  "data": {
-    "roleId": 8598,
-    "roleName": "LYY"
-  },
-  "success": false,
-  "message": "NEIMsVlMeE",
-  "timestamp": "lC4uK32kSC"
-}
-```
-
-# https测试
-
-## 1.测试https
-**URL:** http://localhost/testHttps
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/testHttps
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|string|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "gL99mKw",
-  "data": "pQz8fr",
-  "success": false,
-  "message": "iVwh4Gakoo",
-  "timestamp": "QAWGOvgc"
-}
-```
-
-## 2.测试http
-**URL:** http://localhost/testHttp
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/testHttp
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|string|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "N7vJn",
-  "data": "LrOAl4PQv",
-  "success": false,
-  "message": "GdiaUmpJ",
-  "timestamp": "AaPhuwvH"
-}
-```
-
-# Test inner class
-
-## 1.Return A object contains Inner class
-**URL:** http://localhost/inner/class
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/inner/class
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|用于测试内部类解析
-├── name|string|姓名
-└── innerClass|object|内部类
-&nbsp;&nbsp; └── phone|string|电话
-
-**Response-example:**
-``` json
-{
-  "name": "c5",
-  "innerClass": {
-    "phone": "IWz"
-  }
-}
-```
-
-# JDK8的时间测试
-
-## 1.LocalDate和LocalDateTime测试
-**URL:** http://localhost/dateEntity
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── dateEntity|object|true|&nbsp;|
-&nbsp;&nbsp; ├── localDate|string|&nbsp;|&nbsp;|创建日期
-&nbsp;&nbsp; ├── localDateTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; ├── localTime|string|&nbsp;|&nbsp;|jdk8 LocalTime
-&nbsp;&nbsp; └── createDate|string|&nbsp;|&nbsp;|创建时间
-
-**Request-example:**
-``` json
-http://localhost/dateEntity
-```
-
-**Request-body-example:**
-``` json
-{
-  "localDateTime": {
-    "date": {
-      "year": 2091,
-      "month": 2,
-      "day": 7
-    },
-    "time": {
-      "hour": 9,
-      "minute": 44,
-      "second": 50,
-      "nano": 969000000
-    }
-  },
-  "localTime": {
-    "hour": 9,
-    "minute": 45,
-    "second": 54,
-    "nano": 0
-  },
-  "localDate": {
-    "year": 2016,
-    "month": 7,
-    "day": 13
-  },
-  "createDate": {
-    "date": {
-      "year": 2027,
-      "month": 6,
-      "day": 16
-    },
-    "time": {
-      "hour": 13,
-      "minute": 10,
-      "second": 6,
-      "nano": 568000000
-    }
-  }
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── localDate|string|创建日期
-├── localDateTime|string|创建时间
-├── localTime|string|jdk8 LocalTime
-└── createDate|string|创建时间
-
-**Response-example:**
-``` json
-{
-  "localDateTime": {
-    "date": {
-      "year": 2069,
-      "month": 5,
-      "day": 27
-    },
-    "time": {
-      "hour": 23,
-      "minute": 49,
-      "second": 16,
-      "nano": 140000000
-    }
-  },
-  "localTime": {
-    "hour": 23,
-    "minute": 56,
-    "second": 24,
-    "nano": 0
-  },
-  "localDate": {
-    "year": 2057,
-    "month": 9,
-    "day": 25
-  },
-  "createDate": {
-    "date": {
-      "year": 2057,
-      "month": 3,
-      "day": 30
-    },
-    "time": {
-      "hour": 23,
-      "minute": 55,
-      "second": 29,
-      "nano": 920000000
-    }
-  }
-}
-```
-
-# Jpa代码测试
-
-## 1.~~Jpa Page~~
-**URL:** http://localhost/test
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/test
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |array&lt;object&gt;|&nbsp;
-└── &nbsp;|object|角色
-&nbsp;&nbsp; ├── roleId|int32|角色id
-&nbsp;&nbsp; └── roleName|string|角色名称
-
-**Response-example:**
-``` json
-[
-  {
-    "roleId": 3388,
-    "roleName": "3RisXMWi"
-  }
-]
-```
-
-## 2.Jpa Pageable查询参数重渲染
-**URL:** http://localhost/pageableParam
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── pageable|object|true|&nbsp;|com.power.doc.model.PageRequestDto
-
-**Request-example:**
-``` json
-http://localhost/pageableParam
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "WvdzHV6D",
-  "success": false,
-  "message": "CpNgFYsc1P",
-  "timestamp": "2WPjlV8uEX"
-}
-```
-
-# 测试json
-
-## 1.RequestParam+json
-**URL:** http://localhost/getUserJson
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── name|string|true|<br/>		<br/>		<br/><br/>				<br/>|
-└── pramInfo|object|true|&nbsp;|
-&nbsp;&nbsp; ├── dataExpressionEnum|enum|&nbsp;|&nbsp;|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature
-&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|&nbsp;|&nbsp;|菜单/权限编码
-&nbsp;&nbsp; ├── date|string|&nbsp;|&nbsp;|学好
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── idCard|string|&nbsp;|&nbsp;|身份证号
-&nbsp;&nbsp; ├── age|int32|&nbsp;|0|&nbsp;
-&nbsp;&nbsp; └── age2|int32|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/getUserJson?name=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
-```
-
-**Request-body-example:**
-``` json
-{
-  "date": "Dec 8, 2070, 12:56:36 AM",
-  "idCard": "e3xyAJek",
-  "menuPermissionCodes": [
-    "WAIT_PAY"
-  ],
-  "dataExpressionEnum": "SENSIRION",
-  "age": 0,
-  "age2": 5637,
-  "username": "53m33yQzvC"
-}
-```
 
 **Response-fields:**
 
@@ -1194,2114 +2351,1492 @@ Field|Type|Description
 
 **Response-example:**
 ``` json
-"cUR"
+"Q5eaiviHYo"
 ```
 
-# FastJson和Jackson注解支持测试
-
-## 1.Jackson注解支持测试
-**URL:** http://localhost/json/jacksonTest
-
-**Type:** ALL
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── annotation|object|true|&nbsp;|
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; └── idCard|string|&nbsp;|&nbsp;|身份证号
-
-**Request-example:**
-``` json
-http://localhost/json/jacksonTest
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/simple/str
 ```
 
-**Request-body-example:**
-``` json
-{
-  "idCard": "zL",
-  "username": "1Sy"
-}
-```
+## 2.返回普通javabean&nbsp;
 
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── username|string|用户名
-└── idCard|string|身份证号
-
-**Response-example:**
-``` json
-{
-  "idCard": "Ou",
-  "username": "mrsI5JHa"
-}
-```
-
-## 2.FastJson注解支持测试
-**URL:** http://localhost/json/fastJsonTest
-
-**Type:** ALL
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── fastJson|object|true|&nbsp;|
-&nbsp;&nbsp; ├── dataExpressionEnum|enum|&nbsp;|&nbsp;|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature
-&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|&nbsp;|&nbsp;|菜单/权限编码
-&nbsp;&nbsp; ├── date|string|&nbsp;|&nbsp;|学好
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── idCard|string|&nbsp;|&nbsp;|身份证号
-&nbsp;&nbsp; ├── age|int32|&nbsp;|0|&nbsp;
-&nbsp;&nbsp; └── age2|int32|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/json/fastJsonTest
-```
-
-**Request-body-example:**
-``` json
-{
-  "date": "Nov 7, 2023, 10:41:07 AM",
-  "idCard": "Isxb",
-  "menuPermissionCodes": [
-    "WAIT_PAY"
-  ],
-  "dataExpressionEnum": "SENSIRION",
-  "age": 0,
-  "age2": 6836,
-  "username": "mueJ"
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── dataExpressionEnum|enum|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature
-├── menuPermissionCodes|array&lt;enum&gt;|菜单/权限编码
-├── date|string|学好
-├── username|string|用户名
-├── idCard|string|身份证号
-├── age|int32|&nbsp;
-└── age2|int32|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "date": "Aug 30, 2029, 4:03:23 AM",
-  "idCard": "Gom",
-  "menuPermissionCodes": [
-    "EXPIRED"
-  ],
-  "dataExpressionEnum": "SENSIRION",
-  "age": 0,
-  "age2": 8520,
-  "username": "x8DiqWP"
-}
-```
-
-# List返回接口Api文档测试
-
-## 1.List&lt;String&gt;结构
-**URL:** http://localhost/list/listString
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/list/listString
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |array&lt;string&gt;|&nbsp;
-└── &nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-[
-  "fjkKTSwg"
-]
-```
-
-## 2.List&lt;Map&lt;String,String&gt;&gt;结构
-**URL:** http://localhost/list/listMap
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/list/listMap
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |array&lt;map&gt;|&nbsp;
-└── &nbsp;|map&lt;string, string&gt;|&nbsp;
-&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-[
-  {
-    "null": "j7Y"
-  }
-]
-```
-
-## 3.List&lt;自动义对象&gt;
-**URL:** http://localhost/list/listObject
+**URL:** http://localhost/simple/user
 
 **Type:** POST
 
+**Content-Type:** application/json
 
+**Body-parameters:**
 
-**Request-parameters:**
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|
+&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试&nbsp;
+&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话&nbsp;
+&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址&nbsp;
+&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄&nbsp;
+&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号&nbsp;
+&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少&nbsp;
+&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了&nbsp;
+&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6&nbsp;
+&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话&nbsp;
 
-None
-
-**Request-example:**
+**Request-body-example:**
 ``` json
-http://localhost/list/listObject
+{
+  "userAddress": "OptNbdpXz3",
+  "small": 4853.05,
+  "userList": [
+    {
+      "userAddress": "hoF",
+      "small": 1227.7,
+      "userList": [],
+      "money": 5703.44,
+      "phone": "E",
+      "createTime": 2394,
+      "nickName": "AXe2",
+      "ipv6": "m7RK8vy1JK",
+      "telephone": "oWd9VI8oY",
+      "userName": "Pgmw1LMb",
+      "userDetails": [
+        {
+          "githubAddress": "kZ"
+        }
+      ],
+      "userAge": 0
+    }
+  ],
+  "money": 6197.39,
+  "phone": "rs5TSR3T",
+  "createTime": 7430,
+  "nickName": "x",
+  "ipv6": "9",
+  "telephone": "mEDo",
+  "userName": "GxM9QFHbV1",
+  "userDetails": [
+    {
+      "githubAddress": "4hkx"
+    }
+  ],
+  "userAge": 0
+}
 ```
-
 
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-┌─&nbsp; |array&lt;object&gt;|&nbsp;
-└── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; └── telephone|string|固定电话
+┌─&nbsp; |object|Description:<br/>用户对象&nbsp;
+├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+├── userName|string|用户名&nbsp;
+├── nickName|string|昵称&nbsp;
+├── userAddress|string|用户地址&nbsp;
+├── userAge|int32|用户年龄&nbsp;
+├── phone|string|手机号&nbsp;
+├── createTime|int64|创建时间&nbsp;
+├── small|float|钱少&nbsp;
+├── money|double|钱太多了&nbsp;
+├── ipv6|string|ipv6&nbsp;
+└── telephone|string|固定电话&nbsp;
 
 **Response-example:**
 ``` json
-[
-  {
-    "userAddress": "W8T",
-    "small": 9704.19,
+{
+  "userAddress": "r",
+  "small": 7527.52,
+  "userList": [
+    {
+      "userAddress": "OKB8B9Cl",
+      "small": 5536.95,
+      "userList": [],
+      "money": 1840.03,
+      "phone": "eza",
+      "createTime": 7940,
+      "nickName": "qAvT",
+      "ipv6": "gTxvR9",
+      "telephone": "S1nkvsTv",
+      "userName": "ri7OwB",
+      "userDetails": [
+        {
+          "githubAddress": "nFDOdGlN"
+        }
+      ],
+      "userAge": 0
+    }
+  ],
+  "money": 3179.27,
+  "phone": "9",
+  "createTime": 5269,
+  "nickName": "tsZaRTtiPk",
+  "ipv6": "u6XaAsOA",
+  "telephone": "JvBaa",
+  "userName": "uCTn",
+  "userDetails": [
+    {
+      "githubAddress": "my0"
+    }
+  ],
+  "userAge": 0
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/simple/user --data '{
+  "userAddress": "OptNbdpXz3",
+  "small": 4853.05,
+  "userList": [
+    {
+      "userAddress": "hoF",
+      "small": 1227.7,
+      "userList": [],
+      "money": 5703.44,
+      "phone": "E",
+      "createTime": 2394,
+      "nickName": "AXe2",
+      "ipv6": "m7RK8vy1JK",
+      "telephone": "oWd9VI8oY",
+      "userName": "Pgmw1LMb",
+      "userDetails": [
+        {
+          "githubAddress": "kZ"
+        }
+      ],
+      "userAge": 0
+    }
+  ],
+  "money": 6197.39,
+  "phone": "rs5TSR3T",
+  "createTime": 7430,
+  "nickName": "x",
+  "ipv6": "9",
+  "telephone": "mEDo",
+  "userName": "GxM9QFHbV1",
+  "userDetails": [
+    {
+      "githubAddress": "4hkx"
+    }
+  ],
+  "userAge": 0
+}'
+```
+
+## 3.返回复杂实体数据&nbsp;
+
+**URL:** http://localhost/simple/stu
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|Description:<br/>学生信息&nbsp;
+├── stuName|string|姓名&nbsp;
+├── stuAge|boolean|年龄&nbsp;
+├── stuAddress|string|地址&nbsp;
+├── user|object|用户对象&nbsp;
+│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+├── userMap|map&lt;string, object&gt;|map用户信息&nbsp;
+│&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+├── listMap|array&lt;map&lt;string, int32&gt;&gt;|listMap&nbsp;
+│&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+├── userTreeSet|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+└── user1|object|用户对象2&nbsp;
+&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+
+**Response-example:**
+``` json
+{
+  "user1": {
+    "userAddress": "RJ",
+    "small": 5795.84,
     "userList": [
       {
-        "userAddress": "ts4ZBxGKA",
-        "small": 4266.3,
+        "userAddress": "Ij",
+        "small": 2696.09,
         "userList": [],
-        "money": 1493.02,
-        "phone": "YdNq",
-        "createTime": 1862,
-        "nickName": "zqf",
-        "ipv6": "M95pV0I87",
-        "telephone": "p",
-        "userName": "E8QePlB",
+        "money": 6277.82,
+        "phone": "OCozi",
+        "createTime": 3549,
+        "nickName": "m10ZrPH",
+        "ipv6": "Nx",
+        "telephone": "mpIeQtkvEU",
+        "userName": "AK",
         "userDetails": [
           {
-            "githubAddress": "u"
+            "githubAddress": "S"
           }
         ],
         "userAge": 0
       }
     ],
-    "money": 4381.91,
-    "phone": "f",
-    "createTime": 9347,
-    "nickName": "DVUxNj",
-    "ipv6": "XDf60ewLq",
-    "telephone": "hzpAzJWJ",
-    "userName": "riwm",
+    "money": 9805.47,
+    "phone": "Hfsz",
+    "createTime": 8590,
+    "nickName": "L2d",
+    "ipv6": "tx5",
+    "telephone": "NkyoZOWt",
+    "userName": "YSscZc2",
     "userDetails": [
       {
-        "githubAddress": "dyB"
+        "githubAddress": "XRkO8DtJBm"
+      }
+    ],
+    "userAge": 0
+  },
+  "userTreeSet": [
+    {
+      "userAddress": "C",
+      "small": 9701.87,
+      "userList": [
+        {
+          "userAddress": "LRC0ROZ",
+          "small": 2399.65,
+          "userList": [],
+          "money": 1870.29,
+          "phone": "ofzz",
+          "createTime": 1485,
+          "nickName": "9NvFv1",
+          "ipv6": "nF",
+          "telephone": "H1etpVFk4p",
+          "userName": "J5JQrcU",
+          "userDetails": [
+            {
+              "githubAddress": "DrKVcD"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 9558.37,
+      "phone": "GNchevsXdq",
+      "createTime": 6244,
+      "nickName": "16iO7HFd9S",
+      "ipv6": "0MDqvoJYnH",
+      "telephone": "M",
+      "userName": "QVTThvS",
+      "userDetails": [
+        {
+          "githubAddress": "HSVPPD9cEG"
+        }
+      ],
+      "userAge": 0
+    }
+  ],
+  "listMap": [
+    {
+      "null": 7173
+    }
+  ],
+  "stuAddress": "Hn70m",
+  "stuName": "9m3uRvPmR",
+  "userMap": {
+    "null": {
+      "userAddress": "pY2YfSJ",
+      "small": 7354.18,
+      "userList": [
+        {
+          "userAddress": "mQiP3soaW",
+          "small": 5401.39,
+          "userList": [],
+          "money": 9861.03,
+          "phone": "VlJ2seDuk",
+          "createTime": 9997,
+          "nickName": "f",
+          "ipv6": "0U7wy7YH",
+          "telephone": "rI80N",
+          "userName": "CM9Ha",
+          "userDetails": [
+            {
+              "githubAddress": "YDypO"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 8119.24,
+      "phone": "szksM",
+      "createTime": 1688,
+      "nickName": "9",
+      "ipv6": "nam81jYe8e",
+      "telephone": "2rOUliHS1",
+      "userName": "Rei0",
+      "userDetails": [
+        {
+          "githubAddress": "gxJKCeUsZ"
+        }
+      ],
+      "userAge": 0
+    }
+  },
+  "stuAge": false,
+  "user": {
+    "userAddress": "tF3YeC",
+    "small": 5987.1,
+    "userList": [
+      {
+        "userAddress": "j",
+        "small": 1967.47,
+        "userList": [],
+        "money": 9254.97,
+        "phone": "I2",
+        "createTime": 6591,
+        "nickName": "xO3xY8",
+        "ipv6": "fk",
+        "telephone": "lmZS82p",
+        "userName": "jX9n",
+        "userDetails": [
+          {
+            "githubAddress": "y"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "money": 1072.11,
+    "phone": "Ar5",
+    "createTime": 4713,
+    "nickName": "PQViVFD1G1",
+    "ipv6": "o",
+    "telephone": "3bNo",
+    "userName": "kLs",
+    "userDetails": [
+      {
+        "githubAddress": "l"
       }
     ],
     "userAge": 0
   }
-]
+}
 ```
 
-## 4.List&lt;Map&lt;String,T&gt;&gt;结构
-**URL:** http://localhost/list/listMap2
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/simple/stu
+```
 
-**Type:** GET
+## 4.Teacher&lt;Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;&gt;结构&nbsp;
 
+**URL:** http://localhost/simple/teacher
 
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
 
-**Request-example:**
-``` json
-http://localhost/list/listMap2
-```
-
-
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-┌─&nbsp; |array&lt;map&gt;|&nbsp;
-└── &nbsp;|map&lt;string, object&gt;|&nbsp;
-&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>学生信息
-&nbsp;&nbsp; &nbsp;&nbsp; ├── stuName|string|姓名
-&nbsp;&nbsp; &nbsp;&nbsp; ├── stuAge|boolean|年龄
-&nbsp;&nbsp; &nbsp;&nbsp; ├── stuAddress|string|地址
-&nbsp;&nbsp; &nbsp;&nbsp; ├── user|object|用户对象
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; └── user1|object|用户对象2
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
+┌─&nbsp; |object|Description:<br/>老师&nbsp;
+├── data|object|泛型data&nbsp;
+│&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+├── data1|object|泛型data1&nbsp;
+│&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+├── data2|object|data2&nbsp;
+│&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+└── age|int32|年龄&nbsp;
 
 **Response-example:**
 ``` json
-[
-  {
-    "null": {
-      "user1": {
-        "userAddress": "du9Ewm",
-        "small": 5864.28,
-        "userList": [
-          {
-            "userAddress": "F",
-            "small": 8949.99,
-            "userList": [],
-            "money": 7286.03,
-            "phone": "A",
-            "createTime": 6833,
-            "nickName": "zgSWDECfFx",
-            "ipv6": "AkG2Edi",
-            "telephone": "VAy",
-            "userName": "GYY",
-            "userDetails": [
-              {
-                "githubAddress": "2"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 4789.28,
-        "phone": "xW6M",
-        "createTime": 3343,
-        "nickName": "mUo",
-        "ipv6": "s28K0",
-        "telephone": "ehOq36Bl9g",
-        "userName": "hfDavKNO",
-        "userDetails": [
-          {
-            "githubAddress": "oaBuaV"
-          }
-        ],
-        "userAge": 0
-      },
-      "userTreeSet": [
-        {
-          "userAddress": "l",
-          "small": 1394.99,
-          "userList": [
-            {
-              "userAddress": "pFJJZ6g9bU",
-              "small": 1931.6,
-              "userList": [],
-              "money": 2133.99,
-              "phone": "VIg",
-              "createTime": 6030,
-              "nickName": "rt",
-              "ipv6": "Dn8YsA",
-              "telephone": "MJ",
-              "userName": "LJB0MN",
-              "userDetails": [
-                {
-                  "githubAddress": "2i6GYY"
-                }
-              ],
-              "userAge": 0
-            }
-          ],
-          "money": 1904.21,
-          "phone": "uaH",
-          "createTime": 5744,
-          "nickName": "TsUEFfSy",
-          "ipv6": "8tyPoSq0op",
-          "telephone": "xadN2gM",
-          "userName": "mV0SE",
-          "userDetails": [
-            {
-              "githubAddress": "ssZDOZORA"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "stuAddress": "Y9bUj",
-      "stuName": "xjJzzw",
-      "userMap": {
-        "null": {
-          "userAddress": "NJna",
-          "small": 6968.15,
-          "userList": [
-            {
-              "userAddress": "K",
-              "small": 1362.99,
-              "userList": [],
-              "money": 1549.65,
-              "phone": "p",
-              "createTime": 1350,
-              "nickName": "OGmt3",
-              "ipv6": "Jr",
-              "telephone": "rV0FsfRO7",
-              "userName": "v7yowB",
-              "userDetails": [
-                {
-                  "githubAddress": "tkG52cij"
-                }
-              ],
-              "userAge": 0
-            }
-          ],
-          "money": 9290.67,
-          "phone": "P5yyacm",
-          "createTime": 4558,
-          "nickName": "Vj4Tfl",
-          "ipv6": "Ldk7Kt",
-          "telephone": "KNa38AK",
-          "userName": "2565DRo",
-          "userDetails": [
-            {
-              "githubAddress": "ZCUm5xsHeS"
-            }
-          ],
-          "userAge": 0
-        }
-      },
-      "stuAge": true,
-      "user": {
-        "userAddress": "6Tjx5",
-        "small": 8686.1,
-        "userList": [
-          {
-            "userAddress": "oeS3mY8JIP",
-            "small": 8802.71,
-            "userList": [],
-            "money": 2801.26,
-            "phone": "R5HOWpE4",
-            "createTime": 2073,
-            "nickName": "G",
-            "ipv6": "4S",
-            "telephone": "6c3",
-            "userName": "lzISGJXpX",
-            "userDetails": [
-              {
-                "githubAddress": "BJA4A"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 5320.33,
-        "phone": "m",
-        "createTime": 8967,
-        "nickName": "t",
-        "ipv6": "o",
-        "telephone": "M",
-        "userName": "2r8",
-        "userDetails": [
-          {
-            "githubAddress": "3g3c"
-          }
-        ],
-        "userAge": 0
-      }
-    }
-  }
-]
-```
-
-## 5.List&lt;Map&lt;M,N&lt;P,k&gt;&gt;&gt;超复杂结构
-**URL:** http://localhost/list/listMap3
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/list/listMap3
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |array&lt;map&gt;|&nbsp;
-└── &nbsp;|map&lt;string, object&gt;|&nbsp;
-&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>老师
-&nbsp;&nbsp; &nbsp;&nbsp; ├── data|object|泛型data
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; └── age|int32|年龄
-
-**Response-example:**
-``` json
-[
-  {
-    "null": {
-      "data": {
-        "userAddress": "6jrprNk",
-        "small": 5702.31,
-        "userList": [
-          {
-            "userAddress": "6",
-            "small": 3411.79,
-            "userList": [],
-            "money": 2710.37,
-            "phone": "I",
-            "createTime": 2821,
-            "nickName": "j",
-            "ipv6": "brr",
-            "telephone": "LTR05UdpP",
-            "userName": "fRmZ",
-            "userDetails": [
-              {
-                "githubAddress": "3zTd"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 2624.08,
-        "phone": "3c",
-        "createTime": 7268,
-        "nickName": "HQP",
-        "ipv6": "Kn2GxaO",
-        "telephone": "R",
-        "userName": "3cCKA3TCe",
-        "userDetails": [
-          {
-            "githubAddress": "CBPFd"
-          }
-        ],
-        "userAge": 0
-      },
-      "data2": {
-        "userAddress": "XwQIsjXiF",
-        "small": 3180.68,
-        "userList": [
-          {
-            "userAddress": "VkVcL",
-            "small": 7333.36,
-            "userList": [],
-            "money": 4322.31,
-            "phone": "Yt",
-            "createTime": 4739,
-            "nickName": "9",
-            "ipv6": "mx7jYonlhW",
-            "telephone": "w",
-            "userName": "8nOX3",
-            "userDetails": [
-              {
-                "githubAddress": "5s"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 2160.0,
-        "phone": "T",
-        "createTime": 2255,
-        "nickName": "UVWsrzLh",
-        "ipv6": "hiz8d2L4Y",
-        "telephone": "gzfQ",
-        "userName": "Tg6z",
-        "userDetails": [
-          {
-            "githubAddress": "sFZ"
-          }
-        ],
-        "userAge": 0
-      },
-      "data1": {
-        "userAddress": "rXSKNqeiei",
-        "small": 9644.02,
-        "userList": [
-          {
-            "userAddress": "Utt",
-            "small": 5792.83,
-            "userList": [],
-            "money": 3439.99,
-            "phone": "SaUjr",
-            "createTime": 4430,
-            "nickName": "YVpPsDJ",
-            "ipv6": "80",
-            "telephone": "wGYanXL9v",
-            "userName": "CJnqOpx",
-            "userDetails": [
-              {
-                "githubAddress": "68"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 1798.86,
-        "phone": "omkj",
-        "createTime": 7608,
-        "nickName": "57XxQlwA",
-        "ipv6": "q0C",
-        "telephone": "KR3hP8Dg",
-        "userName": "g6Chsq",
-        "userDetails": [
-          {
-            "githubAddress": "nx"
-          }
-        ],
-        "userAge": 0
-      },
-      "age": 0
-    }
-  }
-]
-```
-
-## 6.List&lt;T&lt;List&lt;M&gt;,List&lt;M&gt;,List&lt;M&gt;&gt;&gt;超复杂结构
-**URL:** http://localhost/list/listTeacher
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/list/listTeacher
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |array&lt;object&gt;|&nbsp;
-└── &nbsp;|object|Description:<br/>老师
-&nbsp;&nbsp; ├── data|array&lt;object&gt;|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data1|array&lt;object&gt;|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data2|array&lt;object&gt;|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; └── age|int32|年龄
-
-**Response-example:**
-``` json
-[
-  {
-    "data": [
-      {
-        "userAddress": "82v",
-        "small": 6423.57,
-        "userList": [
-          {
-            "userAddress": "EFB",
-            "small": 9753.87,
-            "userList": [],
-            "money": 3689.87,
-            "phone": "kL1S",
-            "createTime": 6817,
-            "nickName": "jDJrjQqQgM",
-            "ipv6": "cy4myWm",
-            "telephone": "slNJgkFZbm",
-            "userName": "dl06du",
-            "userDetails": [
-              {
-                "githubAddress": "O44VcSI"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 5813.16,
-        "phone": "Ixlkt0yWv",
-        "createTime": 6928,
-        "nickName": "Hhf4",
-        "ipv6": "CjrY7s5",
-        "telephone": "QaQs",
-        "userName": "6uXcwXxf",
-        "userDetails": [
-          {
-            "githubAddress": "TRxL"
-          }
-        ],
-        "userAge": 0
-      }
-    ],
-    "data2": [
-      {
-        "userAddress": "exEVI",
-        "small": 9680.22,
-        "userList": [
-          {
-            "userAddress": "mvbCL9M",
-            "small": 9017.64,
-            "userList": [],
-            "money": 6854.23,
-            "phone": "65",
-            "createTime": 6025,
-            "nickName": "2Kxr",
-            "ipv6": "B8rY9hyw",
-            "telephone": "xvYihEs0AC",
-            "userName": "CCek6Om",
-            "userDetails": [
-              {
-                "githubAddress": "EifKbwg"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 6262.74,
-        "phone": "7oz8dX5p",
-        "createTime": 7614,
-        "nickName": "gjFtSOFI",
-        "ipv6": "2QJjJ48",
-        "telephone": "YsY5",
-        "userName": "p5L",
-        "userDetails": [
-          {
-            "githubAddress": "xfp"
-          }
-        ],
-        "userAge": 0
-      }
-    ],
-    "data1": [
-      {
-        "userAddress": "cNrIhpgfb",
-        "small": 1806.46,
-        "userList": [
-          {
-            "userAddress": "hjVPia",
-            "small": 8963.24,
-            "userList": [],
-            "money": 811.66,
-            "phone": "2kanLpZ",
-            "createTime": 8867,
-            "nickName": "2lRRN",
-            "ipv6": "o6Cz7HgWKQ",
-            "telephone": "W",
-            "userName": "H",
-            "userDetails": [
-              {
-                "githubAddress": "S9AwYew"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 1171.87,
-        "phone": "7BH",
-        "createTime": 4879,
-        "nickName": "te77CJ",
-        "ipv6": "CjawTDBAn",
-        "telephone": "55ALAK53sH",
-        "userName": "W",
-        "userDetails": [
-          {
-            "githubAddress": "p7u1Wwo"
-          }
-        ],
-        "userAge": 0
-      }
-    ],
-    "age": 0
-  }
-]
-```
-
-## 7.List&lt;Teacher&lt;Teacher&lt;User,User,User&gt;,User,User&gt;&gt;结构
-**URL:** http://localhost/list/listString1
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/list/listString1
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |array&lt;object&gt;|&nbsp;
-└── &nbsp;|object|Description:<br/>老师
-&nbsp;&nbsp; ├── data|object|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄
-&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; └── age|int32|年龄
-
-**Response-example:**
-``` json
-[
-  {
+{
+  "data": {
     "data": {
-      "data": {
-        "userAddress": "YA",
-        "small": 4210.38,
-        "userList": [
-          {
-            "userAddress": "BS6cvpGE",
-            "small": 696.97,
-            "userList": [],
-            "money": 3627.5,
-            "phone": "Vsb79u2bcL",
-            "createTime": 9894,
-            "nickName": "DXuKey",
-            "ipv6": "1un8xI3",
-            "telephone": "hQilyIz",
-            "userName": "id35rf",
-            "userDetails": [
-              {
-                "githubAddress": "PP15A"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 2142.38,
-        "phone": "0r5y8lK",
-        "createTime": 1221,
-        "nickName": "Y",
-        "ipv6": "1yl3oNKdUO",
-        "telephone": "tqxBZH",
-        "userName": "zSRALZ91yd",
-        "userDetails": [
-          {
-            "githubAddress": "D0C7Q2h0z"
-          }
-        ],
-        "userAge": 0
-      },
-      "data2": {
-        "userAddress": "RZrC",
-        "small": 6820.5,
-        "userList": [
-          {
-            "userAddress": "cZf7qNw7d4",
-            "small": 7304.16,
-            "userList": [],
-            "money": 2507.46,
-            "phone": "XDtPE",
-            "createTime": 8577,
-            "nickName": "sQyzg",
-            "ipv6": "kspCIwpS",
-            "telephone": "AHFL",
-            "userName": "gNHX",
-            "userDetails": [
-              {
-                "githubAddress": "Zy"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 2269.6,
-        "phone": "HC",
-        "createTime": 4525,
-        "nickName": "dE7F",
-        "ipv6": "dyRM",
-        "telephone": "QGv",
-        "userName": "UcTTetkdN",
-        "userDetails": [
-          {
-            "githubAddress": "ahzG9MhU4"
-          }
-        ],
-        "userAge": 0
-      },
-      "data1": {
-        "userAddress": "eRu",
-        "small": 8842.32,
-        "userList": [
-          {
-            "userAddress": "UCy",
-            "small": 4286.18,
-            "userList": [],
-            "money": 1241.81,
-            "phone": "quJvhcUss",
-            "createTime": 5524,
-            "nickName": "7n7F",
-            "ipv6": "TqQjfp",
-            "telephone": "pc8GxhWrvr",
-            "userName": "zgpI4",
-            "userDetails": [
-              {
-                "githubAddress": "BLk"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 1975.37,
-        "phone": "QhJSEtTOEN",
-        "createTime": 2851,
-        "nickName": "4Gg",
-        "ipv6": "IW",
-        "telephone": "g4z0N",
-        "userName": "CVxzcDSK",
-        "userDetails": [
-          {
-            "githubAddress": "9k"
-          }
-        ],
-        "userAge": 0
-      },
-      "age": 0
-    },
-    "data2": {
-      "userAddress": "VpzNN",
-      "small": 8016.65,
+      "userAddress": "N8",
+      "small": 6367.49,
       "userList": [
         {
-          "userAddress": "HSDu2",
-          "small": 4716.31,
-          "userList": [
-            {
-              "userAddress": "nhUoAf",
-              "small": 1525.11,
-              "userList": [],
-              "money": 8956.88,
-              "phone": "b8703R",
-              "createTime": 3673,
-              "nickName": "D93HRE7CVg",
-              "ipv6": "MN",
-              "telephone": "M61",
-              "userName": "kiVxaj",
-              "userDetails": [
-                {
-                  "githubAddress": "DEebloGS"
-                }
-              ],
-              "userAge": 0
-            }
-          ],
-          "money": 767.8,
-          "phone": "qmOhWArB",
-          "createTime": 5671,
-          "nickName": "QgZY1UB",
-          "ipv6": "7",
-          "telephone": "DDDXOQ6",
-          "userName": "ArpKxqgLa",
+          "userAddress": "wUzFkOY",
+          "small": 2834.44,
+          "userList": [],
+          "money": 2245.42,
+          "phone": "NgMEJI",
+          "createTime": 7020,
+          "nickName": "Y8b",
+          "ipv6": "g7lwW",
+          "telephone": "GCMC",
+          "userName": "i",
           "userDetails": [
             {
-              "githubAddress": "3qqxN40Pj"
+              "githubAddress": "4c7idaWg"
             }
           ],
           "userAge": 0
         }
       ],
-      "money": 9200.87,
-      "phone": "Pcrdd",
-      "createTime": 2887,
-      "nickName": "OQxGQz",
-      "ipv6": "bsBjY6",
-      "telephone": "Z2",
-      "userName": "JH9fIY88",
+      "money": 9681.44,
+      "phone": "sWL7n",
+      "createTime": 2079,
+      "nickName": "Sk",
+      "ipv6": "SMF7",
+      "telephone": "lhRkjMGI",
+      "userName": "TsZoXC",
       "userDetails": [
         {
-          "githubAddress": "rm4vJ2sNO"
+          "githubAddress": "NuGnWCWu"
+        }
+      ],
+      "userAge": 0
+    },
+    "data2": {
+      "userAddress": "7QAsd",
+      "small": 3221.45,
+      "userList": [
+        {
+          "userAddress": "fnmG7T1wZU",
+          "small": 9207.95,
+          "userList": [],
+          "money": 6091.52,
+          "phone": "h7X",
+          "createTime": 8649,
+          "nickName": "iMkG2BD",
+          "ipv6": "VCl7dzuEz",
+          "telephone": "IzOEITQdjG",
+          "userName": "b",
+          "userDetails": [
+            {
+              "githubAddress": "rrND3gCbT"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 4434.64,
+      "phone": "7ZyxK",
+      "createTime": 1838,
+      "nickName": "ugJapkt",
+      "ipv6": "MFsLY2u",
+      "telephone": "Rd",
+      "userName": "Y1pLrveb7e",
+      "userDetails": [
+        {
+          "githubAddress": "D5"
         }
       ],
       "userAge": 0
     },
     "data1": {
-      "userAddress": "Ead",
-      "small": 3336.6,
+      "userAddress": "M",
+      "small": 6701.6,
       "userList": [
         {
-          "userAddress": "xlUc",
-          "small": 9189.13,
-          "userList": [
-            {
-              "userAddress": "3nd",
-              "small": 2324.83,
-              "userList": [],
-              "money": 4395.82,
-              "phone": "z67FfHP7d",
-              "createTime": 6628,
-              "nickName": "eiGcqwdp",
-              "ipv6": "nPaYLvB4",
-              "telephone": "bKhkBIM5Qu",
-              "userName": "HoGSrS",
-              "userDetails": [
-                {
-                  "githubAddress": "5"
-                }
-              ],
-              "userAge": 0
-            }
-          ],
-          "money": 8005.71,
-          "phone": "UEop6Bv86",
-          "createTime": 5036,
-          "nickName": "dI8EaG",
-          "ipv6": "hFn",
-          "telephone": "JJT8iMe",
-          "userName": "pFE0e3DJA",
+          "userAddress": "bG",
+          "small": 3978.56,
+          "userList": [],
+          "money": 7697.76,
+          "phone": "iaIZNvHp",
+          "createTime": 3284,
+          "nickName": "u9PCk",
+          "ipv6": "Yc",
+          "telephone": "fv4",
+          "userName": "3zRksa",
           "userDetails": [
             {
-              "githubAddress": "j177LuC"
+              "githubAddress": "0g93CE6"
             }
           ],
           "userAge": 0
         }
       ],
-      "money": 5571.82,
-      "phone": "IiYSnO",
-      "createTime": 1193,
-      "nickName": "Xa99GZ",
-      "ipv6": "3yJD9",
-      "telephone": "wfM3pV",
-      "userName": "jk",
+      "money": 2568.58,
+      "phone": "Nz",
+      "createTime": 8083,
+      "nickName": "DvG696NJ5",
+      "ipv6": "kWoFIt9gr",
+      "telephone": "X2",
+      "userName": "DN",
       "userDetails": [
         {
-          "githubAddress": "GolTr"
+          "githubAddress": "jncWI4"
         }
       ],
       "userAge": 0
     },
     "age": 0
-  }
-]
+  },
+  "data2": {
+    "data": {
+      "userAddress": "UVj",
+      "small": 4004.71,
+      "userList": [
+        {
+          "userAddress": "mHWzX2",
+          "small": 1560.62,
+          "userList": [],
+          "money": 6953.57,
+          "phone": "jfAZ2153",
+          "createTime": 794,
+          "nickName": "lQfE4NKtJK",
+          "ipv6": "QBwQXeaT6E",
+          "telephone": "oWpRaP7iE",
+          "userName": "lr",
+          "userDetails": [
+            {
+              "githubAddress": "JSgHe2msy4"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 7096.64,
+      "phone": "rx9",
+      "createTime": 7429,
+      "nickName": "i7UQcNsGkx",
+      "ipv6": "FBz34qdky",
+      "telephone": "2jgMrMw",
+      "userName": "z",
+      "userDetails": [
+        {
+          "githubAddress": "5K4J"
+        }
+      ],
+      "userAge": 0
+    },
+    "data2": {
+      "userAddress": "DGMi",
+      "small": 7894.04,
+      "userList": [
+        {
+          "userAddress": "mAd",
+          "small": 9696.04,
+          "userList": [],
+          "money": 574.42,
+          "phone": "G3eQ6Sg",
+          "createTime": 9802,
+          "nickName": "OiVVG6tr",
+          "ipv6": "1GW9NiF4",
+          "telephone": "wJz0",
+          "userName": "Y75PP",
+          "userDetails": [
+            {
+              "githubAddress": "kLILz8ZJ3N"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 6014.49,
+      "phone": "X276",
+      "createTime": 5704,
+      "nickName": "14mlm717m0",
+      "ipv6": "GS",
+      "telephone": "rUOb551he",
+      "userName": "O",
+      "userDetails": [
+        {
+          "githubAddress": "OYTyFyJzNc"
+        }
+      ],
+      "userAge": 0
+    },
+    "data1": {
+      "userAddress": "HOu5",
+      "small": 3390.92,
+      "userList": [
+        {
+          "userAddress": "kgV",
+          "small": 4380.49,
+          "userList": [],
+          "money": 5474.95,
+          "phone": "R7",
+          "createTime": 2981,
+          "nickName": "UjMdUP",
+          "ipv6": "hPu7dm",
+          "telephone": "NGdgsBzX",
+          "userName": "en0u",
+          "userDetails": [
+            {
+              "githubAddress": "mBXa"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 8901.47,
+      "phone": "Qv9hV",
+      "createTime": 4542,
+      "nickName": "GG6xFz56Db",
+      "ipv6": "DlU",
+      "telephone": "9KCHH0dA",
+      "userName": "Gw7",
+      "userDetails": [
+        {
+          "githubAddress": "I5HrCm"
+        }
+      ],
+      "userAge": 0
+    },
+    "age": 0
+  },
+  "data1": {
+    "data": {
+      "userAddress": "EW",
+      "small": 476.16,
+      "userList": [
+        {
+          "userAddress": "8dE",
+          "small": 5642.79,
+          "userList": [],
+          "money": 8699.61,
+          "phone": "GxGD0jEI",
+          "createTime": 3076,
+          "nickName": "5fM",
+          "ipv6": "i3xUWBU",
+          "telephone": "VEcPVhLyK",
+          "userName": "KfwTR203GR",
+          "userDetails": [
+            {
+              "githubAddress": "kszcb"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 375.76,
+      "phone": "tu",
+      "createTime": 7330,
+      "nickName": "4EKEpUQG",
+      "ipv6": "gr",
+      "telephone": "ovUCFm",
+      "userName": "lu8TqN",
+      "userDetails": [
+        {
+          "githubAddress": "nShzF2pj"
+        }
+      ],
+      "userAge": 0
+    },
+    "data2": {
+      "userAddress": "Bpusvgp",
+      "small": 8679.78,
+      "userList": [
+        {
+          "userAddress": "XcLi",
+          "small": 7864.56,
+          "userList": [],
+          "money": 8786.45,
+          "phone": "sKv",
+          "createTime": 923,
+          "nickName": "Nw",
+          "ipv6": "QumQX7",
+          "telephone": "hNRXqks",
+          "userName": "3oXH6",
+          "userDetails": [
+            {
+              "githubAddress": "a"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 8155.23,
+      "phone": "9h",
+      "createTime": 9326,
+      "nickName": "pM",
+      "ipv6": "UnySJCj",
+      "telephone": "rLP",
+      "userName": "sHQWtB9f",
+      "userDetails": [
+        {
+          "githubAddress": "K"
+        }
+      ],
+      "userAge": 0
+    },
+    "data1": {
+      "userAddress": "I9",
+      "small": 7656.17,
+      "userList": [
+        {
+          "userAddress": "9QjVUykR",
+          "small": 5312.53,
+          "userList": [],
+          "money": 1999.95,
+          "phone": "JB",
+          "createTime": 8425,
+          "nickName": "RlVtM6CxM",
+          "ipv6": "55Z",
+          "telephone": "sC2PBN52JZ",
+          "userName": "u3KspOEpdT",
+          "userDetails": [
+            {
+              "githubAddress": "5cDikbGEfH"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 9355.8,
+      "phone": "PdRD",
+      "createTime": 6914,
+      "nickName": "iepl",
+      "ipv6": "fTT",
+      "telephone": "JR36uVf",
+      "userName": "Haw",
+      "userDetails": [
+        {
+          "githubAddress": "2mnguy8eA"
+        }
+      ],
+      "userAge": 0
+    },
+    "age": 0
+  },
+  "age": 0
+}
 ```
 
-## 8.List&lt;Teacher&lt;Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;&gt;&gt;
-**URL:** http://localhost/list/listString2
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/simple/teacher
+```
 
-**Type:** GET
+## 5.Teacher&lt;List&lt;User&gt;, User, Student&gt;&nbsp;
 
+**URL:** http://localhost/simple/teacher2
 
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
-
-**Request-example:**
-``` json
-http://localhost/list/listString2
-```
-
 
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-┌─&nbsp; |array&lt;object&gt;|&nbsp;
-└── &nbsp;|object|Description:<br/>老师
-&nbsp;&nbsp; ├── data|object|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄
-&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄
-&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄
-&nbsp;&nbsp; └── age|int32|年龄
+┌─&nbsp; |object|Description:<br/>老师&nbsp;
+├── data|array&lt;object&gt;|泛型data&nbsp;
+│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+├── data1|object|泛型data1&nbsp;
+│&nbsp;&nbsp; ├── stuName|string|姓名&nbsp;
+│&nbsp;&nbsp; ├── stuAge|boolean|年龄&nbsp;
+│&nbsp;&nbsp; ├── stuAddress|string|地址&nbsp;
+│&nbsp;&nbsp; ├── user|object|用户对象&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── listMap|array&lt;map&lt;string, int32&gt;&gt;|listMap&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+│&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; └── user1|object|用户对象2&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+├── data2|object|data2&nbsp;
+│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+│&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+│&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+│&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+│&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+│&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+│&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+│&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+│&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+└── age|int32|年龄&nbsp;
 
 **Response-example:**
 ``` json
-[
-  {
-    "data": {
-      "data": {
-        "userAddress": "8AQpD",
-        "small": 8067.51,
-        "userList": [
-          {
-            "userAddress": "avyod8B",
-            "small": 4675.63,
-            "userList": [],
-            "money": 4111.72,
-            "phone": "hD",
-            "createTime": 1384,
-            "nickName": "Q50Mo",
-            "ipv6": "yG0g",
-            "telephone": "O",
-            "userName": "Aq1y3",
-            "userDetails": [
-              {
-                "githubAddress": "MPKo"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 3845.43,
-        "phone": "47AhVg",
-        "createTime": 1740,
-        "nickName": "tReZtyd",
-        "ipv6": "A",
-        "telephone": "aoW",
-        "userName": "AE7",
+{
+  "data": [
+    {
+      "userAddress": "fbk5qVmWHb",
+      "small": 9061.98,
+      "userList": [
+        {
+          "userAddress": "U9MUdYtj8t",
+          "small": 4493.61,
+          "userList": [],
+          "money": 1048.95,
+          "phone": "y",
+          "createTime": 3617,
+          "nickName": "AdfxZ",
+          "ipv6": "X",
+          "telephone": "4vuG9GoNvl",
+          "userName": "nC4GfO",
+          "userDetails": [
+            {
+              "githubAddress": "ouaS8w0"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 7499.03,
+      "phone": "ksVorbPw",
+      "createTime": 465,
+      "nickName": "ZOk",
+      "ipv6": "ZcPuvwVN",
+      "telephone": "hq3",
+      "userName": "J1HogsGsNP",
+      "userDetails": [
+        {
+          "githubAddress": "WGEmvnz"
+        }
+      ],
+      "userAge": 0
+    }
+  ],
+  "data2": {
+    "userAddress": "7H4ZqY8p",
+    "small": 5033.8,
+    "userList": [
+      {
+        "userAddress": "nCwgD",
+        "small": 5026.72,
+        "userList": [],
+        "money": 583.06,
+        "phone": "P8gsLDmFS",
+        "createTime": 6860,
+        "nickName": "XYGZ",
+        "ipv6": "bfcR1W6y",
+        "telephone": "i2kQVQuR",
+        "userName": "8DTo",
         "userDetails": [
           {
-            "githubAddress": "GWkIav9X"
+            "githubAddress": "nyHveG"
           }
         ],
         "userAge": 0
-      },
-      "data2": {
-        "userAddress": "6FgMV4",
-        "small": 9090.8,
-        "userList": [
-          {
-            "userAddress": "ls6OdMo",
-            "small": 2127.14,
-            "userList": [],
-            "money": 3900.86,
-            "phone": "Q",
-            "createTime": 5109,
-            "nickName": "qZeM3POCN",
-            "ipv6": "mrI",
-            "telephone": "lR5JNHVxjB",
-            "userName": "UBIzZl",
-            "userDetails": [
-              {
-                "githubAddress": "LEzk5kh"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 6064.57,
-        "phone": "wemmserPl",
-        "createTime": 5590,
-        "nickName": "BGkc4k0PPH",
-        "ipv6": "ffsgNx",
-        "telephone": "3VvPwm1e",
-        "userName": "v",
-        "userDetails": [
-          {
-            "githubAddress": "x"
-          }
-        ],
-        "userAge": 0
-      },
-      "data1": {
-        "userAddress": "YIbXS",
-        "small": 6796.05,
-        "userList": [
-          {
-            "userAddress": "InSIch",
-            "small": 6798.5,
-            "userList": [],
-            "money": 1122.92,
-            "phone": "3IJA6k",
-            "createTime": 1422,
-            "nickName": "VCiAzuFX",
-            "ipv6": "xdE5BnD",
-            "telephone": "qT3c2Mov7z",
-            "userName": "BeNmj",
-            "userDetails": [
-              {
-                "githubAddress": "Uc"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 316.67,
-        "phone": "hLxnN6zih",
-        "createTime": 8753,
-        "nickName": "1YD",
-        "ipv6": "xwDE04",
-        "telephone": "qe5Jr",
-        "userName": "tCLtlSZ",
-        "userDetails": [
-          {
-            "githubAddress": "RhqT"
-          }
-        ],
-        "userAge": 0
-      },
-      "age": 0
+      }
+    ],
+    "money": 2867.59,
+    "phone": "rFN7",
+    "createTime": 1457,
+    "nickName": "9",
+    "ipv6": "My",
+    "telephone": "sQyJs6tZ",
+    "userName": "PLECiyAf",
+    "userDetails": [
+      {
+        "githubAddress": "TkMrai3Ux"
+      }
+    ],
+    "userAge": 0
+  },
+  "data1": {
+    "user1": {
+      "userAddress": "7Goje",
+      "small": 8144.54,
+      "userList": [],
+      "money": 2881.42,
+      "phone": "qjW9Orp",
+      "createTime": 4525,
+      "nickName": "4",
+      "ipv6": "V3CRu",
+      "telephone": "uiN7q",
+      "userName": "PxwXuF1",
+      "userDetails": [
+        {
+          "githubAddress": "8oK4"
+        }
+      ],
+      "userAge": 0
     },
-    "data2": {
-      "data": {
-        "userAddress": "V3",
-        "small": 4002.22,
-        "userList": [
-          {
-            "userAddress": "sGIxdNEt6f",
-            "small": 2790.58,
-            "userList": [],
-            "money": 8604.68,
-            "phone": "GAwkHi",
-            "createTime": 4645,
-            "nickName": "aOi",
-            "ipv6": "RW06FhO7y",
-            "telephone": "v0vWQ5d",
-            "userName": "7oEHkxV",
-            "userDetails": [
-              {
-                "githubAddress": "2"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 8643.97,
-        "phone": "69x4iepK4",
-        "createTime": 8643,
-        "nickName": "Wn9J4s",
-        "ipv6": "fPljbP",
-        "telephone": "JPI4WLQA",
-        "userName": "y1lOqloD",
+    "userTreeSet": [
+      {
+        "userAddress": "bMegjm7HCh",
+        "small": 9549.01,
+        "userList": [],
+        "money": 5257.68,
+        "phone": "GixUOdPOFR",
+        "createTime": 5061,
+        "nickName": "qI",
+        "ipv6": "EUmXEj",
+        "telephone": "fxQHqJ4ITa",
+        "userName": "yctq2",
         "userDetails": [
           {
-            "githubAddress": "ymTkWUyZ"
+            "githubAddress": "8VR8V6O51"
           }
         ],
         "userAge": 0
-      },
-      "data2": {
-        "userAddress": "XrVNAjQhz",
-        "small": 5165.04,
-        "userList": [
-          {
-            "userAddress": "LjB",
-            "small": 5250.38,
-            "userList": [],
-            "money": 5415.54,
-            "phone": "lX",
-            "createTime": 7601,
-            "nickName": "ltGU2r",
-            "ipv6": "KLp",
-            "telephone": "ADBp",
-            "userName": "fezrAjy8C",
-            "userDetails": [
-              {
-                "githubAddress": "l"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 7912.42,
-        "phone": "xGRINAtIoh",
-        "createTime": 5043,
-        "nickName": "ydW8RmT",
-        "ipv6": "Plj",
-        "telephone": "HXW2tVV",
-        "userName": "QinoWxM0",
+      }
+    ],
+    "listMap": [
+      {
+        "null": 6810
+      }
+    ],
+    "stuAddress": "XTrpHje",
+    "stuName": "oHg6UGMde",
+    "userMap": {
+      "null": {
+        "userAddress": "f14FBYOfc",
+        "small": 2427.08,
+        "userList": [],
+        "money": 5545.21,
+        "phone": "1Umv",
+        "createTime": 1338,
+        "nickName": "NzN",
+        "ipv6": "uEq20OHO3",
+        "telephone": "e5ucxD",
+        "userName": "3ZA",
         "userDetails": [
           {
-            "githubAddress": "1SMrx"
+            "githubAddress": "D31GD8naj1"
           }
         ],
         "userAge": 0
-      },
-      "data1": {
-        "userAddress": "KtCV",
-        "small": 7450.07,
-        "userList": [
-          {
-            "userAddress": "mgn",
-            "small": 5442.27,
-            "userList": [],
-            "money": 5339.88,
-            "phone": "dTxMJM",
-            "createTime": 5518,
-            "nickName": "t",
-            "ipv6": "Kfe10GBT8",
-            "telephone": "D5Sh6",
-            "userName": "Eevi",
-            "userDetails": [
-              {
-                "githubAddress": "Ux4E5rr"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 9006.15,
-        "phone": "sn7u",
-        "createTime": 5995,
-        "nickName": "6sDF9D",
-        "ipv6": "XdsJlAkyz",
-        "telephone": "YJGADWOOVU",
-        "userName": "z",
-        "userDetails": [
-          {
-            "githubAddress": "19vy3OBgJO"
-          }
-        ],
-        "userAge": 0
-      },
-      "age": 0
+      }
     },
-    "data1": {
-      "data": {
-        "userAddress": "BhOR",
-        "small": 1867.66,
-        "userList": [
-          {
-            "userAddress": "Dz0",
-            "small": 3354.68,
-            "userList": [],
-            "money": 7424.06,
-            "phone": "IkHf7pX",
-            "createTime": 5935,
-            "nickName": "a21mjsskK",
-            "ipv6": "9elqgRzBLH",
-            "telephone": "LmGudXl",
-            "userName": "Iibq9Ylg",
-            "userDetails": [
-              {
-                "githubAddress": "3As9"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 336.66,
-        "phone": "eC9",
-        "createTime": 5722,
-        "nickName": "NPR9C",
-        "ipv6": "VexsbLry",
-        "telephone": "pWnR5",
-        "userName": "q",
-        "userDetails": [
-          {
-            "githubAddress": "lJe5fakSc"
-          }
-        ],
-        "userAge": 0
-      },
-      "data2": {
-        "userAddress": "BBIddAHX",
-        "small": 8767.71,
-        "userList": [
-          {
-            "userAddress": "xgoROjrRNs",
-            "small": 9225.54,
-            "userList": [],
-            "money": 7362.38,
-            "phone": "jPW3n1JF",
-            "createTime": 5381,
-            "nickName": "WMBeycYc",
-            "ipv6": "vtZHBs",
-            "telephone": "HwK7",
-            "userName": "tF",
-            "userDetails": [
-              {
-                "githubAddress": "taCiZuRu"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 7272.56,
-        "phone": "dffA",
-        "createTime": 8106,
-        "nickName": "WKzSNha",
-        "ipv6": "MKdUUby3f",
-        "telephone": "kQ16p",
-        "userName": "AXT",
-        "userDetails": [
-          {
-            "githubAddress": "V8v6H7D3m"
-          }
-        ],
-        "userAge": 0
-      },
-      "data1": {
-        "userAddress": "kXJvQiO0W",
-        "small": 5744.16,
-        "userList": [
-          {
-            "userAddress": "5h",
-            "small": 4455.03,
-            "userList": [],
-            "money": 613.65,
-            "phone": "x6jRWLvgP",
-            "createTime": 4990,
-            "nickName": "Od",
-            "ipv6": "Jy1HPM5",
-            "telephone": "ro",
-            "userName": "c",
-            "userDetails": [
-              {
-                "githubAddress": "4mwmP9x"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 4014.63,
-        "phone": "QgEDVb0",
-        "createTime": 5564,
-        "nickName": "QdSfL22Y",
-        "ipv6": "P913ZgV",
-        "telephone": "2vY",
-        "userName": "vMTQ5",
-        "userDetails": [
-          {
-            "githubAddress": "X0j6ev"
-          }
-        ],
-        "userAge": 0
-      },
-      "age": 0
-    },
-    "age": 0
-  }
-]
+    "stuAge": false,
+    "user": {
+      "userAddress": "K",
+      "small": 5571.44,
+      "userList": [],
+      "money": 5593.01,
+      "phone": "W",
+      "createTime": 580,
+      "nickName": "W63F",
+      "ipv6": "tc8la31yc",
+      "telephone": "XnDg08HG",
+      "userName": "nz",
+      "userDetails": [
+        {
+          "githubAddress": "OzFt4ug"
+        }
+      ],
+      "userAge": 0
+    }
+  },
+  "age": 0
+}
 ```
 
-## 9.CommonResult&lt;List&lt;UserDto&gt;&gt;
-**URL:** http://localhost/list/listUserDto
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/simple/teacher2
+```
 
-**Type:** GET
+## 6.测试SubUser&nbsp;
 
+**URL:** http://localhost/simple/subUser
 
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
 
-**Request-example:**
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|Description:<br/>子用户&nbsp;
+├── subUserName|string|用户名称<br/>水水水水<br/>ddddd
+└── numbers|number|bigInteger&nbsp;
+
+**Response-example:**
 ``` json
-http://localhost/list/listUserDto
+{
+  "subUserName": "YAfB10LN",
+  "numbers": 2343
+}
 ```
 
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/simple/subUser
+```
+
+## 7.返回CommonResult&lt;SubUser&gt;&nbsp;
+
+**URL:** http://localhost/simple/subUser/result
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
 
 **Response-fields:**
 
@@ -3310,53 +3845,512 @@ Field|Type|Description
 ┌─&nbsp; |object|&nbsp;
 ├── success|boolean|&nbsp;
 ├── message|string|&nbsp;
-├── data|array&lt;object&gt;|&nbsp;
-│&nbsp;&nbsp; ├── token|string|token
-│&nbsp;&nbsp; └── LoginList|array&lt;object&gt;|UserDto 用户信息列表
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; &nbsp;&nbsp; └── password|string|密码
+├── data|object|Description:<br/>子用户&nbsp;
+│&nbsp;&nbsp; ├── subUserName|string|用户名称<br/>水水水水<br/>ddddd
+│&nbsp;&nbsp; └── numbers|number|bigInteger&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "k4q5WCg8k",
-  "data": [
-    {
-      "LoginList": [
-        {
-          "password": "B",
-          "userName": "C"
-        }
-      ],
-      "token": "EGXgUXYU"
-    }
-  ],
+  "traceId": "gVqhp6Ef",
+  "code": "jxZt5b",
+  "data": {
+    "subUserName": "gC",
+    "numbers": 5680
+  },
   "success": false,
-  "message": "g",
-  "timestamp": "Cdgx6vWUAm"
+  "message": "wFVY1V",
+  "timestamp": "Tj22P"
 }
 ```
 
-# Map返回型接口api文档测试
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/simple/subUser/result
+```
 
-## 1.Map&lt;String,Integer&gt;结构
-**URL:** http://localhost/map/primitive
+# Jpa代码测试&nbsp;
 
-**Type:** GET
+## 1.~~Jpa Page~~&nbsp;
 
+**URL:** http://localhost/test
 
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
 
-**Request-example:**
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;object&gt;|&nbsp;
+└── &nbsp;|object|角色&nbsp;
+&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
 ``` json
-http://localhost/map/primitive
+[
+  {
+    "roleId": 9009,
+    "roleName": "J",
+    "age": 339
+  }
+]
 ```
 
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/test
+```
+
+## 2.Jpa Pageable查询参数重渲染&nbsp;
+
+**URL:** http://localhost/pageableParam
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── pageable|object|true|&nbsp;|
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "splks6Gou",
+  "code": "Wt",
+  "success": false,
+  "message": "Ox2s",
+  "timestamp": "NkG"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/pageableParam
+```
+
+# 文件上传测试&nbsp;
+
+## 1.上传单个文件&nbsp;
+
+**URL:** http://localhost/upload
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── userId|string|&nbsp;|&nbsp;|用户id<br/>&nbsp;
+└── file|file|true|<br/>		<br/>		<br/><br/>				<br/>|文件<br/>
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "ZdkZJeP2s",
+  "code": "FugkWYTa",
+  "success": false,
+  "message": "K68jZLm",
+  "timestamp": "oJ5CoPa"
+}
+```
+
+## 2.批量上传文件&nbsp;
+
+**URL:** http://localhost/
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── file|array|&nbsp;|&nbsp;|文件<br/>&nbsp;
+&nbsp;&nbsp; └── &nbsp;|file|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "y",
+  "code": "VMy8diTZ9B",
+  "success": false,
+  "message": "DzWDoi5Rm7",
+  "timestamp": "l2N"
+}
+```
+
+## 3.批量上传文件1&nbsp;
+
+**URL:** http://localhost/batchUpload2
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── file|array&lt;file&gt;|&nbsp;|&nbsp;|文件<br/>&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "o8FqqsBS",
+  "code": "6654I",
+  "success": false,
+  "message": "SA1xs",
+  "timestamp": "G9WLg5"
+}
+```
+
+## 4.批量上传文件2&nbsp;
+
+**URL:** http://localhost/batchUpload3
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── files|array|&nbsp;|&nbsp;|批量文件<br/>&nbsp;
+&nbsp;&nbsp; └── &nbsp;|file|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "CGFb",
+  "code": "hU3HQ",
+  "success": false,
+  "message": "kZMQVUIUzx",
+  "timestamp": "s8KlJgo"
+}
+```
+
+## 5.批量上传文件3&nbsp;
+
+**URL:** http://localhost/batchUpload4
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── files|array&lt;file&gt;|&nbsp;|&nbsp;|批量文件<br/>&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "b",
+  "code": "w2Dvde",
+  "success": false,
+  "message": "hMIiMrJq",
+  "timestamp": "6eGVX44o"
+}
+```
+
+## 6.批量上传文件5&nbsp;
+
+**URL:** http://localhost/batchUpload5
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── dto|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|名称&nbsp;
+&nbsp;&nbsp; ├── sex|string|&nbsp;|&nbsp;|性别&nbsp;
+&nbsp;&nbsp; ├── addressList|array&lt;string&gt;|&nbsp;|&nbsp;|地址&nbsp;
+&nbsp;&nbsp; ├── multipartFileList|array&lt;file&gt;|&nbsp;|&nbsp;|文件List&nbsp;
+&nbsp;&nbsp; ├── multipartFiles|array|&nbsp;|&nbsp;|文件array&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|file|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── commonsMultipartFileList|array&lt;file&gt;|&nbsp;|&nbsp;|文件List&nbsp;
+&nbsp;&nbsp; └── commonsMultipartFiles|array|&nbsp;|&nbsp;|文件array&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|file|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "5VY2q",
+  "code": "c",
+  "success": false,
+  "message": "62Q8wFO",
+  "timestamp": "ngNQwiuE"
+}
+```
+
+# Class Name：com.power.doc.controller.torna.Issue223Controller
+
+## 1.测试list map的value为实体时, map的key的推送效果&nbsp;
+
+**URL:** http://localhost/issue223/test
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|array&lt;map&lt;string, object&gt;&gt;|&nbsp;
+│&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── &nbsp;|object|阿哲&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── name|string|姓名&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── sex|int32|性别&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "HPQ0lo",
+  "code": "aue",
+  "data": [
+    {
+      "null": {
+        "sex": 4612,
+        "name": "Nrv"
+      }
+    }
+  ],
+  "success": false,
+  "message": "Q2",
+  "timestamp": "Q1aTZS"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/issue223/test
+```
+
+## 2.test1&nbsp;
+
+**URL:** http://localhost/issue223/test1
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|map&lt;string, int32&gt;|&nbsp;
+│&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "wnB60H",
+  "code": "RCn",
+  "data": {
+    "null": 2125
+  },
+  "success": false,
+  "message": "3D",
+  "timestamp": "k"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/issue223/test1
+```
+
+## 3.test2&nbsp;
+
+**URL:** http://localhost/issue223/test2
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|array&lt;map&lt;string, map&gt;&gt;|&nbsp;
+│&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── &nbsp;|map&lt;string, int32&gt;|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "30",
+  "code": "f2RU",
+  "data": [
+    {
+      "null": {
+        "null": 8381
+      }
+    }
+  ],
+  "success": false,
+  "message": "1P",
+  "timestamp": "TGgcj"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/issue223/test2
+```
+
+## 4.test3&nbsp;
+
+**URL:** http://localhost/issue223/test3
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
 
 **Response-fields:**
 
@@ -3369,26 +4363,63 @@ Field|Type|Description
 **Response-example:**
 ``` json
 {
-  "null": 1280
+  "null": 7381
 }
 ```
 
-## 2.Map&lt;String,Object&gt;结构
-**URL:** http://localhost/map/objectValue
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/issue223/test3
+```
 
-**Type:** GET
+## 5.test4&nbsp;
 
+**URL:** http://localhost/issue223/test4
 
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
 
-**Request-example:**
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|object|阿哲&nbsp;
+&nbsp;&nbsp; ├── name|string|姓名&nbsp;
+&nbsp;&nbsp; └── sex|int32|性别&nbsp;
+
+**Response-example:**
 ``` json
-http://localhost/map/objectValue
+{
+  "null": {
+    "sex": 8043,
+    "name": "iruSHCZYp"
+  }
+}
 ```
 
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/issue223/test4
+```
+
+## 6.test5&nbsp;
+
+**URL:** http://localhost/issue223/test5
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
 
 **Response-fields:**
 
@@ -3405,1282 +4436,175 @@ Field|Type|Description
 }
 ```
 
-## 3.Map&lt;String,User&gt;结构
-**URL:** http://localhost/map/object
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/map/object
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/issue223/test5
 ```
 
+# 多泛型测试&nbsp;
 
-**Response-fields:**
+## 1.test mulGeneric&nbsp;
 
-Field|Type|Description
----|---|---
-┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
-├── &nbsp;|string|&nbsp;
-└── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; └── telephone|string|固定电话
+**URL:** http://localhost/mulGenric/test
 
-**Response-example:**
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|user对象<br/>
+&nbsp;&nbsp; ├── header|object|&nbsp;|&nbsp;|通信协议信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── protocol|int32|&nbsp;|&nbsp;|协议版本&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── timestamp|string|&nbsp;|&nbsp;|请求时间戳&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── requestId|string|&nbsp;|&nbsp;|请求id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── source|int32|&nbsp;|&nbsp;|来源&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── strategy|int32|&nbsp;|&nbsp;|加密策略&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── statusCode|int32|&nbsp;|&nbsp;|状态码[0:成功 其他:失败]&nbsp;
+&nbsp;&nbsp; └── body|object|&nbsp;|&nbsp;|请求体&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── oee|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── head|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── protocol|int32|&nbsp;|&nbsp;|协议版本号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── onlineId|string|&nbsp;|&nbsp;|在线id&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── timestamp|string|&nbsp;|&nbsp;|请求时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── serialNumber|string|&nbsp;|&nbsp;|请求流水号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── operationType|int32|&nbsp;|&nbsp;|操作类型&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── operationCode|int32|&nbsp;|&nbsp;|操作码&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── terminal|string|&nbsp;|&nbsp;|数据&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── data|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── request|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── response|object|&nbsp;|&nbsp;|&nbsp;
+
+**Request-body-example:**
 ``` json
 {
-  "null": {
-    "userAddress": "1pH2gUce",
-    "small": 9358.85,
-    "userList": [
-      {
-        "userAddress": "wcmW",
-        "small": 5949.36,
-        "userList": [],
-        "money": 8695.44,
-        "phone": "R0o7ldi",
-        "createTime": 7174,
-        "nickName": "r31AU",
-        "ipv6": "VRz3fC6R",
-        "telephone": "JW4CW",
-        "userName": "h1LIN3NNQ",
-        "userDetails": [
-          {
-            "githubAddress": "tgppqhLmcH"
-          }
-        ],
-        "userAge": 0
+  "header": {
+    "protocol": 5190,
+    "requestId": "b",
+    "source": 5153,
+    "strategy": 6124,
+    "timestamp": "zzvl",
+    "statusCode": 4053
+  },
+  "body": {
+    "oee": {
+      "head": {
+        "protocol": 2724,
+        "serialNumber": "3",
+        "operationCode": 6202,
+        "onlineId": "5NI",
+        "operationType": 2969,
+        "terminal": "QLwjhN6",
+        "timestamp": "oA9xBqYf"
       }
-    ],
-    "money": 5922.67,
-    "phone": "qur1R",
-    "createTime": 4741,
-    "nickName": "rO",
-    "ipv6": "yH9",
-    "telephone": "6qIA",
-    "userName": "PrwUQE9r",
-    "userDetails": [
-      {
-        "githubAddress": "yfYNnw"
-      }
-    ],
-    "userAge": 0
-  }
-}
-```
-
-## 4.Map&lt;String,Student&gt;结构
-**URL:** http://localhost/map/test1
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/map/test1
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
-├── &nbsp;|string|&nbsp;
-└── &nbsp;|object|Description:<br/>学生信息
-&nbsp;&nbsp; ├── stuName|string|姓名
-&nbsp;&nbsp; ├── stuAge|boolean|年龄
-&nbsp;&nbsp; ├── stuAddress|string|地址
-&nbsp;&nbsp; ├── user|object|用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; └── user1|object|用户对象2
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-
-**Response-example:**
-``` json
-{
-  "null": {
-    "user1": {
-      "userAddress": "0nBk2o",
-      "small": 9362.46,
-      "userList": [
-        {
-          "userAddress": "Hz",
-          "small": 327.95,
-          "userList": [],
-          "money": 4304.27,
-          "phone": "WR11Uz",
-          "createTime": 7461,
-          "nickName": "L",
-          "ipv6": "m7",
-          "telephone": "pAMcDvI",
-          "userName": "iwmErqf",
-          "userDetails": [
-            {
-              "githubAddress": "Sy6z7054FE"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 6898.11,
-      "phone": "6FghFDmjH",
-      "createTime": 8657,
-      "nickName": "G",
-      "ipv6": "AJW6XsOw",
-      "telephone": "fS6",
-      "userName": "txkos7h",
-      "userDetails": [
-        {
-          "githubAddress": "3CCWFcrv"
-        }
-      ],
-      "userAge": 0
-    },
-    "userTreeSet": [
-      {
-        "userAddress": "W",
-        "small": 7593.73,
-        "userList": [
-          {
-            "userAddress": "ihLBkLMxJ",
-            "small": 1013.32,
-            "userList": [],
-            "money": 2444.91,
-            "phone": "H4tRhRM",
-            "createTime": 1182,
-            "nickName": "m71XPnUFec",
-            "ipv6": "n",
-            "telephone": "t7ciJqnIj",
-            "userName": "01kD",
-            "userDetails": [
-              {
-                "githubAddress": "xnfJOfC0"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 3191.76,
-        "phone": "A7Cgcghs",
-        "createTime": 6230,
-        "nickName": "q92cva4",
-        "ipv6": "BmLrLm531E",
-        "telephone": "hP",
-        "userName": "Y",
-        "userDetails": [
-          {
-            "githubAddress": "370dnz"
-          }
-        ],
-        "userAge": 0
-      }
-    ],
-    "stuAddress": "dziK",
-    "stuName": "WLOBkgBn",
-    "userMap": {
-      "null": {
-        "userAddress": "y7F",
-        "small": 6374.28,
-        "userList": [
-          {
-            "userAddress": "cSY",
-            "small": 9156.2,
-            "userList": [],
-            "money": 565.49,
-            "phone": "Ie4jWXA",
-            "createTime": 1631,
-            "nickName": "oWoN0IbE",
-            "ipv6": "O",
-            "telephone": "l05Pb9Vdws",
-            "userName": "rqoh9Pvcg",
-            "userDetails": [
-              {
-                "githubAddress": "Fr2X"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 9780.96,
-        "phone": "UwVtwe",
-        "createTime": 8545,
-        "nickName": "v",
-        "ipv6": "POTqE5",
-        "telephone": "kNH",
-        "userName": "rfoyPMv",
-        "userDetails": [
-          {
-            "githubAddress": "CGBq"
-          }
-        ],
-        "userAge": 0
-      }
-    },
-    "stuAge": true,
-    "user": {
-      "userAddress": "wmTUAM",
-      "small": 6236.76,
-      "userList": [
-        {
-          "userAddress": "SVvJmep6p",
-          "small": 6242.71,
-          "userList": [],
-          "money": 3679.64,
-          "phone": "hSY",
-          "createTime": 4062,
-          "nickName": "HJNR6R",
-          "ipv6": "oa",
-          "telephone": "Kow2",
-          "userName": "1Qt",
-          "userDetails": [
-            {
-              "githubAddress": "1gJ"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 7541.25,
-      "phone": "zkkX94Lt80",
-      "createTime": 3248,
-      "nickName": "DfwkO9Iq",
-      "ipv6": "2lyU",
-      "telephone": "G4Q53kkE",
-      "userName": "LA40nZd",
-      "userDetails": [
-        {
-          "githubAddress": "Y"
-        }
-      ],
-      "userAge": 0
     }
   }
 }
 ```
 
-## 5.Map&lt;String,Teacher&lt;List&lt;User&gt;,User,Student&gt;&gt;超复杂结构
-**URL:** http://localhost/map/test2
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/map/test2
-```
-
-
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
-├── &nbsp;|string|&nbsp;
-└── &nbsp;|object|Description:<br/>老师
-&nbsp;&nbsp; ├── data|array&lt;object&gt;|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuName|string|姓名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAge|boolean|年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAddress|string|地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── user|object|用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; └── user1|object|用户对象2
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; └── age|int32|年龄
+┌─&nbsp; |object|&nbsp;
+├── header|object|通信协议信息&nbsp;
+│&nbsp;&nbsp; ├── protocol|int32|协议版本&nbsp;
+│&nbsp;&nbsp; ├── timestamp|string|请求时间戳&nbsp;
+│&nbsp;&nbsp; ├── requestId|string|请求id&nbsp;
+│&nbsp;&nbsp; ├── source|int32|来源&nbsp;
+│&nbsp;&nbsp; ├── strategy|int32|加密策略&nbsp;
+│&nbsp;&nbsp; └── statusCode|int32|状态码[0:成功 其他:失败]&nbsp;
+└── body|object|请求体&nbsp;
+&nbsp;&nbsp; ├── oee|object|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── head|object|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── protocol|int32|协议版本号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── onlineId|string|在线id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── timestamp|string|请求时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── serialNumber|string|请求流水号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── operationType|int32|操作类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── operationCode|int32|操作码&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── terminal|string|数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── data|object|&nbsp;
+&nbsp;&nbsp; ├── request|object|&nbsp;
+&nbsp;&nbsp; └── response|object|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "null": {
-    "data": [
-      {
-        "userAddress": "3qq6",
-        "small": 263.67,
-        "userList": [
-          {
-            "userAddress": "cFz400LYz",
-            "small": 4389.03,
-            "userList": [],
-            "money": 9106.01,
-            "phone": "JkF",
-            "createTime": 881,
-            "nickName": "PItq",
-            "ipv6": "v6D4NC",
-            "telephone": "sJ7H",
-            "userName": "V2",
-            "userDetails": [
-              {
-                "githubAddress": "brwXK2e"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 5640.23,
-        "phone": "Hst",
-        "createTime": 4553,
-        "nickName": "aH",
-        "ipv6": "3VRY",
-        "telephone": "5",
-        "userName": "I2zEMzj9K",
-        "userDetails": [
-          {
-            "githubAddress": "1y2YMcp"
-          }
-        ],
-        "userAge": 0
+  "header": {
+    "protocol": 2514,
+    "requestId": "kVQ",
+    "source": 6827,
+    "strategy": 4375,
+    "timestamp": "e4SV2YgF",
+    "statusCode": 1742
+  },
+  "body": {
+    "oee": {
+      "head": {
+        "protocol": 8365,
+        "serialNumber": "h3oLJfZp5Z",
+        "operationCode": 5202,
+        "onlineId": "1dlQVrEqE",
+        "operationType": 1861,
+        "terminal": "PTX",
+        "timestamp": "sgcYE"
       }
-    ],
-    "data2": {
-      "userAddress": "ib51",
-      "small": 4397.89,
-      "userList": [
-        {
-          "userAddress": "br",
-          "small": 6080.62,
-          "userList": [],
-          "money": 6312.19,
-          "phone": "61bZwmkr",
-          "createTime": 8734,
-          "nickName": "qqaJ",
-          "ipv6": "53bIXqvm",
-          "telephone": "AWwR",
-          "userName": "rxo2eUFnf",
-          "userDetails": [
-            {
-              "githubAddress": "4N"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 4842.74,
-      "phone": "9PV",
-      "createTime": 5396,
-      "nickName": "HUhOnB",
-      "ipv6": "UKLPbUMcg",
-      "telephone": "2kc",
-      "userName": "U",
-      "userDetails": [
-        {
-          "githubAddress": "a"
-        }
-      ],
-      "userAge": 0
-    },
-    "data1": {
-      "user1": {
-        "userAddress": "TBu1IO2",
-        "small": 1431.85,
-        "userList": [],
-        "money": 3351.46,
-        "phone": "hRkECG",
-        "createTime": 7475,
-        "nickName": "JbM",
-        "ipv6": "TG5C",
-        "telephone": "3",
-        "userName": "oWIkMkXL",
-        "userDetails": [
-          {
-            "githubAddress": "m5NSuC"
-          }
-        ],
-        "userAge": 0
-      },
-      "userTreeSet": [
-        {
-          "userAddress": "eHh",
-          "small": 8000.81,
-          "userList": [],
-          "money": 4488.25,
-          "phone": "Kqx5cf30m",
-          "createTime": 6687,
-          "nickName": "vCkK",
-          "ipv6": "n55mLZ3",
-          "telephone": "Im4XV",
-          "userName": "ieLs7h54R",
-          "userDetails": [
-            {
-              "githubAddress": "8"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "stuAddress": "f55NF",
-      "stuName": "EE",
-      "userMap": {
-        "null": {
-          "userAddress": "A7cHNVDgcs",
-          "small": 217.51,
-          "userList": [],
-          "money": 152.03,
-          "phone": "mSmn4h",
-          "createTime": 9189,
-          "nickName": "E",
-          "ipv6": "zGoDz24MC0",
-          "telephone": "8xPW0GoD",
-          "userName": "yrH",
-          "userDetails": [
-            {
-              "githubAddress": "JmWg"
-            }
-          ],
-          "userAge": 0
-        }
-      },
-      "stuAge": false,
-      "user": {
-        "userAddress": "6zRYVE",
-        "small": 4666.97,
-        "userList": [],
-        "money": 2575.74,
-        "phone": "c",
-        "createTime": 4026,
-        "nickName": "YOR",
-        "ipv6": "87",
-        "telephone": "qL2aFJb",
-        "userName": "8R",
-        "userDetails": [
-          {
-            "githubAddress": "6INwhJkBfy"
-          }
-        ],
-        "userAge": 0
-      }
-    },
-    "age": 0
+    }
   }
 }
 ```
 
-## 6.TreeMap&lt;String,Teacher&lt;List&lt;User&gt;,User,Student&gt;&gt;超复杂结构
-**URL:** http://localhost/map/test3
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/map/test3
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
-├── &nbsp;|string|&nbsp;
-└── &nbsp;|object|Description:<br/>老师
-&nbsp;&nbsp; ├── data|array&lt;object&gt;|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data1|object|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuName|string|姓名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAge|boolean|年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAddress|string|地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── user|object|用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; └── user1|object|用户对象2
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data2|object|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; └── age|int32|年龄
-
-**Response-example:**
-``` json
-{
-  "null": {
-    "data": [
-      {
-        "userAddress": "3",
-        "small": 4358.76,
-        "userList": [
-          {
-            "userAddress": "G3gyl",
-            "small": 3612.96,
-            "userList": [],
-            "money": 1102.15,
-            "phone": "tjFR59L",
-            "createTime": 7358,
-            "nickName": "Xu6",
-            "ipv6": "J6mccto",
-            "telephone": "RmA6",
-            "userName": "sCYMxL",
-            "userDetails": [
-              {
-                "githubAddress": "WO"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 165.46,
-        "phone": "VB",
-        "createTime": 6186,
-        "nickName": "QyNqUo2c",
-        "ipv6": "q",
-        "telephone": "4l4jIq",
-        "userName": "uaoiFHlz",
-        "userDetails": [
-          {
-            "githubAddress": "jGPDI0tho"
-          }
-        ],
-        "userAge": 0
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/mulGenric/test --data '{
+  "header": {
+    "protocol": 5190,
+    "requestId": "b",
+    "source": 5153,
+    "strategy": 6124,
+    "timestamp": "zzvl",
+    "statusCode": 4053
+  },
+  "body": {
+    "oee": {
+      "head": {
+        "protocol": 2724,
+        "serialNumber": "3",
+        "operationCode": 6202,
+        "onlineId": "5NI",
+        "operationType": 2969,
+        "terminal": "QLwjhN6",
+        "timestamp": "oA9xBqYf"
       }
-    ],
-    "data2": {
-      "userAddress": "0tAzIQB0",
-      "small": 8965.02,
-      "userList": [
-        {
-          "userAddress": "PR",
-          "small": 7567.61,
-          "userList": [],
-          "money": 6404.11,
-          "phone": "VK8qVX",
-          "createTime": 1935,
-          "nickName": "VCP",
-          "ipv6": "DJk4bBJbM",
-          "telephone": "d",
-          "userName": "o",
-          "userDetails": [
-            {
-              "githubAddress": "aH9"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 6940.57,
-      "phone": "dcG4",
-      "createTime": 1933,
-      "nickName": "KQI",
-      "ipv6": "h6IqY",
-      "telephone": "HLWKb",
-      "userName": "0682uUlx",
-      "userDetails": [
-        {
-          "githubAddress": "UMrT5cLY"
-        }
-      ],
-      "userAge": 0
-    },
-    "data1": {
-      "user1": {
-        "userAddress": "qoFF6ogb",
-        "small": 2764.07,
-        "userList": [],
-        "money": 4101.07,
-        "phone": "egpvAVSS9",
-        "createTime": 2019,
-        "nickName": "rWIytnETk",
-        "ipv6": "cNV",
-        "telephone": "yRO0",
-        "userName": "Sii",
-        "userDetails": [
-          {
-            "githubAddress": "ZU0vpHU"
-          }
-        ],
-        "userAge": 0
-      },
-      "userTreeSet": [
-        {
-          "userAddress": "RH0rH3rQn",
-          "small": 1537.37,
-          "userList": [],
-          "money": 3538.2,
-          "phone": "fHpdxotGU",
-          "createTime": 8701,
-          "nickName": "51h5IF",
-          "ipv6": "FYB3p",
-          "telephone": "VhvE8Q",
-          "userName": "D7F",
-          "userDetails": [
-            {
-              "githubAddress": "gFGXpniZfJ"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "stuAddress": "7",
-      "stuName": "8S5EOFgH",
-      "userMap": {
-        "null": {
-          "userAddress": "e6r7",
-          "small": 3061.3,
-          "userList": [],
-          "money": 2911.59,
-          "phone": "hYKh3nn",
-          "createTime": 2152,
-          "nickName": "bGSJAQHnDZ",
-          "ipv6": "FGJ7",
-          "telephone": "akfHH9",
-          "userName": "1EYYJ",
-          "userDetails": [
-            {
-              "githubAddress": "MaW2qXp7Z"
-            }
-          ],
-          "userAge": 0
-        }
-      },
-      "stuAge": false,
-      "user": {
-        "userAddress": "P83W",
-        "small": 2881.83,
-        "userList": [],
-        "money": 9118.74,
-        "phone": "Z3cqUYf8E",
-        "createTime": 6079,
-        "nickName": "3wz3",
-        "ipv6": "dBXQb6",
-        "telephone": "kLsYky1BTR",
-        "userName": "PkdVjIjS",
-        "userDetails": [
-          {
-            "githubAddress": "q8E4z9ZDhx"
-          }
-        ],
-        "userAge": 0
-      }
-    },
-    "age": 0
+    }
   }
-}
+}'
 ```
 
-## 7.Map&lt;String,Teacher&lt;Map&lt;String,User&gt;,Map&lt;String,User&gt;,Map&lt;String,User&gt;&gt;&gt;超复杂结构
-**URL:** http://localhost/map/test4
+## 2.数组&nbsp;
 
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/map/test4
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
-├── &nbsp;|string|&nbsp;
-└── &nbsp;|object|Description:<br/>老师
-&nbsp;&nbsp; ├── data|map&lt;string, object&gt;|泛型data
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data1|map&lt;string, object&gt;|泛型data1
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── data2|map&lt;string, object&gt;|data2
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; └── age|int32|年龄
-
-**Response-example:**
-``` json
-{
-  "null": {
-    "data": {
-      "null": {
-        "userAddress": "Tv3",
-        "small": 3420.46,
-        "userList": [
-          {
-            "userAddress": "51N3BK",
-            "small": 7213.36,
-            "userList": [],
-            "money": 6646.65,
-            "phone": "jn",
-            "createTime": 6687,
-            "nickName": "mUQojeqS",
-            "ipv6": "8OqL",
-            "telephone": "8Ps0gw",
-            "userName": "iuLVwZ",
-            "userDetails": [
-              {
-                "githubAddress": "tnzYG"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 8395.79,
-        "phone": "Z",
-        "createTime": 3671,
-        "nickName": "Wz3IYG",
-        "ipv6": "2ox2njJ",
-        "telephone": "Tw2rAXS",
-        "userName": "iCsVDwuUAj",
-        "userDetails": [
-          {
-            "githubAddress": "NVW5ojDvE7"
-          }
-        ],
-        "userAge": 0
-      }
-    },
-    "data2": {
-      "null": {
-        "userAddress": "FhH8nPgzv",
-        "small": 2520.41,
-        "userList": [
-          {
-            "userAddress": "yu",
-            "small": 8739.12,
-            "userList": [],
-            "money": 1164.71,
-            "phone": "VtN",
-            "createTime": 5599,
-            "nickName": "9Hx8BTQCRV",
-            "ipv6": "Q2ZIq",
-            "telephone": "8lhZzb0zu8",
-            "userName": "WUqv",
-            "userDetails": [
-              {
-                "githubAddress": "mvh6QMLa"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 1073.13,
-        "phone": "R",
-        "createTime": 1107,
-        "nickName": "UrdWK",
-        "ipv6": "xtOD",
-        "telephone": "BiD7vvHD13",
-        "userName": "GWQ",
-        "userDetails": [
-          {
-            "githubAddress": "j72Z4d2zR9"
-          }
-        ],
-        "userAge": 0
-      }
-    },
-    "data1": {
-      "null": {
-        "userAddress": "iSPosqGI",
-        "small": 7782.6,
-        "userList": [
-          {
-            "userAddress": "B4",
-            "small": 9629.79,
-            "userList": [],
-            "money": 7027.1,
-            "phone": "u27jU5v1",
-            "createTime": 38,
-            "nickName": "8fqQRQPUg",
-            "ipv6": "GdLhdQKUe8",
-            "telephone": "anJFVqv",
-            "userName": "bKgjQU",
-            "userDetails": [
-              {
-                "githubAddress": "62p"
-              }
-            ],
-            "userAge": 0
-          }
-        ],
-        "money": 3983.69,
-        "phone": "f93",
-        "createTime": 7216,
-        "nickName": "L3X5boPE97",
-        "ipv6": "dJj1",
-        "telephone": "zj5ahE",
-        "userName": "xXy",
-        "userDetails": [
-          {
-            "githubAddress": "9Men46Ai0m"
-          }
-        ],
-        "userAge": 0
-      }
-    },
-    "age": 0
-  }
-}
-```
-
-# 多泛型测试
-
-## 1.数组
-**URL:** http://localhost/mulGenric/test/
+**URL:** http://localhost/mulGenric/test2/
 
 **Type:** POST
 
+**Content-Type:** application/json
 
-
-**Request-parameters:**
+**Body-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── data|object|true|&nbsp;|3423<br/>
-&nbsp;&nbsp; ├── page|object|&nbsp;|&nbsp;|角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|int32|&nbsp;|&nbsp;|角色id
-&nbsp;&nbsp; │&nbsp;&nbsp; └── roleName|string|&nbsp;|&nbsp;|角色名称
+&nbsp;&nbsp; ├── page|object|&nbsp;|&nbsp;|角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|int32|&nbsp;|&nbsp;|角色id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|角色名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|&nbsp;|&nbsp;|年龄&nbsp;
 &nbsp;&nbsp; └── data1|array&lt;object&gt;|&nbsp;|&nbsp;|&nbsp;
-&nbsp;&nbsp; &nbsp;&nbsp; ├── total|int32|&nbsp;|0|记录总数
-&nbsp;&nbsp; &nbsp;&nbsp; ├── concurrentPage|int32|&nbsp;|0|当前页
-&nbsp;&nbsp; &nbsp;&nbsp; └── pageSize|int32|&nbsp;|0|当前page
-
-**Request-example:**
-``` json
-http://localhost/mulGenric/test/
-```
+&nbsp;&nbsp; &nbsp;&nbsp; ├── total|int32|&nbsp;|0|记录总数&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── concurrentPage|int32|&nbsp;|0|当前页&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── pageSize|int32|&nbsp;|0|当前page&nbsp;
 
 **Request-body-example:**
 ``` json
@@ -4693,8 +4617,9 @@ http://localhost/mulGenric/test/
     }
   ],
   "page": {
-    "roleId": 3522,
-    "roleName": "0GYHt"
+    "roleId": 2729,
+    "roleName": "bN054",
+    "age": 6937
   }
 }
 ```
@@ -4704,13 +4629,14 @@ http://localhost/mulGenric/test/
 Field|Type|Description
 ---|---|---
 ┌─&nbsp; |object|&nbsp;
-├── page|object|角色
-│&nbsp;&nbsp; ├── roleId|int32|角色id
-│&nbsp;&nbsp; └── roleName|string|角色名称
+├── page|object|角色&nbsp;
+│&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+│&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+│&nbsp;&nbsp; └── age|int32|年龄&nbsp;
 └── data1|array&lt;object&gt;|&nbsp;
-&nbsp;&nbsp; ├── total|int32|记录总数
-&nbsp;&nbsp; ├── concurrentPage|int32|当前页
-&nbsp;&nbsp; └── pageSize|int32|当前page
+&nbsp;&nbsp; ├── total|int32|记录总数&nbsp;
+&nbsp;&nbsp; ├── concurrentPage|int32|当前页&nbsp;
+&nbsp;&nbsp; └── pageSize|int32|当前page&nbsp;
 
 **Response-example:**
 ``` json
@@ -4723,28 +4649,42 @@ Field|Type|Description
     }
   ],
   "page": {
-    "roleId": 9526,
-    "roleName": "tpSGi"
+    "roleId": 4843,
+    "roleName": "Iev",
+    "age": 7604
   }
 }
 ```
 
-## 2.gitee #I1S8W验证
-**URL:** http://localhost/mulGenric/test2
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/mulGenric/test2/ --data '{
+  "data1": [
+    {
+      "total": 0,
+      "concurrentPage": 0,
+      "pageSize": 0
+    }
+  ],
+  "page": {
+    "roleId": 2729,
+    "roleName": "bN054",
+    "age": 6937
+  }
+}'
+```
+
+## 3.gitee #I1S8W验证&nbsp;
+
+**URL:** http://localhost/mulGenric/test3
 
 **Type:** GET
 
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
-
-**Request-example:**
-``` json
-http://localhost/mulGenric/test2
-```
-
 
 **Response-fields:**
 
@@ -4756,149 +4696,157 @@ Field|Type|Description
 ├── data|object|&nbsp;
 │&nbsp;&nbsp; ├── page|object|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; ├── records|array&lt;object&gt;|&nbsp;
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── username|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── password|string|密码
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── mobile|string|电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── email|string|邮箱
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── address|string|地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sex|int32|性别(男1 女 2)
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── testObject|object|测试object&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── username|string|用户名&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── password|string|密码&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── mobile|string|电话&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── email|string|邮箱&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── address|string|地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sex|int32|性别(男1 女 2)&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── avatar|string|&nbsp;
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|状态
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|描述
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户拥有角色
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|用户拥有的权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|状态&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|描述&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户拥有角色&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|用户拥有的权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; ├── total|int64|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; ├── size|int64|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; ├── current|int64|&nbsp;
@@ -4906,655 +4854,7326 @@ Field|Type|Description
 │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── column|string|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── asc|boolean|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; ├── optimizeCountSql|boolean|&nbsp;
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── isSearchCount|boolean|&nbsp;
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── hitCount|boolean|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── searchCount|boolean|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── optimizeJoinOfCountSql|boolean|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; ├── countId|string|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; └── maxLimit|int64|&nbsp;
 │&nbsp;&nbsp; └── data1|array&lt;object&gt;|&nbsp;
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── username|string|用户名
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── password|string|密码
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── mobile|string|电话
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── email|string|邮箱
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── address|string|地址
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── sex|int32|性别(男1 女 2)
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── testObject|object|测试object&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── username|string|用户名&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── password|string|密码&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── mobile|string|电话&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── email|string|邮箱&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── address|string|地址&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── sex|int32|性别(男1 女 2)&nbsp;
 │&nbsp;&nbsp; &nbsp;&nbsp; ├── avatar|string|&nbsp;
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── type|int32|类型
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── status|int32|状态
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── description|string|描述
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户拥有角色
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── permissions|array&lt;object&gt;|用户拥有的权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; &nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── type|int32|类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── status|int32|状态&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── description|string|描述&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户拥有角色&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── permissions|array&lt;object&gt;|用户拥有的权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── test|object|测试数据&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "kFAtH",
+  "traceId": "qKmK9KDj",
+  "code": "EVf",
   "data": {
     "data1": [
       {
-        "address": "AQf",
-        "nickName": "g",
-        "sex": 6583,
+        "address": "TCySjsA62",
+        "nickName": "om",
+        "sex": 9237,
         "roles": [
           {
-            "createBy": "ZcT",
-            "defaultRole": false,
-            "createTime": "Jul 6, 2006, 6:05:24 AM",
-            "updateBy": "0Hush0go",
+            "createBy": "dZJP",
+            "defaultRole": true,
+            "createTime": "Jan 4, 2032, 1:36:44 PM",
+            "updateBy": "Q",
             "permissions": [
               {
-                "level": 5005,
-                "icon": "afuKX2v",
-                "description": "aFS",
-                "updateTime": "Apr 18, 2072, 7:53:30 AM",
-                "type": 6537,
-                "title": "nMDsIPAhEV",
-                "delFlag": 7789,
-                "parentId": "o9PW1jkZS",
+                "level": 6587,
+                "icon": "KVwMTrIRMG",
+                "description": "U0sh",
+                "updateTime": "1991-05-20 23:10:16",
+                "type": 8758,
+                "title": "fsft",
+                "delFlag": 3406,
+                "parentId": "Y7ijeTso",
                 "permTypes": [
-                  "LIcXXtA2K"
+                  "md2oh"
                 ],
-                "path": "hJ1JN",
-                "component": "OfmTn",
+                "path": "teJq",
+                "component": "e3",
                 "expand": "true",
-                "createBy": "L7",
-                "buttonType": "4syxf7qw",
+                "createBy": "RN5SJ",
+                "buttonType": "lD",
                 "children": [
                   {
-                    "level": 9215,
-                    "icon": "AtH",
-                    "description": "qr",
-                    "updateTime": "Feb 23, 2037, 4:27:06 AM",
-                    "type": 4136,
-                    "title": "wRFv8",
-                    "delFlag": 2143,
-                    "parentId": "BMHCEjBrZ8",
+                    "level": 9903,
+                    "icon": "f",
+                    "description": "iWEsv0kyH",
+                    "updateTime": "2028-05-12 23:03:34",
+                    "type": 5043,
+                    "title": "tQMhKa7hV",
+                    "delFlag": 2500,
+                    "parentId": "z0Yren1dj",
                     "permTypes": [
-                      "6iJPfcwdvu"
+                      "WLb4pZRJqU"
                     ],
-                    "path": "Wht14D",
-                    "component": "MPJS8M",
+                    "path": "f82RTahHS",
+                    "component": "qfW",
                     "expand": "true",
-                    "createBy": "8",
-                    "buttonType": "l",
+                    "createBy": "u4a7",
+                    "buttonType": "V8byFRtV",
                     "children": [
                       {
-                        "level": 4295,
-                        "icon": "8OZta7MZLa",
-                        "description": "tg4emRd",
-                        "updateTime": "Jan 19, 2052, 1:06:18 AM",
-                        "type": 7667,
-                        "title": "VcZrXrz",
-                        "delFlag": 2972,
-                        "parentId": "0",
+                        "level": 8465,
+                        "icon": "FzVp3g",
+                        "description": "wFjn0q",
+                        "updateTime": "1982-06-15 16:29:56",
+                        "type": 3133,
+                        "title": "xP",
+                        "delFlag": 7882,
+                        "parentId": "BX4esiLhs",
                         "permTypes": [
-                          "CdvAiz"
+                          "XqjbuT5qP"
                         ],
-                        "path": "Ej3mu",
-                        "component": "NHOlWcNE",
+                        "path": "rxd3B3I",
+                        "component": "8hBFc7pE",
                         "expand": "true",
-                        "createBy": "atdjh",
-                        "buttonType": "0KIj3X5dw",
+                        "createBy": "DtJdgJZqw",
+                        "buttonType": "J",
                         "children": [],
-                        "createTime": "Jul 2, 2086, 7:53:07 AM",
-                        "updateBy": "jQyM54",
-                        "sortOrder": 2151.6,
-                        "name": "5",
+                        "createTime": "Mar 18, 1988, 7:07:22 PM",
+                        "updateBy": "2E0r13",
+                        "sortOrder": 2428.93,
+                        "name": "kS",
                         "checked": "false",
-                        "id": "PwX4",
+                        "id": "uymnl",
                         "selected": "false",
-                        "status": 6508
+                        "status": 6837
                       }
                     ],
-                    "createTime": "Dec 14, 2009, 8:49:03 AM",
-                    "updateBy": "Z3iqmP",
-                    "sortOrder": 1842.17,
-                    "name": "4k",
+                    "createTime": "Jan 16, 2063, 7:25:24 AM",
+                    "updateBy": "N5",
+                    "sortOrder": 3434.8,
+                    "name": "z1taRUGSDh",
                     "checked": "false",
-                    "id": "LBa",
+                    "id": "tTFDyuJ",
                     "selected": "false",
-                    "status": 3303
+                    "status": 2254
                   }
                 ],
-                "createTime": "Feb 20, 2032, 11:21:16 AM",
-                "updateBy": "x",
-                "sortOrder": 4302.01,
-                "name": "xtWhvjmm",
+                "createTime": "Jul 11, 2076, 10:58:56 PM",
+                "updateBy": "D",
+                "sortOrder": 7862.04,
+                "name": "tWOF6xlaw3",
                 "checked": "false",
-                "id": "rAcN",
+                "id": "f2NT",
                 "selected": "false",
-                "status": 3120
+                "status": 5531
               }
             ],
-            "name": "xou",
-            "updateTime": "Jan 2, 2059, 3:00:11 AM",
-            "id": "T4J1f",
-            "delFlag": 75
+            "name": "kHwQLhE",
+            "updateTime": "2088-03-18 05:08:21",
+            "id": "g7w",
+            "delFlag": 1301
           }
         ],
-        "mobile": "dNTWhQYi6",
-        "description": "mmN",
-        "updateTime": "Nov 25, 2066, 8:14:18 AM",
+        "mobile": "y",
+        "description": "z2Z7",
+        "updateTime": "2067-06-14 14:16:30",
         "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
-        "type": 3476,
-        "delFlag": 9644,
-        "password": "AqQfFhz",
-        "createBy": "l",
-        "createTime": "Oct 17, 2045, 2:11:20 PM",
-        "updateBy": "tt2mOFG8pi",
+        "type": 2106,
+        "delFlag": 9157,
+        "password": "SSixrx",
+        "createBy": "j7q7Ip5pp",
+        "createTime": "Aug 2, 1995, 2:04:13 AM",
+        "updateBy": "dkpiSIy4",
         "permissions": [
           {
-            "level": 3892,
-            "icon": "qSMUdO",
-            "description": "u6",
-            "updateTime": "Mar 30, 2096, 5:36:27 AM",
-            "type": 878,
-            "title": "QPJMqSMmL",
-            "delFlag": 5793,
-            "parentId": "KwpMADTfN",
+            "level": 6208,
+            "icon": "206V",
+            "description": "FvMi",
+            "updateTime": "2062-02-16 06:31:45",
+            "type": 6616,
+            "title": "Szc7C",
+            "delFlag": 9153,
+            "parentId": "K9teP4qwNI",
             "permTypes": [
-              "306kJ6"
+              "AViuAcbEN"
             ],
-            "path": "avE",
-            "component": "bO",
+            "path": "4xv",
+            "component": "Q",
             "expand": "true",
-            "createBy": "J0cUfa1",
-            "buttonType": "ADhOpjDHf",
+            "createBy": "BkqU",
+            "buttonType": "NoCdeN",
             "children": [
               {
-                "level": 6398,
-                "icon": "sFfVewa1Mp",
-                "description": "GVP2g",
-                "updateTime": "May 9, 2090, 11:39:16 AM",
-                "type": 4046,
-                "title": "UsawSpK6",
-                "delFlag": 3796,
-                "parentId": "Eb1wGJH",
+                "level": 6858,
+                "icon": "7RSUivF",
+                "description": "xD",
+                "updateTime": "2070-12-23 10:00:37",
+                "type": 4372,
+                "title": "pg8k1Lv",
+                "delFlag": 8528,
+                "parentId": "CR",
                 "permTypes": [
-                  "9zdq"
+                  "Yq"
                 ],
-                "path": "Pb",
-                "component": "D1xZierrt",
+                "path": "e1hUuiUZ",
+                "component": "2lAP",
                 "expand": "true",
-                "createBy": "hDsU",
-                "buttonType": "UpZAxpEdh",
+                "createBy": "OhIie",
+                "buttonType": "lql1jhr5b",
                 "children": [
                   {
-                    "level": 48,
-                    "icon": "YQuM6tbJ",
-                    "description": "PObSp6b1",
-                    "updateTime": "Feb 18, 2018, 11:15:34 AM",
-                    "type": 9330,
-                    "title": "j2zJ",
-                    "delFlag": 4696,
-                    "parentId": "yRMp6",
+                    "level": 9379,
+                    "icon": "FyxB",
+                    "description": "0qoS",
+                    "updateTime": "2058-10-09 03:41:52",
+                    "type": 1987,
+                    "title": "IhO",
+                    "delFlag": 3907,
+                    "parentId": "KcxFaEb9",
                     "permTypes": [
-                      "F"
+                      "7wGq4FfFX3"
                     ],
-                    "path": "c",
-                    "component": "Mr7",
+                    "path": "b",
+                    "component": "E",
                     "expand": "true",
-                    "createBy": "9",
-                    "buttonType": "U",
+                    "createBy": "7YjV",
+                    "buttonType": "zBh4rtcd",
                     "children": [
                       {
-                        "level": 5501,
-                        "icon": "eabQlUSwvO",
-                        "description": "V5SM2Ll",
-                        "updateTime": "Jul 4, 2017, 12:06:13 PM",
-                        "type": 2950,
-                        "title": "Ma6p9BA8",
-                        "delFlag": 2205,
-                        "parentId": "Z48AaWoE6",
+                        "level": 3060,
+                        "icon": "JIRlHkL",
+                        "description": "y",
+                        "updateTime": "1993-03-02 04:13:26",
+                        "type": 6593,
+                        "title": "c3MBcQ4lr",
+                        "delFlag": 9114,
+                        "parentId": "mO",
                         "permTypes": [
-                          "INO34"
+                          "N8hHSBZH4x"
                         ],
-                        "path": "u2niZGFt",
-                        "component": "VIJBDlMP",
+                        "path": "bmqG3",
+                        "component": "3M3C",
                         "expand": "true",
-                        "createBy": "AM6U34",
-                        "buttonType": "QSTsp",
+                        "createBy": "vR8GwoEWwp",
+                        "buttonType": "ZZed3e5",
                         "children": [],
-                        "createTime": "Dec 17, 2094, 10:19:20 AM",
-                        "updateBy": "Tmagp3vg8",
-                        "sortOrder": 8891.54,
-                        "name": "XriQygrsj",
+                        "createTime": "Jan 31, 1996, 1:17:43 PM",
+                        "updateBy": "aublZU",
+                        "sortOrder": 1389.0,
+                        "name": "iJChm5L",
                         "checked": "false",
-                        "id": "24jXFwWz",
+                        "id": "YWviKBryt",
                         "selected": "false",
-                        "status": 5206
+                        "status": 7306
                       }
                     ],
-                    "createTime": "Sep 7, 2095, 9:36:36 PM",
-                    "updateBy": "aZ85LM8B",
-                    "sortOrder": 9741.46,
-                    "name": "V5CIk2pdOa",
+                    "createTime": "Oct 20, 1977, 3:25:05 AM",
+                    "updateBy": "7zwT",
+                    "sortOrder": 3323.8,
+                    "name": "n09Poef",
                     "checked": "false",
-                    "id": "ccZmw",
+                    "id": "1",
                     "selected": "false",
-                    "status": 5746
+                    "status": 8975
                   }
                 ],
-                "createTime": "Apr 13, 2061, 2:34:50 AM",
-                "updateBy": "90lj",
-                "sortOrder": 8921.65,
-                "name": "PSCZ",
+                "createTime": "May 14, 1990, 9:26:38 PM",
+                "updateBy": "6f",
+                "sortOrder": 4805.61,
+                "name": "66KRhiOh",
                 "checked": "false",
-                "id": "J3Hp",
+                "id": "SsHzfT2",
                 "selected": "false",
-                "status": 5105
+                "status": 1747
               }
             ],
-            "createTime": "May 12, 2041, 12:53:57 PM",
-            "updateBy": "hm",
-            "sortOrder": 8048.87,
-            "name": "26gID5ew8",
+            "createTime": "Feb 15, 2039, 7:06:07 PM",
+            "updateBy": "GQf",
+            "sortOrder": 340.92,
+            "name": "4u3L",
             "checked": "false",
-            "id": "X",
+            "id": "jiOi7DJhH1",
             "selected": "false",
-            "status": 9308
+            "status": 4983
           }
         ],
-        "id": "YNZS",
-        "email": "vM8w",
-        "username": "S",
-        "status": 3038
+        "testObject": {},
+        "id": "B59BFPZO",
+        "email": "dNgd4FV",
+        "username": "vBeDvt",
+        "status": 2349
       }
     ],
     "page": {
       "total": 0,
       "current": 0,
-      "hitCount": false,
       "size": 0,
       "optimizeCountSql": false,
       "records": [
         {
-          "address": "2bv",
-          "nickName": "H",
-          "sex": 2552,
+          "address": "H",
+          "nickName": "JY0mUNM8",
+          "sex": 5941,
           "roles": [
             {
-              "createBy": "5t8GfqG",
+              "createBy": "pkc",
               "defaultRole": false,
-              "createTime": "Nov 13, 2019, 3:56:50 AM",
-              "updateBy": "1",
+              "createTime": "Jan 5, 2082, 2:46:07 AM",
+              "updateBy": "Xttgw6Ifb",
               "permissions": [
                 {
-                  "level": 8663,
-                  "icon": "q13HZK",
-                  "description": "uhGhj7F2E",
-                  "updateTime": "Dec 12, 2017, 8:45:07 AM",
-                  "type": 730,
-                  "title": "I",
-                  "delFlag": 8668,
-                  "parentId": "cfPqCZisst",
+                  "level": 6416,
+                  "icon": "p1",
+                  "description": "ozm1k",
+                  "updateTime": "2095-09-13 21:28:44",
+                  "type": 2153,
+                  "title": "Jf3Rm5nLEA",
+                  "delFlag": 178,
+                  "parentId": "m",
                   "permTypes": [
-                    "QyA"
+                    "Vsozl1"
                   ],
-                  "path": "8Y1H",
-                  "component": "dxE",
+                  "path": "PHFbjB4A9J",
+                  "component": "pE",
                   "expand": "true",
-                  "createBy": "SDvUK",
-                  "buttonType": "Ye",
+                  "createBy": "rZLsN",
+                  "buttonType": "EwF",
                   "children": [
                     {
-                      "level": 7545,
-                      "icon": "VHoeg5",
-                      "description": "DdW",
-                      "updateTime": "Jan 5, 2003, 6:01:45 AM",
-                      "type": 5876,
-                      "title": "w9liP1",
-                      "delFlag": 2748,
-                      "parentId": "vRr",
+                      "level": 858,
+                      "icon": "m",
+                      "description": "rt",
+                      "updateTime": "2060-04-19 14:34:48",
+                      "type": 1336,
+                      "title": "fzLwW0y6ru",
+                      "delFlag": 9085,
+                      "parentId": "eYm3V",
                       "permTypes": [
-                        "x"
+                        "hP49mKGvj"
                       ],
-                      "path": "pxSI",
-                      "component": "qui",
+                      "path": "8rcrSZEV",
+                      "component": "eLnE8jHWh",
                       "expand": "true",
-                      "createBy": "7gF6sTU",
-                      "buttonType": "9ceQTUEf",
+                      "createBy": "Bww79",
+                      "buttonType": "IbJkbzmOIR",
                       "children": [],
-                      "createTime": "Sep 7, 2095, 2:54:42 PM",
-                      "updateBy": "t7Xvs",
-                      "sortOrder": 6189.09,
-                      "name": "W",
+                      "createTime": "Feb 19, 2008, 7:10:19 AM",
+                      "updateBy": "jm3JwNl6W",
+                      "sortOrder": 459.62,
+                      "name": "qkPkv2ufQ",
                       "checked": "false",
-                      "id": "a7c",
+                      "id": "t9xX",
                       "selected": "false",
-                      "status": 5117
+                      "status": 5790
                     }
                   ],
-                  "createTime": "Aug 19, 2087, 8:54:02 AM",
-                  "updateBy": "B",
-                  "sortOrder": 5420.52,
-                  "name": "xyoezq",
+                  "createTime": "Aug 2, 2033, 1:58:46 PM",
+                  "updateBy": "Os",
+                  "sortOrder": 5044.27,
+                  "name": "WVOvyy1MSQ",
                   "checked": "false",
-                  "id": "z",
+                  "id": "a8H",
                   "selected": "false",
-                  "status": 3086
+                  "status": 479
                 }
               ],
-              "name": "ZVxnyr",
-              "updateTime": "Mar 7, 1994, 3:08:14 AM",
-              "id": "DE",
-              "delFlag": 7608
+              "name": "OMNG53k",
+              "updateTime": "2012-07-19 19:10:23",
+              "id": "QDDhT2RJ",
+              "delFlag": 8167
             }
           ],
-          "mobile": "osu85F",
-          "description": "QLXJl",
-          "updateTime": "Nov 28, 1981, 6:56:23 PM",
+          "mobile": "iygb8di",
+          "description": "6Kq",
+          "updateTime": "2017-07-10 10:51:26",
           "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
-          "type": 86,
-          "delFlag": 354,
-          "password": "jE",
-          "createBy": "64Ga",
-          "createTime": "Jan 10, 2060, 3:37:17 PM",
-          "updateBy": "h5HvAXaOoS",
+          "type": 7373,
+          "delFlag": 4938,
+          "password": "Ea5s6ilRyZ",
+          "createBy": "WEvWMlH",
+          "createTime": "Aug 26, 2033, 5:37:27 PM",
+          "updateBy": "CSuCB9oa3j",
           "permissions": [
             {
-              "level": 9413,
-              "icon": "X",
-              "description": "ZW",
-              "updateTime": "Oct 28, 2090, 5:52:16 AM",
-              "type": 4024,
-              "title": "dSWKfPqal",
-              "delFlag": 561,
-              "parentId": "Sd",
+              "level": 5373,
+              "icon": "0",
+              "description": "Ns3bS8sKwg",
+              "updateTime": "2005-02-20 06:11:51",
+              "type": 8096,
+              "title": "mQwTX3qSW",
+              "delFlag": 6165,
+              "parentId": "seJNmk",
               "permTypes": [
-                "HWD"
+                "YaFad"
               ],
-              "path": "9MaspKkn1",
-              "component": "5iOvQ",
+              "path": "wvxkcUh5nu",
+              "component": "Jkh2",
               "expand": "true",
-              "createBy": "95Kj1",
-              "buttonType": "tbA7R4Hj",
+              "createBy": "7",
+              "buttonType": "vz",
               "children": [
                 {
-                  "level": 2810,
-                  "icon": "nAU1A",
-                  "description": "Z1RtU",
-                  "updateTime": "Oct 12, 2079, 5:21:38 AM",
-                  "type": 9763,
-                  "title": "iwoBe",
-                  "delFlag": 3135,
-                  "parentId": "W3kAgEG",
+                  "level": 710,
+                  "icon": "TFj",
+                  "description": "QnodLP",
+                  "updateTime": "1979-05-21 13:42:58",
+                  "type": 9221,
+                  "title": "NUHYx4",
+                  "delFlag": 4766,
+                  "parentId": "HzYcTqyT0",
                   "permTypes": [
-                    "kx"
+                    "nBB1mPp"
                   ],
-                  "path": "vi",
-                  "component": "k2wNOdB6Nc",
+                  "path": "912KFPne2",
+                  "component": "3C",
                   "expand": "true",
-                  "createBy": "KF1ssN8",
-                  "buttonType": "rwtGtH9q",
+                  "createBy": "uaA",
+                  "buttonType": "4CDfK43kP",
                   "children": [
                     {
-                      "level": 7782,
-                      "icon": "gkKqyt",
-                      "description": "xwg9",
-                      "updateTime": "Nov 20, 2054, 9:51:59 AM",
-                      "type": 5544,
-                      "title": "3DpL8",
-                      "delFlag": 6573,
-                      "parentId": "7V",
+                      "level": 3069,
+                      "icon": "m",
+                      "description": "06Otarfl",
+                      "updateTime": "2043-09-02 17:12:48",
+                      "type": 6670,
+                      "title": "MTw",
+                      "delFlag": 1182,
+                      "parentId": "dpIKledr",
                       "permTypes": [
-                        "nZ1kPTF5t"
+                        "4SMs8MZ"
                       ],
-                      "path": "6xqZaOd",
-                      "component": "b",
+                      "path": "Ze2",
+                      "component": "3nNlCF5v",
                       "expand": "true",
-                      "createBy": "ZlHGEP3EUo",
-                      "buttonType": "8xuIwe9Ou",
+                      "createBy": "TED",
+                      "buttonType": "YhsvI",
                       "children": [],
-                      "createTime": "Jul 5, 2010, 2:20:05 AM",
-                      "updateBy": "DCQDM",
-                      "sortOrder": 8901.7,
-                      "name": "l3sd",
+                      "createTime": "Sep 5, 2033, 8:39:30 AM",
+                      "updateBy": "rEYgZoj",
+                      "sortOrder": 2793.88,
+                      "name": "a3W",
                       "checked": "false",
-                      "id": "xvSpipYOp",
+                      "id": "v2CgZUJciy",
                       "selected": "false",
-                      "status": 5040
+                      "status": 7794
                     }
                   ],
-                  "createTime": "Dec 8, 2094, 8:48:26 PM",
-                  "updateBy": "yN813M57zk",
-                  "sortOrder": 5375.03,
-                  "name": "ACY2Mc3",
+                  "createTime": "Nov 7, 1985, 7:52:48 PM",
+                  "updateBy": "Xt",
+                  "sortOrder": 2955.78,
+                  "name": "b6A3IgEE9",
                   "checked": "false",
-                  "id": "gV4rvDoczi",
+                  "id": "MwsPIit9Q",
                   "selected": "false",
-                  "status": 4337
+                  "status": 8794
                 }
               ],
-              "createTime": "Jun 5, 1972, 1:43:14 PM",
-              "updateBy": "3DlsB",
-              "sortOrder": 5679.93,
-              "name": "ybPm",
+              "createTime": "Jun 16, 1976, 6:20:11 AM",
+              "updateBy": "pHbgEL",
+              "sortOrder": 198.87,
+              "name": "hSJ",
               "checked": "false",
-              "id": "UKUCFf",
+              "id": "lDTRejf",
               "selected": "false",
-              "status": 5079
+              "status": 6509
             }
           ],
-          "id": "Sfr0G6",
-          "email": "sDXa5",
-          "username": "8SdWkDW2",
-          "status": 2267
+          "testObject": {},
+          "id": "EurwLgF",
+          "email": "owzrJM5XGL",
+          "username": "r4gLONC",
+          "status": 5351
         }
       ],
-      "maxLimit": 2461,
+      "maxLimit": 547,
+      "searchCount": false,
+      "optimizeJoinOfCountSql": false,
       "orders": [
         {
           "asc": false,
-          "column": "1SG"
+          "column": "v5yt4dsBQ"
         }
       ],
-      "countId": "6XH9VxrNA",
-      "isSearchCount": false
+      "countId": "KVcpphCICW"
     }
   },
   "success": false,
-  "message": "9UMfRehm41",
-  "timestamp": "53P"
+  "message": "Z3x",
+  "timestamp": "o"
 }
 ```
 
-# mybatis-plus测试
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/mulGenric/test3
+```
 
-## 1.mybatis-plus分页类测试
-**URL:** http://localhost/mybatis/plus/page
+# JSR303参数验证规范测试&nbsp;
+
+## 1.验证validate&nbsp;
+
+**URL:** http://localhost/validator/test
 
 **Type:** POST
 
+**Content-Type:** application/json
 
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── leader|object|true|&nbsp;|
+&nbsp;&nbsp; ├── birthday|string|true|&nbsp;|生日
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|姓名
+&nbsp;&nbsp; ├── age|int32|&nbsp;|&nbsp;|年龄&nbsp;
+&nbsp;&nbsp; └── subject|object|true|&nbsp;|科目
+&nbsp;&nbsp; &nbsp;&nbsp; ├── subjectName|string|true|&nbsp;|科目名称
+&nbsp;&nbsp; &nbsp;&nbsp; └── core|int32|&nbsp;|0|分数&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "birthday": "TGHUFH",
+  "subject": {
+    "core": 0,
+    "subjectName": "R"
+  },
+  "name": "tMkTH7BO",
+  "age": 3162
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "g0b",
+  "code": "5T3wvQ3",
+  "success": false,
+  "message": "URK",
+  "timestamp": "iCEm7yva"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/test --data '{
+  "birthday": "TGHUFH",
+  "subject": {
+    "core": 0,
+    "subjectName": "R"
+  },
+  "name": "tMkTH7BO",
+  "age": 3162
+}'
+```
+
+## 2.验证通用参数&nbsp;
+
+**URL:** http://localhost/validator/valid
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── param|object|true|&nbsp;|
+&nbsp;&nbsp; ├── token|string|true|&nbsp;|token
+&nbsp;&nbsp; ├── sequenceNo|string|true|&nbsp;|序列号
+&nbsp;&nbsp; └── parameter|object|&nbsp;|&nbsp;|Description:<br/>子用户&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── subUserName|string|true|&nbsp;|用户名称<br/>水水水水<br/>ddddd
+&nbsp;&nbsp; &nbsp;&nbsp; └── numbers|number|&nbsp;|&nbsp;|bigInteger&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "sequenceNo": "a",
+  "parameter": {
+    "subUserName": "x",
+    "numbers": 1705
+  },
+  "token": "k6zk9"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "rK",
+  "code": "xuYZ0Sj",
+  "success": false,
+  "message": "HKrU",
+  "timestamp": "SX"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/valid --data '{
+  "sequenceNo": "a",
+  "parameter": {
+    "subUserName": "x",
+    "numbers": 1705
+  },
+  "token": "k6zk9"
+}'
+```
+
+## 3.分组验证1&nbsp;
+
+**URL:** http://localhost/validator/save
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "501YL",
+  "name": "f",
+  "mobile": "7WNZryzOg",
+  "id": 985,
+  "email": "ibI0"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "4OSkn",
+  "code": "gC",
+  "success": false,
+  "message": "1HgvwlYP",
+  "timestamp": "Caiyts"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/save --data '{
+  "address": "501YL",
+  "name": "f",
+  "mobile": "7WNZryzOg",
+  "id": 985,
+  "email": "ibI0"
+}'
+```
+
+## 4.分组验证2&nbsp;
+
+**URL:** http://localhost/validator/update
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "NXnU",
+  "name": "eUFZxhc",
+  "mobile": "ZVaXW",
+  "id": 804,
+  "email": "PxorQUdm2x"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "GEq1L9",
+  "code": "GfGWfCUU",
+  "success": false,
+  "message": "b0j",
+  "timestamp": "u9R2"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/update --data '{
+  "address": "NXnU",
+  "name": "eUFZxhc",
+  "mobile": "ZVaXW",
+  "id": 804,
+  "email": "PxorQUdm2x"
+}'
+```
+
+## 5.分组验证3&nbsp;
+
+**URL:** http://localhost/validator/login
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "bSXfG",
+  "name": "CASDOGk",
+  "mobile": "o",
+  "id": 9710,
+  "email": "SM9UplHH"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "MK",
+  "code": "wA6V",
+  "success": false,
+  "message": "VwE9l",
+  "timestamp": "Dw4JrO1"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/login --data '{
+  "address": "bSXfG",
+  "name": "CASDOGk",
+  "mobile": "o",
+  "id": 9710,
+  "email": "SM9UplHH"
+}'
+```
+
+## 6.分组验证4&nbsp;
+
+**URL:** http://localhost/validator/test4
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "6UIF",
+  "name": "mj",
+  "mobile": "vxNw",
+  "id": 3820,
+  "email": "F3J"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|object|&nbsp;
+
+**Response-example:**
+``` json
+{}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/test4 --data '{
+  "address": "6UIF",
+  "name": "mj",
+  "mobile": "vxNw",
+  "id": 3820,
+  "email": "F3J"
+}'
+```
+
+## 7.测试父级内部注解分组校验&nbsp;
+
+**URL:** http://localhost/validator/testInnerValid
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "rDD1Sv1xC",
+  "name": "JT3",
+  "mobile": "1Iw0Wj",
+  "id": 9340,
+  "email": "GdCb8T1zFA"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "tt",
+  "code": "KG",
+  "success": false,
+  "message": "FUUXr4iYq1",
+  "timestamp": "qNOdMuF"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/testInnerValid --data '{
+  "address": "rDD1Sv1xC",
+  "name": "JT3",
+  "mobile": "1Iw0Wj",
+  "id": 9340,
+  "email": "GdCb8T1zFA"
+}'
+```
+
+## 8.测试继承默认分组&nbsp;
+
+**URL:** http://localhost/validator/testExtendsDefault
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "Hvw",
+  "name": "GiRgMmxKCu",
+  "mobile": "y",
+  "id": 3491,
+  "email": "x0rq5TQ"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "2",
+  "code": "7SI0icTW0",
+  "success": false,
+  "message": "tdkS",
+  "timestamp": "X"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/testExtendsDefault --data '{
+  "address": "Hvw",
+  "name": "GiRgMmxKCu",
+  "mobile": "y",
+  "id": 3491,
+  "email": "x0rq5TQ"
+}'
+```
+
+## 9.测试内部接口继承默认分组&nbsp;
+
+**URL:** http://localhost/validator/testExtendsDefault2
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "M",
+  "name": "lVe",
+  "mobile": "o",
+  "id": 4607,
+  "email": "t"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "AZu",
+  "code": "q9gJhyvq",
+  "success": false,
+  "message": "i",
+  "timestamp": "A"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/testExtendsDefault2 --data '{
+  "address": "M",
+  "name": "lVe",
+  "mobile": "o",
+  "id": 4607,
+  "email": "t"
+}'
+```
+
+## 10.测试新增&nbsp;
+
+**URL:** http://localhost/validator/testSave
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "OfSvIkyhjP",
+  "name": "lrJY4I2fY",
+  "mobile": "gTRvZd",
+  "id": 6561,
+  "email": "a9Rv"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "nuLtq",
+  "code": "geUsEA",
+  "success": false,
+  "message": "IFU63",
+  "timestamp": "hK"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/testSave --data '{
+  "address": "OfSvIkyhjP",
+  "name": "lrJY4I2fY",
+  "mobile": "gTRvZd",
+  "id": 6561,
+  "email": "a9Rv"
+}'
+```
+
+## 11.测试更新&nbsp;
+
+**URL:** http://localhost/validator/testUpdate
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── collect|object|true|&nbsp;|
+&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
+&nbsp;&nbsp; ├── name|string|true|&nbsp;|名称
+&nbsp;&nbsp; ├── email|string|true|&nbsp;|邮箱<br/>测试继承默认分组的group
+&nbsp;&nbsp; ├── mobile|string|true|&nbsp;|电话
+&nbsp;&nbsp; └── address|string|true|&nbsp;|地址
+
+**Request-body-example:**
+``` json
+{
+  "address": "i",
+  "name": "gYHF",
+  "mobile": "Ickzd0hR",
+  "id": 9540,
+  "email": "2kVQR"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "NzU",
+  "code": "QxPJ9",
+  "success": false,
+  "message": "AKoFdD",
+  "timestamp": "YN4IFUSIJl"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/testUpdate --data '{
+  "address": "i",
+  "name": "gYHF",
+  "mobile": "Ickzd0hR",
+  "id": 9540,
+  "email": "2kVQR"
+}'
+```
+
+## 12.分页查询&nbsp;
+
+**URL:** http://localhost/validator/list
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── t|object|true|&nbsp;|
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|object|&nbsp;
+
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/validator/list
+```
+
+# 测试深层级map&nbsp;
+
+## 1.测试&nbsp;
+
+**URL:** http://localhost/nested/test
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
 
-**Request-example:**
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+│&nbsp;&nbsp; ├── name|string|名称&nbsp;
+│&nbsp;&nbsp; ├── sex|string|性别&nbsp;
+│&nbsp;&nbsp; ├── oneVOList|array&lt;object&gt;|第一个嵌套&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── address|string|地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── map|map&lt;string, object&gt;|一个map&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── child|array&lt;object&gt;|第二个嵌套&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── address|string|地址&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── map|map&lt;string, object&gt;|一个map&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── child|array&lt;object&gt;|第二个嵌套&nbsp;
+│&nbsp;&nbsp; └── nestedTwoVOList|array&lt;object&gt;|aaa&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── address|string|地址&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── map|map&lt;string, object&gt;|一个map&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── child|array&lt;object&gt;|第二个嵌套&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── address|string|地址&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── map|map&lt;string, object&gt;|一个map&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── child|array&lt;object&gt;|第二个嵌套&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
 ``` json
-http://localhost/mybatis/plus/page
+{
+  "traceId": "lG2WzUaVU",
+  "code": "aZp8M8VGN",
+  "data": {
+    "nestedTwoVOList": [
+      {
+        "address": "VG7iarIS",
+        "map": {
+          "null": {}
+        },
+        "child": [
+          {
+            "address": "oP",
+            "map": {
+              "null": {}
+            },
+            "child": []
+          }
+        ]
+      }
+    ],
+    "sex": "CCi",
+    "name": "p",
+    "oneVOList": [
+      {
+        "address": "a",
+        "map": {
+          "null": {}
+        },
+        "child": [
+          {
+            "address": "As",
+            "map": {
+              "null": {}
+            },
+            "child": []
+          }
+        ]
+      }
+    ]
+  },
+  "success": false,
+  "message": "Wi9LnodA",
+  "timestamp": "iGFJ"
+}
 ```
 
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/nested/test
+```
+
+# 枚举参数测试&nbsp;
+
+## 1.获取枚举参数1&nbsp;
+
+**URL:** http://localhost/enum/tt
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── simpleEnum|enum|&nbsp;|&nbsp;|RED<br/>BLUE&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"UFm6j"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/enum/tt --data 'simpleEnum=BLUE'
+```
+
+## 2.获取枚举参数2&nbsp;
+
+**URL:** http://localhost/enum0/{orderEnum}
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── orderEnum|enum|true|&nbsp;|WAIT_PAY("0", "等待支付") - 描述1<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"z5SMUmD"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/enum0/PAID
+```
+
+## 3.获取枚举参数3&nbsp;
+
+**URL:** http://localhost/enum/{simpleEnum}
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── simpleEnum|enum|true|&nbsp;|RED<br/>BLUE
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"RgB3Hcx"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/enum/BLUE
+```
+
+## 4.获取枚举参数4(json)&nbsp;
+
+**URL:** http://localhost/enum/test1
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── order|object|true|&nbsp;|简单枚举<br/>
+&nbsp;&nbsp; ├── orderId|int32|&nbsp;|0|订单id&nbsp;
+&nbsp;&nbsp; ├── orderType|enum|&nbsp;|&nbsp;|订单类型<br/>WAIT_PAY("0", "等待支付") - 描述1<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")&nbsp;
+&nbsp;&nbsp; ├── testSee|string|&nbsp;|&nbsp;|测试订单类型&nbsp;
+&nbsp;&nbsp; └── orderEnums|array&lt;enum&gt;|&nbsp;|&nbsp;|订单类型数组&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "orderEnums": [
+    "WAIT_PAY"
+  ],
+  "orderType": "WAIT_PAY",
+  "orderId": 0,
+  "testSee": "GMNcpHud"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"wazKlxnTy"
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/enum/test1 --data '{
+  "orderEnums": [
+    "WAIT_PAY"
+  ],
+  "orderType": "WAIT_PAY",
+  "orderId": 0,
+  "testSee": "GMNcpHud"
+}'
+```
+
+## 5.获取枚举参数5&nbsp;
+
+**URL:** http://localhost/enum/test2
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── order|object|&nbsp;|&nbsp;|简单枚举<br/>&nbsp;
+&nbsp;&nbsp; ├── orderId|int32|&nbsp;|0|订单id&nbsp;
+&nbsp;&nbsp; ├── orderType|enum|&nbsp;|&nbsp;|订单类型<br/>WAIT_PAY("0", "等待支付") - 描述1<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")&nbsp;
+&nbsp;&nbsp; ├── testSee|string|&nbsp;|&nbsp;|测试订单类型&nbsp;
+&nbsp;&nbsp; └── orderEnums|array&lt;enum&gt;|&nbsp;|&nbsp;|订单类型数组&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── orderId|int32|订单id&nbsp;
+├── orderType|enum|订单类型<br/>WAIT_PAY("0", "等待支付") - 描述1<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")&nbsp;
+├── testSee|string|测试订单类型&nbsp;
+└── orderEnums|array&lt;enum&gt;|订单类型数组&nbsp;
+
+**Response-example:**
+``` json
+{
+  "orderEnums": [
+    "WAIT_PAY"
+  ],
+  "orderType": "WAIT_PAY",
+  "orderId": 0,
+  "testSee": "qY"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/enum/test2 --data 'orderEnums=WAIT_PAY&orderType=WAIT_PAY&orderId=0&testSee=QX8Ey'
+```
+
+## 6.枚举响应&nbsp;
+
+**URL:** http://localhost/enum/resp
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|enum|test<br/>RED<br/>BLUE&nbsp;
+
+**Response-example:**
+``` json
+"BLUE"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/enum/resp
+```
+
+## 7.测试枚举array<br/>https://github.com/smart-doc-group/smart-doc/issues/254&nbsp;
+
+**URL:** http://localhost/enum/testArray
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── enums|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── &nbsp;|enum|&nbsp;|&nbsp;|订单状态<br/>WAIT_PAY("0", "等待支付") - 描述1<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"zu6hiyICL"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/enum/testArray --data 'enums=WAIT_PAY'
+```
+
+## 8.测试枚举list&nbsp;
+
+**URL:** http://localhost/enum/testList
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── enums|array&lt;enum&gt;|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"0BBo"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/enum/testList --data 'enums=WAIT_PAY'
+```
+
+## 9.测试@see&nbsp;
+
+**URL:** http://localhost/enum/see
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── enums|string|&nbsp;|&nbsp;|enum<br/>&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"cP6vBhBw"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/enum/see --data 'enums=Zmm'
+```
+
+# 异步返回信息测试&nbsp;
+
+## 1.返回Callable&lt;CommonResult&gt;&nbsp;
+
+**URL:** http://localhost/testCallable
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "zynA8wahZ",
+  "code": "B",
+  "success": false,
+  "message": "k3hH",
+  "timestamp": "U"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testCallable
+```
+
+## 2.返回DeferredResult&lt;CommonResult&lt;String&gt;&gt;&nbsp;
+
+**URL:** http://localhost/async-deferredresult
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "h2shrz",
+  "code": "w",
+  "data": "nqpF",
+  "success": false,
+  "message": "ik",
+  "timestamp": "75ZNTBiF"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/async-deferredresult
+```
+
+## 3.返回WebAsyncTask&lt;CommonResult&gt;&nbsp;
+
+**URL:** http://localhost/WebAsync/timeout
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "HNwbs31j3A",
+  "code": "LbIkS",
+  "success": false,
+  "message": "UobgCZ",
+  "timestamp": "4"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/WebAsync/timeout
+```
+
+## 4.返回Future&lt;CommonResult&lt;String&gt;&gt;&nbsp;
+
+**URL:** http://localhost/future
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "XEJphovb",
+  "code": "lbP",
+  "data": "HkT",
+  "success": false,
+  "message": "e8MbCCTZu3",
+  "timestamp": "36VM"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/future
+```
+
+## 5.返回CompletableFuture&lt;CommonResult&lt;String&gt;&gt;&nbsp;
+
+**URL:** http://localhost/completableFuture
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "Lx3x",
+  "code": "xsCBGVmr",
+  "data": "X6tKD6WY",
+  "success": false,
+  "message": "yAu",
+  "timestamp": "Gz"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/completableFuture
+```
+
+# java泛型解析测试&nbsp;
+
+## 1.测试多泛型1&nbsp;
+
+**URL:** http://localhost/generics/test1
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── test|string|托尔斯泰&nbsp;
+├── value|object|value&nbsp;
+│&nbsp;&nbsp; ├── AGE|int32|&nbsp;
+│&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;
+│&nbsp;&nbsp; ├── gender|enum|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+│&nbsp;&nbsp; ├── simpleEnum|enum|简单枚举<br/>RED<br/>BLUE&nbsp;
+│&nbsp;&nbsp; ├── username|string|用户名<br/>测试分隔注释&nbsp;
+│&nbsp;&nbsp; ├── password|string|密码&nbsp;
+│&nbsp;&nbsp; ├── passwordssss|array|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── mobile|string|电话&nbsp;
+│&nbsp;&nbsp; ├── role|object|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户角色信息&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|用户扩展项&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|ListMap效果展示&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+└── key|object|key&nbsp;
+&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
+``` json
+{
+  "test": "yHTF74",
+  "value": {
+    "passwordssss": [
+      "4E"
+    ],
+    "role": {
+      "createBy": "iZlj4Y2cT",
+      "createTime": "Apr 28, 2059, 5:18:22 AM",
+      "updateBy": "MpCL",
+      "roleId": "OW",
+      "roleName": "l8cLO6Bl",
+      "updateTime": "2021-08-06 04:02:56",
+      "id": "KA",
+      "delFlag": 5210,
+      "userId": "X"
+    },
+    "gender": "MAN",
+    "nickName": "Fsyr",
+    "listMap": [
+      {
+        "null": "BkvxXZyw"
+      }
+    ],
+    "roles": [
+      {
+        "createBy": "W",
+        "createTime": "May 22, 2037, 11:44:29 AM",
+        "updateBy": "WLXq",
+        "roleId": "LWL6QYh",
+        "roleName": "dv",
+        "updateTime": "2046-07-29 13:24:21",
+        "id": "fRxtuU",
+        "delFlag": 1685,
+        "userId": "2"
+      }
+    ],
+    "mobile": "qB",
+    "extend": {
+      "null": "w6"
+    },
+    "password": "qNo0o",
+    "MAX_SPEED": "120",
+    "simpleEnum": "BLUE",
+    "AGE": "100",
+    "username": "k"
+  },
+  "key": {
+    "roleId": 6863,
+    "roleName": "P92iHY",
+    "age": 1015
+  }
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/generics/test1
+```
+
+## 2.测试多泛型2&nbsp;
+
+**URL:** http://localhost/generics/test2
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|author: hcy<br/>version: 1.0.0V<br/>date:  2019/12/5 14:36<br/>description: 分页返回工具类&nbsp;
+├── total|int32|总条数&nbsp;
+├── other|object|其他信息&nbsp;
+│&nbsp;&nbsp; ├── AGE|int32|&nbsp;
+│&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;
+│&nbsp;&nbsp; ├── gender|enum|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+│&nbsp;&nbsp; ├── simpleEnum|enum|简单枚举<br/>RED<br/>BLUE&nbsp;
+│&nbsp;&nbsp; ├── username|string|用户名<br/>测试分隔注释&nbsp;
+│&nbsp;&nbsp; ├── password|string|密码&nbsp;
+│&nbsp;&nbsp; ├── passwordssss|array|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+│&nbsp;&nbsp; ├── mobile|string|电话&nbsp;
+│&nbsp;&nbsp; ├── role|object|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── roles|array&lt;object&gt;|用户角色信息&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|删除标记[1表示已删除，默认值0]&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|测试数据&nbsp;
+│&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|用户扩展项&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|ListMap效果展示&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+└── rows|array&lt;object&gt;|数据列表&nbsp;
+&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
+``` json
+{
+  "total": 0,
+  "other": {
+    "passwordssss": [
+      "A6q"
+    ],
+    "role": {
+      "createBy": "8nFY5hL",
+      "createTime": "Oct 15, 2095, 12:14:07 AM",
+      "updateBy": "2dvsxIf",
+      "roleId": "633cw",
+      "roleName": "1KR7kIwa95",
+      "updateTime": "1998-07-20 09:49:05",
+      "id": "IPd",
+      "delFlag": 6830,
+      "userId": "7wuxYBVlGD"
+    },
+    "gender": "MAN",
+    "nickName": "14d",
+    "listMap": [
+      {
+        "null": "EUt7uMoEq"
+      }
+    ],
+    "roles": [
+      {
+        "createBy": "GC4bGG",
+        "createTime": "Aug 14, 1989, 1:35:53 PM",
+        "updateBy": "UNr",
+        "roleId": "pYTO5",
+        "roleName": "O0",
+        "updateTime": "2094-02-06 22:23:35",
+        "id": "V",
+        "delFlag": 9179,
+        "userId": "phZ"
+      }
+    ],
+    "mobile": "2m",
+    "extend": {
+      "null": "htV1iD"
+    },
+    "password": "noJQDp",
+    "MAX_SPEED": "120",
+    "simpleEnum": "BLUE",
+    "AGE": "100",
+    "username": "9Yfk"
+  },
+  "rows": [
+    {
+      "roleId": 2608,
+      "roleName": "rjyJbT",
+      "age": 8731
+    }
+  ]
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/generics/test2
+```
+
+## 3.测试单泛型嵌套&nbsp;
+
+**URL:** http://localhost/generics/test3
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|角色&nbsp;
+│&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+│&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+│&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "Ffr7k9JWt",
+  "code": "yxvTRg",
+  "data": {
+    "roleId": 3681,
+    "roleName": "PIE",
+    "age": 5606
+  },
+  "success": false,
+  "message": "H4brcd",
+  "timestamp": "8Yb8W5ccZ3"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/generics/test3
+```
+
+# json文件配置全局参数测试&nbsp;
+
+## 1.get请求测试query参数&nbsp;
+
+**URL:** http://localhost/configQueryParamGet
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── configQueryParam|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/configQueryParamGet --data 'configQueryParam=1c9'
+```
+
+## 2.post请求测试query参数&nbsp;
+
+**URL:** http://localhost/configQueryParamPost
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── configQueryParam|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/configQueryParamPost --data 'configQueryParam=ctp'
+```
+
+## 3.get请求测试query参数和path参数&nbsp;
+
+**URL:** http://localhost/configParamGet/{configPathParam}
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── configPathParam|string|true|&nbsp;|
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── configQueryParam|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/configParamGet/NWaxfgkCS5 --data 'configQueryParam=gbXQIld'
+```
+
+## 4.post请求测试query参数和path参数&nbsp;
+
+**URL:** http://localhost/configParamPost/{configPathParam}
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── configPathParam|string|true|&nbsp;|
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── configQueryParam|string|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/configParamPost/V --data 'configQueryParam=gK'
+```
+
+# 请求类型测试&nbsp;
+
+## 1.测试GetMapping 无参数&nbsp;
+
+**URL:** http://localhost/getMapping1
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/getMapping1
+```
+
+## 2.测试PostMapping 无参数&nbsp;
+
+**URL:** http://localhost/PostMapping1
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/PostMapping1
+```
+
+## 3.测试PutMapping 无参数&nbsp;
+
+**URL:** http://localhost/PutMapping1
+
+**Type:** PUT
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X PUT -i http://localhost/PutMapping1
+```
+
+## 4.DeleteMapping 无参数&nbsp;
+
+**URL:** http://localhost/DeleteMapping1
+
+**Type:** DELETE
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X DELETE -i http://localhost/DeleteMapping1
+```
+
+## 5.测试GetMapping&nbsp;
+
+**URL:** http://localhost/getMapping
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── userId|int64|true|<br/>		<br/>		<br/><br/>				<br/>|userId
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/getMapping --data 'userId=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A'
+```
+
+## 6.测试PostMapping json&nbsp;
+
+**URL:** http://localhost/postMapping
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|user│com.power.doc.entity.UserTest
+&nbsp;&nbsp; ├── testObject|object|&nbsp;|&nbsp;|测试object&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱&nbsp;
+&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址&nbsp;
+&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)&nbsp;
+&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
+&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型&nbsp;
+&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态&nbsp;
+&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "address": "cpWj1Nimg6",
+  "nickName": "xPqqn",
+  "sex": 6803,
+  "roles": [
+    {
+      "createBy": "bszEYJz",
+      "defaultRole": false,
+      "createTime": "Nov 19, 1998, 9:28:22 AM",
+      "updateBy": "GMuN9",
+      "permissions": [
+        {
+          "level": 1500,
+          "icon": "Ny",
+          "description": "FeDMI0",
+          "updateTime": "2056-10-30 17:41:30",
+          "type": 2832,
+          "title": "aS",
+          "delFlag": 40,
+          "parentId": "T0n",
+          "permTypes": [
+            "y"
+          ],
+          "path": "HUqVmB57vk",
+          "component": "Qmfcofwhx",
+          "expand": "true",
+          "createBy": "Bg",
+          "buttonType": "c",
+          "children": [
+            {
+              "level": 9672,
+              "icon": "rgm",
+              "description": "Foxr",
+              "updateTime": "2067-11-24 08:22:30",
+              "type": 2779,
+              "title": "pp",
+              "delFlag": 3034,
+              "parentId": "BM4DXSc",
+              "permTypes": [
+                "uZsyoD"
+              ],
+              "path": "57V",
+              "component": "Yl6db",
+              "expand": "true",
+              "createBy": "kp4h",
+              "buttonType": "pvrmxTu",
+              "children": [],
+              "createTime": "May 5, 1974, 11:23:31 PM",
+              "updateBy": "hRoXi",
+              "sortOrder": 9892.47,
+              "name": "U9zJ3R",
+              "checked": "false",
+              "id": "lS2BY",
+              "selected": "false",
+              "status": 4116
+            }
+          ],
+          "createTime": "May 14, 2074, 12:31:18 AM",
+          "updateBy": "vxLf2xNeiw",
+          "sortOrder": 3336.6,
+          "name": "2ai9xomjny",
+          "checked": "false",
+          "id": "8FlYOKW",
+          "selected": "false",
+          "status": 9233
+        }
+      ],
+      "name": "f",
+      "updateTime": "1993-05-12 04:10:59",
+      "id": "n85Xo4",
+      "delFlag": 9212
+    }
+  ],
+  "mobile": "Lp1hlpjGdy",
+  "description": "Un4q",
+  "updateTime": "1970-11-15 09:22:57",
+  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
+  "type": 6953,
+  "delFlag": 8065,
+  "password": "tWIt",
+  "createBy": "r",
+  "createTime": "Dec 31, 2055, 9:31:32 AM",
+  "updateBy": "o0UW",
+  "permissions": [
+    {
+      "level": 504,
+      "icon": "nKspxtb",
+      "description": "ZhYzZ",
+      "updateTime": "2043-02-27 12:58:37",
+      "type": 2285,
+      "title": "aqlJt2w",
+      "delFlag": 4634,
+      "parentId": "jh37kWzCZV",
+      "permTypes": [
+        "UWk4"
+      ],
+      "path": "0WV",
+      "component": "BP",
+      "expand": "true",
+      "createBy": "r",
+      "buttonType": "ueU",
+      "children": [
+        {
+          "level": 8151,
+          "icon": "Bv7Z8z",
+          "description": "2BGPHC",
+          "updateTime": "2064-08-22 15:49:40",
+          "type": 3910,
+          "title": "TE9cv",
+          "delFlag": 2029,
+          "parentId": "0YXD9vQo",
+          "permTypes": [
+            "DbDXwZWT"
+          ],
+          "path": "h4h6",
+          "component": "UCt0iOg2Wx",
+          "expand": "true",
+          "createBy": "9gSl1fV",
+          "buttonType": "PPEdA",
+          "children": [
+            {
+              "level": 1167,
+              "icon": "bES",
+              "description": "m3gmQBeKy",
+              "updateTime": "2052-03-22 20:35:58",
+              "type": 4906,
+              "title": "ijCDvgj5Ew",
+              "delFlag": 4588,
+              "parentId": "MWtpZdP",
+              "permTypes": [
+                "S4osJ2T9B"
+              ],
+              "path": "vMgSs",
+              "component": "nhIyxINA",
+              "expand": "true",
+              "createBy": "TMEpWNQLIH",
+              "buttonType": "E",
+              "children": [],
+              "createTime": "Sep 27, 2073, 9:31:13 PM",
+              "updateBy": "0tI",
+              "sortOrder": 8839.76,
+              "name": "aRkiGQC8E",
+              "checked": "false",
+              "id": "1",
+              "selected": "false",
+              "status": 3612
+            }
+          ],
+          "createTime": "Jun 13, 2088, 7:48:53 PM",
+          "updateBy": "EufKlhw",
+          "sortOrder": 2431.62,
+          "name": "pYxeFb",
+          "checked": "false",
+          "id": "YTjuULem",
+          "selected": "false",
+          "status": 3409
+        }
+      ],
+      "createTime": "Feb 26, 2036, 3:06:55 AM",
+      "updateBy": "lgjxsXn",
+      "sortOrder": 2264.03,
+      "name": "c6OO",
+      "checked": "false",
+      "id": "3rYfURF2",
+      "selected": "false",
+      "status": 1749
+    }
+  ],
+  "testObject": {},
+  "id": "8",
+  "email": "7t7e2V",
+  "username": "YV",
+  "status": 3945
+}
+```
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/postMapping --data '{
+  "address": "cpWj1Nimg6",
+  "nickName": "xPqqn",
+  "sex": 6803,
+  "roles": [
+    {
+      "createBy": "bszEYJz",
+      "defaultRole": false,
+      "createTime": "Nov 19, 1998, 9:28:22 AM",
+      "updateBy": "GMuN9",
+      "permissions": [
+        {
+          "level": 1500,
+          "icon": "Ny",
+          "description": "FeDMI0",
+          "updateTime": "2056-10-30 17:41:30",
+          "type": 2832,
+          "title": "aS",
+          "delFlag": 40,
+          "parentId": "T0n",
+          "permTypes": [
+            "y"
+          ],
+          "path": "HUqVmB57vk",
+          "component": "Qmfcofwhx",
+          "expand": "true",
+          "createBy": "Bg",
+          "buttonType": "c",
+          "children": [
+            {
+              "level": 9672,
+              "icon": "rgm",
+              "description": "Foxr",
+              "updateTime": "2067-11-24 08:22:30",
+              "type": 2779,
+              "title": "pp",
+              "delFlag": 3034,
+              "parentId": "BM4DXSc",
+              "permTypes": [
+                "uZsyoD"
+              ],
+              "path": "57V",
+              "component": "Yl6db",
+              "expand": "true",
+              "createBy": "kp4h",
+              "buttonType": "pvrmxTu",
+              "children": [],
+              "createTime": "May 5, 1974, 11:23:31 PM",
+              "updateBy": "hRoXi",
+              "sortOrder": 9892.47,
+              "name": "U9zJ3R",
+              "checked": "false",
+              "id": "lS2BY",
+              "selected": "false",
+              "status": 4116
+            }
+          ],
+          "createTime": "May 14, 2074, 12:31:18 AM",
+          "updateBy": "vxLf2xNeiw",
+          "sortOrder": 3336.6,
+          "name": "2ai9xomjny",
+          "checked": "false",
+          "id": "8FlYOKW",
+          "selected": "false",
+          "status": 9233
+        }
+      ],
+      "name": "f",
+      "updateTime": "1993-05-12 04:10:59",
+      "id": "n85Xo4",
+      "delFlag": 9212
+    }
+  ],
+  "mobile": "Lp1hlpjGdy",
+  "description": "Un4q",
+  "updateTime": "1970-11-15 09:22:57",
+  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
+  "type": 6953,
+  "delFlag": 8065,
+  "password": "tWIt",
+  "createBy": "r",
+  "createTime": "Dec 31, 2055, 9:31:32 AM",
+  "updateBy": "o0UW",
+  "permissions": [
+    {
+      "level": 504,
+      "icon": "nKspxtb",
+      "description": "ZhYzZ",
+      "updateTime": "2043-02-27 12:58:37",
+      "type": 2285,
+      "title": "aqlJt2w",
+      "delFlag": 4634,
+      "parentId": "jh37kWzCZV",
+      "permTypes": [
+        "UWk4"
+      ],
+      "path": "0WV",
+      "component": "BP",
+      "expand": "true",
+      "createBy": "r",
+      "buttonType": "ueU",
+      "children": [
+        {
+          "level": 8151,
+          "icon": "Bv7Z8z",
+          "description": "2BGPHC",
+          "updateTime": "2064-08-22 15:49:40",
+          "type": 3910,
+          "title": "TE9cv",
+          "delFlag": 2029,
+          "parentId": "0YXD9vQo",
+          "permTypes": [
+            "DbDXwZWT"
+          ],
+          "path": "h4h6",
+          "component": "UCt0iOg2Wx",
+          "expand": "true",
+          "createBy": "9gSl1fV",
+          "buttonType": "PPEdA",
+          "children": [
+            {
+              "level": 1167,
+              "icon": "bES",
+              "description": "m3gmQBeKy",
+              "updateTime": "2052-03-22 20:35:58",
+              "type": 4906,
+              "title": "ijCDvgj5Ew",
+              "delFlag": 4588,
+              "parentId": "MWtpZdP",
+              "permTypes": [
+                "S4osJ2T9B"
+              ],
+              "path": "vMgSs",
+              "component": "nhIyxINA",
+              "expand": "true",
+              "createBy": "TMEpWNQLIH",
+              "buttonType": "E",
+              "children": [],
+              "createTime": "Sep 27, 2073, 9:31:13 PM",
+              "updateBy": "0tI",
+              "sortOrder": 8839.76,
+              "name": "aRkiGQC8E",
+              "checked": "false",
+              "id": "1",
+              "selected": "false",
+              "status": 3612
+            }
+          ],
+          "createTime": "Jun 13, 2088, 7:48:53 PM",
+          "updateBy": "EufKlhw",
+          "sortOrder": 2431.62,
+          "name": "pYxeFb",
+          "checked": "false",
+          "id": "YTjuULem",
+          "selected": "false",
+          "status": 3409
+        }
+      ],
+      "createTime": "Feb 26, 2036, 3:06:55 AM",
+      "updateBy": "lgjxsXn",
+      "sortOrder": 2264.03,
+      "name": "c6OO",
+      "checked": "false",
+      "id": "3rYfURF2",
+      "selected": "false",
+      "status": 1749
+    }
+  ],
+  "testObject": {},
+  "id": "8",
+  "email": "7t7e2V",
+  "username": "YV",
+  "status": 3945
+}'
+```
+
+## 7.测试PostMapping表单&nbsp;
+
+**URL:** http://localhost/postMapping2
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|&nbsp;|&nbsp;|user&nbsp;
+&nbsp;&nbsp; ├── testObject|object|&nbsp;|&nbsp;|测试object&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱&nbsp;
+&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址&nbsp;
+&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)&nbsp;
+&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
+&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型&nbsp;
+&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态&nbsp;
+&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/postMapping2 --data 'permissions[0].children[0].buttonType=wO06KYhL&roles[0].permissions[0].children[0].description=QeUBy&roles[0].updateBy=pT84&permissions[0].children[0].children[0].component=7h1Li&permissions[0].children[0].children[0].type=5582&type=6914&permissions[0].title=fgHzWcDlc&roles[0].permissions[0].level=7299&roles[0].permissions[0].checked=false&permissions[0].children[0].path=jF&password=6&roles[0].id=l2wY9k&permissions[0].buttonType=FgToeg8J&permissions[0].children[0].children[0].selected=false&permissions[0].status=9910&id=vfI1SR&permissions[0].children[0].createTime=Wed+Apr+17+09%3A43%3A09+CST+2058&permissions[0].children[0].children[0].createTime=Thu+Dec+21+04%3A03%3A33+CST+2045&roles[0].permissions[0].children[0].selected=false&permissions[0].icon=ApJRU3&permissions[0].parentId=TGn65TQ&permissions[0].children[0].children[0].level=1578&permissions[0].children[0].permTypes=XlKS&roles[0].permissions[0].updateTime=1990-04-26+01%3A09%3A50&roles[0].permissions[0].parentId=9s7&roles[0].permissions[0].expand=true&permissions[0].name=0z&permissions[0].permTypes=0mkJ&permissions[0].children[0].children[0].path=682vd&roles[0].permissions[0].children[0].status=1167&permissions[0].children[0].children[0].buttonType=pPoHyiCNzq&status=1511&permissions[0].updateTime=2020-05-13+07%3A14%3A12&roles[0].createTime=Fri+Jun+15+18%3A14%3A10+CST+2085&roles[0].createBy=FZruD5&permissions[0].path=fEi9wgd4uj&permissions[0].children[0].children[0].checked=false&roles[0].permissions[0].children[0].permTypes=R&roles[0].permissions[0].children[0].type=4296&permissions[0].children[0].children[0].parentId=kBz7aP4Q&roles[0].permissions[0].description=5&roles[0].permissions[0].children[0].checked=false&delFlag=3818&roles[0].permissions[0].sortOrder=1860.93&roles[0].updateTime=2008-07-10+04%3A49%3A33&permissions[0].children[0].createBy=ZC&roles[0].permissions[0].delFlag=1859&email=KRxK&roles[0].permissions[0].children[0].level=8437&permissions[0].sortOrder=8649.22&address=P&sex=621&roles[0].permissions[0].children[0].name=lrsHN&updateTime=2015-03-21+14%3A15%3A41&avatar=https%3A%2F%2Fs1.ax1x.com%2F2018%2F05%2F19%2FCcdVQP.png&permissions[0].type=8771&permissions[0].children[0].children[0].permTypes=Co&roles[0].permissions[0].id=MILNvUI&permissions[0].createTime=Wed+Mar+25+01%3A47%3A52+CST+2099&roles[0].permissions[0].children[0].component=zSnUA8esp&createTime=Fri+Jan+17+23%3A22%3A59+CST+2042&roles[0].permissions[0].children[0].parentId=cOmFhxR&permissions[0].children[0].delFlag=7871&permissions[0].checked=false&roles[0].permissions[0].children[0].icon=QXld&roles[0].permissions[0].children[0].createBy=Z&roles[0].permissions[0].status=4344&permissions[0].children[0].children[0].sortOrder=6802.19&permissions[0].createBy=hR9K7Ka9&roles[0].permissions[0].children[0].id=dRT7fx&permissions[0].children[0].children[0].updateTime=2096-07-01+12%3A20%3A27&permissions[0].children[0].parentId=noQ7dS4&roles[0].permissions[0].children[0].buttonType=f&roles[0].name=Xp&roles[0].permissions[0].children[0].sortOrder=6853.08&permissions[0].children[0].children[0].updateBy=FfkVUX&roles[0].permissions[0].name=f5nNBM&permissions[0].children[0].name=f9s&permissions[0].children[0].updateBy=K&nickName=Jq6cj&permissions[0].expand=true&permissions[0].children[0].description=aTDpOkkMv&permissions[0].children[0].children[0].delFlag=4896&permissions[0].children[0].level=4949&roles[0].permissions[0].createBy=2Ory&roles[0].permissions[0].icon=Ma&permissions[0].children[0].icon=m5vGzOm6e&roles[0].permissions[0].component=L8UoxQN&roles[0].permissions[0].title=e&roles[0].permissions[0].createTime=Fri+Nov+14+15%3A29%3A10+CST+2098&permissions[0].children[0].children[0].id=E2SJ&roles[0].permissions[0].children[0].expand=true&permissions[0].children[0].component=QgHKGZ&permissions[0].children[0].id=o8ug40z&permissions[0].component=ST&roles[0].permissions[0].children[0].createTime=Tue+Aug+21+08%3A58%3A52+CST+2040&roles[0].permissions[0].permTypes=zk&permissions[0].updateBy=NmO&roles[0].defaultRole=false&permissions[0].children[0].children[0].status=5716&permissions[0].children[0].title=8&roles[0].permissions[0].children[0].title=Djhv4WMY&description=Urir4fYN&roles[0].permissions[0].children[0].updateTime=1974-04-27+07%3A13%3A51&permissions[0].delFlag=8293&permissions[0].children[0].children[0].icon=BcKxowRt&permissions[0].children[0].children[0].description=GQe&roles[0].permissions[0].children[0].path=7EYKtNXe&updateBy=PS3&roles[0].permissions[0].updateBy=FhGwYll0zP&roles[0].permissions[0].children[0].updateBy=05vbPu&permissions[0].children[0].updateTime=2091-08-23+00%3A37%3A10&permissions[0].children[0].children[0].name=oi9&roles[0].permissions[0].buttonType=oiY&permissions[0].selected=false&roles[0].permissions[0].path=4OZOq7mqEo&permissions[0].id=EZYmL&mobile=SLabwdO&permissions[0].children[0].status=148&permissions[0].children[0].expand=true&permissions[0].children[0].sortOrder=8171.5&roles[0].permissions[0].selected=false&permissions[0].children[0].selected=false&roles[0].delFlag=4301&permissions[0].children[0].children[0].createBy=QWoIr6NdT&createBy=MkmPHN&permissions[0].children[0].children[0].expand=true&permissions[0].children[0].type=7842&permissions[0].children[0].children[0].title=GY9Ch8Nwp&roles[0].permissions[0].type=4144&permissions[0].level=9775&permissions[0].children[0].checked=false&permissions[0].description=ve7LoHlW&username=756w&roles[0].permissions[0].children[0].delFlag=9624'
+```
+
+## 8.测试PutMapping json&nbsp;
+
+**URL:** http://localhost/putMapping
+
+**Type:** PUT
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|user
+&nbsp;&nbsp; ├── testObject|object|&nbsp;|&nbsp;|测试object&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱&nbsp;
+&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址&nbsp;
+&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)&nbsp;
+&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
+&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型&nbsp;
+&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态&nbsp;
+&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "address": "Aptli0",
+  "nickName": "j3CPd",
+  "sex": 2931,
+  "roles": [
+    {
+      "createBy": "xrQYhjX",
+      "defaultRole": true,
+      "createTime": "Feb 19, 2025, 11:25:38 AM",
+      "updateBy": "eN0",
+      "permissions": [
+        {
+          "level": 7402,
+          "icon": "MF8Gk6",
+          "description": "Ja4fTcR9Vi",
+          "updateTime": "1985-10-14 18:27:59",
+          "type": 6167,
+          "title": "R0gPUlf7",
+          "delFlag": 1711,
+          "parentId": "TNc47D4",
+          "permTypes": [
+            "pjIur"
+          ],
+          "path": "QLKnb8ia",
+          "component": "gqtw4r",
+          "expand": "true",
+          "createBy": "s",
+          "buttonType": "LexzZyYvS",
+          "children": [
+            {
+              "level": 1534,
+              "icon": "Y",
+              "description": "FSc",
+              "updateTime": "2000-07-25 10:31:06",
+              "type": 15,
+              "title": "yKNn",
+              "delFlag": 13,
+              "parentId": "MSls",
+              "permTypes": [
+                "0sa5P"
+              ],
+              "path": "7AdFXUzgve",
+              "component": "PS1sIUlD",
+              "expand": "true",
+              "createBy": "Ty8FYs6R",
+              "buttonType": "jKW",
+              "children": [],
+              "createTime": "May 11, 2060, 1:04:08 PM",
+              "updateBy": "CF21rek3L",
+              "sortOrder": 7029.9,
+              "name": "LsRcIoelE",
+              "checked": "false",
+              "id": "9kG5HbdDrI",
+              "selected": "false",
+              "status": 7406
+            }
+          ],
+          "createTime": "Feb 9, 2098, 8:38:21 AM",
+          "updateBy": "0E",
+          "sortOrder": 1014.1,
+          "name": "wZdM1dqi4",
+          "checked": "false",
+          "id": "IoeToLN",
+          "selected": "false",
+          "status": 3713
+        }
+      ],
+      "name": "3xksE",
+      "updateTime": "2011-02-04 12:00:32",
+      "id": "z1kdkkIYp",
+      "delFlag": 2108
+    }
+  ],
+  "mobile": "MAv",
+  "description": "FQ",
+  "updateTime": "2057-12-08 02:52:51",
+  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
+  "type": 5417,
+  "delFlag": 9306,
+  "password": "5c0b7Ut8PU",
+  "createBy": "A",
+  "createTime": "Aug 13, 2029, 1:33:13 AM",
+  "updateBy": "v54",
+  "permissions": [
+    {
+      "level": 6196,
+      "icon": "7Qi",
+      "description": "SfWF4agqF",
+      "updateTime": "2094-10-26 06:15:10",
+      "type": 800,
+      "title": "hOZXtu3V",
+      "delFlag": 5053,
+      "parentId": "Tqe",
+      "permTypes": [
+        "gXIdrybWI1"
+      ],
+      "path": "roqJ0",
+      "component": "TWAJIi",
+      "expand": "true",
+      "createBy": "siq2teIF",
+      "buttonType": "LZvE8Qr",
+      "children": [
+        {
+          "level": 9242,
+          "icon": "2VBMuXIV",
+          "description": "E1l7nYlQ5w",
+          "updateTime": "1999-08-30 13:42:21",
+          "type": 3016,
+          "title": "lwQE4",
+          "delFlag": 3702,
+          "parentId": "dMd",
+          "permTypes": [
+            "VemEfz"
+          ],
+          "path": "agnZ",
+          "component": "VU",
+          "expand": "true",
+          "createBy": "xqHgJIpyg",
+          "buttonType": "cBPZeBjuj",
+          "children": [
+            {
+              "level": 5395,
+              "icon": "Xy7y",
+              "description": "ozuExmud",
+              "updateTime": "1978-07-24 04:44:26",
+              "type": 1331,
+              "title": "P",
+              "delFlag": 7277,
+              "parentId": "NndC0xxmtj",
+              "permTypes": [
+                "TgBZhyXA0M"
+              ],
+              "path": "8THTL909",
+              "component": "ZX",
+              "expand": "true",
+              "createBy": "pzr",
+              "buttonType": "ro",
+              "children": [],
+              "createTime": "Apr 8, 1980, 1:39:52 PM",
+              "updateBy": "Hvdy",
+              "sortOrder": 3862.89,
+              "name": "1w6nwUBZ",
+              "checked": "false",
+              "id": "ji61AXKfDM",
+              "selected": "false",
+              "status": 9237
+            }
+          ],
+          "createTime": "Aug 24, 2033, 1:05:40 AM",
+          "updateBy": "HP3",
+          "sortOrder": 6321.21,
+          "name": "HdKChb",
+          "checked": "false",
+          "id": "vWWErep",
+          "selected": "false",
+          "status": 3358
+        }
+      ],
+      "createTime": "Jul 3, 2061, 3:05:54 AM",
+      "updateBy": "PU3Bo",
+      "sortOrder": 1714.0,
+      "name": "VdvZ",
+      "checked": "false",
+      "id": "kh",
+      "selected": "false",
+      "status": 1958
+    }
+  ],
+  "testObject": {},
+  "id": "SD2QJHME8",
+  "email": "6hk0Pk",
+  "username": "Bg8i",
+  "status": 3052
+}
+```
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X PUT -H 'Content-Type: application/json' -i http://localhost/putMapping --data '{
+  "address": "Aptli0",
+  "nickName": "j3CPd",
+  "sex": 2931,
+  "roles": [
+    {
+      "createBy": "xrQYhjX",
+      "defaultRole": true,
+      "createTime": "Feb 19, 2025, 11:25:38 AM",
+      "updateBy": "eN0",
+      "permissions": [
+        {
+          "level": 7402,
+          "icon": "MF8Gk6",
+          "description": "Ja4fTcR9Vi",
+          "updateTime": "1985-10-14 18:27:59",
+          "type": 6167,
+          "title": "R0gPUlf7",
+          "delFlag": 1711,
+          "parentId": "TNc47D4",
+          "permTypes": [
+            "pjIur"
+          ],
+          "path": "QLKnb8ia",
+          "component": "gqtw4r",
+          "expand": "true",
+          "createBy": "s",
+          "buttonType": "LexzZyYvS",
+          "children": [
+            {
+              "level": 1534,
+              "icon": "Y",
+              "description": "FSc",
+              "updateTime": "2000-07-25 10:31:06",
+              "type": 15,
+              "title": "yKNn",
+              "delFlag": 13,
+              "parentId": "MSls",
+              "permTypes": [
+                "0sa5P"
+              ],
+              "path": "7AdFXUzgve",
+              "component": "PS1sIUlD",
+              "expand": "true",
+              "createBy": "Ty8FYs6R",
+              "buttonType": "jKW",
+              "children": [],
+              "createTime": "May 11, 2060, 1:04:08 PM",
+              "updateBy": "CF21rek3L",
+              "sortOrder": 7029.9,
+              "name": "LsRcIoelE",
+              "checked": "false",
+              "id": "9kG5HbdDrI",
+              "selected": "false",
+              "status": 7406
+            }
+          ],
+          "createTime": "Feb 9, 2098, 8:38:21 AM",
+          "updateBy": "0E",
+          "sortOrder": 1014.1,
+          "name": "wZdM1dqi4",
+          "checked": "false",
+          "id": "IoeToLN",
+          "selected": "false",
+          "status": 3713
+        }
+      ],
+      "name": "3xksE",
+      "updateTime": "2011-02-04 12:00:32",
+      "id": "z1kdkkIYp",
+      "delFlag": 2108
+    }
+  ],
+  "mobile": "MAv",
+  "description": "FQ",
+  "updateTime": "2057-12-08 02:52:51",
+  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
+  "type": 5417,
+  "delFlag": 9306,
+  "password": "5c0b7Ut8PU",
+  "createBy": "A",
+  "createTime": "Aug 13, 2029, 1:33:13 AM",
+  "updateBy": "v54",
+  "permissions": [
+    {
+      "level": 6196,
+      "icon": "7Qi",
+      "description": "SfWF4agqF",
+      "updateTime": "2094-10-26 06:15:10",
+      "type": 800,
+      "title": "hOZXtu3V",
+      "delFlag": 5053,
+      "parentId": "Tqe",
+      "permTypes": [
+        "gXIdrybWI1"
+      ],
+      "path": "roqJ0",
+      "component": "TWAJIi",
+      "expand": "true",
+      "createBy": "siq2teIF",
+      "buttonType": "LZvE8Qr",
+      "children": [
+        {
+          "level": 9242,
+          "icon": "2VBMuXIV",
+          "description": "E1l7nYlQ5w",
+          "updateTime": "1999-08-30 13:42:21",
+          "type": 3016,
+          "title": "lwQE4",
+          "delFlag": 3702,
+          "parentId": "dMd",
+          "permTypes": [
+            "VemEfz"
+          ],
+          "path": "agnZ",
+          "component": "VU",
+          "expand": "true",
+          "createBy": "xqHgJIpyg",
+          "buttonType": "cBPZeBjuj",
+          "children": [
+            {
+              "level": 5395,
+              "icon": "Xy7y",
+              "description": "ozuExmud",
+              "updateTime": "1978-07-24 04:44:26",
+              "type": 1331,
+              "title": "P",
+              "delFlag": 7277,
+              "parentId": "NndC0xxmtj",
+              "permTypes": [
+                "TgBZhyXA0M"
+              ],
+              "path": "8THTL909",
+              "component": "ZX",
+              "expand": "true",
+              "createBy": "pzr",
+              "buttonType": "ro",
+              "children": [],
+              "createTime": "Apr 8, 1980, 1:39:52 PM",
+              "updateBy": "Hvdy",
+              "sortOrder": 3862.89,
+              "name": "1w6nwUBZ",
+              "checked": "false",
+              "id": "ji61AXKfDM",
+              "selected": "false",
+              "status": 9237
+            }
+          ],
+          "createTime": "Aug 24, 2033, 1:05:40 AM",
+          "updateBy": "HP3",
+          "sortOrder": 6321.21,
+          "name": "HdKChb",
+          "checked": "false",
+          "id": "vWWErep",
+          "selected": "false",
+          "status": 3358
+        }
+      ],
+      "createTime": "Jul 3, 2061, 3:05:54 AM",
+      "updateBy": "PU3Bo",
+      "sortOrder": 1714.0,
+      "name": "VdvZ",
+      "checked": "false",
+      "id": "kh",
+      "selected": "false",
+      "status": 1958
+    }
+  ],
+  "testObject": {},
+  "id": "SD2QJHME8",
+  "email": "6hk0Pk",
+  "username": "Bg8i",
+  "status": 3052
+}'
+```
+
+## 9.测试PutMapping表单&nbsp;
+
+**URL:** http://localhost/putMapping2
+
+**Type:** PUT
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|&nbsp;|&nbsp;|user&nbsp;
+&nbsp;&nbsp; ├── testObject|object|&nbsp;|&nbsp;|测试object&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱&nbsp;
+&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址&nbsp;
+&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)&nbsp;
+&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
+&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型&nbsp;
+&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态&nbsp;
+&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X PUT -i http://localhost/putMapping2 --data 'permissions[0].children[0].buttonType=hQaxjPH&roles[0].permissions[0].children[0].description=kZDzlC&roles[0].updateBy=RfolSUm&permissions[0].children[0].children[0].component=ISuSN2k&permissions[0].children[0].children[0].type=4939&type=4383&permissions[0].title=pg4r4&roles[0].permissions[0].level=3902&roles[0].permissions[0].checked=false&permissions[0].children[0].path=bULR&password=YVDYdNVnd&roles[0].id=8z4h5lfX&permissions[0].buttonType=TlQ3&permissions[0].children[0].children[0].selected=false&permissions[0].status=9214&id=DkVqB1&permissions[0].children[0].createTime=Sat+Feb+13+04%3A51%3A44+CST+2100&permissions[0].children[0].children[0].createTime=Thu+Nov+26+17%3A42%3A49+CST+2026&roles[0].permissions[0].children[0].selected=false&permissions[0].icon=iyvRXA&permissions[0].parentId=0w&permissions[0].children[0].children[0].level=5939&permissions[0].children[0].permTypes=AMAT2j6&roles[0].permissions[0].updateTime=2010-01-26+21%3A27%3A33&roles[0].permissions[0].parentId=IbZjVwJYjx&roles[0].permissions[0].expand=true&permissions[0].name=UrBiOvS0&permissions[0].permTypes=CUp&permissions[0].children[0].children[0].path=RSRdUzTZYm&roles[0].permissions[0].children[0].status=410&permissions[0].children[0].children[0].buttonType=MmxQDxJGH&status=933&permissions[0].updateTime=1974-11-17+18%3A46%3A06&roles[0].createTime=Mon+Feb+21+09%3A47%3A44+CST+2005&roles[0].createBy=Wgr2TIpvN0&permissions[0].path=zK&permissions[0].children[0].children[0].checked=false&roles[0].permissions[0].children[0].permTypes=elDwDn6nuu&roles[0].permissions[0].children[0].type=8934&permissions[0].children[0].children[0].parentId=6Gdez&roles[0].permissions[0].description=e&roles[0].permissions[0].children[0].checked=false&delFlag=2831&roles[0].permissions[0].sortOrder=7104.84&roles[0].updateTime=1980-10-28+06%3A51%3A21&permissions[0].children[0].createBy=O0kNqlstu&roles[0].permissions[0].delFlag=4015&email=RBr6AF&roles[0].permissions[0].children[0].level=926&permissions[0].sortOrder=4266.7&address=iNl&sex=3775&roles[0].permissions[0].children[0].name=PJDQDrGx&updateTime=2052-05-14+03%3A39%3A16&avatar=https%3A%2F%2Fs1.ax1x.com%2F2018%2F05%2F19%2FCcdVQP.png&permissions[0].type=872&permissions[0].children[0].children[0].permTypes=RkGAuus&roles[0].permissions[0].id=fVkfiwJCdO&permissions[0].createTime=Tue+Mar+03+07%3A05%3A00+CST+2071&roles[0].permissions[0].children[0].component=fi75DTYi8&createTime=Fri+Jun+15+18%3A42%3A48+CST+2046&roles[0].permissions[0].children[0].parentId=fa&permissions[0].children[0].delFlag=5491&permissions[0].checked=false&roles[0].permissions[0].children[0].icon=aM0&roles[0].permissions[0].children[0].createBy=VO&roles[0].permissions[0].status=2723&permissions[0].children[0].children[0].sortOrder=3929.05&permissions[0].createBy=I8ckS&roles[0].permissions[0].children[0].id=hMwVX1P&permissions[0].children[0].children[0].updateTime=2066-01-10+17%3A01%3A24&permissions[0].children[0].parentId=Y3Yb&roles[0].permissions[0].children[0].buttonType=lRy6q&roles[0].name=S&roles[0].permissions[0].children[0].sortOrder=3822.38&permissions[0].children[0].children[0].updateBy=pvBiyJiw&roles[0].permissions[0].name=GDMKsW&permissions[0].children[0].name=yr9l&permissions[0].children[0].updateBy=6h3&nickName=7xigI&permissions[0].expand=true&permissions[0].children[0].description=1&permissions[0].children[0].children[0].delFlag=384&permissions[0].children[0].level=7811&roles[0].permissions[0].createBy=iRYut&roles[0].permissions[0].icon=oT9E&permissions[0].children[0].icon=9yTCZ6Vy&roles[0].permissions[0].component=gMruwvs1aB&roles[0].permissions[0].title=Ercnn2NbOW&roles[0].permissions[0].createTime=Wed+Jan+12+19%3A35%3A20+CST+2022&permissions[0].children[0].children[0].id=O1ajAa4A4n&roles[0].permissions[0].children[0].expand=true&permissions[0].children[0].component=azTbom&permissions[0].children[0].id=mCMdk6Xl&permissions[0].component=V0S3GKW7&roles[0].permissions[0].children[0].createTime=Sun+Mar+14+06%3A43%3A33+CST+2094&roles[0].permissions[0].permTypes=bF2B&permissions[0].updateBy=XLtTKGdD&roles[0].defaultRole=false&permissions[0].children[0].children[0].status=5355&permissions[0].children[0].title=T1sDSKS&roles[0].permissions[0].children[0].title=iK3ye4&description=hH6a&roles[0].permissions[0].children[0].updateTime=2082-05-09+13%3A37%3A35&permissions[0].delFlag=6195&permissions[0].children[0].children[0].icon=zD9rfVN&permissions[0].children[0].children[0].description=LbP&roles[0].permissions[0].children[0].path=q8&updateBy=q45j4V&roles[0].permissions[0].updateBy=XvWckaPR&roles[0].permissions[0].children[0].updateBy=5kLz2&permissions[0].children[0].updateTime=2063-09-23+09%3A55%3A22&permissions[0].children[0].children[0].name=BXH2PtiApQ&roles[0].permissions[0].buttonType=yvMxVu4NxL&permissions[0].selected=false&roles[0].permissions[0].path=UcaMiz&permissions[0].id=z&mobile=5z&permissions[0].children[0].status=9950&permissions[0].children[0].expand=true&permissions[0].children[0].sortOrder=8829.38&roles[0].permissions[0].selected=false&permissions[0].children[0].selected=false&roles[0].delFlag=9700&permissions[0].children[0].children[0].createBy=JrhD4XBjU&createBy=lQyr0p4r&permissions[0].children[0].children[0].expand=true&permissions[0].children[0].type=2874&permissions[0].children[0].children[0].title=33V5aoGGRi&roles[0].permissions[0].type=1863&permissions[0].level=1832&permissions[0].children[0].checked=false&permissions[0].description=99JP7&username=CZJDPYua&roles[0].permissions[0].children[0].delFlag=6080'
+```
+
+## 10.测试DeleteMapping&nbsp;
+
+**URL:** http://localhost/deleteMapping
+
+**Type:** DELETE
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── userId|int64|true|<br/>		<br/>		<br/><br/>				<br/>|userId
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X DELETE -i http://localhost/deleteMapping --data 'userId=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A'
+```
+
+# 实现controller接口&nbsp;
+
+## 1.新增一个对象&nbsp;
+
+**URL:** http://localhost/testImpl/
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── request|object|true|&nbsp;|
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testImpl/
+```
+
+## 2.更新一个对象&nbsp;
+
+**URL:** http://localhost/testImpl/{id}
+
+**Type:** PUT
+
+**Content-Type:** application/json
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── id|int64|true|&nbsp;|编号
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── request|object|true|&nbsp;|
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X PUT -H 'Content-Type: application/json' -i http://localhost/testImpl/9760
+```
+
+# Class Name：com.power.doc.controller.PageController
+
+## 1.分页查询用户列表&nbsp;
+
+**URL:** http://localhost/page/page
+
+**Type:** GET
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|
+&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
+&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
+&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>测试分隔注释&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── passwordssss|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── role|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户角色信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|&nbsp;|&nbsp;|用户扩展项&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|&nbsp;|&nbsp;|ListMap效果展示&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "passwordssss": [
+    "y4qUGnw"
+  ],
+  "role": {
+    "createBy": "MfldGp",
+    "createTime": "Aug 29, 2067, 2:54:46 AM",
+    "updateBy": "FcTBCWEBzk",
+    "roleId": "Fm1iY0",
+    "roleName": "uDOzVV",
+    "updateTime": "2069-04-12 16:40:03",
+    "id": "EnksjhNj",
+    "delFlag": 5545,
+    "userId": "FoT"
+  },
+  "gender": "MAN",
+  "nickName": "w",
+  "listMap": [
+    {
+      "null": "c"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "0uLq",
+      "createTime": "Apr 7, 2100, 8:05:31 PM",
+      "updateBy": "3",
+      "roleId": "HR",
+      "roleName": "5tkTPd",
+      "updateTime": "1998-10-27 16:51:17",
+      "id": "M",
+      "delFlag": 8920,
+      "userId": "B25QII3ZW"
+    }
+  ],
+  "mobile": "BdL",
+  "extend": {
+    "null": "7"
+  },
+  "password": "WYFsY",
+  "MAX_SPEED": "120",
+  "simpleEnum": "BLUE",
+  "AGE": "100",
+  "username": "Sob"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|Author: hcy<br/>Version: 1.0.0V<br/>Date:  2019/12/5 10:32<br/>Description: 正常返回工具类&nbsp;
+├── timestamp|string|时间戳&nbsp;
+├── traceId|string|链路id&nbsp;
+├── data|object|返回数据&nbsp;
+│&nbsp;&nbsp; ├── records|array&lt;object&gt;|记录数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|车名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── length|double|长度&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── pager|object|分页&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── total|int32|记录总数&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── concurrentPage|int32|当前页&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── pageSize|int32|当前page&nbsp;
+│&nbsp;&nbsp; ├── test|array&lt;object&gt;|测试&nbsp;
+│&nbsp;&nbsp; ├── orders|array&lt;object&gt;|排序字段&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── column|string|排序字段&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── asc|boolean|是否正序&nbsp;
+│&nbsp;&nbsp; ├── total|int64|总数&nbsp;
+│&nbsp;&nbsp; └── size|int64|&nbsp;
+├── message|string|ok: 接口业务成功返回<br/>其他返回表示相应的错误提示&nbsp;
+└── code|string|0: 表示业务正常返回<br/>非0: 则表示业务异常, msg会有相应的异常信息&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "G4urS",
+  "code": "UUyux",
+  "data": {
+    "total": "0",
+    "test": [
+      {}
+    ],
+    "size": "10",
+    "records": [
+      {
+        "pager": {
+          "total": 0,
+          "concurrentPage": 0,
+          "pageSize": 0
+        },
+        "name": "Un",
+        "length": 4559.67
+      }
+    ],
+    "orders": [
+      {
+        "asc": "true",
+        "column": "TpzD"
+      }
+    ]
+  },
+  "message": "Emima",
+  "timestamp": "XccUJtf8Qs"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'Content-Type: application/json' -i http://localhost/page/page --data '{
+  "passwordssss": [
+    "y4qUGnw"
+  ],
+  "role": {
+    "createBy": "MfldGp",
+    "createTime": "Aug 29, 2067, 2:54:46 AM",
+    "updateBy": "FcTBCWEBzk",
+    "roleId": "Fm1iY0",
+    "roleName": "uDOzVV",
+    "updateTime": "2069-04-12 16:40:03",
+    "id": "EnksjhNj",
+    "delFlag": 5545,
+    "userId": "FoT"
+  },
+  "gender": "MAN",
+  "nickName": "w",
+  "listMap": [
+    {
+      "null": "c"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "0uLq",
+      "createTime": "Apr 7, 2100, 8:05:31 PM",
+      "updateBy": "3",
+      "roleId": "HR",
+      "roleName": "5tkTPd",
+      "updateTime": "1998-10-27 16:51:17",
+      "id": "M",
+      "delFlag": 8920,
+      "userId": "B25QII3ZW"
+    }
+  ],
+  "mobile": "BdL",
+  "extend": {
+    "null": "7"
+  },
+  "password": "WYFsY",
+  "MAX_SPEED": "120",
+  "simpleEnum": "BLUE",
+  "AGE": "100",
+  "username": "Sob"
+}'
+```
+
+## 2.mybatisPage分页查询用户列表&nbsp;
+
+**URL:** http://localhost/page/mybatisPage
+
+**Type:** GET
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|
+&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
+&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
+&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人\nwewew")<br/>MAN(2,"男人")&nbsp;
+&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>测试分隔注释&nbsp;
+&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码&nbsp;
+&nbsp;&nbsp; ├── passwordssss|array|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话&nbsp;
+&nbsp;&nbsp; ├── role|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户角色信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ~~updateTime~~|~~string~~|&nbsp;|&nbsp;|~~修改时间~~<br/>~~Pattern: yyyy-MM-dd HH:mm:ss~~
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── test|object|&nbsp;|&nbsp;|测试数据&nbsp;
+&nbsp;&nbsp; ├── extend|map&lt;string, string&gt;|&nbsp;|&nbsp;|用户扩展项&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; └── listMap|array&lt;map&lt;string, string&gt;&gt;|&nbsp;|&nbsp;|ListMap效果展示&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "passwordssss": [
+    "gmjNr1Oap0"
+  ],
+  "role": {
+    "createBy": "I4sHUVWFa",
+    "createTime": "Jan 8, 2068, 8:40:37 AM",
+    "updateBy": "kti",
+    "roleId": "S",
+    "roleName": "2oE",
+    "updateTime": "1981-03-29 20:37:24",
+    "id": "Kipd",
+    "delFlag": 4397,
+    "userId": "fCpDoG"
+  },
+  "gender": "WOMAN",
+  "nickName": "fuM",
+  "listMap": [
+    {
+      "null": "y2lFL"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "jNbjg",
+      "createTime": "Oct 30, 2002, 4:30:53 AM",
+      "updateBy": "i9BJlK5Y",
+      "roleId": "El0XHSN4p",
+      "roleName": "dbLbxo1t",
+      "updateTime": "2045-01-21 21:02:00",
+      "id": "Uo",
+      "delFlag": 7352,
+      "userId": "7YgWiMKlaz"
+    }
+  ],
+  "mobile": "5Q2oA",
+  "extend": {
+    "null": "Mow4iN4o"
+  },
+  "password": "NjREtO",
+  "MAX_SPEED": "120",
+  "simpleEnum": "RED",
+  "AGE": "100",
+  "username": "arJ"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|Author: hcy<br/>Version: 1.0.0V<br/>Date:  2019/12/5 10:32<br/>Description: 正常返回工具类&nbsp;
+├── timestamp|string|时间戳&nbsp;
+├── traceId|string|链路id&nbsp;
+├── data|object|返回数据&nbsp;
+│&nbsp;&nbsp; ├── records|array&lt;object&gt;|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|车名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── length|double|长度&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── pager|object|分页&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── total|int32|记录总数&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── concurrentPage|int32|当前页&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── pageSize|int32|当前page&nbsp;
+│&nbsp;&nbsp; ├── total|int64|&nbsp;
+│&nbsp;&nbsp; ├── size|int64|&nbsp;
+│&nbsp;&nbsp; ├── current|int64|&nbsp;
+│&nbsp;&nbsp; ├── orders|array&lt;object&gt;|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── column|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── asc|boolean|&nbsp;
+│&nbsp;&nbsp; ├── optimizeCountSql|boolean|&nbsp;
+│&nbsp;&nbsp; ├── searchCount|boolean|&nbsp;
+│&nbsp;&nbsp; ├── optimizeJoinOfCountSql|boolean|&nbsp;
+│&nbsp;&nbsp; ├── countId|string|&nbsp;
+│&nbsp;&nbsp; └── maxLimit|int64|&nbsp;
+├── message|string|ok: 接口业务成功返回<br/>其他返回表示相应的错误提示&nbsp;
+└── code|string|0: 表示业务正常返回<br/>非0: 则表示业务异常, msg会有相应的异常信息&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "06H",
+  "code": "iu",
+  "data": {
+    "total": 0,
+    "current": 0,
+    "size": 0,
+    "optimizeCountSql": false,
+    "records": [
+      {
+        "pager": {
+          "total": 0,
+          "concurrentPage": 0,
+          "pageSize": 0
+        },
+        "name": "EzT9uRcYj",
+        "length": 2764.12
+      }
+    ],
+    "maxLimit": 9190,
+    "searchCount": false,
+    "optimizeJoinOfCountSql": false,
+    "orders": [
+      {
+        "asc": false,
+        "column": "G"
+      }
+    ],
+    "countId": "w01GiKcQ"
+  },
+  "message": "gL9yaq67q",
+  "timestamp": "WPm3XP7DW"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'Content-Type: application/json' -i http://localhost/page/mybatisPage --data '{
+  "passwordssss": [
+    "gmjNr1Oap0"
+  ],
+  "role": {
+    "createBy": "I4sHUVWFa",
+    "createTime": "Jan 8, 2068, 8:40:37 AM",
+    "updateBy": "kti",
+    "roleId": "S",
+    "roleName": "2oE",
+    "updateTime": "1981-03-29 20:37:24",
+    "id": "Kipd",
+    "delFlag": 4397,
+    "userId": "fCpDoG"
+  },
+  "gender": "WOMAN",
+  "nickName": "fuM",
+  "listMap": [
+    {
+      "null": "y2lFL"
+    }
+  ],
+  "roles": [
+    {
+      "createBy": "jNbjg",
+      "createTime": "Oct 30, 2002, 4:30:53 AM",
+      "updateBy": "i9BJlK5Y",
+      "roleId": "El0XHSN4p",
+      "roleName": "dbLbxo1t",
+      "updateTime": "2045-01-21 21:02:00",
+      "id": "Uo",
+      "delFlag": 7352,
+      "userId": "7YgWiMKlaz"
+    }
+  ],
+  "mobile": "5Q2oA",
+  "extend": {
+    "null": "Mow4iN4o"
+  },
+  "password": "NjREtO",
+  "MAX_SPEED": "120",
+  "simpleEnum": "RED",
+  "AGE": "100",
+  "username": "arJ"
+}'
+```
+
+# Test ResponseEntity&nbsp;
+
+## 1.ResponseEntity return List&nbsp;
+
+**URL:** http://localhost/responseEntity/list
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;object&gt;|&nbsp;
+└── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "userAddress": "2QNfEbRPA",
+    "small": 9551.81,
+    "userList": [
+      {
+        "userAddress": "h8bwWwX",
+        "small": 950.98,
+        "userList": [],
+        "money": 8229.63,
+        "phone": "GaA",
+        "createTime": 6945,
+        "nickName": "jVZsi9",
+        "ipv6": "W37w8OOnU",
+        "telephone": "DKqmgn2Nj",
+        "userName": "b9HUr",
+        "userDetails": [
+          {
+            "githubAddress": "0"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "money": 4188.17,
+    "phone": "KayU1",
+    "createTime": 2137,
+    "nickName": "kXW7",
+    "ipv6": "WhP0hAk",
+    "telephone": "QPkfV2jb",
+    "userName": "1IXaKm17",
+    "userDetails": [
+      {
+        "githubAddress": "HsnksjQN"
+      }
+    ],
+    "userAge": 0
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/responseEntity/list
+```
+
+# fastmybatis&nbsp;
+
+## 1.fastmybatis测试&nbsp;
+
+**URL:** http://localhost/fastmybatis
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── param|object|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; ├── code|int32|&nbsp;|0|错误码&nbsp;
+&nbsp;&nbsp; ├── pageIndex|int32|&nbsp;|0|&nbsp;
+&nbsp;&nbsp; └── pageSize|int32|&nbsp;|0|&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/fastmybatis --data 'pageSize=0&code=0&pageIndex=0'
+```
+
+# FastJson和Jackson注解支持测试&nbsp;
+
+## 1.Jackson注解支持测试&nbsp;
+
+**URL:** http://localhost/json/jacksonTest
+
+**Type:** ALL
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── annotation|object|true|&nbsp;|
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; └── idCard|string|&nbsp;|&nbsp;|身份证号&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "idCard": "1fru4g7mA1",
+  "username": "AY9X"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── username|string|用户名&nbsp;
+└── idCard|string|身份证号&nbsp;
+
+**Response-example:**
+``` json
+{
+  "idCard": "K3IY1E5ORs",
+  "username": "mTg"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'Content-Type: application/json' -i http://localhost/json/jacksonTest --data '{
+  "idCard": "1fru4g7mA1",
+  "username": "AY9X"
+}'
+```
+
+## 2.FastJson注解支持测试&nbsp;
+
+**URL:** http://localhost/json/fastJsonTest
+
+**Type:** ALL
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── fastJson|object|true|&nbsp;|
+&nbsp;&nbsp; ├── dataExpressionEnum|enum|&nbsp;|&nbsp;|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature&nbsp;
+&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|&nbsp;|&nbsp;|菜单/权限编码&nbsp;
+&nbsp;&nbsp; ├── date|string|&nbsp;|&nbsp;|学好&nbsp;
+&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>Pattern: 
+&nbsp;&nbsp; ├── idCard|string|&nbsp;|&nbsp;|身份证号<br/>Pattern: 
+&nbsp;&nbsp; ├── age|int32|&nbsp;|0|&nbsp;
+&nbsp;&nbsp; └── age2|int32|&nbsp;|&nbsp;|Pattern: 
+
+**Request-body-example:**
+``` json
+{
+  "date": "May 22, 2055, 1:41:51 AM",
+  "idCard": "OPplxk2Z",
+  "menuPermissionCodes": [
+    "WAIT_PAY"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 1356,
+  "username": "G3asfyT"
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── dataExpressionEnum|enum|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature&nbsp;
+├── menuPermissionCodes|array&lt;enum&gt;|菜单/权限编码&nbsp;
+├── date|string|学好&nbsp;
+├── username|string|用户名<br/>Pattern: 
+├── idCard|string|身份证号<br/>Pattern: 
+├── age|int32|&nbsp;
+└── age2|int32|Pattern: 
+
+**Response-example:**
+``` json
+{
+  "date": "Dec 28, 1970, 12:27:54 AM",
+  "idCard": "7J",
+  "menuPermissionCodes": [
+    "EXPIRED"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 9629,
+  "username": "Iau0U"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'Content-Type: application/json' -i http://localhost/json/fastJsonTest --data '{
+  "date": "May 22, 2055, 1:41:51 AM",
+  "idCard": "OPplxk2Z",
+  "menuPermissionCodes": [
+    "WAIT_PAY"
+  ],
+  "dataExpressionEnum": "SENSIRION",
+  "age": 0,
+  "age2": 1356,
+  "username": "G3asfyT"
+}'
+```
+
+# 测试类多路径&nbsp;
+
+## 1.测试1&nbsp;
+
+**URL:** http://localhost/testMultiPathOne/{path}/test/abc
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── path|string|true|&nbsp;|
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── name|string|&nbsp;|&nbsp;|名称<br/>&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "BnRIdj",
+  "code": "m2n",
+  "success": false,
+  "message": "ETpA",
+  "timestamp": "69Bb3Yj9"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/testMultiPathOne/LaoF/test/abc --data 'name=BhyaeTzDm'
+```
+
+## 2.测试2&nbsp;
+
+**URL:** http://localhost/testMultiPathOne/{path}/test/{path2}/abc2
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── path|string|true|&nbsp;|路径1<br/>
+└── path2|string|true|&nbsp;|路径2<br/>
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "3xOBN",
+  "code": "X",
+  "success": false,
+  "message": "Amf",
+  "timestamp": "p3oK6cVXs"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/testMultiPathOne/y7B/test/6v1Hin/abc2
+```
+
+# InnovateFruitController&nbsp;
+
+## 1.列表&nbsp;
+
+**URL:** http://localhost/InnovateFruit/list
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|公共列表出参&nbsp;
+│&nbsp;&nbsp; ├── result|array&lt;object&gt;|结果集&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|车名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── length|double|长度&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── pager|object|分页&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── total|int32|记录总数&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── concurrentPage|int32|当前页&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── pageSize|int32|当前page&nbsp;
+│&nbsp;&nbsp; ├── pageSize|int32|分页 每页条数
+│&nbsp;&nbsp; ├── pageNum|int32|分页 页数
+│&nbsp;&nbsp; └── Total|int64|分页 总条数
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "p",
+  "code": "AzNvKwtN9",
+  "data": {
+    "result": [
+      {
+        "pager": {
+          "total": 0,
+          "concurrentPage": 0,
+          "pageSize": 0
+        },
+        "name": "m9",
+        "length": 3133.37
+      }
+    ],
+    "Total": 0,
+    "pageSize": 0,
+    "pageNum": 0
+  },
+  "success": false,
+  "message": "NcFj8rrBQy",
+  "timestamp": "Fu"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/InnovateFruit/list
+```
+
+# Test inner class&nbsp;
+
+## 1.Return A object contains Inner class&nbsp;
+
+**URL:** http://localhost/inner/class
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|用于测试内部类解析&nbsp;
+├── name|string|姓名&nbsp;
+└── innerClass|object|内部类&nbsp;
+&nbsp;&nbsp; └── phone|string|电话&nbsp;
+
+**Response-example:**
+``` json
+{
+  "name": "rfJSy",
+  "innerClass": {
+    "phone": "IPv"
+  }
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/inner/class
+```
+
+# List返回接口Api文档测试&nbsp;
+
+## 1.List&lt;String&gt;结构&nbsp;
+
+**URL:** http://localhost/list/listString
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;string&gt;|&nbsp;
+└── &nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+[
+  "xT"
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listString
+```
+
+## 2.List&lt;Map&lt;String,String&gt;&gt;结构&nbsp;
+
+**URL:** http://localhost/list/listMap
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;map&gt;|&nbsp;
+└── &nbsp;|map&lt;string, string&gt;|&nbsp;
+&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; └── &nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "null": "6"
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listMap
+```
+
+## 3.List&lt;自动义对象&gt;&nbsp;
+
+**URL:** http://localhost/list/listObject
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;object&gt;|&nbsp;
+└── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "userAddress": "qcge9m58sw",
+    "small": 678.0,
+    "userList": [
+      {
+        "userAddress": "mwd8jK",
+        "small": 4882.4,
+        "userList": [],
+        "money": 9514.71,
+        "phone": "LY",
+        "createTime": 2320,
+        "nickName": "1Vi1OZ8VUb",
+        "ipv6": "8OtC",
+        "telephone": "7VfLnOEcQY",
+        "userName": "9TJ0",
+        "userDetails": [
+          {
+            "githubAddress": "UUNDFzT"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "money": 3117.37,
+    "phone": "HDJ9UHi",
+    "createTime": 7097,
+    "nickName": "h9",
+    "ipv6": "dDar",
+    "telephone": "iIwczv",
+    "userName": "R47dIO40",
+    "userDetails": [
+      {
+        "githubAddress": "kYYt"
+      }
+    ],
+    "userAge": 0
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/list/listObject
+```
+
+## 4.List&lt;Map&lt;String,T&gt;&gt;结构&nbsp;
+
+**URL:** http://localhost/list/listMap2
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;map&gt;|&nbsp;
+└── &nbsp;|map&lt;string, object&gt;|&nbsp;
+&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>学生信息&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── stuName|string|姓名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── stuAge|boolean|年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── stuAddress|string|地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── user|object|用户对象&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── listMap|array&lt;map&lt;string, int32&gt;&gt;|listMap&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── user1|object|用户对象2&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "null": {
+      "user1": {
+        "userAddress": "IZx3",
+        "small": 3020.92,
+        "userList": [
+          {
+            "userAddress": "bLUIF8tZ",
+            "small": 8261.27,
+            "userList": [],
+            "money": 6729.33,
+            "phone": "FtGI18p6",
+            "createTime": 8427,
+            "nickName": "boQApsvRV",
+            "ipv6": "0ZRsJ9XBk",
+            "telephone": "dCimIgrzP",
+            "userName": "BX",
+            "userDetails": [
+              {
+                "githubAddress": "BipsInbz"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 3043.64,
+        "phone": "Hr9cI9",
+        "createTime": 4613,
+        "nickName": "k",
+        "ipv6": "S6Bie",
+        "telephone": "tvtgc",
+        "userName": "zH520",
+        "userDetails": [
+          {
+            "githubAddress": "tz8AHVAg"
+          }
+        ],
+        "userAge": 0
+      },
+      "userTreeSet": [
+        {
+          "userAddress": "KBJUys6",
+          "small": 7680.58,
+          "userList": [
+            {
+              "userAddress": "2K6q9bV5",
+              "small": 5873.94,
+              "userList": [],
+              "money": 9257.35,
+              "phone": "RxTbfNV4",
+              "createTime": 5361,
+              "nickName": "jTZ3ep95G",
+              "ipv6": "c",
+              "telephone": "NBIJehT",
+              "userName": "R5G0",
+              "userDetails": [
+                {
+                  "githubAddress": "6Os"
+                }
+              ],
+              "userAge": 0
+            }
+          ],
+          "money": 2986.77,
+          "phone": "F7yiRtDJYV",
+          "createTime": 1496,
+          "nickName": "xT3",
+          "ipv6": "mbOrXhqt9",
+          "telephone": "AnJGM",
+          "userName": "BFwiL",
+          "userDetails": [
+            {
+              "githubAddress": "BgK"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "listMap": [
+        {
+          "null": 7135
+        }
+      ],
+      "stuAddress": "wMGlUoMbf",
+      "stuName": "wHXQVXaYt",
+      "userMap": {
+        "null": {
+          "userAddress": "0nL5Na7X0",
+          "small": 8820.9,
+          "userList": [
+            {
+              "userAddress": "a4CsxY",
+              "small": 6707.7,
+              "userList": [],
+              "money": 4165.99,
+              "phone": "EeZj3HT4",
+              "createTime": 3341,
+              "nickName": "4",
+              "ipv6": "SrCwwS9",
+              "telephone": "sIHagno",
+              "userName": "T",
+              "userDetails": [
+                {
+                  "githubAddress": "9"
+                }
+              ],
+              "userAge": 0
+            }
+          ],
+          "money": 900.01,
+          "phone": "keRWbQw",
+          "createTime": 3575,
+          "nickName": "y9",
+          "ipv6": "s4a",
+          "telephone": "wQkXdE0m6",
+          "userName": "o",
+          "userDetails": [
+            {
+              "githubAddress": "fpNmYjy"
+            }
+          ],
+          "userAge": 0
+        }
+      },
+      "stuAge": true,
+      "user": {
+        "userAddress": "ETvCNHJbJ6",
+        "small": 3658.93,
+        "userList": [
+          {
+            "userAddress": "b7f",
+            "small": 2136.74,
+            "userList": [],
+            "money": 8524.79,
+            "phone": "w5O1",
+            "createTime": 1962,
+            "nickName": "2YkPRXSq6D",
+            "ipv6": "eanrFeTFRW",
+            "telephone": "6",
+            "userName": "ei3W",
+            "userDetails": [
+              {
+                "githubAddress": "QBBPL1krD"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5761.93,
+        "phone": "2r",
+        "createTime": 6691,
+        "nickName": "YNVZqO",
+        "ipv6": "RtntX",
+        "telephone": "y",
+        "userName": "i7RCY",
+        "userDetails": [
+          {
+            "githubAddress": "qzkT"
+          }
+        ],
+        "userAge": 0
+      }
+    }
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listMap2
+```
+
+## 5.List&lt;Map&lt;M,N&lt;P,K,Y&gt;&gt;&gt;超复杂结构&nbsp;
+
+**URL:** http://localhost/list/listMap3
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;map&gt;|&nbsp;
+└── &nbsp;|map&lt;string, object&gt;|&nbsp;
+&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>老师&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "null": {
+      "data": {
+        "userAddress": "HGWsear9BW",
+        "small": 7585.76,
+        "userList": [
+          {
+            "userAddress": "7FQ",
+            "small": 5698.31,
+            "userList": [],
+            "money": 2175.56,
+            "phone": "3k9fk4a",
+            "createTime": 9745,
+            "nickName": "HQ8V3s29r",
+            "ipv6": "j6VVB9b",
+            "telephone": "GQNEoKTTH0",
+            "userName": "QMnTEa30",
+            "userDetails": [
+              {
+                "githubAddress": "W"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 993.52,
+        "phone": "HNeMf",
+        "createTime": 2310,
+        "nickName": "PsUvPTELs",
+        "ipv6": "9mzj",
+        "telephone": "V",
+        "userName": "Lx",
+        "userDetails": [
+          {
+            "githubAddress": "i2h0vBdo"
+          }
+        ],
+        "userAge": 0
+      },
+      "data2": {
+        "userAddress": "6k9j",
+        "small": 2026.06,
+        "userList": [
+          {
+            "userAddress": "9U",
+            "small": 738.88,
+            "userList": [],
+            "money": 59.76,
+            "phone": "DJ8GEuyoto",
+            "createTime": 97,
+            "nickName": "z",
+            "ipv6": "7FVY",
+            "telephone": "ZUg48TCZ",
+            "userName": "NO",
+            "userDetails": [
+              {
+                "githubAddress": "ZQGKxQj"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 6258.37,
+        "phone": "pBq4",
+        "createTime": 3483,
+        "nickName": "asmXlmhc",
+        "ipv6": "uzPJE947",
+        "telephone": "w",
+        "userName": "wbjZh",
+        "userDetails": [
+          {
+            "githubAddress": "18m"
+          }
+        ],
+        "userAge": 0
+      },
+      "data1": {
+        "userAddress": "JR",
+        "small": 5937.28,
+        "userList": [
+          {
+            "userAddress": "nF5i",
+            "small": 5930.41,
+            "userList": [],
+            "money": 5455.16,
+            "phone": "ZmGemL09",
+            "createTime": 6502,
+            "nickName": "bibp5cI",
+            "ipv6": "kQYN2GMZil",
+            "telephone": "BBNtl5",
+            "userName": "nyXpPd2",
+            "userDetails": [
+              {
+                "githubAddress": "hX"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5995.47,
+        "phone": "LV2XyhJi",
+        "createTime": 7079,
+        "nickName": "gdT2SvgIh9",
+        "ipv6": "B1ybKGP2",
+        "telephone": "B",
+        "userName": "4",
+        "userDetails": [
+          {
+            "githubAddress": "lRU4KHl"
+          }
+        ],
+        "userAge": 0
+      },
+      "age": 0
+    }
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listMap3
+```
+
+## 6.List&lt;T&lt;List&lt;M&gt;,List&lt;M&gt;,List&lt;M&gt;&gt;&gt;超复杂结构&nbsp;
+
+**URL:** http://localhost/list/listTeacher
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;object&gt;|&nbsp;
+└── &nbsp;|object|Description:<br/>老师&nbsp;
+&nbsp;&nbsp; ├── data|array&lt;object&gt;|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data1|array&lt;object&gt;|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data2|array&lt;object&gt;|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "data": [
+      {
+        "userAddress": "2",
+        "small": 4088.73,
+        "userList": [
+          {
+            "userAddress": "p5FmiyHuo",
+            "small": 4474.69,
+            "userList": [],
+            "money": 1071.84,
+            "phone": "WeGP",
+            "createTime": 2359,
+            "nickName": "HIEgpDiOG",
+            "ipv6": "r",
+            "telephone": "lX",
+            "userName": "5kyC",
+            "userDetails": [
+              {
+                "githubAddress": "vzTgwWL"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5851.22,
+        "phone": "fqmGun6TnC",
+        "createTime": 7686,
+        "nickName": "bm2duZ7",
+        "ipv6": "QljivpV",
+        "telephone": "B8a",
+        "userName": "5IbuoZ5a",
+        "userDetails": [
+          {
+            "githubAddress": "rt9Jacp"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "data2": [
+      {
+        "userAddress": "e9",
+        "small": 3701.71,
+        "userList": [
+          {
+            "userAddress": "E",
+            "small": 2121.51,
+            "userList": [],
+            "money": 9224.79,
+            "phone": "QNB",
+            "createTime": 5777,
+            "nickName": "iUJ6AhL",
+            "ipv6": "Z1gbiE9VB",
+            "telephone": "09PZ",
+            "userName": "vxBqlv8BB8",
+            "userDetails": [
+              {
+                "githubAddress": "lDv"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 3270.98,
+        "phone": "2kJextz8",
+        "createTime": 7889,
+        "nickName": "Lc0VN0",
+        "ipv6": "ysEbiY",
+        "telephone": "XRw8C9s",
+        "userName": "o",
+        "userDetails": [
+          {
+            "githubAddress": "t3m"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "data1": [
+      {
+        "userAddress": "catfb",
+        "small": 2818.99,
+        "userList": [
+          {
+            "userAddress": "y70Ulb",
+            "small": 4067.7,
+            "userList": [],
+            "money": 1696.84,
+            "phone": "xByhYq",
+            "createTime": 2596,
+            "nickName": "pBTfBK",
+            "ipv6": "HVW",
+            "telephone": "WeKuE",
+            "userName": "C",
+            "userDetails": [
+              {
+                "githubAddress": "IucHh5bT"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5796.91,
+        "phone": "Q",
+        "createTime": 120,
+        "nickName": "CWCkNe",
+        "ipv6": "f0mmqWJ0",
+        "telephone": "64QbuQDZ7",
+        "userName": "RO1J",
+        "userDetails": [
+          {
+            "githubAddress": "LohbYjRfg"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "age": 0
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listTeacher
+```
+
+## 7.List&lt;Teacher&lt;Teacher&lt;User,User,User&gt;,User,User&gt;&gt;结构&nbsp;
+
+**URL:** http://localhost/list/listString1
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;object&gt;|&nbsp;
+└── &nbsp;|object|Description:<br/>老师&nbsp;
+&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "data": {
+      "data": {
+        "userAddress": "tjTah9uLE5",
+        "small": 1194.84,
+        "userList": [
+          {
+            "userAddress": "tI1TlR",
+            "small": 8318.49,
+            "userList": [],
+            "money": 8358.96,
+            "phone": "V7",
+            "createTime": 1265,
+            "nickName": "zcAm",
+            "ipv6": "FAD",
+            "telephone": "5nf",
+            "userName": "E2VD",
+            "userDetails": [
+              {
+                "githubAddress": "LzlztLQLq"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 1971.28,
+        "phone": "ZbAKxtuNQv",
+        "createTime": 4097,
+        "nickName": "7bXezSkft",
+        "ipv6": "mIMjOGkjjc",
+        "telephone": "Az",
+        "userName": "kM6Jc81QL",
+        "userDetails": [
+          {
+            "githubAddress": "zp"
+          }
+        ],
+        "userAge": 0
+      },
+      "data2": {
+        "userAddress": "B",
+        "small": 9675.5,
+        "userList": [
+          {
+            "userAddress": "T8Q7fdSgUl",
+            "small": 7292.74,
+            "userList": [],
+            "money": 1918.39,
+            "phone": "NEW4t",
+            "createTime": 713,
+            "nickName": "YHOJXkQBe",
+            "ipv6": "GKXhuFciXn",
+            "telephone": "zTpqaxasR",
+            "userName": "069vC",
+            "userDetails": [
+              {
+                "githubAddress": "1pWyKuIMZ"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 1738.72,
+        "phone": "r7qGwAVME",
+        "createTime": 8158,
+        "nickName": "h",
+        "ipv6": "YX",
+        "telephone": "3",
+        "userName": "J0Hjy4fnLU",
+        "userDetails": [
+          {
+            "githubAddress": "b"
+          }
+        ],
+        "userAge": 0
+      },
+      "data1": {
+        "userAddress": "PLkchbu8AB",
+        "small": 3291.5,
+        "userList": [
+          {
+            "userAddress": "U8",
+            "small": 4025.04,
+            "userList": [],
+            "money": 6886.71,
+            "phone": "XNJ6OABM",
+            "createTime": 2770,
+            "nickName": "ov5Mpn7t6",
+            "ipv6": "4BoVPxBRDf",
+            "telephone": "apzdNtyI4D",
+            "userName": "3ux2OR9KSa",
+            "userDetails": [
+              {
+                "githubAddress": "ZERk"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 6697.26,
+        "phone": "0",
+        "createTime": 4754,
+        "nickName": "QObZ",
+        "ipv6": "A2t7Ua2oe",
+        "telephone": "bJFjLl",
+        "userName": "h02kGTSB",
+        "userDetails": [
+          {
+            "githubAddress": "vTFYR"
+          }
+        ],
+        "userAge": 0
+      },
+      "age": 0
+    },
+    "data2": {
+      "userAddress": "WP",
+      "small": 1073.19,
+      "userList": [
+        {
+          "userAddress": "jz",
+          "small": 6165.67,
+          "userList": [
+            {
+              "userAddress": "1ol",
+              "small": 4637.37,
+              "userList": [],
+              "money": 5585.37,
+              "phone": "ChxLqsbW",
+              "createTime": 6523,
+              "nickName": "atp",
+              "ipv6": "E",
+              "telephone": "b4PPj0XSr",
+              "userName": "PriI1LXfQ",
+              "userDetails": [
+                {
+                  "githubAddress": "0L8GqKRF"
+                }
+              ],
+              "userAge": 0
+            }
+          ],
+          "money": 1685.64,
+          "phone": "fTXt",
+          "createTime": 5017,
+          "nickName": "cSkc",
+          "ipv6": "76UQlJDJ",
+          "telephone": "7iRIk",
+          "userName": "x2opzBai",
+          "userDetails": [
+            {
+              "githubAddress": "f"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 2893.75,
+      "phone": "jfCwxERR",
+      "createTime": 3030,
+      "nickName": "aRnhNC",
+      "ipv6": "elFm6w",
+      "telephone": "cz",
+      "userName": "EoW",
+      "userDetails": [
+        {
+          "githubAddress": "itA"
+        }
+      ],
+      "userAge": 0
+    },
+    "data1": {
+      "userAddress": "U9PZO6D",
+      "small": 3976.45,
+      "userList": [
+        {
+          "userAddress": "RUJZ",
+          "small": 428.06,
+          "userList": [
+            {
+              "userAddress": "y2GRFEuAGt",
+              "small": 5773.91,
+              "userList": [],
+              "money": 2411.48,
+              "phone": "2",
+              "createTime": 5065,
+              "nickName": "Qsi",
+              "ipv6": "nG71RvGfj0",
+              "telephone": "cdIT3f",
+              "userName": "120uA",
+              "userDetails": [
+                {
+                  "githubAddress": "xhSUK4qH"
+                }
+              ],
+              "userAge": 0
+            }
+          ],
+          "money": 3882.61,
+          "phone": "906uA6A",
+          "createTime": 3613,
+          "nickName": "g",
+          "ipv6": "8xrY3F3",
+          "telephone": "uvqxHaUab",
+          "userName": "r94a71",
+          "userDetails": [
+            {
+              "githubAddress": "NNJaMn6i8"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 302.83,
+      "phone": "qKfoRTKK",
+      "createTime": 7427,
+      "nickName": "etFi25",
+      "ipv6": "i7KL",
+      "telephone": "kAbN",
+      "userName": "1s6A",
+      "userDetails": [
+        {
+          "githubAddress": "LsihraSN"
+        }
+      ],
+      "userAge": 0
+    },
+    "age": 0
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listString1
+```
+
+## 8.List&lt;Teacher&lt;Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;&gt;&gt;&nbsp;
+
+**URL:** http://localhost/list/listString2
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |array&lt;object&gt;|&nbsp;
+└── &nbsp;|object|Description:<br/>老师&nbsp;
+&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data|object|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
+``` json
+[
+  {
+    "data": {
+      "data": {
+        "userAddress": "brjYW",
+        "small": 5815.51,
+        "userList": [
+          {
+            "userAddress": "xntzmDWTq",
+            "small": 1007.55,
+            "userList": [],
+            "money": 1578.77,
+            "phone": "hIMYpfp2",
+            "createTime": 3386,
+            "nickName": "bj",
+            "ipv6": "kbl11Q",
+            "telephone": "i",
+            "userName": "sxYNLIo",
+            "userDetails": [
+              {
+                "githubAddress": "aMY"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 8305.08,
+        "phone": "ODn6PcUn4X",
+        "createTime": 9955,
+        "nickName": "L8xUe9I",
+        "ipv6": "YWuH",
+        "telephone": "Oy76E",
+        "userName": "v3TgJVzb",
+        "userDetails": [
+          {
+            "githubAddress": "nm4xFyyP"
+          }
+        ],
+        "userAge": 0
+      },
+      "data2": {
+        "userAddress": "9X4C6G6",
+        "small": 9955.08,
+        "userList": [
+          {
+            "userAddress": "n0gQbRy",
+            "small": 4361.67,
+            "userList": [],
+            "money": 1167.51,
+            "phone": "WWsEGnj",
+            "createTime": 3278,
+            "nickName": "tE",
+            "ipv6": "4J",
+            "telephone": "uwcCZp8",
+            "userName": "Vsla",
+            "userDetails": [
+              {
+                "githubAddress": "yzb"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 428.71,
+        "phone": "X37KUNqt0",
+        "createTime": 5222,
+        "nickName": "MUHjV1gGJa",
+        "ipv6": "8vGzE",
+        "telephone": "j6byyCPUSX",
+        "userName": "Cc5thqKfS",
+        "userDetails": [
+          {
+            "githubAddress": "VSD9Cd"
+          }
+        ],
+        "userAge": 0
+      },
+      "data1": {
+        "userAddress": "yl",
+        "small": 339.65,
+        "userList": [
+          {
+            "userAddress": "zEYzh",
+            "small": 3174.2,
+            "userList": [],
+            "money": 9704.53,
+            "phone": "r",
+            "createTime": 5443,
+            "nickName": "6CakQd",
+            "ipv6": "tPlCcf",
+            "telephone": "mgMiFP",
+            "userName": "hiEK",
+            "userDetails": [
+              {
+                "githubAddress": "C1A0k2"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5751.38,
+        "phone": "ek",
+        "createTime": 996,
+        "nickName": "Idr7gni",
+        "ipv6": "fjaH3B",
+        "telephone": "wsVyvg6DVp",
+        "userName": "Bzc",
+        "userDetails": [
+          {
+            "githubAddress": "vWXs"
+          }
+        ],
+        "userAge": 0
+      },
+      "age": 0
+    },
+    "data2": {
+      "data": {
+        "userAddress": "C1Hq",
+        "small": 7817.24,
+        "userList": [
+          {
+            "userAddress": "AU",
+            "small": 8796.89,
+            "userList": [],
+            "money": 5496.82,
+            "phone": "6sF2fiaDl",
+            "createTime": 9094,
+            "nickName": "K",
+            "ipv6": "9Guo",
+            "telephone": "7c40KEtGKx",
+            "userName": "LpYb",
+            "userDetails": [
+              {
+                "githubAddress": "WvUi"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 3696.71,
+        "phone": "t7Z1un",
+        "createTime": 7438,
+        "nickName": "bvQmRm",
+        "ipv6": "eEzo",
+        "telephone": "Ih2vFTBw",
+        "userName": "X7",
+        "userDetails": [
+          {
+            "githubAddress": "2l"
+          }
+        ],
+        "userAge": 0
+      },
+      "data2": {
+        "userAddress": "zOtDZxJ",
+        "small": 7660.05,
+        "userList": [
+          {
+            "userAddress": "G5HSB3",
+            "small": 8220.53,
+            "userList": [],
+            "money": 3935.78,
+            "phone": "2bpsPApp8D",
+            "createTime": 9085,
+            "nickName": "PPxr5",
+            "ipv6": "pXN1L",
+            "telephone": "7ZMI0het",
+            "userName": "RE0CgoaR7",
+            "userDetails": [
+              {
+                "githubAddress": "DK98Y"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5735.34,
+        "phone": "3bw8Hlm",
+        "createTime": 2450,
+        "nickName": "MOIF",
+        "ipv6": "u",
+        "telephone": "7eFeBiBC",
+        "userName": "uPvbnW",
+        "userDetails": [
+          {
+            "githubAddress": "T6ds"
+          }
+        ],
+        "userAge": 0
+      },
+      "data1": {
+        "userAddress": "ivt4AjHT",
+        "small": 4053.0,
+        "userList": [
+          {
+            "userAddress": "C6PG7coWQY",
+            "small": 6274.03,
+            "userList": [],
+            "money": 7379.03,
+            "phone": "up0Ka",
+            "createTime": 8517,
+            "nickName": "D",
+            "ipv6": "ZyCh",
+            "telephone": "G50lTm39",
+            "userName": "wqspy",
+            "userDetails": [
+              {
+                "githubAddress": "Nk7UWygKY"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 3308.95,
+        "phone": "SnAGOAOEG",
+        "createTime": 7435,
+        "nickName": "f1rU4pT",
+        "ipv6": "e1q4",
+        "telephone": "9C50hlx4c",
+        "userName": "wmF",
+        "userDetails": [
+          {
+            "githubAddress": "LyGF8lduK"
+          }
+        ],
+        "userAge": 0
+      },
+      "age": 0
+    },
+    "data1": {
+      "data": {
+        "userAddress": "W",
+        "small": 6149.7,
+        "userList": [
+          {
+            "userAddress": "Oxti",
+            "small": 8761.76,
+            "userList": [],
+            "money": 2861.33,
+            "phone": "7skU4RBEZ",
+            "createTime": 2014,
+            "nickName": "rEiwe",
+            "ipv6": "BlA",
+            "telephone": "QuRekEbDo",
+            "userName": "ogz",
+            "userDetails": [
+              {
+                "githubAddress": "mZiYLOb"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 3690.99,
+        "phone": "BzJWST3S",
+        "createTime": 4367,
+        "nickName": "eY9S0Y",
+        "ipv6": "enh",
+        "telephone": "5MBkv",
+        "userName": "WTRqms",
+        "userDetails": [
+          {
+            "githubAddress": "C"
+          }
+        ],
+        "userAge": 0
+      },
+      "data2": {
+        "userAddress": "F4gQj",
+        "small": 5775.01,
+        "userList": [
+          {
+            "userAddress": "BQjUtgg7Xj",
+            "small": 5773.68,
+            "userList": [],
+            "money": 857.2,
+            "phone": "5",
+            "createTime": 1932,
+            "nickName": "Kvom17Y",
+            "ipv6": "yCTfT",
+            "telephone": "EvV",
+            "userName": "7R",
+            "userDetails": [
+              {
+                "githubAddress": "52IQW"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 3559.03,
+        "phone": "YhRvmD9O",
+        "createTime": 8833,
+        "nickName": "Y4jLmg6r0",
+        "ipv6": "znqHBoX",
+        "telephone": "O9rXjOh",
+        "userName": "OV2Xsf5",
+        "userDetails": [
+          {
+            "githubAddress": "ckoFa"
+          }
+        ],
+        "userAge": 0
+      },
+      "data1": {
+        "userAddress": "enYXj",
+        "small": 6879.44,
+        "userList": [
+          {
+            "userAddress": "xkCdLap",
+            "small": 5879.81,
+            "userList": [],
+            "money": 1262.82,
+            "phone": "CZIrEPj",
+            "createTime": 9187,
+            "nickName": "c0v",
+            "ipv6": "sfr9LEW",
+            "telephone": "adbf",
+            "userName": "T",
+            "userDetails": [
+              {
+                "githubAddress": "fXfwzD"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5605.86,
+        "phone": "iv",
+        "createTime": 8354,
+        "nickName": "NxY",
+        "ipv6": "2B",
+        "telephone": "KI",
+        "userName": "U",
+        "userDetails": [
+          {
+            "githubAddress": "N5"
+          }
+        ],
+        "userAge": 0
+      },
+      "age": 0
+    },
+    "age": 0
+  }
+]
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listString2
+```
+
+## 9.CommonResult&lt;List&lt;UserDto&gt;&gt;&nbsp;
+
+**URL:** http://localhost/list/listUserDto
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|array&lt;object&gt;|&nbsp;
+│&nbsp;&nbsp; ├── token|string|token&nbsp;
+│&nbsp;&nbsp; └── LoginList|array&lt;object&gt;|UserDto 用户信息列表&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── password|string|密码&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "uEt",
+  "code": "KZ",
+  "data": [
+    {
+      "LoginList": [
+        {
+          "password": "ZHWUkqa",
+          "userName": "QCyjc7tlT"
+        }
+      ],
+      "token": "Bo8coG9bct"
+    }
+  ],
+  "success": false,
+  "message": "JL4Q",
+  "timestamp": "aXYoXEWg8V"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/list/listUserDto
+```
+
+# RequestHeader注解测试&nbsp;
+
+## 1.header常量测试&nbsp;
+
+**URL:** http://localhost/userInfo
+
+**Type:** PUT
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+Authorization|string|true|<br/>		<br/>		<br/><br/>				<br/>|&nbsp;
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X PUT -H 'Authorization:
+		
+		
+
+				
+' -i http://localhost/userInfo
+```
+
+## 2.测试常量请求头4&nbsp;
+
+**URL:** http://localhost/testRequestHeader/constant4
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+Authorization|string|true|<br/>		<br/>		<br/><br/>				<br/>|请求头<br/>&nbsp;
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"5Rr"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'Authorization:
+		
+		
+
+				
+' -i http://localhost/testRequestHeader/constant4
+```
+
+## 3.测试RequestHeader常规使用&nbsp;
+
+**URL:** http://localhost/testRequestHeader
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+name|string|true|<br/>		<br/>		<br/><br/>				<br/>|请求头(name)<br/>&nbsp;
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── age|int32|&nbsp;|&nbsp;|年龄&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'name:
+		
+		
+
+				
+' -i http://localhost/testRequestHeader --data 'age=9812'
+```
+
+## 4.测试RequestHeader绑定参数名&nbsp;
+
+**URL:** http://localhost/testRequestHeader/value
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+token|string|false|<br/>		<br/>		<br/><br/>				<br/>|请求头(name)<br/>&nbsp;
+age|int32|true|<br/>		<br/>		<br/><br/>				<br/>|年龄&nbsp;
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'token:
+		
+		
+
+				
+' -H 'age:
+		
+		
+
+				
+' -i http://localhost/testRequestHeader/value
+```
+
+## 5.测试RequestHeader绑定默认值&nbsp;
+
+**URL:** http://localhost/testRequestHeader/DefaultVal
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+token|string|false|da|请求头(name)<br/>&nbsp;
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── age|int32|&nbsp;|&nbsp;|年龄&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'token:da' -i http://localhost/testRequestHeader/DefaultVal --data 'age=5809'
+```
+
+## 6.测试Mapping中的headers属性&nbsp;
+
+**URL:** http://localhost/testRequestHeader/foos
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"zLO5Vwpc7T"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testRequestHeader/foos
+```
+
+## 7.测试Mapping header属性&nbsp;
+
+**URL:** http://localhost/ex/foos
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"wKDkU"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/ex/foos
+```
+
+## 8.测试常量请求头1&nbsp;
+
+**URL:** http://localhost/testRequestHeader/constants1
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+token|string|true|<br/>		<br/>		<br/><br/>				<br/>|请求头<br/>&nbsp;
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"M93"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'token:
+		
+		
+
+				
+' -i http://localhost/testRequestHeader/constants1
+```
+
+## 9.测试常量请求头2&nbsp;
+
+**URL:** http://localhost/testRequestHeader/constant2
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+token|string|true|<br/>		<br/>		<br/><br/>				<br/>|请求头<br/>&nbsp;
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"NA0NQvLe"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'token:
+		
+		
+
+				
+' -i http://localhost/testRequestHeader/constant2
+```
+
+## 10.测试常量请求头3&nbsp;
+
+**URL:** http://localhost/testRequestHeader/constant3
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+token|string|true|<br/>		<br/>		<br/><br/>				<br/>|请求头<br/>&nbsp;
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+&nbsp;|string|&nbsp;
+
+**Response-example:**
+``` json
+"eBplluYqK"
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'token:
+		
+		
+
+				
+' -i http://localhost/testRequestHeader/constant3
+```
+
+## 11.测试RequestHeader注解 'value' 属性为常量 绑定参数名&nbsp;
+
+**URL:** http://localhost/testRequestHeader/constValue
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-headers:**
+
+Header | Type|Required|DefaultValue|Description
+---|---|---|---|----
+MAJOR|string|false|<br/>		<br/>		<br/><br/>				<br/>|请求头(name)<br/>&nbsp;
+age|int32|true|<br/>		<br/>		<br/><br/>				<br/>|年龄&nbsp;
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'MAJOR:
+		
+		
+
+				
+' -H 'age:
+		
+		
+
+				
+' -i http://localhost/testRequestHeader/constValue
+```
+
+# mybatis-plus分页测试&nbsp;
+
+## 1.mybatis-plus原始分页类测试&nbsp;
+
+**URL:** http://localhost/mybatis/plus/page
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
 
 **Response-fields:**
 
@@ -5565,8 +12184,9 @@ Field|Type|Description
 ├── message|string|&nbsp;
 ├── data|object|&nbsp;
 │&nbsp;&nbsp; ├── records|array&lt;object&gt;|&nbsp;
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|int32|角色id
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── roleName|string|角色名称
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄&nbsp;
 │&nbsp;&nbsp; ├── total|int64|&nbsp;
 │&nbsp;&nbsp; ├── size|int64|&nbsp;
 │&nbsp;&nbsp; ├── current|int64|&nbsp;
@@ -5574,66 +12194,64 @@ Field|Type|Description
 │&nbsp;&nbsp; │&nbsp;&nbsp; ├── column|string|&nbsp;
 │&nbsp;&nbsp; │&nbsp;&nbsp; └── asc|boolean|&nbsp;
 │&nbsp;&nbsp; ├── optimizeCountSql|boolean|&nbsp;
-│&nbsp;&nbsp; ├── isSearchCount|boolean|&nbsp;
-│&nbsp;&nbsp; ├── hitCount|boolean|&nbsp;
+│&nbsp;&nbsp; ├── searchCount|boolean|&nbsp;
+│&nbsp;&nbsp; ├── optimizeJoinOfCountSql|boolean|&nbsp;
 │&nbsp;&nbsp; ├── countId|string|&nbsp;
 │&nbsp;&nbsp; └── maxLimit|int64|&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "W9nR",
+  "traceId": "LJNtoAHd2j",
+  "code": "TZXSk",
   "data": {
     "total": 0,
     "current": 0,
-    "hitCount": false,
     "size": 0,
     "optimizeCountSql": false,
     "records": [
       {
-        "roleId": 3200,
-        "roleName": "SCAAGwGy6C"
+        "roleId": 2417,
+        "roleName": "AW0B7cx",
+        "age": 1385
       }
     ],
-    "maxLimit": 4178,
+    "maxLimit": 2790,
+    "searchCount": false,
+    "optimizeJoinOfCountSql": false,
     "orders": [
       {
         "asc": false,
-        "column": "Rhz4jl"
+        "column": "mb4"
       }
     ],
-    "countId": "Mjz",
-    "isSearchCount": false
+    "countId": "KXb"
   },
   "success": false,
-  "message": "w",
-  "timestamp": "yMb1"
+  "message": "RY",
+  "timestamp": "5"
 }
 ```
 
-# Path参数测试
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/mybatis/plus/page
+```
 
-## 1.接收数组类型pathVariable
-**URL:** http://localhost/pathVariable/test/{id}
+## 2.mybatis-plus分页自定义处理测试&nbsp;
+
+**URL:** http://localhost/mybatis/plus/page2
 
 **Type:** GET
 
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── id|array|true|&nbsp;|
-&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/pathVariable/test/[ICDGArs]
-```
-
+None
 
 **Response-fields:**
 
@@ -5643,37 +12261,56 @@ Field|Type|Description
 ├── success|boolean|&nbsp;
 ├── message|string|&nbsp;
 ├── data|object|&nbsp;
+│&nbsp;&nbsp; ├── count|int64|总数&nbsp;
+│&nbsp;&nbsp; ├── records|array&lt;object&gt;|分页数据&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+│&nbsp;&nbsp; ├── page|int64|当前页码&nbsp;
+│&nbsp;&nbsp; └── size|int64|每页显示条数&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "Zx8cpCN",
+  "traceId": "2ebGKNMemx",
+  "code": "PPOZB9",
+  "data": {
+    "size": 0,
+    "records": [
+      {
+        "roleId": 730,
+        "roleName": "j",
+        "age": 4410
+      }
+    ],
+    "count": 0,
+    "page": 0
+  },
   "success": false,
-  "message": "pc",
-  "timestamp": "lD8"
+  "message": "1",
+  "timestamp": "bXVQEik66"
 }
 ```
 
-## 2.Path正则测试1
-**URL:** http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/mybatis/plus/page2
+```
+
+## 3.mybatis-plus分页自定义处理测试2&nbsp;
+
+**URL:** http://localhost/mybatis/plus/page3
 
 **Type:** GET
 
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── fileId|string|true|&nbsp;|文件id<br/>
-
-**Request-example:**
-``` json
-http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}
-```
-
+None
 
 **Response-fields:**
 
@@ -5682,350 +12319,800 @@ Field|Type|Description
 ┌─&nbsp; |object|&nbsp;
 ├── success|boolean|&nbsp;
 ├── message|string|&nbsp;
-├── data|object|&nbsp;
+├── data|object|测试mybatis-plugs page字段忽略&nbsp;
+│&nbsp;&nbsp; ├── records|array&lt;object&gt;|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleId|int32|角色id&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── roleName|string|角色名称&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+│&nbsp;&nbsp; ├── total|int64|&nbsp;
+│&nbsp;&nbsp; ├── size|int64|&nbsp;
+│&nbsp;&nbsp; ├── current|int64|&nbsp;
+│&nbsp;&nbsp; ├── orders|array&lt;object&gt;|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── column|string|&nbsp;
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── asc|boolean|&nbsp;
+│&nbsp;&nbsp; ├── optimizeCountSql|boolean|&nbsp;
+│&nbsp;&nbsp; ├── searchCount|boolean|&nbsp;
+│&nbsp;&nbsp; ├── optimizeJoinOfCountSql|boolean|&nbsp;
+│&nbsp;&nbsp; ├── countId|string|&nbsp;
+│&nbsp;&nbsp; └── maxLimit|int64|&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "SrC8fPU3iI",
+  "traceId": "ZxGolH3Y4",
+  "code": "Ljzd1IbX",
+  "data": {
+    "total": 0,
+    "current": 0,
+    "size": 0,
+    "optimizeCountSql": false,
+    "records": [
+      {
+        "roleId": 5709,
+        "roleName": "Q79VbAWd8B",
+        "age": 6882
+      }
+    ],
+    "maxLimit": 4464,
+    "searchCount": false,
+    "optimizeJoinOfCountSql": false,
+    "orders": [
+      {
+        "asc": false,
+        "column": "VzyS"
+      }
+    ],
+    "countId": "n2oCQHtxi"
+  },
   "success": false,
-  "message": "6zC",
-  "timestamp": "gM49O7EI"
+  "message": "kpAdzRH",
+  "timestamp": "MF"
 }
 ```
 
-## 3.Path正则测试2
-**URL:** http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── fileId|string|true|&nbsp;|文件id<br/>
-
-**Request-example:**
-``` json
-http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/mybatis/plus/page3
 ```
 
+# 简单对象测试2&nbsp;
 
-**Response-fields:**
+## 1.CommonResult&lt;String&gt;&nbsp;
 
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "Ww",
-  "success": false,
-  "message": "b4mQF",
-  "timestamp": "c"
-}
-```
-
-## 4.Path正则测试3
-**URL:** http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── fileId|string|true|&nbsp;|文件id<br/>
-
-**Request-example:**
-``` json
-http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "MqctEzud",
-  "success": false,
-  "message": "t4l",
-  "timestamp": "Q"
-}
-```
-
-# RequestHeader注解测试
-
-## 1.测试RequestHeader常规使用
-**URL:** http://localhost/testRequestHeader
-
-**Type:** GET
-
-
-**Request-headers:**
-
-Header | Type|Required|DefaultValue|Description
----|---|---|---|----
-name|string|true|<br/>		<br/>		<br/><br/>				<br/>|请求头(name)<br/>
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── age|int32|&nbsp;|&nbsp;|年龄
-
-**Request-example:**
-``` json
-http://localhost/testRequestHeader
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 2.测试RequestHeader绑定参数名
-**URL:** http://localhost/testRequestHeader/value
-
-**Type:** GET
-
-
-**Request-headers:**
-
-Header | Type|Required|DefaultValue|Description
----|---|---|---|----
-token|string|false|<br/>		<br/>		<br/><br/>				<br/>|请求头(name)<br/>
-age|int32|true|<br/>		<br/>		<br/><br/>				<br/>|年龄
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/testRequestHeader/value
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 3.测试RequestHeader绑定默认值
-**URL:** http://localhost/testRequestHeader/DefaultVal
-
-**Type:** GET
-
-
-**Request-headers:**
-
-Header | Type|Required|DefaultValue|Description
----|---|---|---|----
-token|string|false|da|请求头(name)<br/>
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── age|int32|&nbsp;|&nbsp;|年龄
-
-**Request-example:**
-``` json
-http://localhost/testRequestHeader/DefaultVal
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 4.测试Mapping中的headers属性
-**URL:** http://localhost/testRequestHeader/foos
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/testRequestHeader/foos
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"3RFh7"
-```
-
-## 5.测试Mapping header属性
-**URL:** http://localhost/ex/foos
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/ex/foos
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"ImW9SogKbD"
-```
-
-# Spring boot params test
-
-## 1.Test Normal param binding
-**URL:** http://localhost/testNormalParams/binding
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── name|string|true|&nbsp;|name<br/>
-└── age|int32|&nbsp;|&nbsp;|age
-
-**Request-example:**
-``` json
-http://localhost/testNormalParams/binding
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 2.Test @RequestBody User
-**URL:** http://localhost/testRequestBody
+**URL:** http://localhost/stringCommonResult
 
 **Type:** POST
 
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "BP",
+  "code": "u4ns4bURjm",
+  "data": "p",
+  "success": false,
+  "message": "5ARYd8Sb2",
+  "timestamp": "8Ev"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/stringCommonResult
+```
+
+## 2.返回Staff&lt;Staff&lt;Staff&gt;&gt;&nbsp;
+
+**URL:** http://localhost/staff
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|Description:<br/>职工信息&nbsp;
+├── name|string|职工名称&nbsp;
+├── annyObject|object|任何信息对象&nbsp;
+│&nbsp;&nbsp; ├── name|string|职工名称&nbsp;
+│&nbsp;&nbsp; ├── annyObject|object|任何信息对象&nbsp;
+│&nbsp;&nbsp; └── data|array&lt;object&gt;|泛型数据&nbsp;
+└── data|array&lt;object&gt;|泛型数据&nbsp;
+&nbsp;&nbsp; ├── name|string|职工名称&nbsp;
+&nbsp;&nbsp; ├── annyObject|object|任何信息对象&nbsp;
+&nbsp;&nbsp; └── data|array&lt;object&gt;|泛型数据&nbsp;
+
+**Response-example:**
+``` json
+{
+  "annyObject": {
+    "data": [],
+    "name": "XbivgXev"
+  },
+  "data": [
+    {
+      "data": [],
+      "name": "vr8"
+    }
+  ],
+  "name": "YGaRpE"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/staff
+```
+
+## 3.返回Staff&lt;String&gt;&nbsp;
+
+**URL:** http://localhost/staffStr
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|Description:<br/>职工信息&nbsp;
+├── name|string|职工名称&nbsp;
+├── annyObject|string|任何信息对象&nbsp;
+└── data|array&lt;string&gt;|泛型数据&nbsp;
+
+**Response-example:**
+``` json
+{
+  "annyObject": "Yuw",
+  "data": [
+    "Mf79WAJFm"
+  ],
+  "name": "zeGBs"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/staffStr
+```
+
+## 4.JAVA继承测试&nbsp;
+
+**URL:** http://localhost/children
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└── user|object|true|&nbsp;|&nbsp;
-&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试
-&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话
-&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址
-&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄
-&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号
-&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少
-&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了
-&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6
-&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话
-
-**Request-example:**
-``` json
-http://localhost/testRequestBody
-```
+└── children|object|true|&nbsp;|
+&nbsp;&nbsp; ├── age|int32|&nbsp;|0|年龄&nbsp;
+&nbsp;&nbsp; └── name|string|&nbsp;|&nbsp;|姓名&nbsp;
 
 **Request-body-example:**
 ``` json
 {
-  "userAddress": "Q0A",
-  "small": 5302.35,
+  "name": "j79R",
+  "age": 0
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── age|int32|年龄&nbsp;
+└── name|string|姓名&nbsp;
+
+**Response-example:**
+``` json
+{
+  "name": "fkKmc",
+  "age": 0
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/children --data '{
+  "name": "j79R",
+  "age": 0
+}'
+```
+
+# Mock Test&nbsp;
+
+## 1.测试基本类型数组&nbsp;
+
+**URL:** http://localhost/testMockPrimaryArray
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── ids|array|true|<br/>		<br/>		<br/><br/>				<br/>|id数组│1,2,3<br/>
+&nbsp;&nbsp; └── &nbsp;|int64|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "VTmRc",
+  "code": "Frmf6Xs5n",
+  "success": false,
+  "message": "02",
+  "timestamp": "1lbxLn"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/testMockPrimaryArray --data 'ids=4636'
+```
+
+## 2.测试包装类型数组&nbsp;
+
+**URL:** http://localhost/testMockPackageArray
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── ids|array|true|<br/>		<br/>		<br/><br/>				<br/>|id包装数组<br/>
+&nbsp;&nbsp; └── &nbsp;|int64|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "cwk",
+  "code": "A",
+  "success": false,
+  "message": "S",
+  "timestamp": "ZYetjqo02h"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/testMockPackageArray --data 'ids=3714'
+```
+
+## 3.测试包装类型List&nbsp;
+
+**URL:** http://localhost/testMockPackageList
+
+**Type:** POST
+
+**Content-Type:** multipart/form-data
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── ids|array&lt;int64&gt;|true|<br/>		<br/>		<br/><br/>				<br/>|idList<br/>
+├── configQueryParam|string|&nbsp;|&nbsp;|&nbsp;
+└── file|file|&nbsp;|&nbsp;|&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "2FlLWaz",
+  "code": "Cb5DlGXNNq",
+  "success": false,
+  "message": "GQMJ",
+  "timestamp": "VDFuUlnCEz"
+}
+```
+
+## 4.测试基本类型数组(JSON)&nbsp;
+
+**URL:** http://localhost/testMockPrimaryArrayJson
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── ids|array|true|&nbsp;|id包装数组│1,2,3<br/>
+&nbsp;&nbsp; └── &nbsp;|int64|&nbsp;|&nbsp;|&nbsp;
+
+**Request-body-example:**
+``` json
+[
+  6866
+]
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "rsCsYt",
+  "code": "OsYQNSzRF",
+  "success": false,
+  "message": "C4BfUDPpC",
+  "timestamp": "MW1qbLz1a"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testMockPrimaryArrayJson --data '[
+  6866
+]'
+```
+
+## 5.测试包装类型数组(JSON)&nbsp;
+
+**URL:** http://localhost/testMockPackageArrayJson
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── ids|array|true|&nbsp;|id包装数组│1,2,3<br/>
+&nbsp;&nbsp; └── &nbsp;|int64|&nbsp;|&nbsp;|&nbsp;
+
+**Request-body-example:**
+``` json
+[
+  8505
+]
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "d",
+  "code": "K",
+  "success": false,
+  "message": "mNqqm3rH",
+  "timestamp": "4si6"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testMockPackageArrayJson --data '[
+  8505
+]'
+```
+
+## 6.测试包装类型List(JSON)&nbsp;
+
+**URL:** http://localhost/testMockPackageListJson
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── ids|array&lt;int64&gt;|true|&nbsp;|idList<br/>
+
+**Request-body-example:**
+``` json
+[
+  4212
+]
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|none|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "q58cNCbjWV",
+  "code": "7FHHoD",
+  "success": false,
+  "message": "Gqs",
+  "timestamp": "o6aqK1"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testMockPackageListJson --data '[
+  4212
+]'
+```
+
+# xss拦击测试&nbsp;
+
+## 1.xss过滤普通post请求&nbsp;
+
+**URL:** http://localhost/xss/text
+
+**Type:** POST
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── text|string|&nbsp;|&nbsp;|请求文本<br/>&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "h",
+  "code": "iMmYQb",
+  "data": "pB0x85YBa",
+  "success": false,
+  "message": "riOKt2fT",
+  "timestamp": "Ff"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/xss/text --data 'text=rzcjLZc'
+```
+
+## 2.xss过滤get请求&nbsp;
+
+**URL:** http://localhost/xss/query
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── query|string|&nbsp;|&nbsp;|请求参数<br/>&nbsp;
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|string|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "fU3DWzXB",
+  "code": "RzF7Kc",
+  "data": "bc",
+  "success": false,
+  "message": "JfmeMDL",
+  "timestamp": "I"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/xss/query --data 'query=ZOoh8Kfm'
+```
+
+## 3.xss过滤json数据&nbsp;
+
+**URL:** http://localhost/xss/json
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── children|object|true|&nbsp;|
+&nbsp;&nbsp; ├── age|int32|&nbsp;|0|年龄&nbsp;
+&nbsp;&nbsp; └── name|string|&nbsp;|&nbsp;|姓名&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "name": "nl",
+  "age": 0
+}
+```
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+│&nbsp;&nbsp; ├── age|int32|年龄&nbsp;
+│&nbsp;&nbsp; └── name|string|姓名&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "traceId": "x9F8EP",
+  "code": "lH70",
+  "data": {
+    "name": "TklFtn9j",
+    "age": 0
+  },
+  "success": false,
+  "message": "gtTtL",
+  "timestamp": "h"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/xss/json --data '{
+  "name": "nl",
+  "age": 0
+}'
+```
+
+# Spring boot params test&nbsp;
+
+## 1.Test Normal param binding&nbsp;
+
+**URL:** http://localhost/testNormalParams/binding
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── name|string|true|&nbsp;|name<br/>
+└── age|int32|&nbsp;|&nbsp;|age&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testNormalParams/binding --data 'name=qJchgJU&age=604'
+```
+
+## 2.Test Normal param binding&nbsp;
+
+**URL:** http://localhost/testNormalParams/m
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+├── name|string|&nbsp;|&nbsp;|name<br/>&nbsp;
+└── age|int32|&nbsp;|&nbsp;|age&nbsp;
+
+**Response-fields:**
+
+None
+
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testNormalParams/m --data 'name=u&age=5734'
+```
+
+## 3.Test @RequestBody User&nbsp;
+
+**URL:** http://localhost/testRequestBody
+
+**Type:** POST
+
+**Content-Type:** application/json
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── user|object|true|&nbsp;|
+&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试&nbsp;
+&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话&nbsp;
+&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址&nbsp;
+&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄&nbsp;
+&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号&nbsp;
+&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少&nbsp;
+&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了&nbsp;
+&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6&nbsp;
+&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话&nbsp;
+
+**Request-body-example:**
+``` json
+{
+  "userAddress": "eUUph5H7V",
+  "small": 674.61,
   "userList": [
     {
-      "userAddress": "57AGjR",
-      "small": 4619.19,
+      "userAddress": "JHI",
+      "small": 1068.84,
       "userList": [],
-      "money": 8458.16,
-      "phone": "dlaS42RC",
-      "createTime": 2064,
-      "nickName": "UJR",
-      "ipv6": "w6C",
-      "telephone": "fTLoMQDqV1",
-      "userName": "IdS",
+      "money": 9625.83,
+      "phone": "l",
+      "createTime": 6788,
+      "nickName": "m7UQdv",
+      "ipv6": "vQBXqjSyUr",
+      "telephone": "BLngQqp",
+      "userName": "EYwtuHJzG",
       "userDetails": [
         {
-          "githubAddress": "j"
+          "githubAddress": "0zdy"
         }
       ],
       "userAge": 0
     }
   ],
-  "money": 4893.0,
-  "phone": "2Nn8obtU",
-  "createTime": 9081,
-  "nickName": "NT1a8Ir",
-  "ipv6": "mdLGo9E",
-  "telephone": "wvPa15G",
-  "userName": "N1g5ogOy",
+  "money": 1084.2,
+  "phone": "vwMGNbKMS",
+  "createTime": 6928,
+  "nickName": "xUiyT",
+  "ipv6": "l",
+  "telephone": "Bj6v9",
+  "userName": "5M6A",
   "userDetails": [
     {
-      "githubAddress": "C"
+      "githubAddress": "B098GQ"
     }
   ],
   "userAge": 0
@@ -6037,88 +13124,125 @@ http://localhost/testRequestBody
 None
 
 
-## 3.Test @RequestBody Map
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testRequestBody --data '{
+  "userAddress": "eUUph5H7V",
+  "small": 674.61,
+  "userList": [
+    {
+      "userAddress": "JHI",
+      "small": 1068.84,
+      "userList": [],
+      "money": 9625.83,
+      "phone": "l",
+      "createTime": 6788,
+      "nickName": "m7UQdv",
+      "ipv6": "vQBXqjSyUr",
+      "telephone": "BLngQqp",
+      "userName": "EYwtuHJzG",
+      "userDetails": [
+        {
+          "githubAddress": "0zdy"
+        }
+      ],
+      "userAge": 0
+    }
+  ],
+  "money": 1084.2,
+  "phone": "vwMGNbKMS",
+  "createTime": 6928,
+  "nickName": "xUiyT",
+  "ipv6": "l",
+  "telephone": "Bj6v9",
+  "userName": "5M6A",
+  "userDetails": [
+    {
+      "githubAddress": "B098GQ"
+    }
+  ],
+  "userAge": 0
+}'
+```
+
+## 4.Test @RequestBody Map&nbsp;
+
 **URL:** http://localhost/testRequestBodyMap
 
 **Type:** POST
 
+**Content-Type:** application/json
 
-
-**Request-parameters:**
+**Body-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└── user|map&lt;string, object&gt;|true|&nbsp;|&nbsp;
+└── user|map&lt;string, object&gt;|true|&nbsp;|
 &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
-&nbsp;&nbsp; └── &nbsp;|object|&nbsp;|&nbsp;|Description:<br/>用户对象
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址
-&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄
-&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号
-&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少
-&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了
-&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6
-&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话
-
-**Request-example:**
-``` json
-http://localhost/testRequestBodyMap
-```
+&nbsp;&nbsp; └── &nbsp;|object|&nbsp;|&nbsp;|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话&nbsp;
 
 **Request-body-example:**
 ``` json
 {
   "null": {
-    "userAddress": "8Lbe",
-    "small": 361.77,
+    "userAddress": "CLUov",
+    "small": 9596.14,
     "userList": [
       {
-        "userAddress": "29IS4ei",
-        "small": 4293.36,
+        "userAddress": "ZLaw7",
+        "small": 966.7,
         "userList": [],
-        "money": 4993.0,
-        "phone": "Tbmzz",
-        "createTime": 797,
-        "nickName": "nS",
-        "ipv6": "bh",
-        "telephone": "xbB1Q",
-        "userName": "zcRqyLlW",
+        "money": 784.32,
+        "phone": "ydr",
+        "createTime": 7472,
+        "nickName": "i3MTbTS",
+        "ipv6": "1sle1E",
+        "telephone": "FWj",
+        "userName": "WCszx",
         "userDetails": [
           {
-            "githubAddress": "NqgFaeUXb"
+            "githubAddress": "R"
           }
         ],
         "userAge": 0
       }
     ],
-    "money": 5165.41,
-    "phone": "evev5ayPOQ",
-    "createTime": 5486,
-    "nickName": "08iw0ib",
-    "ipv6": "LPKR5sluFK",
-    "telephone": "pVaf9E9",
-    "userName": "2cN2oMqh",
+    "money": 7814.14,
+    "phone": "rKiIt8",
+    "createTime": 4392,
+    "nickName": "jGzOrn",
+    "ipv6": "u",
+    "telephone": "5a6hQ",
+    "userName": "mfZ",
     "userDetails": [
       {
-        "githubAddress": "iEwGiyTVTC"
+        "githubAddress": "zy3"
       }
     ],
     "userAge": 0
@@ -6131,28 +13255,67 @@ http://localhost/testRequestBodyMap
 None
 
 
-## 4.Test @RequestBody List
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testRequestBodyMap --data '{
+  "null": {
+    "userAddress": "CLUov",
+    "small": 9596.14,
+    "userList": [
+      {
+        "userAddress": "ZLaw7",
+        "small": 966.7,
+        "userList": [],
+        "money": 784.32,
+        "phone": "ydr",
+        "createTime": 7472,
+        "nickName": "i3MTbTS",
+        "ipv6": "1sle1E",
+        "telephone": "FWj",
+        "userName": "WCszx",
+        "userDetails": [
+          {
+            "githubAddress": "R"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "money": 7814.14,
+    "phone": "rKiIt8",
+    "createTime": 4392,
+    "nickName": "jGzOrn",
+    "ipv6": "u",
+    "telephone": "5a6hQ",
+    "userName": "mfZ",
+    "userDetails": [
+      {
+        "githubAddress": "zy3"
+      }
+    ],
+    "userAge": 0
+  }
+}'
+```
+
+## 5.Test @RequestBody List&nbsp;
+
 **URL:** http://localhost/testRequestBodyList
 
 **Type:** POST
 
+**Content-Type:** application/json
 
-
-**Request-parameters:**
+**Body-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── ids|array&lt;string&gt;|true|&nbsp;|array of user id
 
-**Request-example:**
-``` json
-http://localhost/testRequestBodyList
-```
-
 **Request-body-example:**
 ``` json
 [
-  "cXI"
+  "e75SaVTyTz"
 ]
 ```
 
@@ -6161,14 +13324,22 @@ http://localhost/testRequestBodyList
 None
 
 
-## 5.Test Array Params
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testRequestBodyList --data '[
+  "e75SaVTyTz"
+]'
+```
+
+## 6.Test Array Params&nbsp;
+
 **URL:** http://localhost/testArray
 
 **Type:** POST
 
+**Content-Type:** application/json
 
-
-**Request-parameters:**
+**Body-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
@@ -6177,40 +13348,37 @@ Parameter|Type|Required|DefaultValue|Description
 &nbsp;&nbsp; &nbsp;&nbsp; ├── success|boolean|&nbsp;|&nbsp;|&nbsp;
 &nbsp;&nbsp; &nbsp;&nbsp; ├── message|string|&nbsp;|&nbsp;|&nbsp;
 &nbsp;&nbsp; &nbsp;&nbsp; ├── data|object|&nbsp;|&nbsp;|&nbsp;
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── dataExpressionEnum|enum|&nbsp;|&nbsp;|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|&nbsp;|&nbsp;|菜单/权限编码
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── date|string|&nbsp;|&nbsp;|学好
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── idCard|string|&nbsp;|&nbsp;|身份证号
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── dataExpressionEnum|enum|&nbsp;|&nbsp;|枚举<br/>SENSIRION("2101", new HashMap&lt;&gt;()) - temperature&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── menuPermissionCodes|array&lt;enum&gt;|&nbsp;|&nbsp;|菜单/权限编码&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── date|string|&nbsp;|&nbsp;|学好&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名<br/>Pattern: 
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── idCard|string|&nbsp;|&nbsp;|身份证号<br/>Pattern: 
 &nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── age|int32|&nbsp;|0|&nbsp;
-&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── age2|int32|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── age2|int32|&nbsp;|&nbsp;|Pattern: 
 &nbsp;&nbsp; &nbsp;&nbsp; ├── code|string|&nbsp;|&nbsp;|&nbsp;
-&nbsp;&nbsp; &nbsp;&nbsp; └── timestamp|string|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/testArray
-```
+&nbsp;&nbsp; &nbsp;&nbsp; ├── timestamp|string|&nbsp;|&nbsp;|&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── traceId|string|&nbsp;|&nbsp;|&nbsp;
 
 **Request-body-example:**
 ``` json
 [
   {
-    "code": "rGB8Ys",
+    "traceId": "FZKbb9Fg1e",
+    "code": "D",
     "data": {
-      "date": "Dec 23, 2052, 4:02:45 AM",
-      "idCard": "2",
+      "date": "Sep 11, 2050, 6:23:44 AM",
+      "idCard": "had",
       "menuPermissionCodes": [
-        "EXPIRED"
+        "WAIT_PAY"
       ],
       "dataExpressionEnum": "SENSIRION",
       "age": 0,
-      "age2": 6605,
-      "username": "GQukMNNrw"
+      "age2": 2016,
+      "username": "lTAT"
     },
     "success": false,
-    "message": "tlJm9Jn",
-    "timestamp": "g"
+    "message": "Tf7n2",
+    "timestamp": "eF4tWzm"
   }
 ]
 ```
@@ -6223,199 +13391,218 @@ Field|Type|Description
 
 **Response-example:**
 ``` json
-"B1R0"
+"ABQ"
 ```
 
-## 6.Test @PathVariable
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/testArray --data '[
+  {
+    "traceId": "FZKbb9Fg1e",
+    "code": "D",
+    "data": {
+      "date": "Sep 11, 2050, 6:23:44 AM",
+      "idCard": "had",
+      "menuPermissionCodes": [
+        "WAIT_PAY"
+      ],
+      "dataExpressionEnum": "SENSIRION",
+      "age": 0,
+      "age2": 2016,
+      "username": "lTAT"
+    },
+    "success": false,
+    "message": "Tf7n2",
+    "timestamp": "eF4tWzm"
+  }
+]'
+```
+
+## 7.Test @PathVariable&nbsp;
+
 **URL:** http://localhost/test/{name}/{no}/info
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Path-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 ├── name|string|true|&nbsp;|name<br/>
 └── no|string|true|&nbsp;|no
 
-**Request-example:**
-``` json
-http://localhost/test/P/5idTT/info
-```
-
-
 **Response-fields:**
 
 None
 
 
-## 7.Test @RequestParam
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/test/nHl/f8yey6t/info
+```
+
+## 8.Test @RequestParam&nbsp;
+
 **URL:** http://localhost/testRequestParam
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 ├── author|string|true|<br/>		<br/>		<br/><br/>				<br/>|author│詹姆斯<br/>
 └── type|string|true|<br/>		<br/>		<br/><br/>				<br/>|type
 
-**Request-example:**
-``` json
-http://localhost/testRequestParam?author=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A&type=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
-```
-
-
 **Response-fields:**
 
 None
 
 
-## 8.Test @RequestParam with value
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testRequestParam --data 'author=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A&type=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A'
+```
+
+## 9.Test @RequestParam with value&nbsp;
+
 **URL:** http://localhost/testRequestParamWithValue
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── name|string|true|<br/>		<br/>		<br/><br/>				<br/>|user name<br/>
 
-**Request-example:**
-``` json
-http://localhost/testRequestParamWithValue?name=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
-```
-
-
 **Response-fields:**
 
 None
 
 
-## 9.Test @RequestParam with default value
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testRequestParamWithValue --data 'name=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A'
+```
+
+## 10.Test @RequestParam with default value&nbsp;
+
 **URL:** http://localhost/testRequestParamWithDefaultVal
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── userName|string|true|Jordan|user name<br/>
 
-**Request-example:**
-``` json
-http://localhost/testRequestParamWithDefaultVal?userName=Jordan
-```
-
-
 **Response-fields:**
 
 None
 
 
-## 10.Test much path
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testRequestParamWithDefaultVal --data 'userName=Jordan'
+```
+
+## 11.Test much path&nbsp;
+
 **URL:** http://localhost/testMuchPath/get/{userId}
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Path-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── userId|int64|true|&nbsp;|userId<br/>
 
-**Request-example:**
-``` json
-http://localhost/testMuchPath/get/8023
-```
-
-
 **Response-fields:**
 
 None
 
 
-## 11.Test much path much parameter
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testMuchPath/get/5104
+```
+
+## 12.Test much path much parameter&nbsp;
+
 **URL:** http://localhost/get/{deptId}/{userId}
 
 **Type:** POST
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Path-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 ├── userId|int64|true|&nbsp;|userId<br/>
 └── deptId|int64|true|&nbsp;|deptId
 
-**Request-example:**
-``` json
-http://localhost/get/5791/8993
-```
-
-
 **Response-fields:**
 
 None
 
 
-## 12.Test Constants
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/get/1060/2605
+```
+
+## 13.Test Constants&nbsp;
+
 **URL:** http://localhost/testConstants
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── page|int32|false|0|页码
 
-**Request-example:**
-``` json
-http://localhost/testConstants?page=0
-```
-
-
 **Response-fields:**
 
 None
 
 
-## 13.测试mapping中的
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/testConstants --data 'page=0'
+```
+
+## 14.测试mapping中的&nbsp;
+
 **URL:** http://localhost/ex/bars
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── id|int64|true|<br/>		<br/>		<br/><br/>				<br/>|
 
-**Request-example:**
-``` json
-http://localhost/ex/bars?id=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
-```
-
-
 **Response-fields:**
 
 Field|Type|Description
@@ -6424,28 +13611,28 @@ Field|Type|Description
 
 **Response-example:**
 ``` json
-"A"
+"0rVIn"
 ```
 
-## 14.测试mapping中的2
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/ex/bars --data 'id=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A'
+```
+
+## 15.测试mapping中的2&nbsp;
+
 **URL:** http://localhost/ex/bars
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
 └── id|int64|true|<br/>		<br/>		<br/><br/>				<br/>|
 
-**Request-example:**
-``` json
-http://localhost/ex/bars?id=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
-```
-
-
 **Response-fields:**
 
 Field|Type|Description
@@ -6454,1740 +13641,216 @@ Field|Type|Description
 
 **Response-example:**
 ``` json
-"QIS"
+"KV9I98DT8"
 ```
 
-# 请求类型测试
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/ex/bars --data 'id=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A'
+```
 
-## 1.测试GetMapping 无参数
-**URL:** http://localhost/getMapping1
+# Map返回型接口api文档测试&nbsp;
+
+## 1.测试map解析&nbsp;
+
+**URL:** http://localhost/map/test5
 
 **Type:** GET
 
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/getMapping1
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 2.测试PostMapping 无参数
-**URL:** http://localhost/PostMapping1
-
-**Type:** POST
-
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
-
-**Request-example:**
-``` json
-http://localhost/PostMapping1
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 3.测试PutMapping 无参数
-**URL:** http://localhost/PutMapping1
-
-**Type:** PUT
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/PutMapping1
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 4.DeleteMapping 无参数
-**URL:** http://localhost/DeleteMapping1
-
-**Type:** DELETE
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/DeleteMapping1
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 5.测试GetMapping
-**URL:** http://localhost/getMapping
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── userId|int64|true|<br/>		<br/>		<br/><br/>				<br/>|userId
-
-**Request-example:**
-``` json
-http://localhost/getMapping?userId=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 6.测试PostMapping json
-**URL:** http://localhost/postMapping
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|true|&nbsp;|user
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话
-&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱
-&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址
-&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)
-&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
-&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型
-&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态
-&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述
-&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-
-**Request-example:**
-``` json
-http://localhost/postMapping
-```
-
-**Request-body-example:**
-``` json
-{
-  "address": "3tIPT50Yj",
-  "nickName": "DIfZ5cZ",
-  "sex": 6126,
-  "roles": [
-    {
-      "createBy": "PSZ3mFr",
-      "defaultRole": true,
-      "createTime": "Apr 9, 2069, 4:52:58 AM",
-      "updateBy": "8do",
-      "permissions": [
-        {
-          "level": 5745,
-          "icon": "AqGYF",
-          "description": "8Av5qYjHRe",
-          "updateTime": "Feb 19, 2004, 3:46:17 AM",
-          "type": 3816,
-          "title": "Q1l3",
-          "delFlag": 5905,
-          "parentId": "STr9jb",
-          "permTypes": [
-            "13B2x"
-          ],
-          "path": "eJ8lizlht",
-          "component": "RE6WSjpyy6",
-          "expand": "true",
-          "createBy": "nq1AQB72m",
-          "buttonType": "iZ",
-          "children": [
-            {
-              "level": 9611,
-              "icon": "7vG7",
-              "description": "r",
-              "updateTime": "Nov 12, 2011, 1:23:14 AM",
-              "type": 5954,
-              "title": "K",
-              "delFlag": 1635,
-              "parentId": "MT3f",
-              "permTypes": [
-                "dUZ3YaYDPX"
-              ],
-              "path": "4MU8",
-              "component": "hNa",
-              "expand": "true",
-              "createBy": "ijXLsMU",
-              "buttonType": "jPERE1",
-              "children": [],
-              "createTime": "Nov 10, 1986, 8:29:58 AM",
-              "updateBy": "aHqjlKF7",
-              "sortOrder": 1012.69,
-              "name": "KUR",
-              "checked": "false",
-              "id": "7gW4",
-              "selected": "false",
-              "status": 3686
-            }
-          ],
-          "createTime": "Jan 30, 1983, 7:39:40 PM",
-          "updateBy": "ziw",
-          "sortOrder": 2965.34,
-          "name": "UQXK",
-          "checked": "false",
-          "id": "Uw97rO",
-          "selected": "false",
-          "status": 5886
-        }
-      ],
-      "name": "dwy3lfXD",
-      "updateTime": "Apr 8, 2038, 12:53:26 PM",
-      "id": "y4cOrbh",
-      "delFlag": 7747
-    }
-  ],
-  "mobile": "6p8AcY",
-  "description": "zDEnTRbMb",
-  "updateTime": "Dec 19, 2057, 10:24:56 PM",
-  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
-  "type": 3745,
-  "delFlag": 1629,
-  "password": "hIiJQqqPD",
-  "createBy": "jPVoROnVly",
-  "createTime": "Oct 18, 2055, 5:47:36 PM",
-  "updateBy": "TSqGOxa7p",
-  "permissions": [
-    {
-      "level": 6554,
-      "icon": "w7uwcCV",
-      "description": "z",
-      "updateTime": "Jul 25, 2033, 6:07:29 AM",
-      "type": 7272,
-      "title": "f",
-      "delFlag": 9440,
-      "parentId": "BYY2A",
-      "permTypes": [
-        "5IoVSp6lcj"
-      ],
-      "path": "Wc",
-      "component": "jzVU25",
-      "expand": "true",
-      "createBy": "x",
-      "buttonType": "LoCcj5",
-      "children": [
-        {
-          "level": 6870,
-          "icon": "2Zgp7vJR",
-          "description": "7i1tqE1s",
-          "updateTime": "Feb 9, 2010, 9:26:02 AM",
-          "type": 7658,
-          "title": "K",
-          "delFlag": 4640,
-          "parentId": "HaFvkCmLd",
-          "permTypes": [
-            "AVj8bLqU"
-          ],
-          "path": "CQ",
-          "component": "0Fa",
-          "expand": "true",
-          "createBy": "975AR",
-          "buttonType": "XwH43J4p",
-          "children": [
-            {
-              "level": 6238,
-              "icon": "9tG",
-              "description": "1m4gXpIM5O",
-              "updateTime": "Mar 15, 2051, 9:59:00 PM",
-              "type": 2901,
-              "title": "sy",
-              "delFlag": 8572,
-              "parentId": "pIV",
-              "permTypes": [
-                "k0EeXVJvV"
-              ],
-              "path": "eM06Qnrs",
-              "component": "HKaNEur",
-              "expand": "true",
-              "createBy": "S1kYwAduOr",
-              "buttonType": "r9FqaS",
-              "children": [],
-              "createTime": "Oct 4, 1986, 7:14:31 AM",
-              "updateBy": "t5lNekGM",
-              "sortOrder": 3102.45,
-              "name": "j",
-              "checked": "false",
-              "id": "Z990i2lwf",
-              "selected": "false",
-              "status": 9325
-            }
-          ],
-          "createTime": "Dec 6, 2096, 9:56:41 AM",
-          "updateBy": "f",
-          "sortOrder": 7993.01,
-          "name": "Pp8Ld",
-          "checked": "false",
-          "id": "j",
-          "selected": "false",
-          "status": 6175
-        }
-      ],
-      "createTime": "Jul 30, 2092, 8:36:48 AM",
-      "updateBy": "kyQD4q3",
-      "sortOrder": 6421.25,
-      "name": "CwauNgT",
-      "checked": "false",
-      "id": "UIFG9",
-      "selected": "false",
-      "status": 3098
-    }
-  ],
-  "id": "ebAGXsB",
-  "email": "760lHHA",
-  "username": "UcSTgj",
-  "status": 4721
-}
-```
-
-**Response-fields:**
-
-None
-
-
-## 7.测试PostMapping表单
-**URL:** http://localhost/postMapping2
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|&nbsp;|&nbsp;|user
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话
-&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱
-&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址
-&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)
-&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
-&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型
-&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态
-&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述
-&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-
-**Request-example:**
-``` json
-http://localhost/postMapping2
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 8.测试PutMapping json
-**URL:** http://localhost/putMapping
-
-**Type:** PUT
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|true|&nbsp;|user
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话
-&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱
-&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址
-&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)
-&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
-&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型
-&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态
-&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述
-&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-
-**Request-example:**
-``` json
-http://localhost/putMapping
-```
-
-**Request-body-example:**
-``` json
-{
-  "address": "t6NoC",
-  "nickName": "wR3P",
-  "sex": 1255,
-  "roles": [
-    {
-      "createBy": "oo8C1UTG",
-      "defaultRole": true,
-      "createTime": "Jan 11, 1991, 10:16:53 PM",
-      "updateBy": "hq",
-      "permissions": [
-        {
-          "level": 5502,
-          "icon": "CjH0xta",
-          "description": "oA4bPKKNO",
-          "updateTime": "Feb 2, 2040, 2:03:33 AM",
-          "type": 8793,
-          "title": "PeFn",
-          "delFlag": 6565,
-          "parentId": "o8SB",
-          "permTypes": [
-            "jMC"
-          ],
-          "path": "Pyjo",
-          "component": "QVYi",
-          "expand": "true",
-          "createBy": "Q",
-          "buttonType": "kgztoA",
-          "children": [
-            {
-              "level": 9341,
-              "icon": "IATMJAwUu",
-              "description": "6p3Qv6HLAq",
-              "updateTime": "Jul 30, 2006, 9:30:53 AM",
-              "type": 6816,
-              "title": "ts",
-              "delFlag": 2065,
-              "parentId": "NpvSu",
-              "permTypes": [
-                "BjW8sfPAa"
-              ],
-              "path": "8KvfO",
-              "component": "qUytpsH7t",
-              "expand": "true",
-              "createBy": "Yq",
-              "buttonType": "Jmsu",
-              "children": [],
-              "createTime": "Feb 26, 2008, 11:51:40 AM",
-              "updateBy": "H4QpKz",
-              "sortOrder": 9198.02,
-              "name": "yHDB8",
-              "checked": "false",
-              "id": "sC",
-              "selected": "false",
-              "status": 7898
-            }
-          ],
-          "createTime": "Jul 2, 2058, 10:05:30 PM",
-          "updateBy": "SX",
-          "sortOrder": 9838.91,
-          "name": "m0",
-          "checked": "false",
-          "id": "jxZOK4EzZQ",
-          "selected": "false",
-          "status": 7993
-        }
-      ],
-      "name": "jDV",
-      "updateTime": "Apr 9, 2010, 6:18:14 PM",
-      "id": "o9NKFxX",
-      "delFlag": 2971
-    }
-  ],
-  "mobile": "BmQoxjyIhz",
-  "description": "ViWKk",
-  "updateTime": "Apr 13, 2100, 8:32:49 PM",
-  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
-  "type": 3633,
-  "delFlag": 5066,
-  "password": "9G3",
-  "createBy": "7Fl2Sjoo",
-  "createTime": "Dec 12, 1977, 3:38:59 AM",
-  "updateBy": "JxMQc",
-  "permissions": [
-    {
-      "level": 8609,
-      "icon": "drFyUKot",
-      "description": "4UN",
-      "updateTime": "Oct 19, 2074, 8:04:16 PM",
-      "type": 1845,
-      "title": "PruQujmDc",
-      "delFlag": 7636,
-      "parentId": "JlW",
-      "permTypes": [
-        "N"
-      ],
-      "path": "nK",
-      "component": "ZVV0",
-      "expand": "true",
-      "createBy": "Sp",
-      "buttonType": "9uW7hadC",
-      "children": [
-        {
-          "level": 8329,
-          "icon": "Ra",
-          "description": "lCiU",
-          "updateTime": "Oct 1, 1996, 5:43:07 PM",
-          "type": 9870,
-          "title": "IFCFWqs",
-          "delFlag": 233,
-          "parentId": "ECOCBk",
-          "permTypes": [
-            "Nm"
-          ],
-          "path": "7XD5",
-          "component": "X02fO6Xjbv",
-          "expand": "true",
-          "createBy": "c3us2",
-          "buttonType": "jLvqDRb",
-          "children": [
-            {
-              "level": 6667,
-              "icon": "zYyX",
-              "description": "xG",
-              "updateTime": "Nov 23, 2037, 11:59:57 PM",
-              "type": 5727,
-              "title": "XIL0FYV",
-              "delFlag": 6789,
-              "parentId": "BmNf4n6dLy",
-              "permTypes": [
-                "Dbm0x1"
-              ],
-              "path": "grGOQao",
-              "component": "AYNGGncan",
-              "expand": "true",
-              "createBy": "VsgU3KnxD",
-              "buttonType": "WQ",
-              "children": [],
-              "createTime": "Jan 29, 2084, 6:53:15 PM",
-              "updateBy": "DpEhCJdhnh",
-              "sortOrder": 6215.0,
-              "name": "3ROt",
-              "checked": "false",
-              "id": "1",
-              "selected": "false",
-              "status": 9265
-            }
-          ],
-          "createTime": "Apr 1, 2048, 3:27:55 AM",
-          "updateBy": "ek",
-          "sortOrder": 6562.03,
-          "name": "npXmm",
-          "checked": "false",
-          "id": "kzh",
-          "selected": "false",
-          "status": 7348
-        }
-      ],
-      "createTime": "Jan 19, 1984, 8:01:54 PM",
-      "updateBy": "A5G5",
-      "sortOrder": 1336.47,
-      "name": "F",
-      "checked": "false",
-      "id": "ABLPo7",
-      "selected": "false",
-      "status": 6995
-    }
-  ],
-  "id": "9",
-  "email": "GvJlq1K",
-  "username": "qvZlV",
-  "status": 9215
-}
-```
-
-**Response-fields:**
-
-None
-
-
-## 9.测试PutMapping表单
-**URL:** http://localhost/putMapping2
-
-**Type:** PUT
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|&nbsp;|&nbsp;|user
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; ├── mobile|string|&nbsp;|&nbsp;|电话
-&nbsp;&nbsp; ├── email|string|&nbsp;|&nbsp;|邮箱
-&nbsp;&nbsp; ├── address|string|&nbsp;|&nbsp;|地址
-&nbsp;&nbsp; ├── sex|int32|&nbsp;|&nbsp;|性别(男1 女 2)
-&nbsp;&nbsp; ├── avatar|string|&nbsp;|https://s1.ax1x.com/2018/05/19/CcdVQP.png|&nbsp;
-&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型
-&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|状态
-&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|描述
-&nbsp;&nbsp; ├── roles|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|角色名 以ROLE_开头
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── defaultRole|boolean|&nbsp;|&nbsp;|是否为注册默认角色
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|拥有权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|&nbsp;|&nbsp;|用户拥有的权限
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|菜单/权限名称
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|&nbsp;|&nbsp;|层级
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|&nbsp;|&nbsp;|类型 0页面 1具体操作
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|&nbsp;|&nbsp;|菜单标题
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|&nbsp;|&nbsp;|页面路径/资源链接url
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|&nbsp;|&nbsp;|前端组件
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|&nbsp;|&nbsp;|图标
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|&nbsp;|&nbsp;|按钮权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|&nbsp;|&nbsp;|父id
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|&nbsp;|&nbsp;|说明备注
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|&nbsp;|&nbsp;|排序值
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|&nbsp;|&nbsp;|是否启用 0启用 -1禁用
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|&nbsp;|&nbsp;|子菜单/权限
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|&nbsp;|&nbsp;|页面拥有的权限类型
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|&nbsp;|true|节点展开 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|&nbsp;|false|是否勾选 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|&nbsp;|false|是否选中 前端所需
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-&nbsp;&nbsp; ├── id|string|&nbsp;|&nbsp;|自增编号
-&nbsp;&nbsp; ├── createBy|string|&nbsp;|&nbsp;|创建人
-&nbsp;&nbsp; ├── createTime|string|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; ├── updateBy|string|&nbsp;|&nbsp;|修改人
-&nbsp;&nbsp; ├── updateTime|string|&nbsp;|&nbsp;|修改时间
-&nbsp;&nbsp; └── delFlag|int32|&nbsp;|&nbsp;|删除标记[1表示已删除，默认值0]
-
-**Request-example:**
-``` json
-http://localhost/putMapping2
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 10.测试DeleteMapping
-**URL:** http://localhost/deleteMapping
-
-**Type:** DELETE
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── userId|int64|true|<br/>		<br/>		<br/><br/>				<br/>|userId
-
-**Request-example:**
-``` json
-http://localhost/deleteMapping?userId=%0A%09%09%0A%09%09%0A%EE%80%80%EE%80%81%EE%80%82%0A%09%09%09%09%0A
-```
-
-
-**Response-fields:**
-
-None
-
-
-# Test ResponseEntity
-
-## 1.ResponseEntity return List
-**URL:** http://localhost/responseEntity/list
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/responseEntity/list
-```
-
 
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-┌─&nbsp; |array&lt;object&gt;|&nbsp;
-└── &nbsp;|object|Description:<br/>用户对象
-&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; └── telephone|string|固定电话
-
-**Response-example:**
-``` json
-[
-  {
-    "userAddress": "gmCZD",
-    "small": 4744.97,
-    "userList": [
-      {
-        "userAddress": "ZB2pj",
-        "small": 9556.94,
-        "userList": [],
-        "money": 3161.62,
-        "phone": "Kl1Ia66B",
-        "createTime": 9225,
-        "nickName": "g1HgU",
-        "ipv6": "fvuqIL",
-        "telephone": "GheZK9Ncs",
-        "userName": "FGNHncE",
-        "userDetails": [
-          {
-            "githubAddress": "LgB"
-          }
-        ],
-        "userAge": 0
-      }
-    ],
-    "money": 6320.33,
-    "phone": "b1Z",
-    "createTime": 2076,
-    "nickName": "poh8lN",
-    "ipv6": "jlUB",
-    "telephone": "Y7An",
-    "userName": "1Oto0",
-    "userDetails": [
-      {
-        "githubAddress": "QLv1"
-      }
-    ],
-    "userAge": 0
-  }
-]
-```
-
-# 普通java对象api文档测试
-
-## 1.返回普通String测试
-**URL:** http://localhost/simple/str
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/simple/str
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"T3z65RxA"
-```
-
-## 2.返回普通javabean
-**URL:** http://localhost/simple/user
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|true|&nbsp;|
-&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试
-&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|&nbsp;|&nbsp;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|&nbsp;|&nbsp;|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|&nbsp;|&nbsp;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话
-&nbsp;&nbsp; ├── userName|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; ├── userAddress|string|&nbsp;|&nbsp;|用户地址
-&nbsp;&nbsp; ├── userAge|int32|&nbsp;|0|用户年龄
-&nbsp;&nbsp; ├── phone|string|&nbsp;|&nbsp;|手机号
-&nbsp;&nbsp; ├── createTime|int64|&nbsp;|&nbsp;|创建时间
-&nbsp;&nbsp; ├── small|float|&nbsp;|&nbsp;|钱少
-&nbsp;&nbsp; ├── money|double|&nbsp;|&nbsp;|钱太多了
-&nbsp;&nbsp; ├── ipv6|string|&nbsp;|&nbsp;|ipv6
-&nbsp;&nbsp; └── telephone|string|&nbsp;|&nbsp;|固定电话
-
-**Request-example:**
-``` json
-http://localhost/simple/user
-```
-
-**Request-body-example:**
-``` json
-{
-  "userAddress": "ckiZUjC",
-  "small": 2001.41,
-  "userList": [
-    {
-      "userAddress": "GlK6g5RoG",
-      "small": 8749.73,
-      "userList": [],
-      "money": 4839.35,
-      "phone": "M4fk5Zg",
-      "createTime": 6595,
-      "nickName": "b8",
-      "ipv6": "8M",
-      "telephone": "r6",
-      "userName": "XztF8jJ",
-      "userDetails": [
-        {
-          "githubAddress": "h"
-        }
-      ],
-      "userAge": 0
-    }
-  ],
-  "money": 7385.38,
-  "phone": "BwK0yxp7",
-  "createTime": 7759,
-  "nickName": "kN",
-  "ipv6": "J",
-  "telephone": "3QuaeuttxI",
-  "userName": "0vwjHAq",
-  "userDetails": [
-    {
-      "githubAddress": "nH6Xksve"
-    }
-  ],
-  "userAge": 0
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|Description:<br/>用户对象
-├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; └── githubAddress|string|测试
-├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; └── telephone|string|固定电话
-├── userName|string|用户名
-├── nickName|string|昵称
-├── userAddress|string|用户地址
-├── userAge|int32|用户年龄
-├── phone|string|手机号
-├── createTime|int64|创建时间
-├── small|float|钱少
-├── money|double|钱太多了
-├── ipv6|string|ipv6
-└── telephone|string|固定电话
-
-**Response-example:**
-``` json
-{
-  "userAddress": "TldMCH5VR",
-  "small": 2916.39,
-  "userList": [
-    {
-      "userAddress": "yEg3oC",
-      "small": 8696.26,
-      "userList": [],
-      "money": 2783.12,
-      "phone": "jnBnz",
-      "createTime": 9684,
-      "nickName": "yCtJIo",
-      "ipv6": "rh0cwcupwy",
-      "telephone": "kspzpk5p",
-      "userName": "iQGz",
-      "userDetails": [
-        {
-          "githubAddress": "EWJt9J17A"
-        }
-      ],
-      "userAge": 0
-    }
-  ],
-  "money": 8415.36,
-  "phone": "BKk",
-  "createTime": 2477,
-  "nickName": "WFVChFFmOq",
-  "ipv6": "s0XTeEhyf",
-  "telephone": "LS",
-  "userName": "RP5FcPA",
-  "userDetails": [
-    {
-      "githubAddress": "IH8HDv9d"
-    }
-  ],
-  "userAge": 0
-}
-```
-
-## 3.返回复杂实体数据
-**URL:** http://localhost/simple/stu
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/simple/stu
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|Description:<br/>学生信息
-├── stuName|string|姓名
-├── stuAge|boolean|年龄
-├── stuAddress|string|地址
-├── user|object|用户对象
-│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; └── telephone|string|固定电话
-├── userMap|map&lt;string, object&gt;|map用户信息
+┌─&nbsp; |object|&nbsp;
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|map&lt;string, map&gt;|&nbsp;
 │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-│&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-├── userTreeSet|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; └── telephone|string|固定电话
-└── user1|object|用户对象2
-&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-&nbsp;&nbsp; ├── userName|string|用户名
-&nbsp;&nbsp; ├── nickName|string|昵称
-&nbsp;&nbsp; ├── userAddress|string|用户地址
-&nbsp;&nbsp; ├── userAge|int32|用户年龄
-&nbsp;&nbsp; ├── phone|string|手机号
-&nbsp;&nbsp; ├── createTime|int64|创建时间
-&nbsp;&nbsp; ├── small|float|钱少
-&nbsp;&nbsp; ├── money|double|钱太多了
-&nbsp;&nbsp; ├── ipv6|string|ipv6
-&nbsp;&nbsp; └── telephone|string|固定电话
+│&nbsp;&nbsp; └── &nbsp;|map&lt;string, object&gt;|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; └── &nbsp;|object|&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ├── age|int32|年龄&nbsp;
+│&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; └── name|string|姓名&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "user1": {
-    "userAddress": "tYsTkRH",
-    "small": 855.85,
-    "userList": [
-      {
-        "userAddress": "8xWa",
-        "small": 3657.78,
-        "userList": [],
-        "money": 5238.39,
-        "phone": "1mivE",
-        "createTime": 4826,
-        "nickName": "b",
-        "ipv6": "3YwrLJ",
-        "telephone": "F9nZ",
-        "userName": "a5vN4NCxP",
-        "userDetails": [
-          {
-            "githubAddress": "b5"
-          }
-        ],
-        "userAge": 0
-      }
-    ],
-    "money": 7120.74,
-    "phone": "syZf173",
-    "createTime": 449,
-    "nickName": "wk",
-    "ipv6": "puxj39",
-    "telephone": "Sj",
-    "userName": "Lo6H4",
-    "userDetails": [
-      {
-        "githubAddress": "HlJq"
-      }
-    ],
-    "userAge": 0
-  },
-  "userTreeSet": [
-    {
-      "userAddress": "Xi",
-      "small": 5814.46,
-      "userList": [
-        {
-          "userAddress": "oqnJaZK",
-          "small": 691.49,
-          "userList": [],
-          "money": 4592.46,
-          "phone": "pqxiDd",
-          "createTime": 9062,
-          "nickName": "QWNkc",
-          "ipv6": "w0vwrk1",
-          "telephone": "9Q7dnYE",
-          "userName": "Y8RmWGw",
-          "userDetails": [
-            {
-              "githubAddress": "NQuCK0"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 8825.52,
-      "phone": "xRJUlDY7",
-      "createTime": 7897,
-      "nickName": "4",
-      "ipv6": "DKT",
-      "telephone": "zlnYqs6Wt",
-      "userName": "Kxw6",
-      "userDetails": [
-        {
-          "githubAddress": "zgV52F3we"
-        }
-      ],
-      "userAge": 0
-    }
-  ],
-  "stuAddress": "tFQft",
-  "stuName": "hZ07RH",
-  "userMap": {
+  "traceId": "Jmw8mx",
+  "code": "oK49tnGh2s",
+  "data": {
     "null": {
-      "userAddress": "XUfma",
-      "small": 3922.91,
-      "userList": [
-        {
-          "userAddress": "xa",
-          "small": 2126.95,
-          "userList": [],
-          "money": 4848.59,
-          "phone": "UtyfnHr",
-          "createTime": 3167,
-          "nickName": "idy",
-          "ipv6": "P",
-          "telephone": "t3xFPDd7",
-          "userName": "y1uV4gGYDG",
-          "userDetails": [
-            {
-              "githubAddress": "Dwt"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 9201.45,
-      "phone": "HdAt",
-      "createTime": 572,
-      "nickName": "D5qA",
-      "ipv6": "612R6w3Nq",
-      "telephone": "C7",
-      "userName": "A5",
-      "userDetails": [
-        {
-          "githubAddress": "3wqDNRv"
-        }
-      ],
-      "userAge": 0
+      "null": {
+        "name": "jR",
+        "age": 0
+      }
     }
   },
-  "stuAge": false,
-  "user": {
-    "userAddress": "Qzfp",
-    "small": 2922.91,
+  "success": false,
+  "message": "XvnhUl",
+  "timestamp": "et"
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/test5
+```
+
+## 2.Map&lt;String,Integer&gt;结构&nbsp;
+
+**URL:** http://localhost/map/primitive
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |map&lt;string, int32&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|int32|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "null": 1602
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/primitive
+```
+
+## 3.Map&lt;String,Object&gt;结构&nbsp;
+
+**URL:** http://localhost/map/objectValue
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|object|&nbsp;
+
+**Response-example:**
+``` json
+{
+  "null": {}
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/objectValue
+```
+
+## 4.Map&lt;String,User&gt;结构&nbsp;
+
+**URL:** http://localhost/map/object
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+
+**Response-example:**
+``` json
+{
+  "null": {
+    "userAddress": "Nah75H",
+    "small": 4913.87,
     "userList": [
       {
-        "userAddress": "HC0",
-        "small": 5590.22,
+        "userAddress": "iVV",
+        "small": 7688.94,
         "userList": [],
-        "money": 5800.5,
-        "phone": "gQ",
-        "createTime": 6037,
-        "nickName": "8zaiYQiTc",
-        "ipv6": "0ZRyYg6zyo",
-        "telephone": "IMT",
-        "userName": "ZUPym3SMh",
+        "money": 3933.49,
+        "phone": "v",
+        "createTime": 7010,
+        "nickName": "WvGrkH3kHZ",
+        "ipv6": "y1u2Y5m",
+        "telephone": "eFG3uWb0Y",
+        "userName": "S",
         "userDetails": [
           {
-            "githubAddress": "KPRnoa"
+            "githubAddress": "J7"
           }
         ],
         "userAge": 0
       }
     ],
-    "money": 7257.22,
-    "phone": "q1jz",
-    "createTime": 6973,
-    "nickName": "vFAG",
-    "ipv6": "v",
-    "telephone": "pn8zqNYB",
-    "userName": "IUW2vXu",
+    "money": 163.68,
+    "phone": "RzjiMJ6",
+    "createTime": 1884,
+    "nickName": "bJV",
+    "ipv6": "4p5swyqT",
+    "telephone": "Vk",
+    "userName": "vNCXvb",
     "userDetails": [
       {
-        "githubAddress": "QQpQ2uO"
+        "githubAddress": "J"
       }
     ],
     "userAge": 0
@@ -8195,2498 +13858,1207 @@ Field|Type|Description
 }
 ```
 
-## 4.Teacher&lt;Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;,Teacher&lt;User,User,User&gt;&gt;结构
-**URL:** http://localhost/simple/teacher
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/object
+```
 
-**Type:** POST
+## 5.Map&lt;String,Student&gt;结构&nbsp;
 
+**URL:** http://localhost/map/test1
 
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
 
-**Request-example:**
-``` json
-http://localhost/simple/teacher
-```
-
-
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-┌─&nbsp; |object|Description:<br/>老师
-├── data|object|泛型data
-│&nbsp;&nbsp; ├── data|object|泛型data
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── data1|object|泛型data1
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── data2|object|data2
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; └── age|int32|年龄
-├── data1|object|泛型data1
-│&nbsp;&nbsp; ├── data|object|泛型data
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── data1|object|泛型data1
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── data2|object|data2
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; └── age|int32|年龄
-├── data2|object|data2
-│&nbsp;&nbsp; ├── data|object|泛型data
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── data1|object|泛型data1
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── data2|object|data2
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; └── age|int32|年龄
-└── age|int32|年龄
+┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|object|Description:<br/>学生信息&nbsp;
+&nbsp;&nbsp; ├── stuName|string|姓名&nbsp;
+&nbsp;&nbsp; ├── stuAge|boolean|年龄&nbsp;
+&nbsp;&nbsp; ├── stuAddress|string|地址&nbsp;
+&nbsp;&nbsp; ├── user|object|用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── listMap|array&lt;map&lt;string, int32&gt;&gt;|listMap&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; └── user1|object|用户对象2&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "data": {
-    "data": {
-      "userAddress": "XLsOR8AnH",
-      "small": 2409.61,
-      "userList": [
-        {
-          "userAddress": "s4Zw",
-          "small": 7329.2,
-          "userList": [],
-          "money": 7042.12,
-          "phone": "hRaxMYLq",
-          "createTime": 2844,
-          "nickName": "8fiu",
-          "ipv6": "iNCyWf",
-          "telephone": "lNi5GiyG",
-          "userName": "w",
-          "userDetails": [
-            {
-              "githubAddress": "q"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 2203.0,
-      "phone": "C3LD1C9",
-      "createTime": 3071,
-      "nickName": "0sKHw",
-      "ipv6": "kppe",
-      "telephone": "YpTFkqe",
-      "userName": "nyyRd0MzqE",
-      "userDetails": [
-        {
-          "githubAddress": "QAN"
-        }
-      ],
-      "userAge": 0
-    },
-    "data2": {
-      "userAddress": "HlOvsstID",
-      "small": 4563.12,
-      "userList": [
-        {
-          "userAddress": "PAFgat",
-          "small": 1098.25,
-          "userList": [],
-          "money": 23.51,
-          "phone": "16hwKEM",
-          "createTime": 7644,
-          "nickName": "Fic",
-          "ipv6": "C6",
-          "telephone": "QX5t",
-          "userName": "zn",
-          "userDetails": [
-            {
-              "githubAddress": "eFoCq4Q"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 3248.53,
-      "phone": "Q",
-      "createTime": 2338,
-      "nickName": "PCGC4oIDb",
-      "ipv6": "g",
-      "telephone": "t1vAejuN",
-      "userName": "KhXeTtJs",
-      "userDetails": [
-        {
-          "githubAddress": "cy8"
-        }
-      ],
-      "userAge": 0
-    },
-    "data1": {
-      "userAddress": "cdD",
-      "small": 8665.83,
-      "userList": [
-        {
-          "userAddress": "J06K9eWS",
-          "small": 4317.29,
-          "userList": [],
-          "money": 8261.46,
-          "phone": "Um6TSqbSM3",
-          "createTime": 9234,
-          "nickName": "hsnwyncdE",
-          "ipv6": "2Cp6LNr",
-          "telephone": "etN",
-          "userName": "8SzS77BxA",
-          "userDetails": [
-            {
-              "githubAddress": "7eeVn"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 4432.7,
-      "phone": "51gN0",
-      "createTime": 7085,
-      "nickName": "HSrfu6XD",
-      "ipv6": "oaIW",
-      "telephone": "Qllgm",
-      "userName": "Cmapmh0o",
-      "userDetails": [
-        {
-          "githubAddress": "0vtu"
-        }
-      ],
-      "userAge": 0
-    },
-    "age": 0
-  },
-  "data2": {
-    "data": {
-      "userAddress": "svdO11i",
-      "small": 8078.89,
-      "userList": [
-        {
-          "userAddress": "DG4h",
-          "small": 9352.44,
-          "userList": [],
-          "money": 8805.16,
-          "phone": "Qy0K",
-          "createTime": 1140,
-          "nickName": "BmxYnF3",
-          "ipv6": "zsDLxN",
-          "telephone": "YAnge",
-          "userName": "xJ29jez",
-          "userDetails": [
-            {
-              "githubAddress": "z"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 5623.33,
-      "phone": "StKkamz99",
-      "createTime": 5830,
-      "nickName": "VM",
-      "ipv6": "GUsjjOeN",
-      "telephone": "l23rP03",
-      "userName": "PSTmrG",
-      "userDetails": [
-        {
-          "githubAddress": "GhORC"
-        }
-      ],
-      "userAge": 0
-    },
-    "data2": {
-      "userAddress": "e2qIii",
-      "small": 9207.96,
-      "userList": [
-        {
-          "userAddress": "DkFhd",
-          "small": 2615.88,
-          "userList": [],
-          "money": 4288.56,
-          "phone": "880NMAs6",
-          "createTime": 2892,
-          "nickName": "uhBef9IJpb",
-          "ipv6": "kzu",
-          "telephone": "bUO1J5lJP",
-          "userName": "Uru1L",
-          "userDetails": [
-            {
-              "githubAddress": "gtPb"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 5004.06,
-      "phone": "Y1",
-      "createTime": 5108,
-      "nickName": "eEmZwcZ",
-      "ipv6": "RDF8oEN",
-      "telephone": "98Nafws",
-      "userName": "bjFa8Vr",
-      "userDetails": [
-        {
-          "githubAddress": "peYw0xhQ"
-        }
-      ],
-      "userAge": 0
-    },
-    "data1": {
-      "userAddress": "rJGPHHz",
-      "small": 2284.47,
-      "userList": [
-        {
-          "userAddress": "G9K7hpsjb",
-          "small": 5398.49,
-          "userList": [],
-          "money": 495.4,
-          "phone": "59ysqTbri",
-          "createTime": 8126,
-          "nickName": "6viERiX",
-          "ipv6": "VuNvDDwa",
-          "telephone": "n6KFFzru",
-          "userName": "kOzHX",
-          "userDetails": [
-            {
-              "githubAddress": "iTnjJk"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 2120.95,
-      "phone": "rTMOqREt",
-      "createTime": 7463,
-      "nickName": "eZ8tCFaA",
-      "ipv6": "A",
-      "telephone": "t1A",
-      "userName": "LNasy6JyQ",
-      "userDetails": [
-        {
-          "githubAddress": "G0eIeoI"
-        }
-      ],
-      "userAge": 0
-    },
-    "age": 0
-  },
-  "data1": {
-    "data": {
-      "userAddress": "kzXo",
-      "small": 4874.85,
-      "userList": [
-        {
-          "userAddress": "LZfcXQqs",
-          "small": 2889.43,
-          "userList": [],
-          "money": 6081.42,
-          "phone": "HX",
-          "createTime": 8820,
-          "nickName": "1TZ",
-          "ipv6": "hmt",
-          "telephone": "6",
-          "userName": "caLMb9",
-          "userDetails": [
-            {
-              "githubAddress": "ju2m"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 2444.84,
-      "phone": "zZzrfr",
-      "createTime": 9943,
-      "nickName": "45xw0",
-      "ipv6": "f9a4r0Je",
-      "telephone": "hNg",
-      "userName": "YsSncrYfr",
-      "userDetails": [
-        {
-          "githubAddress": "7VD"
-        }
-      ],
-      "userAge": 0
-    },
-    "data2": {
-      "userAddress": "93k7GK1uEX",
-      "small": 1145.57,
-      "userList": [
-        {
-          "userAddress": "GUXh4Wp",
-          "small": 9929.61,
-          "userList": [],
-          "money": 8965.94,
-          "phone": "P3ijF",
-          "createTime": 9073,
-          "nickName": "EE",
-          "ipv6": "4",
-          "telephone": "31QejrKo",
-          "userName": "4bU5G",
-          "userDetails": [
-            {
-              "githubAddress": "RPDNo"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 7471.02,
-      "phone": "O9pTfpEe",
-      "createTime": 4227,
-      "nickName": "mF",
-      "ipv6": "4QQC",
-      "telephone": "j5KKPB4Y",
-      "userName": "8OYji1VD",
-      "userDetails": [
-        {
-          "githubAddress": "GtK"
-        }
-      ],
-      "userAge": 0
-    },
-    "data1": {
-      "userAddress": "LUCgpFEEG0",
-      "small": 1213.43,
-      "userList": [
-        {
-          "userAddress": "tB6O22",
-          "small": 9343.49,
-          "userList": [],
-          "money": 2013.04,
-          "phone": "TrR963c",
-          "createTime": 8273,
-          "nickName": "QUAZ",
-          "ipv6": "gSGMuQ8D",
-          "telephone": "cZCJNkXZl",
-          "userName": "x",
-          "userDetails": [
-            {
-              "githubAddress": "97wSRn"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 3307.54,
-      "phone": "ocb",
-      "createTime": 9394,
-      "nickName": "9ITiDI",
-      "ipv6": "hssY",
-      "telephone": "DgIu357qB",
-      "userName": "TGg7q",
-      "userDetails": [
-        {
-          "githubAddress": "BSqu8tHk"
-        }
-      ],
-      "userAge": 0
-    },
-    "age": 0
-  },
-  "age": 0
-}
-```
-
-## 5.Teacher&lt;List&lt;User&gt;, User, Student&gt;
-**URL:** http://localhost/simple/teacher2
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/simple/teacher2
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|Description:<br/>老师
-├── data|array&lt;object&gt;|泛型data
-│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; └── telephone|string|固定电话
-├── data1|object|泛型data1
-│&nbsp;&nbsp; ├── stuName|string|姓名
-│&nbsp;&nbsp; ├── stuAge|boolean|年龄
-│&nbsp;&nbsp; ├── stuAddress|string|地址
-│&nbsp;&nbsp; ├── user|object|用户对象
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; └── user1|object|用户对象2
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话
-├── data2|object|data2
-│&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话
-│&nbsp;&nbsp; ├── userName|string|用户名
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; ├── userAddress|string|用户地址
-│&nbsp;&nbsp; ├── userAge|int32|用户年龄
-│&nbsp;&nbsp; ├── phone|string|手机号
-│&nbsp;&nbsp; ├── createTime|int64|创建时间
-│&nbsp;&nbsp; ├── small|float|钱少
-│&nbsp;&nbsp; ├── money|double|钱太多了
-│&nbsp;&nbsp; ├── ipv6|string|ipv6
-│&nbsp;&nbsp; └── telephone|string|固定电话
-└── age|int32|年龄
-
-**Response-example:**
-``` json
-{
-  "data": [
-    {
-      "userAddress": "4Qakj5E",
-      "small": 2576.76,
-      "userList": [
-        {
-          "userAddress": "Vwj",
-          "small": 2824.81,
-          "userList": [],
-          "money": 7334.61,
-          "phone": "Bi7JeS",
-          "createTime": 2806,
-          "nickName": "0qSgpJc0p",
-          "ipv6": "oSa",
-          "telephone": "NWIvlfA",
-          "userName": "A",
-          "userDetails": [
-            {
-              "githubAddress": "AwQCL"
-            }
-          ],
-          "userAge": 0
-        }
-      ],
-      "money": 8736.02,
-      "phone": "Zp80",
-      "createTime": 6998,
-      "nickName": "Ykgh8dr",
-      "ipv6": "4w2yQ",
-      "telephone": "M",
-      "userName": "Ab9",
-      "userDetails": [
-        {
-          "githubAddress": "rrRP87MHz"
-        }
-      ],
-      "userAge": 0
-    }
-  ],
-  "data2": {
-    "userAddress": "MJ5B",
-    "small": 4152.69,
-    "userList": [
-      {
-        "userAddress": "H1i3",
-        "small": 2800.5,
-        "userList": [],
-        "money": 8948.1,
-        "phone": "QI",
-        "createTime": 6274,
-        "nickName": "puiemVj",
-        "ipv6": "J",
-        "telephone": "7WCpKhQ",
-        "userName": "iGqtcyR",
-        "userDetails": [
-          {
-            "githubAddress": "UhzhbmuQT"
-          }
-        ],
-        "userAge": 0
-      }
-    ],
-    "money": 2866.22,
-    "phone": "hNd8Aam8iE",
-    "createTime": 1741,
-    "nickName": "0TFF6P",
-    "ipv6": "WvXNjvOiOv",
-    "telephone": "gliSHJvzQ",
-    "userName": "v13QDHhlYr",
-    "userDetails": [
-      {
-        "githubAddress": "RV1WGLnYkL"
-      }
-    ],
-    "userAge": 0
-  },
-  "data1": {
+  "null": {
     "user1": {
-      "userAddress": "CJejKHfx",
-      "small": 5883.01,
-      "userList": [],
-      "money": 1348.35,
-      "phone": "Q3luZR",
-      "createTime": 638,
-      "nickName": "GZr2",
-      "ipv6": "FPyKKS",
-      "telephone": "rWDb",
-      "userName": "yZCYE",
+      "userAddress": "2qDJVn8d",
+      "small": 5802.92,
+      "userList": [
+        {
+          "userAddress": "xKJ",
+          "small": 8205.22,
+          "userList": [],
+          "money": 7007.09,
+          "phone": "v55Qi81Iv",
+          "createTime": 7270,
+          "nickName": "iLWZ5VfK",
+          "ipv6": "0vasq",
+          "telephone": "e6",
+          "userName": "wzQHZSwwDr",
+          "userDetails": [
+            {
+              "githubAddress": "6A"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 7609.85,
+      "phone": "GZamX",
+      "createTime": 2780,
+      "nickName": "2n4I5A",
+      "ipv6": "st0rkwHW3",
+      "telephone": "F",
+      "userName": "jj5dh",
       "userDetails": [
         {
-          "githubAddress": "jmk"
+          "githubAddress": "NLW0hoF7dB"
         }
       ],
       "userAge": 0
     },
     "userTreeSet": [
       {
-        "userAddress": "FPLC",
-        "small": 5893.17,
-        "userList": [],
-        "money": 5661.76,
-        "phone": "lwaHDqY5",
-        "createTime": 4000,
-        "nickName": "oX1RMfmLN",
-        "ipv6": "mNLUYy",
-        "telephone": "der0qMHTAl",
-        "userName": "xatHIuDaDM",
+        "userAddress": "vT",
+        "small": 1713.15,
+        "userList": [
+          {
+            "userAddress": "U",
+            "small": 6800.36,
+            "userList": [],
+            "money": 7190.81,
+            "phone": "8dZ",
+            "createTime": 8149,
+            "nickName": "Y",
+            "ipv6": "ndh",
+            "telephone": "nHo",
+            "userName": "SrNGBThNW",
+            "userDetails": [
+              {
+                "githubAddress": "TzR"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 2349.35,
+        "phone": "OfBszK7xi4",
+        "createTime": 9715,
+        "nickName": "T6Tck5PW",
+        "ipv6": "cPK2fbvmZ",
+        "telephone": "u",
+        "userName": "qXl",
         "userDetails": [
           {
-            "githubAddress": "2HOppg8"
+            "githubAddress": "hv9lJE0"
           }
         ],
         "userAge": 0
       }
     ],
-    "stuAddress": "M11",
-    "stuName": "W5WlBQn",
+    "listMap": [
+      {
+        "null": 2838
+      }
+    ],
+    "stuAddress": "gY0Z3Nb",
+    "stuName": "3bX8nINh",
     "userMap": {
       "null": {
-        "userAddress": "cjh6g8",
-        "small": 8458.59,
-        "userList": [],
-        "money": 2994.89,
-        "phone": "9g",
-        "createTime": 5959,
-        "nickName": "6peB22N",
-        "ipv6": "Vb3Kt",
-        "telephone": "HtQV",
-        "userName": "PTkMhNK",
+        "userAddress": "rX1TyCE",
+        "small": 4539.8,
+        "userList": [
+          {
+            "userAddress": "tUfjv",
+            "small": 3917.81,
+            "userList": [],
+            "money": 7620.42,
+            "phone": "2czTZmJsO",
+            "createTime": 9344,
+            "nickName": "4v",
+            "ipv6": "EkLbqCmv",
+            "telephone": "S207BrgyJ",
+            "userName": "dVBU2vzCN",
+            "userDetails": [
+              {
+                "githubAddress": "c"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 8700.64,
+        "phone": "KZwZz9K",
+        "createTime": 7000,
+        "nickName": "kO",
+        "ipv6": "JX9ay2O6X8",
+        "telephone": "HA9BNmz8w",
+        "userName": "JYWgzQ",
         "userDetails": [
           {
-            "githubAddress": "6F9mP"
+            "githubAddress": "wq"
           }
         ],
         "userAge": 0
       }
     },
-    "stuAge": false,
+    "stuAge": true,
     "user": {
-      "userAddress": "HgnuNV",
-      "small": 5372.08,
-      "userList": [],
-      "money": 2862.0,
-      "phone": "4MtaH",
-      "createTime": 587,
-      "nickName": "AOLmdbSX",
-      "ipv6": "X0abK",
-      "telephone": "i",
-      "userName": "AmEr4cGwTO",
+      "userAddress": "jUYz941ZEp",
+      "small": 1226.69,
+      "userList": [
+        {
+          "userAddress": "NtqJ6PGX",
+          "small": 2638.46,
+          "userList": [],
+          "money": 5617.01,
+          "phone": "pihfDRc",
+          "createTime": 2035,
+          "nickName": "7KR6",
+          "ipv6": "znCuB",
+          "telephone": "ZwAYOSx4LT",
+          "userName": "GQxag",
+          "userDetails": [
+            {
+              "githubAddress": "ziQ"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 5956.51,
+      "phone": "QjrJISQFO",
+      "createTime": 7130,
+      "nickName": "I5dsr",
+      "ipv6": "Uo",
+      "telephone": "MSs44xO",
+      "userName": "eg7",
       "userDetails": [
         {
-          "githubAddress": "p5e65vax9Q"
+          "githubAddress": "SI"
         }
       ],
       "userAge": 0
     }
-  },
-  "age": 0
+  }
 }
 ```
 
-## 6.测试SubUser
-**URL:** http://localhost/simple/subUser
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/simple/subUser
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/test1
 ```
 
+## 6.Map&lt;String,Teacher&lt;List&lt;User&gt;,User,Student&gt;&gt;超复杂结构&nbsp;
 
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|Description:<br/>子用户
-├── subUserName|string|用户名称
-└── numbers|number|bigInteger
-
-**Response-example:**
-``` json
-{
-  "subUserName": "bobpUUFs",
-  "numbers": 8884
-}
-```
-
-## 7.返回CommonResult&lt;SubUser&gt;
-**URL:** http://localhost/simple/subUser/result
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/simple/subUser/result
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|Description:<br/>子用户
-│&nbsp;&nbsp; ├── subUserName|string|用户名称
-│&nbsp;&nbsp; └── numbers|number|bigInteger
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "A",
-  "data": {
-    "subUserName": "cXJNmbA6L",
-    "numbers": 7031
-  },
-  "success": false,
-  "message": "u",
-  "timestamp": "l"
-}
-```
-
-# 简单对象测试2
-
-## 1.CommonResult&lt;String&gt;
-**URL:** http://localhost/stringCommonResult
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/stringCommonResult
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|string|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "mQ",
-  "data": "XKo09DyapT",
-  "success": false,
-  "message": "Tu",
-  "timestamp": "z"
-}
-```
-
-## 2.返回Staff&lt;Staff&lt;Staff&gt;&gt;
-**URL:** http://localhost/staff
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/staff
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|Description:<br/>职工信息
-├── name|string|职工名称
-├── annyObject|object|任何信息对象
-│&nbsp;&nbsp; ├── name|string|职工名称
-│&nbsp;&nbsp; ├── annyObject|object|任何信息对象
-│&nbsp;&nbsp; └── data|array&lt;object&gt;|泛型数据
-└── data|array&lt;object&gt;|泛型数据
-&nbsp;&nbsp; ├── name|string|职工名称
-&nbsp;&nbsp; ├── annyObject|object|任何信息对象
-&nbsp;&nbsp; └── data|array&lt;object&gt;|泛型数据
-
-**Response-example:**
-``` json
-{
-  "annyObject": {
-    "data": [],
-    "name": "p"
-  },
-  "data": [
-    {
-      "data": [],
-      "name": "dxlRkLbbz"
-    }
-  ],
-  "name": "I4f2eyh"
-}
-```
-
-## 3.返回Staff&lt;String&gt;
-**URL:** http://localhost/staffStr
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/staffStr
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|Description:<br/>职工信息
-├── name|string|职工名称
-├── annyObject|string|任何信息对象
-└── data|array&lt;string&gt;|泛型数据
-
-**Response-example:**
-``` json
-{
-  "annyObject": "Bl4",
-  "data": [
-    "pLGrFFEsIH"
-  ],
-  "name": "TVWotJNs"
-}
-```
-
-## 4.JAVA继承测试
-**URL:** http://localhost/children
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── children|object|true|&nbsp;|
-&nbsp;&nbsp; ├── age|int32|&nbsp;|0|年龄
-&nbsp;&nbsp; └── name|string|&nbsp;|&nbsp;|姓名
-
-**Request-example:**
-``` json
-http://localhost/children
-```
-
-**Request-body-example:**
-``` json
-{
-  "name": "ec6fmHPhS",
-  "age": 0
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── age|int32|年龄
-└── name|string|姓名
-
-**Response-example:**
-``` json
-{
-  "name": "FdTCcd8",
-  "age": 0
-}
-```
-
-# 注释tag用例
-
-## 1.~~测试apiNote tag~~
-**URL:** http://localhost/tags/apiNote
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|array&lt;string&gt;|&nbsp;|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/tags/apiNote
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"q3Yy41s4Q"
-```
-
-## 2.自定义mock tag获取mock值
-**URL:** http://localhost/tags/mock
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|true|&nbsp;|
-&nbsp;&nbsp; ├── subUserName|string|true|&nbsp;|用户名称
-&nbsp;&nbsp; └── numbers|number|&nbsp;|&nbsp;|bigInteger
-
-**Request-example:**
-``` json
-http://localhost/tags/mock
-```
-
-**Request-body-example:**
-``` json
-{
-  "subUserName": "biusgq",
-  "numbers": 35
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-│&nbsp;&nbsp; ├── AGE|int32|&nbsp;
-│&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;
-│&nbsp;&nbsp; ├── gender|enum|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-│&nbsp;&nbsp; ├── simpleEnum|enum|简单枚举<br/>RED<br/>BLUE
-│&nbsp;&nbsp; ├── username|string|用户名
-│&nbsp;&nbsp; ├── password|string|密码
-│&nbsp;&nbsp; ├── nickName|string|昵称
-│&nbsp;&nbsp; └── mobile|string|电话
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "bVBC7",
-  "data": {
-    "password": "xdB5t55nwz",
-    "gender": "MAN",
-    "MAX_SPEED": "120",
-    "simpleEnum": "BLUE",
-    "nickName": "SET9DKVEYB",
-    "mobile": "NdTlAnKWD",
-    "AGE": "100",
-    "username": "O1Ha"
-  },
-  "success": false,
-  "message": "4Pkii",
-  "timestamp": "0RvJHF"
-}
-```
-
-## 3.测试@ignore tag
-**URL:** http://localhost/tags/ignore
+**URL:** http://localhost/map/test2
 
 **Type:** GET
 
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── pager|object|&nbsp;|&nbsp;|
-&nbsp;&nbsp; ├── total|int32|&nbsp;|0|记录总数
-&nbsp;&nbsp; ├── concurrentPage|int32|&nbsp;|0|当前页
-&nbsp;&nbsp; └── pageSize|int32|&nbsp;|0|当前page
-
-**Request-example:**
-``` json
-http://localhost/tags/ignore
-```
-
+None
 
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"jQSOXB6W"
-```
-
-# 用户信息操作接口
-
-## 1.添加用户
-**URL:** http://localhost/user/add
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|true|&nbsp;|
-&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
-&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
-&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; └── mobile|string|&nbsp;|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/user/add
-```
-
-**Request-body-example:**
-``` json
-{
-  "password": "x",
-  "gender": "MAN",
-  "MAX_SPEED": "120",
-  "simpleEnum": "BLUE",
-  "nickName": "WqQ",
-  "mobile": "xTKNKB",
-  "AGE": "100",
-  "username": "AcQIPN"
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── username|string|用户名
-├── password|string|密码
-├── nickName|string|昵称
-├── mobile|string|电话
-├── email|string|邮箱
-├── address|string|地址
-├── sex|int32|性别(男1 女 2)
-├── avatar|string|&nbsp;
-├── type|int32|类型
-├── status|int32|状态
-├── description|string|描述
-├── roles|array&lt;object&gt;|用户拥有角色
-│&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头
-│&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色
-│&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-├── permissions|array&lt;object&gt;|用户拥有的权限
-│&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-├── id|string|自增编号
-├── createBy|string|创建人
-├── createTime|string|创建时间
-├── updateBy|string|修改人
-├── updateTime|string|修改时间
-└── delFlag|int32|删除标记[1表示已删除，默认值0]
+┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|object|Description:<br/>老师&nbsp;
+&nbsp;&nbsp; ├── data|array&lt;object&gt;|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuName|string|姓名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAge|boolean|年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAddress|string|地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── user|object|用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── listMap|array&lt;map&lt;string, int32&gt;&gt;|listMap&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── user1|object|用户对象2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "address": "lg4qn",
-  "nickName": "h",
-  "sex": 8415,
-  "roles": [
-    {
-      "createBy": "fC",
-      "defaultRole": true,
-      "createTime": "Apr 13, 1984, 9:16:27 AM",
-      "updateBy": "sqrBc",
-      "permissions": [
+  "null": {
+    "data": [
+      {
+        "userAddress": "U",
+        "small": 3054.35,
+        "userList": [
+          {
+            "userAddress": "3n",
+            "small": 8527.24,
+            "userList": [],
+            "money": 4661.7,
+            "phone": "7lp",
+            "createTime": 8400,
+            "nickName": "W7KBd",
+            "ipv6": "OEse2tLms",
+            "telephone": "b",
+            "userName": "3HDqET0jfY",
+            "userDetails": [
+              {
+                "githubAddress": "SZWlp7HY"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 2134.64,
+        "phone": "Be8pXCNH",
+        "createTime": 1879,
+        "nickName": "gSyclpsCf",
+        "ipv6": "Zp9QFivjh",
+        "telephone": "f",
+        "userName": "Z",
+        "userDetails": [
+          {
+            "githubAddress": "0reX0t416"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "data2": {
+      "userAddress": "Cel",
+      "small": 3803.53,
+      "userList": [
         {
-          "level": 9984,
-          "icon": "ro3XiWqi",
-          "description": "RCt",
-          "updateTime": "May 27, 2051, 5:47:28 AM",
-          "type": 8389,
-          "title": "UxRs2EZY",
-          "delFlag": 8308,
-          "parentId": "JMVAJ",
-          "permTypes": [
-            "wyjespX"
-          ],
-          "path": "TbNNPrT",
-          "component": "AEOAq1Ij",
-          "expand": "true",
-          "createBy": "Ckqkjqo",
-          "buttonType": "No2",
-          "children": [
+          "userAddress": "93",
+          "small": 7288.27,
+          "userList": [],
+          "money": 33.27,
+          "phone": "fQz",
+          "createTime": 9928,
+          "nickName": "uV4QjRPzYP",
+          "ipv6": "rdjngyQ",
+          "telephone": "gP3MZEhnfk",
+          "userName": "vouabH9",
+          "userDetails": [
             {
-              "level": 3,
-              "icon": "yhsjttmLlN",
-              "description": "jCBiqH5qv",
-              "updateTime": "Aug 8, 2091, 2:17:16 AM",
-              "type": 1847,
-              "title": "e4KipOmNoD",
-              "delFlag": 6341,
-              "parentId": "m",
-              "permTypes": [
-                "NPNJb4GXUj"
-              ],
-              "path": "plQi6urI3T",
-              "component": "MD",
-              "expand": "true",
-              "createBy": "TH",
-              "buttonType": "0OiqQisMA",
-              "children": [],
-              "createTime": "Nov 8, 2016, 5:45:22 PM",
-              "updateBy": "kVlmIRitMl",
-              "sortOrder": 9737.73,
-              "name": "mwrscb",
-              "checked": "false",
-              "id": "qcRBt8eIs",
-              "selected": "false",
-              "status": 7007
+              "githubAddress": "ETD8ZsKIOa"
             }
           ],
-          "createTime": "Aug 23, 2020, 12:34:40 PM",
-          "updateBy": "TFE2",
-          "sortOrder": 5318.69,
-          "name": "CUIy5sY",
-          "checked": "false",
-          "id": "GuZgi7nyDm",
-          "selected": "false",
-          "status": 4375
+          "userAge": 0
         }
       ],
-      "name": "r6lQIIh",
-      "updateTime": "Feb 19, 1974, 12:24:40 PM",
-      "id": "39tc",
-      "delFlag": 6645
-    }
-  ],
-  "mobile": "8PeVD",
-  "description": "4",
-  "updateTime": "Oct 2, 2051, 7:51:53 AM",
-  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
-  "type": 23,
-  "delFlag": 5522,
-  "password": "jFNDukF",
-  "createBy": "215umoea",
-  "createTime": "Oct 1, 1983, 7:10:08 PM",
-  "updateBy": "2vGk0",
-  "permissions": [
-    {
-      "level": 8210,
-      "icon": "UetcIBlM28",
-      "description": "wRp3RGaZ",
-      "updateTime": "Dec 23, 2018, 5:58:00 AM",
-      "type": 4359,
-      "title": "7jY",
-      "delFlag": 928,
-      "parentId": "7py9y6auE",
-      "permTypes": [
-        "o9Z"
-      ],
-      "path": "KHz8poI",
-      "component": "AlCJkEJZs",
-      "expand": "true",
-      "createBy": "uzUp",
-      "buttonType": "67hVIVd",
-      "children": [
+      "money": 4600.65,
+      "phone": "9qVHmFfJrb",
+      "createTime": 516,
+      "nickName": "khqhH",
+      "ipv6": "ohF",
+      "telephone": "Z",
+      "userName": "1",
+      "userDetails": [
         {
-          "level": 8719,
-          "icon": "SYLsjMS",
-          "description": "Aw0zQmc",
-          "updateTime": "Aug 24, 2098, 1:30:48 AM",
-          "type": 8927,
-          "title": "svI8rxqCX",
-          "delFlag": 5905,
-          "parentId": "cOb",
-          "permTypes": [
-            "iFwh"
-          ],
-          "path": "gewmF9",
-          "component": "lubYAp",
-          "expand": "true",
-          "createBy": "sVxCKnoYN",
-          "buttonType": "ycFZXqz",
-          "children": [
+          "githubAddress": "VWlN4cBSUW"
+        }
+      ],
+      "userAge": 0
+    },
+    "data1": {
+      "user1": {
+        "userAddress": "EqfvI",
+        "small": 3323.35,
+        "userList": [],
+        "money": 8380.26,
+        "phone": "I7pD4aREw",
+        "createTime": 6227,
+        "nickName": "iFcWqi07PN",
+        "ipv6": "7iyUj1V",
+        "telephone": "D3AL03f7",
+        "userName": "lsJTNTSNL",
+        "userDetails": [
+          {
+            "githubAddress": "yMdgdPe"
+          }
+        ],
+        "userAge": 0
+      },
+      "userTreeSet": [
+        {
+          "userAddress": "BGTxActLZD",
+          "small": 8492.92,
+          "userList": [],
+          "money": 9011.41,
+          "phone": "JcPps",
+          "createTime": 3554,
+          "nickName": "kZ7Us",
+          "ipv6": "gqCFgO",
+          "telephone": "HxvZfK3QR",
+          "userName": "GW8Uit",
+          "userDetails": [
             {
-              "level": 2349,
-              "icon": "o",
-              "description": "PzD7",
-              "updateTime": "Oct 10, 2023, 6:37:03 PM",
-              "type": 349,
-              "title": "CQRXF",
-              "delFlag": 3823,
-              "parentId": "tLIrj",
-              "permTypes": [
-                "2bEcd"
-              ],
-              "path": "z7",
-              "component": "8uGWHV7Kpj",
-              "expand": "true",
-              "createBy": "OjyPpP3bsX",
-              "buttonType": "oUJepxAcAR",
-              "children": [],
-              "createTime": "May 20, 2088, 2:58:15 AM",
-              "updateBy": "E",
-              "sortOrder": 4029.28,
-              "name": "4XhVLdembC",
-              "checked": "false",
-              "id": "K",
-              "selected": "false",
-              "status": 7384
+              "githubAddress": "Rw"
             }
           ],
-          "createTime": "Sep 23, 2012, 3:28:29 PM",
-          "updateBy": "ducJ9E",
-          "sortOrder": 4205.12,
-          "name": "ewEwtFY",
-          "checked": "false",
-          "id": "Rygu4G",
-          "selected": "false",
-          "status": 2278
+          "userAge": 0
         }
       ],
-      "createTime": "Jul 31, 2073, 7:03:08 PM",
-      "updateBy": "4reD",
-      "sortOrder": 1451.19,
-      "name": "XEc9nhkH4",
-      "checked": "false",
-      "id": "W",
-      "selected": "false",
-      "status": 505
-    }
-  ],
-  "id": "6uYGYUN",
-  "email": "FBSPugR",
-  "username": "7dHv",
-  "status": 8221
-}
-```
-
-## 2.更新用户
-**URL:** http://localhost/user/update
-
-**Type:** PUT
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── user|object|true|&nbsp;|
-&nbsp;&nbsp; ├── AGE|int32|&nbsp;|100|&nbsp;
-&nbsp;&nbsp; ├── MAX_SPEED|int32|&nbsp;|120|&nbsp;
-&nbsp;&nbsp; ├── gender|enum|&nbsp;|&nbsp;|性别<br/>WOMAN(0,"女人")<br/>MAN(2,"男人")
-&nbsp;&nbsp; ├── simpleEnum|enum|&nbsp;|&nbsp;|简单枚举<br/>RED<br/>BLUE
-&nbsp;&nbsp; ├── username|string|&nbsp;|&nbsp;|用户名
-&nbsp;&nbsp; ├── password|string|&nbsp;|&nbsp;|密码
-&nbsp;&nbsp; ├── nickName|string|&nbsp;|&nbsp;|昵称
-&nbsp;&nbsp; └── mobile|string|&nbsp;|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/user/update
-```
-
-**Request-body-example:**
-``` json
-{
-  "password": "oCYpxE",
-  "gender": "MAN",
-  "MAX_SPEED": "120",
-  "simpleEnum": "BLUE",
-  "nickName": "sI",
-  "mobile": "AX4W",
-  "AGE": "100",
-  "username": "N"
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── username|string|用户名
-├── password|string|密码
-├── nickName|string|昵称
-├── mobile|string|电话
-├── email|string|邮箱
-├── address|string|地址
-├── sex|int32|性别(男1 女 2)
-├── avatar|string|&nbsp;
-├── type|int32|类型
-├── status|int32|状态
-├── description|string|描述
-├── roles|array&lt;object&gt;|用户拥有角色
-│&nbsp;&nbsp; ├── name|string|角色名 以ROLE_开头
-│&nbsp;&nbsp; ├── defaultRole|boolean|是否为注册默认角色
-│&nbsp;&nbsp; ├── permissions|array&lt;object&gt;|拥有权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-├── permissions|array&lt;object&gt;|用户拥有的权限
-│&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── name|string|菜单/权限名称
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── level|int32|层级
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── type|int32|类型 0页面 1具体操作
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── title|string|菜单标题
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── path|string|页面路径/资源链接url
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── component|string|前端组件
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── icon|string|图标
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── buttonType|string|按钮权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── parentId|string|父id
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── description|string|说明备注
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── sortOrder|number|排序值
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── status|int32|是否启用 0启用 -1禁用
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── children|array&lt;object&gt;|子菜单/权限
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-│&nbsp;&nbsp; ├── permTypes|array&lt;string&gt;|页面拥有的权限类型
-│&nbsp;&nbsp; ├── expand|boolean|节点展开 前端所需
-│&nbsp;&nbsp; ├── checked|boolean|是否勾选 前端所需
-│&nbsp;&nbsp; ├── selected|boolean|是否选中 前端所需
-│&nbsp;&nbsp; ├── id|string|自增编号
-│&nbsp;&nbsp; ├── createBy|string|创建人
-│&nbsp;&nbsp; ├── createTime|string|创建时间
-│&nbsp;&nbsp; ├── updateBy|string|修改人
-│&nbsp;&nbsp; ├── updateTime|string|修改时间
-│&nbsp;&nbsp; └── delFlag|int32|删除标记[1表示已删除，默认值0]
-├── id|string|自增编号
-├── createBy|string|创建人
-├── createTime|string|创建时间
-├── updateBy|string|修改人
-├── updateTime|string|修改时间
-└── delFlag|int32|删除标记[1表示已删除，默认值0]
-
-**Response-example:**
-``` json
-{
-  "address": "gdWjVuuH",
-  "nickName": "VmRSkid77",
-  "sex": 4476,
-  "roles": [
-    {
-      "createBy": "iyLjXq",
-      "defaultRole": false,
-      "createTime": "Feb 12, 2083, 11:59:08 AM",
-      "updateBy": "N",
-      "permissions": [
+      "listMap": [
         {
-          "level": 4963,
-          "icon": "EvfPZ",
-          "description": "2jmcmiH",
-          "updateTime": "Feb 2, 2096, 3:08:41 PM",
-          "type": 3483,
-          "title": "W6IS9eQt",
-          "delFlag": 9579,
-          "parentId": "fxYTeLYVTN",
-          "permTypes": [
-            "6vbaBW"
-          ],
-          "path": "vA6Amf",
-          "component": "00Gza5h1Hq",
-          "expand": "true",
-          "createBy": "7sR1cRMpt",
-          "buttonType": "wv",
-          "children": [
+          "null": 6415
+        }
+      ],
+      "stuAddress": "ViShf",
+      "stuName": "yu3XC5",
+      "userMap": {
+        "null": {
+          "userAddress": "WGywLC",
+          "small": 9235.73,
+          "userList": [],
+          "money": 7387.67,
+          "phone": "jxfV0Havz",
+          "createTime": 3989,
+          "nickName": "fbcFI",
+          "ipv6": "pB9",
+          "telephone": "0pPv0",
+          "userName": "C8O",
+          "userDetails": [
             {
-              "level": 3479,
-              "icon": "WgiBh",
-              "description": "K5sHd5",
-              "updateTime": "Apr 23, 2028, 3:33:36 AM",
-              "type": 1177,
-              "title": "FsDUdaJFB",
-              "delFlag": 2682,
-              "parentId": "CiLHu395D",
-              "permTypes": [
-                "HWIE3nez0"
-              ],
-              "path": "nSEH7",
-              "component": "YuaI4MYQy",
-              "expand": "true",
-              "createBy": "LV2Jz4tFF",
-              "buttonType": "tKLNvjsV",
-              "children": [],
-              "createTime": "Feb 11, 2069, 2:35:36 PM",
-              "updateBy": "FYpqz",
-              "sortOrder": 5442.8,
-              "name": "sWt2WbU6QN",
-              "checked": "false",
-              "id": "exzro",
-              "selected": "false",
-              "status": 611
+              "githubAddress": "ogUZL0Bsc1"
             }
           ],
-          "createTime": "Jan 17, 2055, 9:08:24 AM",
-          "updateBy": "zhph",
-          "sortOrder": 9111.19,
-          "name": "pEE",
-          "checked": "false",
-          "id": "f7ppY",
-          "selected": "false",
-          "status": 455
+          "userAge": 0
         }
-      ],
-      "name": "PV6aW",
-      "updateTime": "Jan 15, 1978, 7:28:14 AM",
-      "id": "3mTg1vsf",
-      "delFlag": 771
-    }
-  ],
-  "mobile": "ZiKX",
-  "description": "YQqtPE4WAC",
-  "updateTime": "Aug 21, 2025, 11:33:54 PM",
-  "avatar": "https://s1.ax1x.com/2018/05/19/CcdVQP.png",
-  "type": 9622,
-  "delFlag": 862,
-  "password": "GtV",
-  "createBy": "BmlZhB",
-  "createTime": "Dec 9, 2032, 12:21:01 PM",
-  "updateBy": "Bpy7w33wT2",
-  "permissions": [
-    {
-      "level": 520,
-      "icon": "eJ",
-      "description": "P10Q",
-      "updateTime": "Oct 10, 2068, 12:07:16 PM",
-      "type": 5198,
-      "title": "Uoogz3y1j",
-      "delFlag": 1443,
-      "parentId": "NVC",
-      "permTypes": [
-        "WtoADyu"
-      ],
-      "path": "2",
-      "component": "0kDyvP",
-      "expand": "true",
-      "createBy": "zM",
-      "buttonType": "xMI1R",
-      "children": [
-        {
-          "level": 9803,
-          "icon": "4lvAT",
-          "description": "JY7eXFsNz",
-          "updateTime": "May 11, 2040, 10:14:44 PM",
-          "type": 841,
-          "title": "o9",
-          "delFlag": 2667,
-          "parentId": "RGB6vBn0",
-          "permTypes": [
-            "MvRVeQ"
-          ],
-          "path": "cxvhC",
-          "component": "8lzTEXgOc",
-          "expand": "true",
-          "createBy": "QXNLOv2",
-          "buttonType": "23p",
-          "children": [
-            {
-              "level": 7986,
-              "icon": "HN",
-              "description": "iGb9nbyTO3",
-              "updateTime": "Jan 26, 2099, 9:21:45 PM",
-              "type": 1412,
-              "title": "y8z",
-              "delFlag": 5734,
-              "parentId": "8",
-              "permTypes": [
-                "HKh"
-              ],
-              "path": "nqQ",
-              "component": "3z5m",
-              "expand": "true",
-              "createBy": "X",
-              "buttonType": "z",
-              "children": [],
-              "createTime": "Mar 16, 1971, 9:28:44 AM",
-              "updateBy": "DzZuT2u",
-              "sortOrder": 945.3,
-              "name": "H",
-              "checked": "false",
-              "id": "NU6uqdwF62",
-              "selected": "false",
-              "status": 1239
-            }
-          ],
-          "createTime": "Nov 9, 1976, 9:43:11 PM",
-          "updateBy": "C3m",
-          "sortOrder": 6656.9,
-          "name": "VHcXBOgCzH",
-          "checked": "false",
-          "id": "06uAzCsiiT",
-          "selected": "false",
-          "status": 9360
-        }
-      ],
-      "createTime": "May 27, 1987, 8:42:45 PM",
-      "updateBy": "7qi",
-      "sortOrder": 7957.47,
-      "name": "FIw2R",
-      "checked": "false",
-      "id": "E",
-      "selected": "false",
-      "status": 4581
-    }
-  ],
-  "id": "p3Pq4dRpu6",
-  "email": "GhmcWPpoS",
-  "username": "3wtEXwQZ0N",
-  "status": 4577
-}
-```
-
-# JSR303参数验证规范测试
-
-## 1.验证validate
-**URL:** http://localhost/validator/test
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── leader|object|true|&nbsp;|
-&nbsp;&nbsp; ├── name|string|true|&nbsp;|姓名
-&nbsp;&nbsp; ├── birthday|string|true|&nbsp;|生日
-&nbsp;&nbsp; ├── age|int32|&nbsp;|&nbsp;|年龄
-&nbsp;&nbsp; └── subject|object|true|&nbsp;|科目
-&nbsp;&nbsp; &nbsp;&nbsp; ├── subjectName|string|true|&nbsp;|科目名称
-&nbsp;&nbsp; &nbsp;&nbsp; └── core|int32|&nbsp;|0|分数
-
-**Request-example:**
-``` json
-http://localhost/validator/test
-```
-
-**Request-body-example:**
-``` json
-{
-  "birthday": "ekYWAAeVWG",
-  "subject": {
-    "core": 0,
-    "subjectName": "DAesGgn3Xk"
-  },
-  "name": "Pawl",
-  "age": 1779
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "NZFwvlmx",
-  "success": false,
-  "message": "h9Ebth",
-  "timestamp": "vyM"
-}
-```
-
-## 2.验证通用参数
-**URL:** http://localhost/validator/valid
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── param|object|true|&nbsp;|
-&nbsp;&nbsp; ├── token|string|true|&nbsp;|token
-&nbsp;&nbsp; ├── sequenceNo|string|true|&nbsp;|序列号
-&nbsp;&nbsp; └── parameter|object|&nbsp;|&nbsp;|Description:<br/>子用户
-&nbsp;&nbsp; &nbsp;&nbsp; ├── subUserName|string|true|&nbsp;|用户名称
-&nbsp;&nbsp; &nbsp;&nbsp; └── numbers|number|&nbsp;|&nbsp;|bigInteger
-
-**Request-example:**
-``` json
-http://localhost/validator/valid
-```
-
-**Request-body-example:**
-``` json
-{
-  "sequenceNo": "7cbCQ",
-  "parameter": {
-    "subUserName": "EuQhin",
-    "numbers": 2926
-  },
-  "token": "Fvjy"
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "N6gez",
-  "success": false,
-  "message": "vt",
-  "timestamp": "CC2bGXG1"
-}
-```
-
-## 3.分组验证1
-**URL:** http://localhost/validator/save
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── collect|object|true|&nbsp;|
-&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
-&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|名称
-&nbsp;&nbsp; └── mobile|string|true|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/validator/save
-```
-
-**Request-body-example:**
-``` json
-{
-  "name": "xOvfgnDss",
-  "mobile": "KKSyU1uR",
-  "id": 6115
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "wL5XGG9F",
-  "success": false,
-  "message": "opSbc9",
-  "timestamp": "bXZe"
-}
-```
-
-## 4.分组验证2
-**URL:** http://localhost/validator/update
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── collect|object|true|&nbsp;|
-&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
-&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|名称
-&nbsp;&nbsp; └── mobile|string|true|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/validator/update
-```
-
-**Request-body-example:**
-``` json
-{
-  "name": "4N",
-  "mobile": "i1tpBNO",
-  "id": 2322
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "mkfeU",
-  "success": false,
-  "message": "6OjEYH",
-  "timestamp": "xv8JuLyfl7"
-}
-```
-
-## 5.分组验证3
-**URL:** http://localhost/validator/login
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── collect|object|true|&nbsp;|
-&nbsp;&nbsp; ├── id|int64|true|&nbsp;|主键id
-&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|名称
-&nbsp;&nbsp; └── mobile|string|true|&nbsp;|电话
-
-**Request-example:**
-``` json
-http://localhost/validator/login
-```
-
-**Request-body-example:**
-``` json
-{
-  "name": "Te7Fqh",
-  "mobile": "w9xbhtSh",
-  "id": 3856
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "G0yF",
-  "success": false,
-  "message": "Vh",
-  "timestamp": "2"
-}
-```
-
-## 6.分页查询
-**URL:** http://localhost/validator/list
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── t|object|true|&nbsp;|&nbsp;
-
-**Request-example:**
-``` json
-http://localhost/validator/list
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|object|&nbsp;
-
-
-# xss拦击测试
-
-## 1.xss过滤普通post请求
-**URL:** http://localhost/xss/text
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── text|string|&nbsp;|&nbsp;|请求文本<br/>
-
-**Request-example:**
-``` json
-http://localhost/xss/text
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|string|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "D6",
-  "data": "rCBRi",
-  "success": false,
-  "message": "I9uCTa9Lwz",
-  "timestamp": "56"
-}
-```
-
-## 2.xss过滤get请求
-**URL:** http://localhost/xss/query
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── query|string|&nbsp;|&nbsp;|请求参数<br/>
-
-**Request-example:**
-``` json
-http://localhost/xss/query
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|string|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "U",
-  "data": "WvT",
-  "success": false,
-  "message": "X",
-  "timestamp": "LNrhWA4B"
-}
-```
-
-## 3.xss过滤json数据
-**URL:** http://localhost/xss/json
-
-**Type:** POST
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── children|object|true|&nbsp;|
-&nbsp;&nbsp; ├── age|int32|&nbsp;|0|年龄
-&nbsp;&nbsp; └── name|string|&nbsp;|&nbsp;|姓名
-
-**Request-example:**
-``` json
-http://localhost/xss/json
-```
-
-**Request-body-example:**
-``` json
-{
-  "name": "03LJK5",
-  "age": 0
-}
-```
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|object|&nbsp;
-│&nbsp;&nbsp; ├── age|int32|年龄
-│&nbsp;&nbsp; └── name|string|姓名
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "b1wuYVD",
-  "data": {
-    "name": "Jl4upHHy8",
+      },
+      "stuAge": false,
+      "user": {
+        "userAddress": "EUWHqa",
+        "small": 9235.06,
+        "userList": [],
+        "money": 6868.96,
+        "phone": "f",
+        "createTime": 6451,
+        "nickName": "fkO6Kf0",
+        "ipv6": "gSO",
+        "telephone": "wYtE11ep3",
+        "userName": "CObXNI5o",
+        "userDetails": [
+          {
+            "githubAddress": "gMo3"
+          }
+        ],
+        "userAge": 0
+      }
+    },
     "age": 0
-  },
-  "success": false,
-  "message": "79h",
-  "timestamp": "4OH9"
+  }
 }
 ```
 
-# 异步返回信息测试
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/test2
+```
 
-## 1.返回Callable&lt;CommonResult&gt;
-**URL:** http://localhost/testCallable
+## 7.TreeMap&lt;String,Teacher&lt;List&lt;User&gt;,User,Student&gt;&gt;超复杂结构&nbsp;
+
+**URL:** http://localhost/map/test3
 
 **Type:** GET
 
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
 None
 
-**Request-example:**
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|object|Description:<br/>老师&nbsp;
+&nbsp;&nbsp; ├── data|array&lt;object&gt;|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data1|object|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuName|string|姓名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAge|boolean|年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── stuAddress|string|地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── user|object|用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userMap|map&lt;string, object&gt;|map用户信息&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── listMap|array&lt;map&lt;string, int32&gt;&gt;|listMap&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|int32|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userTreeSet|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── user1|object|用户对象2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data2|object|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
 ``` json
-http://localhost/testCallable
+{
+  "null": {
+    "data": [
+      {
+        "userAddress": "wTNNPZ",
+        "small": 1947.49,
+        "userList": [
+          {
+            "userAddress": "r0fM9f",
+            "small": 9622.63,
+            "userList": [],
+            "money": 4738.4,
+            "phone": "uumd0TLCqV",
+            "createTime": 8448,
+            "nickName": "raWz6ev",
+            "ipv6": "Ip3",
+            "telephone": "Vka",
+            "userName": "Eip",
+            "userDetails": [
+              {
+                "githubAddress": "bDDqjugKk"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 5958.7,
+        "phone": "3493Sv6BU",
+        "createTime": 6181,
+        "nickName": "B",
+        "ipv6": "rG9nBK",
+        "telephone": "o3vNTz0",
+        "userName": "A9",
+        "userDetails": [
+          {
+            "githubAddress": "BnAxF"
+          }
+        ],
+        "userAge": 0
+      }
+    ],
+    "data2": {
+      "userAddress": "xKGB",
+      "small": 8331.33,
+      "userList": [
+        {
+          "userAddress": "x6plesQT",
+          "small": 1399.64,
+          "userList": [],
+          "money": 7171.52,
+          "phone": "5aNOceO",
+          "createTime": 8841,
+          "nickName": "OpTTn5sF",
+          "ipv6": "KpcGDjaSt",
+          "telephone": "tm4v2",
+          "userName": "erzk",
+          "userDetails": [
+            {
+              "githubAddress": "7"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "money": 6978.73,
+      "phone": "XTHuNb",
+      "createTime": 6949,
+      "nickName": "I2jXBa",
+      "ipv6": "m65",
+      "telephone": "eiweVItaBB",
+      "userName": "ZdUiO827",
+      "userDetails": [
+        {
+          "githubAddress": "A9YBCTgXrz"
+        }
+      ],
+      "userAge": 0
+    },
+    "data1": {
+      "user1": {
+        "userAddress": "XUacLvLr",
+        "small": 6876.19,
+        "userList": [],
+        "money": 4662.7,
+        "phone": "SAKrsPq5",
+        "createTime": 8803,
+        "nickName": "s",
+        "ipv6": "xn7B",
+        "telephone": "SuZY08d9fA",
+        "userName": "a4ABQP",
+        "userDetails": [
+          {
+            "githubAddress": "o"
+          }
+        ],
+        "userAge": 0
+      },
+      "userTreeSet": [
+        {
+          "userAddress": "5mAi",
+          "small": 3252.74,
+          "userList": [],
+          "money": 6983.51,
+          "phone": "c5Qu",
+          "createTime": 7539,
+          "nickName": "lI3PW9Z",
+          "ipv6": "6VMGGbqyAA",
+          "telephone": "adg7P",
+          "userName": "tS",
+          "userDetails": [
+            {
+              "githubAddress": "Ou"
+            }
+          ],
+          "userAge": 0
+        }
+      ],
+      "listMap": [
+        {
+          "null": 9469
+        }
+      ],
+      "stuAddress": "mHQk",
+      "stuName": "v",
+      "userMap": {
+        "null": {
+          "userAddress": "o",
+          "small": 8466.85,
+          "userList": [],
+          "money": 3261.71,
+          "phone": "uxQa3hoz",
+          "createTime": 2792,
+          "nickName": "gsfSx",
+          "ipv6": "u31",
+          "telephone": "y6EiAMIoH",
+          "userName": "LureGm0qt0",
+          "userDetails": [
+            {
+              "githubAddress": "kMkmIRw0a"
+            }
+          ],
+          "userAge": 0
+        }
+      },
+      "stuAge": false,
+      "user": {
+        "userAddress": "WM51T",
+        "small": 3471.57,
+        "userList": [],
+        "money": 4530.28,
+        "phone": "9U3",
+        "createTime": 105,
+        "nickName": "URi84bYkn0",
+        "ipv6": "H46QBZ",
+        "telephone": "JEve",
+        "userName": "ADwO1YpX",
+        "userDetails": [
+          {
+            "githubAddress": "u7PKPZ1"
+          }
+        ],
+        "userAge": 0
+      }
+    },
+    "age": 0
+  }
+}
 ```
 
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/test3
+```
+
+## 8.Map&lt;String,Teacher&lt;Map&lt;String,User&gt;,Map&lt;String,User&gt;,Map&lt;String,User&gt;&gt;&gt;超复杂结构&nbsp;
+
+**URL:** http://localhost/map/test4
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Request-parameters:**
+
+None
+
+**Response-fields:**
+
+Field|Type|Description
+---|---|---
+┌─&nbsp; |map&lt;string, object&gt;|&nbsp;
+├── &nbsp;|string|&nbsp;
+└── &nbsp;|object|Description:<br/>老师&nbsp;
+&nbsp;&nbsp; ├── data|map&lt;string, object&gt;|泛型data&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data1|map&lt;string, object&gt;|泛型data1&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; ├── data2|map&lt;string, object&gt;|data2&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; ├── &nbsp;|string|&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; └── &nbsp;|object|Description:<br/>用户对象&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userDetails|array&lt;object&gt;|用户详情&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── githubAddress|string|测试&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userList|array&lt;object&gt;|用户列表&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; │&nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userName|string|用户名&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── nickName|string|昵称&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAddress|string|用户地址&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── userAge|int32|用户年龄&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── phone|string|手机号&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── createTime|int64|创建时间&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── small|float|钱少&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── money|double|钱太多了&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; ├── ipv6|string|ipv6&nbsp;
+&nbsp;&nbsp; │&nbsp;&nbsp; &nbsp;&nbsp; └── telephone|string|固定电话&nbsp;
+&nbsp;&nbsp; └── age|int32|年龄&nbsp;
+
+**Response-example:**
+``` json
+{
+  "null": {
+    "data": {
+      "null": {
+        "userAddress": "SDn6sHp",
+        "small": 4576.95,
+        "userList": [
+          {
+            "userAddress": "J",
+            "small": 2133.63,
+            "userList": [],
+            "money": 5845.03,
+            "phone": "xtfG",
+            "createTime": 8445,
+            "nickName": "r3vr",
+            "ipv6": "PYYu",
+            "telephone": "Db2",
+            "userName": "PAwC7B",
+            "userDetails": [
+              {
+                "githubAddress": "e7xAK1VE"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 9798.2,
+        "phone": "Rk",
+        "createTime": 2779,
+        "nickName": "PhUkh",
+        "ipv6": "0",
+        "telephone": "eUNO7bKgM",
+        "userName": "ZO1tfbFMo",
+        "userDetails": [
+          {
+            "githubAddress": "ZQTbgob"
+          }
+        ],
+        "userAge": 0
+      }
+    },
+    "data2": {
+      "null": {
+        "userAddress": "2oVHIGIDD",
+        "small": 8027.08,
+        "userList": [
+          {
+            "userAddress": "xZK",
+            "small": 5236.72,
+            "userList": [],
+            "money": 7001.8,
+            "phone": "vHNY",
+            "createTime": 1271,
+            "nickName": "9Na8",
+            "ipv6": "d3sspKMEGo",
+            "telephone": "Nnr3j6",
+            "userName": "GYv2VhiA",
+            "userDetails": [
+              {
+                "githubAddress": "Jveiv"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 670.31,
+        "phone": "XPGWIqu",
+        "createTime": 6714,
+        "nickName": "jsC2B3fZ",
+        "ipv6": "QSij",
+        "telephone": "rd4F",
+        "userName": "Rt",
+        "userDetails": [
+          {
+            "githubAddress": "xgih"
+          }
+        ],
+        "userAge": 0
+      }
+    },
+    "data1": {
+      "null": {
+        "userAddress": "y9A",
+        "small": 7584.03,
+        "userList": [
+          {
+            "userAddress": "86TqQilbpe",
+            "small": 4664.77,
+            "userList": [],
+            "money": 3103.07,
+            "phone": "v3Xv",
+            "createTime": 9837,
+            "nickName": "12",
+            "ipv6": "p78gt83OLI",
+            "telephone": "5C7HaI1",
+            "userName": "xsS",
+            "userDetails": [
+              {
+                "githubAddress": "C"
+              }
+            ],
+            "userAge": 0
+          }
+        ],
+        "money": 9610.22,
+        "phone": "6cT0gQA",
+        "createTime": 6436,
+        "nickName": "fl94AGhj",
+        "ipv6": "Btn8",
+        "telephone": "QhR2e",
+        "userName": "fJ8m7aCys",
+        "userDetails": [
+          {
+            "githubAddress": "ZHscpIie"
+          }
+        ],
+        "userAge": 0
+      }
+    },
+    "age": 0
+  }
+}
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/map/test4
+```
+
+# Path参数测试&nbsp;
+
+## 1.接收数组类型pathVariable&nbsp;
+
+**URL:** http://localhost/pathVariable/test/{id}
+
+**Type:** GET
+
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
+
+**Path-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── id|array|true|&nbsp;|
+&nbsp;&nbsp; └── &nbsp;|string|&nbsp;|&nbsp;|&nbsp;
 
 **Response-fields:**
 
@@ -10697,73 +15069,38 @@ Field|Type|Description
 ├── message|string|&nbsp;
 ├── data|object|&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "Z74",
+  "traceId": "xVpvD",
+  "code": "bmY",
   "success": false,
-  "message": "HzJpxb",
-  "timestamp": "djw5Mz852"
+  "message": "Ssv5w",
+  "timestamp": "pofQ"
 }
 ```
 
-## 2.返回DeferredResult&lt;CommonResult&lt;String&gt;&gt;
-**URL:** http://localhost/async-deferredresult
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/pathVariable/test/[3Zz3L]
+```
+
+## 2.Path正则测试1&nbsp;
+
+**URL:** http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
+**Path-parameters:**
 
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/async-deferredresult
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-┌─&nbsp; |object|&nbsp;
-├── success|boolean|&nbsp;
-├── message|string|&nbsp;
-├── data|string|&nbsp;
-├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
-
-**Response-example:**
-``` json
-{
-  "code": "ll2",
-  "data": "dTHqQR",
-  "success": false,
-  "message": "pWZxX0",
-  "timestamp": "f"
-}
-```
-
-## 3.返回WebAsyncTask&lt;CommonResult&gt;
-**URL:** http://localhost/WebAsync/timeout
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/WebAsync/timeout
-```
-
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── fileId|string|true|&nbsp;|文件id<br/>
 
 **Response-fields:**
 
@@ -10774,34 +15111,38 @@ Field|Type|Description
 ├── message|string|&nbsp;
 ├── data|object|&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "nKTA1qU",
+  "traceId": "QuMy",
+  "code": "tw",
   "success": false,
-  "message": "iTUgSgC",
-  "timestamp": "DsfJ"
+  "message": "MkDgKoXt",
+  "timestamp": "dClQZEf"
 }
 ```
 
-## 4.返回Future&lt;CommonResult&lt;String&gt;&gt;
-**URL:** http://localhost/future
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}
+```
+
+## 3.Path正则测试2&nbsp;
+
+**URL:** http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
+**Path-parameters:**
 
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/future
-```
-
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── fileId|string|true|&nbsp;|文件id<br/>
 
 **Response-fields:**
 
@@ -10810,37 +15151,40 @@ Field|Type|Description
 ┌─&nbsp; |object|&nbsp;
 ├── success|boolean|&nbsp;
 ├── message|string|&nbsp;
-├── data|string|&nbsp;
+├── data|object|&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "rB",
-  "data": "ze57kfDx",
+  "traceId": "oUFwi",
+  "code": "p5ITco8",
   "success": false,
-  "message": "SvDPc",
-  "timestamp": "1CuiTiByV"
+  "message": "MfHmV",
+  "timestamp": "sUmO"
 }
 ```
 
-## 5.返回CompletableFuture&lt;CommonResult&lt;String&gt;&gt;
-**URL:** http://localhost/completableFuture
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
+```
+
+## 4.Path正则测试3&nbsp;
+
+**URL:** http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
+**Path-parameters:**
 
-**Request-parameters:**
-
-None
-
-**Request-example:**
-``` json
-http://localhost/completableFuture
-```
-
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── fileId|string|true|&nbsp;|文件id<br/>
 
 **Response-fields:**
 
@@ -10849,140 +15193,85 @@ Field|Type|Description
 ┌─&nbsp; |object|&nbsp;
 ├── success|boolean|&nbsp;
 ├── message|string|&nbsp;
-├── data|string|&nbsp;
+├── data|object|&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "dM",
-  "data": "RqRQWHy9",
+  "traceId": "6z",
+  "code": "Sd9JNh",
   "success": false,
-  "message": "eqvUwvE4",
-  "timestamp": "C"
+  "message": "Q23fUj9CLW",
+  "timestamp": "LhwwxY"
 }
 ```
 
-# smart-doc调试入口
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/pathVariable/download/{fileId:^[A-Za-z0-9_-]{10,50}$}/file
+```
 
-## 1.Test Constants
-**URL:** http://localhost/testConstants/1.0
+# 测试session参数忽略&nbsp;
+
+## 1.session忽略&nbsp;
+
+**URL:** http://localhost/session/attribute
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-└── page|int32|false|0|页码
-
-**Request-example:**
-``` json
-http://localhost/testConstants/1.0?page=0
-```
-
-
-**Response-fields:**
-
-None
-
-
-# app端接口测试
-
-## 1.Test Constants
-**URL:** http://localhost/app/admin/testConstants/1.0
-
-**Type:** GET
-
-
-
-**Request-parameters:**
+**Query-parameters:**
 
 Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└── page|int32|false|0|页码
-
-**Request-example:**
-``` json
-http://localhost/app/admin/testConstants/1.0?page=0
-```
-
-
-**Response-fields:**
-
-None
-
-
-## 2.分页查询订单信息
-**URL:** http://localhost/app/page/{pageIndex}/{pageSize}
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── pageIndex|int32|true|0|当前页码<br/>
-└── pageSize|int32|true|0|页面大小<br/>
-
-**Request-example:**
-``` json
-http://localhost/app/page/0/0
-```
-
+├── userName|string|&nbsp;|&nbsp;|忽略用户名<br/>&nbsp;
+└── appName|string|&nbsp;|&nbsp;|应用名称&nbsp;
 
 **Response-fields:**
 
 Field|Type|Description
 ---|---|---
 ┌─&nbsp; |object|&nbsp;
-├── count|int64|总数
-├── records|array&lt;object&gt;|分页数据
-│&nbsp;&nbsp; ├── orderId|int32|订单id
-│&nbsp;&nbsp; └── orderType|enum|订单类型<br/>WAIT_PAY("0", "已支付")<br/>PAID("1", "已支付")<br/>EXPIRED("2","已经失效")
-├── page|int64|当前页码
-└── size|int64|每页显示条数
+├── success|boolean|&nbsp;
+├── message|string|&nbsp;
+├── data|object|&nbsp;
+├── code|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "size": 0,
-  "records": [
-    {
-      "orderType": "EXPIRED",
-      "orderId": 0
-    }
-  ],
-  "count": 0,
-  "page": 0
+  "traceId": "liSw0zTc",
+  "code": "oaAFevCr",
+  "success": false,
+  "message": "Iog",
+  "timestamp": "Z5"
 }
 ```
 
-## 3.app测试
-**URL:** http://localhost/app/test
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/session/attribute --data 'appName=F2zWoxRNV&userName=BIT'
+```
+
+# 多method测试&nbsp;
+
+## 1.多method&nbsp;
+
+**URL:** http://localhost/multi/mapping/methods/startJob
 
 **Type:** POST
 
-
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
 **Request-parameters:**
 
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── name|string|&nbsp;|&nbsp;|姓名│zhangsan<br/>
-├── beginTime|string|&nbsp;|&nbsp;|开始时间<br/>
-└── endTime|string|&nbsp;|&nbsp;|结束时间<br/>
-
-**Request-example:**
-``` json
-http://localhost/app/test
-```
-
+None
 
 **Response-fields:**
 
@@ -10993,78 +15282,21 @@ Field|Type|Description
 ├── message|string|&nbsp;
 ├── data|object|&nbsp;
 ├── code|string|&nbsp;
-└── timestamp|string|&nbsp;
+├── timestamp|string|&nbsp;
+└── traceId|string|&nbsp;
 
 **Response-example:**
 ``` json
 {
-  "code": "6dVqt92UNS",
+  "traceId": "8OrXr",
+  "code": "YzSMslt7n",
   "success": false,
-  "message": "22",
-  "timestamp": "k0Cz7g"
+  "message": "X83hHux",
+  "timestamp": "J"
 }
 ```
 
-## 4.app测试2
-**URL:** http://localhost/app/test2
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── name|string|&nbsp;|&nbsp;|姓名<br/>
-├── beginTime|string|&nbsp;|&nbsp;|开始时间<br/>
-└── endTime|string|&nbsp;|&nbsp;|结束时间<br/>
-
-**Request-example:**
-``` json
-http://localhost/app/test2
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"FtY5d"
-```
-
-## 5.app测试3
-**URL:** http://localhost/app/test3
-
-**Type:** GET
-
-
-
-**Request-parameters:**
-
-Parameter|Type|Required|DefaultValue|Description
----|---|---|---|---
-├── name|string|&nbsp;|&nbsp;|姓名<br/>
-├── beginTime|string|&nbsp;|&nbsp;|开始时间<br/>
-└── endTime|string|&nbsp;|&nbsp;|结束时间<br/>
-
-**Request-example:**
-``` json
-http://localhost/app/test3
-```
-
-
-**Response-fields:**
-
-Field|Type|Description
----|---|---
-&nbsp;|string|&nbsp;
-
-**Response-example:**
-``` json
-"ofSOTCcmV"
+**Curl-example:**
+``` bash
+curl -X POST -i http://localhost/multi/mapping/methods/startJob
 ```
