@@ -30,28 +30,38 @@ Java code comments automatically converts user-defined template documents
 
 ## What’s New
 
-* 2.3
-    *  Support for generating spring rest documents
-    *  Support to generate Er graph of database table
-    *  Add markdown template
-    *  Support document saving to file
-    *  Other known issues to fix optimization
-    
-* 2.2
-    *  Template editing adds variable descriptions for user-friendly templates
-    *  Support internationalization, temporarily only support Chinese and English
-    *  Fix template preview page mouse cannot scroll
-    *  Setting page with the same name data can not be saved
-    *  Other known issues to fix optimization
-    
-* 2.1
-    *  Support for user-defined document template settings
-    *  Support user-defined methods/field filtering
-    *  Support user-defined annotation extraction field description
-    *  Support for generating a document with a single method name
-    *  Fix circular dependency class memory overflow
-    *  User experience optimization
-    *  bugfix
+### Version 2022.1
+
+#### English
+- Fixed compatibility issues for the new version
+- REST template support ${contentType}/${pathParams}/${queryParams}/${requestBodyParams}/${curlExample}
+- Fix some project #projectVersion() not getting the problem
+- Support time formatting configuration parsing
+- Html template rewriting
+
+#### Chinese
+- 修复了新版本的兼容性问题
+- REST模版支持${contentType}/${pathParams}/${queryParams}/${requestBodyParams}/${curlExample}
+- 修复部分项目#projectVersion()获取不到问题
+- 支持时间格式化配置解析
+- Html模版重写
+
+### Version 2021.1
+
+#### English
+- Template supports the include/parse of other templates
+- Added Html template
+- Support @Deprecated annotation
+- Support @author annotation mark
+- Support HttpEntity/RequestEntity/ResponseEntity/DeferredResult/WebAsyncTask/CompletableFuture class resolution
+
+#### Chinese
+- 支持HttpEntity/RequestEntity/ResponseEntity/DeferredResult/WebAsyncTask/CompletableFuture等类解析
+- 模版支持引入其他模版
+- 新增Html模版
+- 支持@Deprecated注解
+- 支持@author注释标
+- 注解/字段变量支持解析（例如：@GetMapping(ApiVersion.ADMIN_ROOT+"/testConstants/" + ApiVersion.VERSION)/private int orderId = 11;）
 
 ## Use
 
