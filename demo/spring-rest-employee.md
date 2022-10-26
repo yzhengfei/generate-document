@@ -72,222 +72,244 @@ class EmployeeController {
 }
 ```
 
-### Class Name：com.zhengfei.gd.api.controller.EmployeeController
-#### 1.分页查询员工信息
+**Generated:** [Generate Document plugin for IntelliJ platform IDEs](https://plugins.jetbrains.com/plugin/13086-generate-document)
+
+**Author:** yinzhengfei
+
+**Version:** 1.0.0-SNAPSHOT
+
+# Class Name：com.zhengfei.gd.api.controller.EmployeeController
+
+## 1.分页查询员工信息&nbsp;
+
 **URL:** http://localhost/rest/employees/page
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
+**Query-parameters:**
 
-**Request-parameters:**
-
-Parameter | Type|Required|DefaultValue|Description
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-├─pageNo|java.lang.Integer|true|1|页码 
-└─pageSize|java.lang.Integer|true|10|页大小 
-
-**Request-example:**
-```
-http://localhost/rest/employees/page?pageNo=1&pageSize=10
-```
-
+├── pageNo|int32|true|1|页码<br/>
+└── pageSize|int32|true|10|页大小<br/>
 
 **Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|com.zhengfei.gd.api.result.PageResult|数据集
-&nbsp;&nbsp;├─totalCount|java.lang.Integer|结果集总数
-&nbsp;&nbsp;└─rows|java.util.List<com.zhengfei.gd.api.model.EmployeeDTO>|当前页码的结果集
-&nbsp;&nbsp;&nbsp;&nbsp;├─id|java.lang.Long|员工ID
-&nbsp;&nbsp;&nbsp;&nbsp;├─name|java.lang.String|员工姓名
-&nbsp;&nbsp;&nbsp;&nbsp;└─role|java.lang.String|员工角色
+┌─&nbsp; |object|返回结果&nbsp;
+├── code|int32|错误码&nbsp;
+└── data|object|数据集&nbsp;
+&nbsp;&nbsp; ├── totalCount|int32|结果集总数&nbsp;
+&nbsp;&nbsp; └── rows|array&lt;object&gt;|当前页码的结果集&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── id|int64|员工ID&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; ├── name|string|员工姓名&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; └── role|string|员工角色&nbsp;
 
 **Response-example:**
-```
+``` json
 {
-  "code": 5033,
+  "code": 5554,
   "data": {
-    "totalCount": 4240,
+    "totalCount": 2050,
     "rows": [
       {
-        "role": "qp",
-        "name": "CZrs",
-        "id": 1823
+        "role": "TYJuq",
+        "name": "hk",
+        "id": 2759
       }
     ]
   }
 }
 ```
 
-#### 2.保存员工信息
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/rest/employees/page --data 'pageNo=1&pageSize=10'
+```
+
+## 2.保存员工信息&nbsp;
+
 **URL:** http://localhost/rest/employees/
 
 **Type:** POST
 
+**Content-Type:** application/json
 
+**Body-parameters:**
 
-**Request-parameters:**
-
-Parameter | Type|Required|DefaultValue|Description
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|true|&nbsp;|员工信息 
-&nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
-&nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
-&nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
-
-**Request-example:**
-```
-http://localhost/rest/employees/
-```
+└── newEmployee|object|true|&nbsp;|员工信息<br/>
+&nbsp;&nbsp; ├── id|int64|&nbsp;|&nbsp;|员工ID&nbsp;
+&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|员工姓名&nbsp;
+&nbsp;&nbsp; └── role|string|&nbsp;|&nbsp;|员工角色&nbsp;
 
 **Request-body-example:**
-```
+``` json
 {
-  "role": "x",
-  "name": "lWOQA",
-  "id": 8847
+  "role": "05B",
+  "name": "bF",
+  "id": 7800
 }
 ```
 
 **Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|java.lang.Long|数据集
+┌─&nbsp; |object|返回结果&nbsp;
+├── code|int32|错误码&nbsp;
+└── data|int64|数据集&nbsp;
 
 **Response-example:**
-```
+``` json
 {
-  "code": 4111,
-  "data": 983
+  "code": 589,
+  "data": 2137
 }
 ```
 
-#### 3.根据员工ID查询员工信息
+**Curl-example:**
+``` bash
+curl -X POST -H 'Content-Type: application/json' -i http://localhost/rest/employees/ --data '{
+  "role": "05B",
+  "name": "bF",
+  "id": 7800
+}'
+```
+
+## 3.根据员工ID查询员工信息&nbsp;
+
 **URL:** http://localhost/rest/employees/{id}
 
 **Type:** GET
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
+**Path-parameters:**
 
-**Request-parameters:**
-
-Parameter | Type|Required|DefaultValue|Description
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─id|java.lang.Long|true|&nbsp;|员工ID 
-
-**Request-example:**
-```
-http://localhost/rest/employees/4204
-```
-
+└── id|int64|true|&nbsp;|员工ID<br/>
 
 **Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|com.zhengfei.gd.api.model.EmployeeDTO|数据集
-&nbsp;&nbsp;├─id|java.lang.Long|员工ID
-&nbsp;&nbsp;├─name|java.lang.String|员工姓名
-&nbsp;&nbsp;└─role|java.lang.String|员工角色
+┌─&nbsp; |object|返回结果&nbsp;
+├── code|int32|错误码&nbsp;
+└── data|object|数据集&nbsp;
+&nbsp;&nbsp; ├── id|int64|员工ID&nbsp;
+&nbsp;&nbsp; ├── name|string|员工姓名&nbsp;
+&nbsp;&nbsp; └── role|string|员工角色&nbsp;
 
 **Response-example:**
-```
+``` json
 {
-  "code": 2200,
+  "code": 9295,
   "data": {
-    "role": "vca1",
-    "name": "1AF4xnj",
-    "id": 1023
+    "role": "LtTt",
+    "name": "Ds25H",
+    "id": 2217
   }
 }
 ```
 
-#### 4.根据员工ID修改员工信息
+**Curl-example:**
+``` bash
+curl -X GET -i http://localhost/rest/employees/5031
+```
+
+## 4.根据员工ID修改员工信息&nbsp;
+
 **URL:** http://localhost/rest/employees/{id}
 
 **Type:** PUT
 
+**Content-Type:** application/json
 
+**Path-parameters:**
 
-**Request-parameters:**
-
-Parameter | Type|Required|DefaultValue|Description
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-├─newEmployee|com.zhengfei.gd.api.model.EmployeeDTO|true|&nbsp;|员工信息 
-&nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
-&nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
-&nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
-└─id|java.lang.Long|true|&nbsp;|员工ID 
+└── id|int64|true|&nbsp;|员工ID<br/>
 
-**Request-example:**
-```
-http://localhost/rest/employees/6363
-```
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── newEmployee|object|true|&nbsp;|员工信息<br/>
+&nbsp;&nbsp; ├── id|int64|&nbsp;|&nbsp;|员工ID&nbsp;
+&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|员工姓名&nbsp;
+&nbsp;&nbsp; └── role|string|&nbsp;|&nbsp;|员工角色&nbsp;
 
 **Request-body-example:**
-```
+``` json
 {
-  "role": "aI5uYS",
-  "name": "ms8eWu",
-  "id": 4022
+  "role": "KPXCoStb8",
+  "name": "pxQoXav",
+  "id": 1793
 }
 ```
 
 **Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|java.lang.Long|数据集
+┌─&nbsp; |object|返回结果&nbsp;
+├── code|int32|错误码&nbsp;
+└── data|int64|数据集&nbsp;
 
 **Response-example:**
-```
+``` json
 {
-  "code": 5085,
-  "data": 3488
+  "code": 4275,
+  "data": 2076
 }
 ```
 
-#### 5.根据员工ID删除员工信息
+**Curl-example:**
+``` bash
+curl -X PUT -H 'Content-Type: application/json' -i http://localhost/rest/employees/2248 --data '{
+  "role": "KPXCoStb8",
+  "name": "pxQoXav",
+  "id": 1793
+}'
+```
+
+## 5.根据员工ID删除员工信息&nbsp;
+
 **URL:** http://localhost/rest/employees/{id}
 
 **Type:** DELETE
 
+**Content-Type:** application/x-www-form-urlencoded;charset=UTF-8
 
+**Path-parameters:**
 
-**Request-parameters:**
-
-Parameter | Type|Required|DefaultValue|Description
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-└─id|java.lang.Long|true|&nbsp;|员工ID 
-
-**Request-example:**
-```
-http://localhost/rest/employees/6137
-```
-
+└── id|int64|true|&nbsp;|员工ID<br/>
 
 **Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|java.lang.Void|数据集
+┌─&nbsp; |object|返回结果&nbsp;
+├── code|int32|错误码&nbsp;
+└── data|none|数据集&nbsp;
 
 **Response-example:**
-```
+``` json
 {
-  "code": 318
+  "code": 8494
 }
+```
+
+**Curl-example:**
+``` bash
+curl -X DELETE -i http://localhost/rest/employees/182
 ```

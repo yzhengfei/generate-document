@@ -34,60 +34,84 @@ public class DemoController {
 
 ```
 
-### Class Name：com.zhengfei.gd.api.controller.DemoController
-#### 1.已支持注解Demo
+**Generated:** [Generate Document plugin for IntelliJ platform IDEs](https://plugins.jetbrains.com/plugin/13086-generate-document)
+
+**Author:** yinzhengfei
+
+**Version:** 1.0.0-SNAPSHOT
+
+# Class Name：com.zhengfei.gd.api.controller.DemoController
+
+## 1.已支持注解Demo&nbsp;
+
 **URL:** http://localhost/rest/demo/{pathVariable}
 
 **Type:** ALL
+
+**Content-Type:** application/json
 
 **Request-cookies:**
 
 Cookie | Type|Required|DefaultValue|Description
 ---|---|---|---|----
-cookieValue|java.lang.String|false|Cookie默认值|Cookie 
+cookieValue|string|false|Cookie默认值|Cookie<br/>&nbsp;
 
 **Request-headers:**
 
 Header | Type|Required|DefaultValue|Description
 ---|---|---|---|----
-requestHeader|java.lang.String|false|请求头默认参数|请求头 
+requestHeader|string|false|请求头默认参数|请求头<br/>&nbsp;
 
-**Request-parameters:**
+**Path-parameters:**
 
-Parameter | Type|Required|DefaultValue|Description
+Parameter|Type|Required|DefaultValue|Description
 ---|---|---|---|---
-├─pathVariable|java.lang.String|false|&nbsp;|Path变量 
-├─requestParam|java.lang.String|false|请求参数默认值|请求参数 
-└─body|com.zhengfei.gd.api.model.EmployeeDTO|true|&nbsp;|请求Body 
-&nbsp;&nbsp;├─id|java.lang.Long|&nbsp;|&nbsp;|员工ID
-&nbsp;&nbsp;├─name|java.lang.String|&nbsp;|&nbsp;|员工姓名
-&nbsp;&nbsp;└─role|java.lang.String|&nbsp;|&nbsp;|员工角色
+└── pathVariable|string|false|&nbsp;|Path变量<br/>
 
-**Request-example:**
-```
-http://localhost/rest/demo/DzTLHvLX?requestParam=%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC
-```
+**Query-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── requestParam|string|false|请求参数默认值|请求参数<br/>
+
+**Body-parameters:**
+
+Parameter|Type|Required|DefaultValue|Description
+---|---|---|---|---
+└── body|object|true|&nbsp;|请求Body<br/>
+&nbsp;&nbsp; ├── id|int64|&nbsp;|&nbsp;|员工ID&nbsp;
+&nbsp;&nbsp; ├── name|string|&nbsp;|&nbsp;|员工姓名&nbsp;
+&nbsp;&nbsp; └── role|string|&nbsp;|&nbsp;|员工角色&nbsp;
 
 **Request-body-example:**
-```
+``` json
 {
-  "role": "XF",
-  "name": "k",
-  "id": 4850
+  "role": "hbpTxeg82",
+  "name": "M84wb",
+  "id": 1062
 }
 ```
 
 **Response-fields:**
 
-Field | Type|Description
+Field|Type|Description
 ---|---|---
-┌─|com.zhengfei.gd.api.result.Result|返回结果
-├─code|java.lang.Integer|错误码
-└─data|java.lang.Void|数据集
+┌─&nbsp; |object|返回结果&nbsp;
+├── code|int32|错误码&nbsp;
+└── data|none|数据集&nbsp;
 
 **Response-example:**
-```
+``` json
 {
-  "code": 4827
+  "code": 3711
 }
+```
+
+**Curl-example:**
+``` bash
+curl -X GET -H 'Content-Type: application/json' -H 'requestHeader:请求头默认参数' -i http://localhost/rest/demo/fR --data '{
+  "role": "hbpTxeg82",
+  "name": "M84wb",
+  "id": 1062
+}'
 ```
