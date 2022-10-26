@@ -6,13 +6,24 @@ Java code comments automatically converts user-defined template documents
 
 ## Features
 
-* Support for generating spring rest documents
-* Support for user-defined document template settings
-* Support to generate Er graph of database table
-* User-defined methods/field filtering
-* User-defined annotation extraction method description or field description
-* Single method to generate a document
-* Single class generation document
+#### English
+- Java code comments automatically converts user-defined template documents
+- Features
+  - Support for generating spring rest documents
+  - Support for user-defined document template settings
+  - User-defined methods/field filtering
+  - User-defined annotation extraction method description or field description
+  - Support multiple Java files to generate documents
+  
+#### Chinese
+- Java文档生成工具，无代码入侵，支持REST、Dubbo等接口定义，用户可以自定义文档模板
+- 功能
+  - 自动生成Spring REST、Dubbo等接口文档(默认自带Html、Markdown模板)
+  - 文档模板用户自定义设置
+  - 支持方法、字段过滤，自动忽略过滤方法、字段的解析
+  - 支持嵌套泛型解析
+  - 支持自定义注解提取注释、字段名、默认值等
+  - 支持多文件生成文档
 
 ## Install
 
